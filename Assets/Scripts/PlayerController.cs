@@ -14,7 +14,9 @@ public class PlayerController : MonoBehaviour
     public GameObject bulletPrefab;
     public float bulletForce;
     float angle;
+    float facing;
     SpriteRenderer sR;
+    public LayerMask noMove;
 
     void Start()
     {
@@ -32,14 +34,23 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
+        
         rb.MovePosition(rb.position+movement*moveSpeed*Time.fixedDeltaTime);
+        
+
         Vector2 lookDir = mouse - rb.position;
         angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg-90;
-        Debug.Log(angle);
-        if(angle <= -130 && angle > -240) sR.sprite = sprites[0];
-        else if(angle <= -40 && angle > -130) sR.sprite = sprites[1];
-        else if(angle <= 50 && angle > -40) sR.sprite = sprites[2]; // looking top
-        else if(angle <= -240 || angle > 50) sR.sprite = sprites[2];
+        facing = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
+        //down = -112,5 - -67,5 / down-right -67,5 - -22,5 / right -22,5 - 22,5 / top right = 22,5 - 67,5 / top = 67,5 - 112,5 / top-left = 157,5 / left = < 157,5 | > -157,5 / down-left = -112,5 - -157,5
+        if(facing >= -112.5f && facing < -67.5f) sR.sprite = sprites[0]; //down
+        else if(facing >= -67.5f && facing < -22.5f) sR.sprite = sprites[1]; //donw-right
+        else if(facing >= -22.5f && facing < 22.5f) sR.sprite = sprites[2]; //right
+        else if(facing >= 22.5f && facing < 67.5f) sR.sprite = sprites[3]; //top-right
+        else if(facing >= 67.5f && facing < 112.5f) sR.sprite = sprites[4]; //top
+        else if(facing >= 112.5f && facing < 157.5f) sR.sprite = sprites[5]; //top-left
+        else if(facing >= -157.5f && facing < -112.5f) sR.sprite = sprites[7]; //down-left
+        else sR.sprite = sprites[6]; //left
+
         gun.rotation = Quaternion.Euler(0,0,angle);
     }
 
