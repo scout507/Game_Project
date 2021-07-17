@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: South-West
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: 59f9d8bf52792cd4cbd40182146c613d, type: 3}
-  m_Color: {r: 0.25467065, g: 0.11027056, b: 0.3962264, a: 1}
+  m_Sprite: {fileID: 21300000, guid: a775dfd10977fb44e85386a01fe380aa, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
     e01: 0

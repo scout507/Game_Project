@@ -75,16 +75,18 @@ public class MapGenerator : MonoBehaviour
             //  y-1 = north / y+1 = south / x-1 = east / x+1 = West
             for (int y = 0; y < height; y++)
             {
-               
-                if (terrainMap[x, y] == 1 )
+                if (terrainMap[x, y] == 1 ){
                     if(x < 2 || y < 2 || x > width-3 || y > height-3){
                         wall.SetTile(new Vector3Int(-x + width / 2, -y + height / 2, 0), walls[Random.Range(0,walls.Length)]);
                     }
                     else{
                         wall.SetTile(new Vector3Int(-x + width / 2, -y + height / 2, 0), innerWalls[Random.Range(0,innerWalls.Length)]);
                     }
+                } 
                 else { 
-                    //props
+                    if(Random.Range(0,101) <= 2){
+                        prop.SetTile(new Vector3Int(-x + width / 2, -y + height / 2, 0), probs[Random.Range(0,probs.Length)]);
+                    }
                 }
                 
                 floor.SetTile(new Vector3Int(-x + width / 2, -y + height / 2, 0), floorTiles[Random.Range(0,floorTiles.Length)]);
@@ -93,17 +95,19 @@ public class MapGenerator : MonoBehaviour
                     
                     if(terrainMap[x, y-1] == 1 && terrainMap[x-1,y] == 1 && terrainMap[x,y+1] == 1){
                         //North-east-south
-                        //floor.SetTile(new Vector3Int(-x + width / 2, -y + height / 2, 0), corners[6]);
+                        floor.SetTile(new Vector3Int(-x + width / 2, -y + height / 2, 0), corners[8]);
                     }
                     else if(terrainMap[x+1, y] == 1 && terrainMap[x-1,y] == 1 && terrainMap[x,y+1] == 1){
                         // East-south-west
+                        floor.SetTile(new Vector3Int(-x + width / 2, -y + height / 2, 0), corners[9]);
                     }
                     else if(terrainMap[x+1, y] == 1 && terrainMap[x,y-1] == 1 && terrainMap[x,y+1] == 1){
                         //South-west-north
+                        floor.SetTile(new Vector3Int(-x + width / 2, -y + height / 2, 0), corners[10]);
                     }
                     else if(terrainMap[x+1, y] == 1 && terrainMap[x-1,y] == 1 && terrainMap[x,y-1] == 1){
                         //West-North-East
-                        floor.SetTile(new Vector3Int(-x + width / 2, -y + height / 2, 0), corners[7]);
+                        floor.SetTile(new Vector3Int(-x + width / 2, -y + height / 2, 0), corners[11]);
                     }
                     else if(terrainMap[x, y-1] == 1 && terrainMap[x-1,y] == 1){
                         //North-east

@@ -223,7 +223,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: e228234a9f7c87041b84d088d4faac77, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -325,7 +325,7 @@ PrefabInstance:
     - target: {fileID: 7213277662982381495, guid: 2d893f10c176fbc4c90efaed5bfe3af3, type: 3}
       propertyPath: sprites.Array.data[2]
       value: 
-      objectReference: {fileID: 21300000, guid: 14c9198c9ddbbda43b1bf5ae54c914bd, type: 3}
+      objectReference: {fileID: 21300000, guid: 208e9c836808ff14c85f0fecff6e64d1, type: 3}
     - target: {fileID: 7213277662982381495, guid: 2d893f10c176fbc4c90efaed5bfe3af3, type: 3}
       propertyPath: sprites.Array.data[3]
       value: 
@@ -341,7 +341,7 @@ PrefabInstance:
     - target: {fileID: 7213277662982381495, guid: 2d893f10c176fbc4c90efaed5bfe3af3, type: 3}
       propertyPath: sprites.Array.data[6]
       value: 
-      objectReference: {fileID: 21300000, guid: ff21c3f7648183f408b1b4a50c0e1a85, type: 3}
+      objectReference: {fileID: 21300000, guid: 048db563bf84bfd49b591bc99969f7fc, type: 3}
     - target: {fileID: 7213277662982381495, guid: 2d893f10c176fbc4c90efaed5bfe3af3, type: 3}
       propertyPath: sprites.Array.data[7]
       value: 
@@ -609,7 +609,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -765,8 +765,11 @@ MonoBehaviour:
   prop: {fileID: 235914812}
   floor: {fileID: 1944636358}
   walls:
+  - {fileID: 11400000, guid: d148f76be980cb3418288aabfe83bfd5, type: 2}
+  probs:
   - {fileID: 11400000, guid: b5d58442f1b83ad4db91ad78e6344870, type: 2}
-  probs: []
+  - {fileID: 11400000, guid: b782baf23ed45724eb26871b56eecee8, type: 2}
+  - {fileID: 11400000, guid: 9256732759ca7ed48afd8d4bce55be5b, type: 2}
   innerWalls:
   - {fileID: 11400000, guid: a0bb2a5a2bb330e4ab80b91cf6a88013, type: 2}
   floorTiles:
@@ -780,6 +783,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0312ac50cceee9b449a97e3f3cf9f7fe, type: 2}
   - {fileID: 11400000, guid: 59290ea232f913440b3019d7cc5e93ea, type: 2}
   - {fileID: 11400000, guid: 7a8e9411c6c86c346b141ee15f56198c, type: 2}
+  - {fileID: 11400000, guid: ce9131dae857b144dbd4b8269a84dd17, type: 2}
+  - {fileID: 11400000, guid: 230cedc724e8d264a9df3132b9293277, type: 2}
+  - {fileID: 11400000, guid: 03d037bc7ec84d64dbd59c332ba92d12, type: 2}
+  - {fileID: 11400000, guid: 119fa7e2d56db8642a225412fd9a36c5, type: 2}
 --- !u!4 &776198408
 Transform:
   m_ObjectHideFlags: 0
