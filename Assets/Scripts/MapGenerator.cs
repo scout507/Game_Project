@@ -24,9 +24,11 @@ public class MapGenerator : MonoBehaviour
     private int[,] terrainMap;
     public Vector3Int tmpSize;
     public Tilemap wall;
-    public Tilemap props;
+    public Tilemap prop;
     public Tilemap floor;
     public Tile[] walls;
+    public Tile[] probs;
+    public Tile[] innerWalls;
     public Tile[] floorTiles;
     public Tile[] corners; // 0 = north, 1 = north-east, 2 = east, 3 = south-east, 4 = south, 5 = south-west, 6 = west, 7 = north-west, 8= North-east-south, 9= East-south-west, 10 =South-west-north, 11= West-North-East
 
@@ -75,7 +77,12 @@ public class MapGenerator : MonoBehaviour
             {
                
                 if (terrainMap[x, y] == 1 )
-                    wall.SetTile(new Vector3Int(-x + width / 2, -y + height / 2, 0), walls[Random.Range(0,walls.Length)]);
+                    if(x < 2 || y < 2 || x > width-3 || y > height-3){
+                        wall.SetTile(new Vector3Int(-x + width / 2, -y + height / 2, 0), walls[Random.Range(0,walls.Length)]);
+                    }
+                    else{
+                        wall.SetTile(new Vector3Int(-x + width / 2, -y + height / 2, 0), innerWalls[Random.Range(0,innerWalls.Length)]);
+                    }
                 else { 
                     //props
                 }
