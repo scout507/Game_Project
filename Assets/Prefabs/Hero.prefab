@@ -12,9 +12,11 @@ GameObject:
   - component: {fileID: 7213277662982381492}
   - component: {fileID: 7213277662982381495}
   - component: {fileID: 7213277662982381494}
+  - component: {fileID: 7932612915462055317}
+  - component: {fileID: 1012193884}
   m_Layer: 0
   m_Name: Hero
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -73,8 +75,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 07234507077de544aaa0e0b020b5960c, type: 3}
+  m_SortingOrder: 2
+  m_Sprite: {fileID: 21300000, guid: e511752490db55d46bd3fb1a5c741f51, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -98,15 +100,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprites:
-  - {fileID: 21300000, guid: 07234507077de544aaa0e0b020b5960c, type: 3}
-  - {fileID: 21300000, guid: 2ff2c4544557e114aabfa24f6a83c178, type: 3}
-  - {fileID: 21300000, guid: 491c2c48378e1ef4185064b8bb0ca39c, type: 3}
+  - {fileID: 21300000, guid: e511752490db55d46bd3fb1a5c741f51, type: 3}
+  - {fileID: 21300000, guid: 4a625869b139604478e25d55f26e2938, type: 3}
+  - {fileID: 21300000, guid: 208e9c836808ff14c85f0fecff6e64d1, type: 3}
+  - {fileID: 21300000, guid: 1d6c274f9dae4a24382e2c335d9d5be6, type: 3}
+  - {fileID: 21300000, guid: 8ad8094f0dffd8a4da455cae5e4a242b, type: 3}
+  - {fileID: 21300000, guid: 7808a82a280e0ca4aa2bc71e4cc76ee5, type: 3}
+  - {fileID: 21300000, guid: 048db563bf84bfd49b591bc99969f7fc, type: 3}
+  - {fileID: 21300000, guid: 0f1d7cd065950b741beb213d8524a2da, type: 3}
   moveSpeed: 10
   rb: {fileID: 7213277662982381494}
   cam: {fileID: 0}
   gun: {fileID: 7213277664003803222}
   bulletPrefab: {fileID: 1384360571865061328, guid: 6f226cd2e4377dd47bddfc62868bbf4f, type: 3}
   bulletForce: 35
+  noMove:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!50 &7213277662982381494
 Rigidbody2D:
   serializedVersion: 4
@@ -128,6 +138,34 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &7932612915462055317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7213277662982381489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7a4f26578b1f949b2f0f9b51d81b90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!70 &1012193884
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7213277662982381489}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.03, y: -0.67}
+  m_Size: {x: 1.02, y: 0.78}
+  m_Direction: 0
 --- !u!1 &7213277664003803217
 GameObject:
   m_ObjectHideFlags: 0

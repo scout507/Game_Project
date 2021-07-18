@@ -6,7 +6,7 @@ using UnityEditor;
 
 public class MapGenerator : MonoBehaviour
 {
-     [Range(0,100)]
+    [Range(0,100)]
     public int iniChance;
     [Range(1,8)]
     public int birthLimit;
@@ -14,18 +14,18 @@ public class MapGenerator : MonoBehaviour
     public int deathLimit;
     [Range(1,10)]
     public int numR;
-    private int count = 0;
-
 
     public Vector2 spawn;
     public Vector2 end;
     public GameObject hero;
 
     private int[,] terrainMap;
+    public List<Vector3> freeSpots;
     public Vector3Int tmpSize;
     public Tilemap wall;
     public Tilemap prop;
     public Tilemap floor;
+    public Tilemap innerObs;
     public Tile[] walls;
     public Tile[] probs;
     public Tile[] innerWalls;
@@ -35,11 +35,15 @@ public class MapGenerator : MonoBehaviour
     int width;
     int height;
 
+    int monsters;
+
     AstarPath pathing;
+    Manager manager;
 
     void Awake()
     {
         pathing = GetComponent<AstarPath>();
+        manager = GetComponent<Manager>();
     }
 
     public void spawnMap(){
@@ -80,11 +84,12 @@ public class MapGenerator : MonoBehaviour
                         wall.SetTile(new Vector3Int(-x + width / 2, -y + height / 2, 0), walls[Random.Range(0,walls.Length)]);
                     }
                     else{
-                        wall.SetTile(new Vector3Int(-x + width / 2, -y + height / 2, 0), innerWalls[Random.Range(0,innerWalls.Length)]);
+                        innerObs.SetTile(new Vector3Int(-x + width / 2, -y + height / 2, 0), innerWalls[Random.Range(0,innerWalls.Length)]);
                     }
                 } 
-                else { 
-                    if(Random.Range(0,101) <= 2){
+                else {
+                    freeSpots.Add(new Vector3Int(-x + width / 2, -y + height / 2, 0));  
+                    if(Random.Range(0,101) <= 1){
                         prop.SetTile(new Vector3Int(-x + width / 2, -y + height / 2, 0), probs[Random.Range(0,probs.Length)]);
                     }
                 }
@@ -149,6 +154,7 @@ public class MapGenerator : MonoBehaviour
                 
             }
         }
+        spawnMonsters();
         pathing.Scan();
     }
 
@@ -174,7 +180,6 @@ public class MapGenerator : MonoBehaviour
         }
 
     }
-
 
     public int[,] genTilePos(int[,] oldMap)
     {
@@ -231,46 +236,14 @@ public class MapGenerator : MonoBehaviour
         return newMap;
     }
 
-
-	void Update () {
-
-        if (Input.GetMouseButtonDown(1))
-            {
-            //clearMap(true);
+    void spawnMonsters(){
+        for(int i = 0; i<manager.monsterAmount; i++){
+            int r = Random.Range(0,freeSpots.Count);
+            GameObject monster = Instantiate(manager.monsters[0],freeSpots[r],Quaternion.identity);
+            manager.monstersInLevel.Add(monster);
+            freeSpots.RemoveAt(r);
         }
-
-
-
-        if (Input.GetMouseButton(2))
-        {
-            //SaveAssetMap();
-            count++;
-        }
-
-    }
-
-
-    public void SaveAssetMap()
-    {
-        string saveName = "tmapXY_" + count;
-        var mf = GameObject.Find("Grid");
-
-        if (mf)
-        {
-            var savePath = "Assets/" + saveName + ".prefab";
-            if (PrefabUtility.CreatePrefab(savePath,mf))
-            {
-                EditorUtility.DisplayDialog("Tilemap saved", "Your Tilemap was saved under" + savePath, "Continue");
-            }
-            else
-            {
-                EditorUtility.DisplayDialog("Tilemap NOT saved", "An ERROR occured while trying to saveTilemap under" + savePath, "Continue");
-            }
-
-
-        }
-
-
+        freeSpots.Clear();
     }
 
     public void clearMap(bool complete)

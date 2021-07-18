@@ -57,13 +57,15 @@ public class PlayerController : MonoBehaviour
     void Shoot(){
         GameObject bullet = Instantiate(bulletPrefab, gun.position, gun.rotation);
         Rigidbody2D rbBull = bullet.GetComponent<Rigidbody2D>();
-        bullet.GetComponent<Bullet>().dmg = 10f;
+        Bullet bScript = bullet.GetComponent<Bullet>();
+        bScript.dmg = 10f;
+        bScript.bulletforce = gun.up*bulletForce*0.05f;
         rbBull.AddForce(gun.up*bulletForce,ForceMode2D.Impulse);
     }
 
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log(other.gameObject);
+        //Debug.Log(other.gameObject);
     }
 }

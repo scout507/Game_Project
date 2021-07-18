@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public float dmg;
-    public float force;
+    public Vector3 bulletforce;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,10 +20,10 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.tag != "Player"){
+        if(other.tag != "Player" && other.tag != "allowBullets"){
             Destroy(this.gameObject);
             if(other.tag == "monster"){
-                other.GetComponent<MonsterController>().takeDamage(dmg);
+                other.GetComponent<MonsterController>().takeDamage(dmg, bulletforce);
             }
         }
     }
