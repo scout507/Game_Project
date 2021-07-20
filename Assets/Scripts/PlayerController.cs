@@ -7,36 +7,52 @@ public class PlayerController : MonoBehaviour
     public Sprite[] sprites;
     Vector2 movement;
     public float moveSpeed = 5f;
-    public Rigidbody2D rb;
+    Rigidbody2D rb;
     public Camera cam;
     Vector2 mouse;
     public Transform gun;
-    public GameObject bulletPrefab;
+    public GameObject activeGun;
+    public Weapon gunscript;
     public float bulletForce;
     float angle;
     float facing;
     SpriteRenderer sR;
+    public float dashForce;
+    public float dashDuration;
+    bool dashing;
+    float dashTimer;
     public LayerMask noMove;
 
     void Start()
     {
         sR = GetComponent<SpriteRenderer>();
+        rb = GetComponent<Rigidbody2D>();
+        gunscript = activeGun.GetComponent<Weapon>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        //Input
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
         mouse = cam.ScreenToWorldPoint(Input.mousePosition);
-        if(Input.GetButtonDown("Fire1")) Shoot();
+        if(Input.GetButton("Fire1")) activeGun.GetComponent<Weapon>().shoot(gun.position,gun.up,gun.rotation, Camera.main.ScreenToWorldPoint(Input.mousePosition));
+        if(Input.GetKeyDown(KeyCode.Space)) dash();
+    
+        //timers
+        dashTimer -= Time.deltaTime;
+        if(dashTimer <= 0){
+            dashing = false;
+            rb.velocity = Vector2.zero;
+        } 
     }
 
     void FixedUpdate()
     {
-        
-        rb.MovePosition(rb.position+movement*moveSpeed*Time.fixedDeltaTime);
-        
+        if(!dashing){
+            rb.MovePosition(rb.position+movement*moveSpeed*Time.fixedDeltaTime);
+        }
 
         Vector2 lookDir = mouse - rb.position;
         angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg-90;
@@ -53,8 +69,9 @@ public class PlayerController : MonoBehaviour
 
         gun.rotation = Quaternion.Euler(0,0,angle);
     }
+    /*
+    void shoot(){
 
-    void Shoot(){
         GameObject bullet = Instantiate(bulletPrefab, gun.position, gun.rotation);
         Rigidbody2D rbBull = bullet.GetComponent<Rigidbody2D>();
         Bullet bScript = bullet.GetComponent<Bullet>();
@@ -63,6 +80,15 @@ public class PlayerController : MonoBehaviour
         rbBull.AddForce(gun.up*bulletForce,ForceMode2D.Impulse);
     }
 
+    */
+
+    void dash(){
+        if(movement != new Vector2(0,0)){
+            dashTimer = dashDuration;
+            dashing = true;
+            rb.velocity = movement*dashForce;
+        }
+    }
 
     void OnTriggerEnter2D(Collider2D other)
     {

@@ -78,7 +78,7 @@ public class MonsterController : MonoBehaviour
     }
 
     void spawnDmgText(float dmgTaken){
-        Vector3 spawnPoint = new Vector3(transform.position.x, transform.position.y+1,0);
+        Vector3 spawnPoint = new Vector3(transform.position.x, transform.position.y+1.5f,0);
         Transform damagePopUpTrans = Instantiate(dmgPopUp, transform.position, Quaternion.identity);
         DmgPopUp dmgPopUpScript = damagePopUpTrans.GetComponent<DmgPopUp>();;
         dmgPopUpScript.Setup(dmgTaken);

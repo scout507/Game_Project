@@ -19,7 +19,6 @@ public class PlayerStats : MonoBehaviour
     }
 
     public void takeDamage(float dmg){
-        Debug.Log(dmg);
         hp -= dmg;
         if(hp <= 0) die();
     }

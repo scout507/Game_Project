@@ -248,7 +248,8 @@ public class MapGenerator : MonoBehaviour
 
     public void clearMap(bool complete)
     {
-
+        innerObs.ClearAllTiles();
+        prop.ClearAllTiles();
         wall.ClearAllTiles();
         floor.ClearAllTiles();
         if (complete)

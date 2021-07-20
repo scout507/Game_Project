@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7213277662982381494}
   - component: {fileID: 7932612915462055317}
   - component: {fileID: 1012193884}
+  - component: {fileID: 1012193886}
   m_Layer: 0
   m_Name: Hero
   m_TagString: Player
@@ -109,11 +110,11 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 048db563bf84bfd49b591bc99969f7fc, type: 3}
   - {fileID: 21300000, guid: 0f1d7cd065950b741beb213d8524a2da, type: 3}
   moveSpeed: 10
-  rb: {fileID: 7213277662982381494}
   cam: {fileID: 0}
   gun: {fileID: 7213277664003803222}
   bulletPrefab: {fileID: 1384360571865061328, guid: 6f226cd2e4377dd47bddfc62868bbf4f, type: 3}
-  bulletForce: 35
+  bulletForce: 80
+  dashForce: 30
   noMove:
     serializedVersion: 2
     m_Bits: 64
@@ -136,7 +137,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &7932612915462055317
 MonoBehaviour:
@@ -150,6 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b7a4f26578b1f949b2f0f9b51d81b90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hp: 0
 --- !u!70 &1012193884
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -166,6 +168,37 @@ CapsuleCollider2D:
   m_Offset: {x: -0.03, y: -0.67}
   m_Size: {x: 1.02, y: 0.78}
   m_Direction: 0
+--- !u!114 &1012193886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7213277662982381489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 00000000574483f7
+  m_ShapePath:
+  - {x: -0.42476225, y: -1.0995849, z: 0}
+  - {x: 0.4247625, y: -1.0995849, z: 0}
+  - {x: 0.58490235, y: -0.6683513, z: 0}
+  - {x: 0.6342796, y: -0.09228358, z: 0}
+  - {x: 0.35892606, y: 0.67164886, z: 0}
+  - {x: -0.1120397, y: 0.8691577, z: 0}
+  - {x: -0.58369267, y: 0.58253896, z: 0}
+  - {x: -0.6824471, y: -0.042906135, z: 0}
+  - {x: -0.6495291, y: -0.6354333, z: 0}
+  m_ShapePathHash: 1817245436
+  m_Mesh: {fileID: 0}
+  m_InstanceId: 19112
 --- !u!1 &7213277664003803217
 GameObject:
   m_ObjectHideFlags: 0
