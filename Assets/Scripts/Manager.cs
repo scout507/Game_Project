@@ -12,7 +12,6 @@ public class Manager : MonoBehaviour
     public int monsterAmount = 10;
     public GameObject[] monsters;
     public List<GameObject> monstersInLevel;
-
     //UI
     public TextMeshProUGUI lvlTxt;
 
