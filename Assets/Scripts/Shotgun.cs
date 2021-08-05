@@ -13,7 +13,6 @@ public class Shotgun : Weapon
 
             //create bullet
             for(int i = 0; i<projectiles; i++){
-                Debug.Log("old: " + oldDir);
                 Vector3 dir;
                 float offset;
                 if(Random.Range(0,10)<centering) offset = (float) Random.Range(0,25)/1000;
@@ -23,7 +22,6 @@ public class Shotgun : Weapon
                 }
                 else dir = new Vector3(Mathf.Clamp((oldDir.x+multi*offset),-1,1),Mathf.Clamp((oldDir.y+multi*offset),-1,1),0);
                 multi = -multi;
-                //Debug.Log("new:" + dir);
                 GameObject bullet = Instantiate(bulletPrefab, pos, rot);
                 Rigidbody2D rbBull = bullet.GetComponent<Rigidbody2D>();
                 Bullet bScript = bullet.GetComponent<Bullet>();

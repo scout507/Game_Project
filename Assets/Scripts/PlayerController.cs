@@ -19,8 +19,8 @@ public class PlayerController : MonoBehaviour
     SpriteRenderer sR;
     public float dashForce;
     public float dashDuration;
-    bool dashing;
-    float dashTimer;
+    bool moveBlock;
+    float moveBlockTimer;
     public LayerMask noMove;
 
     void Start()
@@ -41,18 +41,16 @@ public class PlayerController : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Space)) dash();
     
         //timers
-        dashTimer -= Time.deltaTime;
-        if(dashTimer <= 0){
-            dashing = false;
+        moveBlockTimer -= Time.deltaTime;
+        if(moveBlockTimer <= 0){
+            moveBlock = false;
             rb.velocity = Vector2.zero;
         } 
     }
 
     void FixedUpdate()
     {
-        if(!dashing){
-            rb.MovePosition(rb.position+movement*moveSpeed*Time.fixedDeltaTime);
-        }
+       
 
         Vector2 lookDir = mouse - rb.position;
         angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg-90;
@@ -67,25 +65,21 @@ public class PlayerController : MonoBehaviour
         else if(facing >= -157.5f && facing < -112.5f) sR.sprite = sprites[7]; //down-left
         else sR.sprite = sprites[6]; //left
 
+        float tempMoveSpeed = moveSpeed;
+        if((lookDir.x >= 0 && movement.x < 0) || (lookDir.y >= 0 && movement.y < 0 ) || (lookDir.x <= 0 && movement.x > 0) || (lookDir.y <= 0 && movement.y > 0)){
+            tempMoveSpeed = moveSpeed*0.5f;
+            //this needs more refinement
+        }
+        if(!moveBlock){
+            rb.MovePosition(rb.position+movement*tempMoveSpeed*Time.fixedDeltaTime);
+        }
         gun.rotation = Quaternion.Euler(0,0,angle);
     }
-    /*
-    void shoot(){
-
-        GameObject bullet = Instantiate(bulletPrefab, gun.position, gun.rotation);
-        Rigidbody2D rbBull = bullet.GetComponent<Rigidbody2D>();
-        Bullet bScript = bullet.GetComponent<Bullet>();
-        bScript.dmg = 10f;
-        bScript.bulletforce = gun.up*bulletForce*0.05f;
-        rbBull.AddForce(gun.up*bulletForce,ForceMode2D.Impulse);
-    }
-
-    */
-
+    
     void dash(){
         if(movement != new Vector2(0,0)){
-            dashTimer = dashDuration;
-            dashing = true;
+            moveBlockTimer = dashDuration;
+            moveBlock = true;
             rb.velocity = movement*dashForce;
         }
     }
