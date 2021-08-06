@@ -24,9 +24,11 @@ public class MonsterController : MonoBehaviour
     private bool hasAtkd;
     private float aktTimer;
     private float shotTimer;
-
+    private float dmgPopTimer;
     Rigidbody2D rb;
     PlayerStats playerStats;
+
+    public DmgPopUp lastPopUp;
 
     void Start()
     {
@@ -41,7 +43,12 @@ public class MonsterController : MonoBehaviour
 
     
     void Update()
-    {
+    {   
+        dmgPopTimer += Time.deltaTime;
+        if(dmgPopTimer >= 0.1f){
+            lastPopUp = null;
+        }
+
         distanceToEnemy = Vector3.Distance(player.transform.position, this.transform.position);
         if(distanceToEnemy < aggroRange) aggro =  true;
         if(aggro){
@@ -85,7 +92,14 @@ public class MonsterController : MonoBehaviour
         Invoke("startMoving", 0.1f);
         pathing.canMove = false;
         rb.AddForce(force,ForceMode2D.Impulse);
-        spawnDmgText(dmgTaken);
+
+        if(lastPopUp == null){
+            lastPopUp = spawnDmgText(dmgTaken);
+            dmgPopTimer = 0f;
+        }else{
+            lastPopUp.updateText(dmgTaken);
+        }
+
         hp -= dmgTaken;
         if(hp <= 0){
             die();
@@ -96,11 +110,12 @@ public class MonsterController : MonoBehaviour
         Destroy(this.gameObject);
     }
 
-    void spawnDmgText(float dmgTaken){
+    DmgPopUp spawnDmgText(float dmgTaken){
         Vector3 spawnPoint = new Vector3(transform.position.x, transform.position.y+1.5f,0);
         Transform damagePopUpTrans = Instantiate(dmgPopUp, transform.position, Quaternion.identity);
         DmgPopUp dmgPopUpScript = damagePopUpTrans.GetComponent<DmgPopUp>();;
         dmgPopUpScript.Setup(dmgTaken);
+        return dmgPopUpScript;
     }
 
     void startMoving(){
