@@ -23,14 +23,18 @@ public class MapGenerator : MonoBehaviour
     public List<Vector3> freeSpots;
     public Vector3Int tmpSize;
     public Tilemap wall;
-    public Tilemap prop;
     public Tilemap floor;
     public Tilemap innerObs;
     public Tile[] walls;
-    public Tile[] probs;
     public Tile[] innerWalls;
     public Tile[] floorTiles;
     public Tile[] corners; // 0 = north, 1 = north-east, 2 = east, 3 = south-east, 4 = south, 5 = south-west, 6 = west, 7 = north-west, 8= North-east-south, 9= East-south-west, 10 =South-west-north, 11= West-North-East
+    
+    public int propAmount = 10;
+    public int propLowAmount = 3;
+    public GameObject[] propsHighDensity;
+    public GameObject[] propsLowDensity;
+
 
     int width;
     int height;
@@ -51,10 +55,10 @@ public class MapGenerator : MonoBehaviour
         end = new Vector2(0.5f*tmpSize.x, 0);
         hero.transform.position = spawn;
         clearMap(true);
-        doSim(numR);
+        createMap(numR);
     }
 
-    public void doSim(int nu)
+    public void createMap(int nu)
     {
         clearMap(false);
         width = tmpSize.x;
@@ -88,10 +92,7 @@ public class MapGenerator : MonoBehaviour
                     }
                 } 
                 else {
-                    freeSpots.Add(new Vector3Int(-x + width / 2, -y + height / 2, 0));  
-                    if(Random.Range(0,101) <= 1){
-                        prop.SetTile(new Vector3Int(-x + width / 2, -y + height / 2, 0), probs[Random.Range(0,probs.Length)]);
-                    }
+                    freeSpots.Add(new Vector3Int(-x + width / 2, -y + height / 2, 0));    
                 }
                 
                 floor.SetTile(new Vector3Int(-x + width / 2, -y + height / 2, 0), floorTiles[Random.Range(0,floorTiles.Length)]);
@@ -154,6 +155,7 @@ public class MapGenerator : MonoBehaviour
                 
             }
         }
+        spawnProbs();
         spawnMonsters();
         pathing.Scan();
     }
@@ -235,7 +237,7 @@ public class MapGenerator : MonoBehaviour
 
         return newMap;
     }
-
+    
     void spawnMonsters(){
         for(int i = 0; i<manager.monsterAmount; i++){
             int r = Random.Range(0,freeSpots.Count);
@@ -246,10 +248,27 @@ public class MapGenerator : MonoBehaviour
         freeSpots.Clear();
     }
 
+    void spawnProbs(){
+        List<int> usedPlaces = new List<int>(); 
+        for(int i = 0; i<propAmount; i++){
+            int r = Random.Range(0,freeSpots.Count);
+            if(i <= propLowAmount && !usedPlaces.Contains(r)){
+                GameObject prop = Instantiate(propsLowDensity[Random.Range(0,propsLowDensity.Length)],freeSpots[r],Quaternion.identity);
+                manager.props.Add(prop);
+            } 
+            else if(!usedPlaces.Contains(r)){
+                GameObject prop = Instantiate(propsHighDensity[Random.Range(0,propsHighDensity.Length)],freeSpots[r],Quaternion.identity);
+                manager.props.Add(prop);
+            } 
+            for(int j = -2; j<3; j++){
+                usedPlaces.Add(r+j);
+            }
+        }
+    }
+
     public void clearMap(bool complete)
     {
         innerObs.ClearAllTiles();
-        prop.ClearAllTiles();
         wall.ClearAllTiles();
         floor.ClearAllTiles();
         if (complete)
@@ -259,4 +278,6 @@ public class MapGenerator : MonoBehaviour
 
 
     }
+
+
 }
