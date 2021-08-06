@@ -77,12 +77,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: e511752490db55d46bd3fb1a5c741f51, type: 3}
+  m_Sprite: {fileID: 598973389679712192, guid: a5c0f961a669e674ea47fdd8a86e3805, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 3.2, y: 3.2}
+  m_Size: {x: 2, y: 2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -101,20 +101,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprites:
-  - {fileID: 21300000, guid: e511752490db55d46bd3fb1a5c741f51, type: 3}
-  - {fileID: 21300000, guid: 4a625869b139604478e25d55f26e2938, type: 3}
-  - {fileID: 21300000, guid: 208e9c836808ff14c85f0fecff6e64d1, type: 3}
-  - {fileID: 21300000, guid: 1d6c274f9dae4a24382e2c335d9d5be6, type: 3}
-  - {fileID: 21300000, guid: 8ad8094f0dffd8a4da455cae5e4a242b, type: 3}
-  - {fileID: 21300000, guid: 7808a82a280e0ca4aa2bc71e4cc76ee5, type: 3}
-  - {fileID: 21300000, guid: 048db563bf84bfd49b591bc99969f7fc, type: 3}
-  - {fileID: 21300000, guid: 0f1d7cd065950b741beb213d8524a2da, type: 3}
+  - {fileID: 598973389679712192, guid: a5c0f961a669e674ea47fdd8a86e3805, type: 3}
+  - {fileID: -8543074602775589020, guid: a5c0f961a669e674ea47fdd8a86e3805, type: 3}
+  - {fileID: 4625944179481715622, guid: a5c0f961a669e674ea47fdd8a86e3805, type: 3}
+  - {fileID: 2923571783071825681, guid: a5c0f961a669e674ea47fdd8a86e3805, type: 3}
+  - {fileID: -5222644931353783284, guid: a5c0f961a669e674ea47fdd8a86e3805, type: 3}
+  - {fileID: -5675910301485997785, guid: a5c0f961a669e674ea47fdd8a86e3805, type: 3}
+  - {fileID: -1130471805093294631, guid: a5c0f961a669e674ea47fdd8a86e3805, type: 3}
+  - {fileID: 9052815740391138167, guid: a5c0f961a669e674ea47fdd8a86e3805, type: 3}
   moveSpeed: 10
   cam: {fileID: 0}
   gun: {fileID: 7213277664003803222}
-  bulletPrefab: {fileID: 1384360571865061328, guid: 6f226cd2e4377dd47bddfc62868bbf4f, type: 3}
+  activeGun: {fileID: 0}
+  gunscript: {fileID: 0}
   bulletForce: 80
   dashForce: 30
+  dashDuration: 0
   noMove:
     serializedVersion: 2
     m_Bits: 64
@@ -198,7 +200,7 @@ MonoBehaviour:
   - {x: -0.6495291, y: -0.6354333, z: 0}
   m_ShapePathHash: 1817245436
   m_Mesh: {fileID: 0}
-  m_InstanceId: 19112
+  m_InstanceId: 25972
 --- !u!1 &7213277664003803217
 GameObject:
   m_ObjectHideFlags: 0
