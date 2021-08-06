@@ -4,27 +4,28 @@ using UnityEngine;
 
 public class MonsterController : MonoBehaviour
 {
+    [Tooltip("Sprites: 0: down, 1: down-right, 2: right, 3: top-right, 4: top, 5: top-left, 6: left, 7: down-left")]
+    public Sprite[] sprites;
     public float hp;
     public float dmg;
     public float moveSpeed;
     public float atkSpeed;
     public float meleeAtkRange;
     public float aggroRange;
-    public bool aggro;
-
-    public GameObject player;
-    public float distanceToEnemy;
+    
+   
+    
     Pathfinding.AIPath pathing;
     Pathfinding.AIDestinationSetter destSetter;
-    public Transform dmgPopUp;
-    [Tooltip("Sprites: 0: down, 1: down-right, 2: right, 3: top-right, 4: top, 5: top-left, 6: left, 7: down-left")]
-    public Sprite[] sprites;
     private SpriteRenderer sR;
-    
+    private GameObject player;
+    private bool aggro;
     private bool hasAtkd;
     private float aktTimer;
     private float shotTimer;
     private float dmgPopTimer;
+    private float distanceToEnemy;
+    public Transform dmgPopUp;
     Rigidbody2D rb;
     PlayerStats playerStats;
 
