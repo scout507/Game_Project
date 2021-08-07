@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c9dd6c29ceff0a74e9519a9ada11aa56
+guid: a886b62d5c3e39c40bf82a37cad8949b
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -17,9 +17,6 @@ TextureImporter:
   - first:
       213: 5990112749846577567
     second: Shotgun 4
-  - first:
-      213: -7551943833896535747
-    second: Shotgun 5
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -64,7 +61,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -197,27 +194,6 @@ TextureImporter:
       bones: []
       spriteID: f91c42b1fc7212350800000000000000
       internalID: 5990112749846577567
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Shotgun 5
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 32
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d3935e0581b123790800000000000000
-      internalID: -7551943833896535747
       vertices: []
       indices: 
       edges: []

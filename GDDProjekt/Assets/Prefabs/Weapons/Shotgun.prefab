@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponName: Shotgun
-  icon: {fileID: 0}
+  icon: {fileID: 5990112749846577567, guid: a886b62d5c3e39c40bf82a37cad8949b, type: 3}
   bulletPrefab: {fileID: 1384360571865061328, guid: 6f226cd2e4377dd47bddfc62868bbf4f, type: 3}
   damage: 10
   fireRate: 1
@@ -57,3 +57,4 @@ MonoBehaviour:
   overheated: 0
   coolDown: 0
   projectiles: 4
+  centering: 0
