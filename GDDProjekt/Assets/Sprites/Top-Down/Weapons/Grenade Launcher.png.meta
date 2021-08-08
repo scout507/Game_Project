@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f5a8b767b64ab8d4f9ed1aa85bccc411
+guid: 0fbbd37c0b3b32a47b827b9b22db0363
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -17,9 +17,6 @@ TextureImporter:
   - first:
       213: 3473350704308234960
     second: Grenade Launcher 4
-  - first:
-      213: 9107679528550180963
-    second: Grenade Launcher 5
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -64,7 +61,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -197,27 +194,6 @@ TextureImporter:
       bones: []
       spriteID: 0da25ae1012d33030800000000000000
       internalID: 3473350704308234960
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Grenade Launcher 5
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 32
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 368a453d64af46e70800000000000000
-      internalID: 9107679528550180963
       vertices: []
       indices: 
       edges: []

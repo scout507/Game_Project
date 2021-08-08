@@ -21,8 +21,8 @@ MonoBehaviour:
   _spriteAlignmentCustomX: 0
   _spriteAlignmentCustomY: 0
   _spritesTargetLocation:
-    _locationType: 0
-    _globalDirectory: Assets
+    _locationType: 2
+    _globalDirectory: Assets/Sprites/Top-Down/UI
   _animationsTargetLocation:
     _locationType: 0
     _globalDirectory: Assets
