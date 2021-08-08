@@ -15,12 +15,23 @@ public abstract class Weapon: MonoBehaviour
     public float force;
     public float knockback;
     private float timer;
+    private SpriteRenderer sr;
+
+    [Tooltip("Sprites: 0: right, 1: left")]
+    public Sprite[] sprites;
 
     [HideInInspector]
     public float lastShotTimer;
     public bool overheated;
     public float coolDown;
+    public bool active = false;
     
+    private void Start()
+    {
+        sr = GetComponent<SpriteRenderer>();
+        if(!active) sr.enabled = false;
+    }
+
     private void Update()
     {
         lastShotTimer += Time.deltaTime;
@@ -32,6 +43,14 @@ public abstract class Weapon: MonoBehaviour
         if(overheated){
             timer -= Time.deltaTime;
             if(timer <= 0) overheated = false;
+        }
+    }
+
+    public void changeSprite(int direction, int layer){
+        if(active){
+            sr.enabled = true;
+            sr.sprite = sprites[direction];
+            sr.sortingOrder = layer;
         }
     }
 
