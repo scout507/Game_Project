@@ -12,6 +12,7 @@ public class Manager : MonoBehaviour
     public int monsterAmount = 10;
     public GameObject[] monsters;
     public List<GameObject> monstersInLevel;
+    public List<GameObject> props; 
     //UI
     public TextMeshProUGUI lvlTxt;
 
@@ -35,7 +36,11 @@ public class Manager : MonoBehaviour
         monstersInLevel.ForEach( monster =>{
             Destroy(monster);
         });
+        props.ForEach(prop =>{
+            Destroy(prop);
+        });
         monstersInLevel.Clear();
+        props.Clear();
         mapGenerator.spawnMap();
         level++;
         lvlTxt.text = "Level: " + level;

@@ -4,24 +4,30 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+   
+    [Tooltip("Sprites: 0: down, 1: down-right, 2: right, 3: top-right, 4: top, 5: top-left, 6: left, 7: down-left")]
     public Sprite[] sprites;
-    Vector2 movement;
+    public LayerMask noMove;
     public float moveSpeed = 5f;
-    Rigidbody2D rb;
-    public Camera cam;
-    Vector2 mouse;
-    public Transform gun;
-    public GameObject activeGun;
-    public Weapon gunscript;
-    public float bulletForce;
-    float angle;
-    float facing;
-    SpriteRenderer sR;
     public float dashForce;
     public float dashDuration;
+    public Camera cam;
+    
+    
+    public Transform gun;
+    public GameObject activeGun;
+
+
+    float angle;
+    float facing;
     bool moveBlock;
     float moveBlockTimer;
-    public LayerMask noMove;
+
+    Weapon gunscript;
+    Vector2 mouse;
+    SpriteRenderer sR;
+    Rigidbody2D rb;
+    Vector2 movement;
 
     void Start()
     {
@@ -67,7 +73,7 @@ public class PlayerController : MonoBehaviour
 
         float tempMoveSpeed = moveSpeed;
         if((lookDir.x >= 0 && movement.x < 0) || (lookDir.y >= 0 && movement.y < 0 ) || (lookDir.x <= 0 && movement.x > 0) || (lookDir.y <= 0 && movement.y > 0)){
-            tempMoveSpeed = moveSpeed*0.5f;
+            //tempMoveSpeed = moveSpeed*0.5f;
             //this needs more refinement
         }
         if(!moveBlock){
