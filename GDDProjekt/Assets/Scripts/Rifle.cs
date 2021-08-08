@@ -17,6 +17,7 @@ public class Rifle : Weapon
             //Cooldown Stuff
             lastShotTimer = 0f;
             overheat += overheatPerShot;
+            muzzleFire.enabled = true;
         }
     }
     

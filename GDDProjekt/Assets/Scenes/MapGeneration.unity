@@ -205,7 +205,7 @@ PrefabInstance:
     - target: {fileID: 7213277662982381495, guid: 2d893f10c176fbc4c90efaed5bfe3af3, type: 3}
       propertyPath: activeGun
       value: 
-      objectReference: {fileID: 1991968011}
+      objectReference: {fileID: 1917809876}
     - target: {fileID: 7213277662982381495, guid: 2d893f10c176fbc4c90efaed5bfe3af3, type: 3}
       propertyPath: gunHolder
       value: 
@@ -2642,11 +2642,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2839383172068033338, guid: 4c24148b3a5f2f74aa552b48e1c69338, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.04
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2839383172068033338, guid: 4c24148b3a5f2f74aa552b48e1c69338, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.42000002
+      value: -0.03
       objectReference: {fileID: 0}
     - target: {fileID: 2839383172068033338, guid: 4c24148b3a5f2f74aa552b48e1c69338, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2684,6 +2684,18 @@ PrefabInstance:
       propertyPath: overheatPerShot
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 4188366717351721908, guid: 4c24148b3a5f2f74aa552b48e1c69338, type: 3}
+      propertyPath: sprites.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4188366717351721908, guid: 4c24148b3a5f2f74aa552b48e1c69338, type: 3}
+      propertyPath: sprites.Array.data[0]
+      value: 
+      objectReference: {fileID: -4395390091276352567, guid: 978e26e631492aa47a37ae42f4ee1345, type: 3}
+    - target: {fileID: 4188366717351721908, guid: 4c24148b3a5f2f74aa552b48e1c69338, type: 3}
+      propertyPath: sprites.Array.data[1]
+      value: 
+      objectReference: {fileID: -8957083366528949100, guid: 978e26e631492aa47a37ae42f4ee1345, type: 3}
     - target: {fileID: 5350011793774370360, guid: 4c24148b3a5f2f74aa552b48e1c69338, type: 3}
       propertyPath: m_Name
       value: Rifle
