@@ -5,10 +5,9 @@ using TMPro;
 
 public class DmgPopUp : MonoBehaviour
 {
-    public TextMeshPro txt;
-    public float ySpeed;
-    public float xSpeed;
-    public float timer;
+    private TextMeshPro txt;
+    private float timer = 0.35f;
+    private float damage;
 
     private void Awake()
     {
@@ -17,6 +16,12 @@ public class DmgPopUp : MonoBehaviour
 
     public void Setup(float dmg){
         txt.SetText(Mathf.RoundToInt(dmg).ToString());
+        damage += dmg;
+    }
+
+    public void updateText(float dmg){
+        txt.SetText(Mathf.RoundToInt(damage).ToString());
+        damage += dmg;
     }
 
     private void Update()
