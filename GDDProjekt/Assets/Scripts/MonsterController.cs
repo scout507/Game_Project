@@ -12,6 +12,10 @@ public class MonsterController : MonoBehaviour
     public float atkSpeed;
     public float meleeAtkRange;
     public float aggroRange;
+    public bool hasRangedAtk;
+    public float rangeAtkRange;
+    public float atkDelay = 0.5f;
+    public GameObject bullet;
     
    
     
@@ -28,6 +32,7 @@ public class MonsterController : MonoBehaviour
     public Transform dmgPopUp;
     Rigidbody2D rb;
     PlayerStats playerStats;
+    Vector2 lookDir;
 
     public DmgPopUp lastPopUp;
 
@@ -65,13 +70,20 @@ public class MonsterController : MonoBehaviour
             hasAtkd = true;
             meleeAtk();
             rb.velocity = Vector3.zero;
-            Invoke("startMoving", 0.5f);
+            Invoke("startMoving", atkDelay);
+        }
+        if(distanceToEnemy <= rangeAtkRange && !hasAtkd && hasRangedAtk){
+            pathing.canMove = false;
+            hasAtkd = true;
+            rangeAtk();
+            rb.velocity = Vector3.zero;
+            Invoke("startMoving", atkDelay);
         }
     }
 
     void FixedUpdate()
     {
-        Vector2 lookDir = new Vector2(player.transform.position.x, player.transform.position.y) - rb.position;
+        lookDir = new Vector2(player.transform.position.x, player.transform.position.y) - rb.position;
         float facing = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
         //down = -112,5 - -67,5 / down-right -67,5 - -22,5 / right -22,5 - 22,5 / top right = 22,5 - 67,5 / top = 67,5 - 112,5 / top-left = 157,5 / left = < 157,5 | > -157,5 / down-left = -112,5 - -157,5
         if(facing >= -112.5f && facing < -67.5f) sR.sprite = sprites[0]; //down
@@ -86,6 +98,13 @@ public class MonsterController : MonoBehaviour
 
     void meleeAtk(){
         playerStats.takeDamage(dmg);
+    }
+
+    void rangeAtk(){
+        Debug.Log("range");
+        GameObject shot = Instantiate(bullet, transform.position, Quaternion.identity);
+        shot.GetComponent<MonsterBullet>().target = new Vector3(player.transform.position.x,player.transform.position.y,player.transform.position.z);
+        shot.GetComponent<Rigidbody2D>().AddForce(lookDir*3f, ForceMode2D.Impulse); 
     }
 
     public void takeDamage(float dmgTaken, Vector3 force){
