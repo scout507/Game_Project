@@ -21,6 +21,7 @@ public class GrenadeLauncher : Weapon
             rocketSkript.exRadius = explosionRadius;
             rocketSkript.target = target;
             rbBull.AddForce(dir*force,ForceMode2D.Impulse);
+            muzzleFire.enabled = true;
         }          
    }
 }

@@ -9,7 +9,7 @@ public class Bullet : MonoBehaviour
    
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.tag != "Player" && other.tag != "allowBullets"){
+        if(other.tag != "Player" && other.tag != "allowBullets" && other.tag != "collectible"){
             Destroy(this.gameObject);
             if(other.tag == "monster"){
                 other.GetComponent<MonsterController>().takeDamage(dmg, bulletforce);

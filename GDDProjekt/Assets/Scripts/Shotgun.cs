@@ -32,6 +32,7 @@ public class Shotgun : Weapon
             //Cooldown Stuff
             lastShotTimer = 0f;
             overheat += overheatPerShot;
+            muzzleFire.enabled = true;
         }
     }
 }

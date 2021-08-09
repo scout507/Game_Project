@@ -38,9 +38,7 @@ public class MapGenerator : MonoBehaviour
 
     int width;
     int height;
-
     int monsters;
-
     AstarPath pathing;
     Manager manager;
 
@@ -161,7 +159,7 @@ public class MapGenerator : MonoBehaviour
     }
 
     void cleanMap(int[,] map){
-       for(int x = 0; x < 10; x++){
+       for(int x = 1; x < 10; x++){
           for(int y = -2; y<2; y++){
                 map[x,Mathf.RoundToInt(height/2)+y] = 0;
                 map[width-1-x,Mathf.RoundToInt(height/2)+y] = 0;

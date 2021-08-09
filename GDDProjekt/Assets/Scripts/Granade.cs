@@ -32,7 +32,7 @@ public class Granade : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.tag != "Player" && other.tag != "allowBullets"){
+        if(other.tag != "Player" && other.tag != "allowBullets" && other.tag != "collectible"){
             explode();
         }
     }

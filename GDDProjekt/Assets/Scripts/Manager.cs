@@ -13,8 +13,10 @@ public class Manager : MonoBehaviour
     public GameObject[] monsters;
     public List<GameObject> monstersInLevel;
     public List<GameObject> props; 
+    public List<GameObject> loot;
     //UI
     public TextMeshProUGUI lvlTxt;
+    public GameObject lighting;
 
     void Start()
     {
@@ -33,11 +35,16 @@ public class Manager : MonoBehaviour
     }
 
     void newMap(){
+        lighting.transform.position = new Vector3(Random.Range(-300,300), Random.Range(-300,300), 0);
+
         monstersInLevel.ForEach( monster =>{
             Destroy(monster);
         });
         props.ForEach(prop =>{
             Destroy(prop);
+        });
+        loot.ForEach(loot =>{
+            Destroy(loot);
         });
         monstersInLevel.Clear();
         props.Clear();

@@ -6,6 +6,8 @@ TagManager:
   tags:
   - monster
   - allowBullets
+  - manager
+  - collectible
   layers:
   - Default
   - TransparentFX
