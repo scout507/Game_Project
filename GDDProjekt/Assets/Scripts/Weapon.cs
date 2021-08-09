@@ -56,11 +56,14 @@ public abstract class Weapon: MonoBehaviour
     }
 
     public void changeSprite(int direction, int layer){
-        if(active){
-            sr.enabled = true;
-            sr.sprite = sprites[direction];
-            sr.sortingOrder = layer;
-        }
+
+        sr.enabled = true;
+        sr.sprite = sprites[direction];
+        sr.sortingOrder = layer;
+    }
+
+    public void disableSprite(){
+        sr.enabled = false;
     }
 
     abstract public void shoot(Vector3 pos, Vector3 dir, Quaternion rot, Vector3 target);

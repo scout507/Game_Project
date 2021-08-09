@@ -16,7 +16,9 @@ public class PlayerController : MonoBehaviour
     
     public Transform gun;
     public Transform gunHolder;
-    public GameObject activeGun;
+    public GameObject[] guns;
+    bool weaponOneActive;
+    GameObject activeGun;
 
 
     float angle;
@@ -34,6 +36,7 @@ public class PlayerController : MonoBehaviour
     {
         sR = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
+        activeGun = guns[0];
         gunscript = activeGun.GetComponent<Weapon>();
         gunscript.active = true;
     }
@@ -47,7 +50,9 @@ public class PlayerController : MonoBehaviour
         mouse = cam.ScreenToWorldPoint(Input.mousePosition);
         if(Input.GetButton("Fire1")) activeGun.GetComponent<Weapon>().shoot(gun.position,gun.up, Quaternion.Euler(0,0,facing) , Camera.main.ScreenToWorldPoint(Input.mousePosition));
         if(Input.GetKeyDown(KeyCode.Space)) dash();
-    
+
+        if(Input.GetKeyDown(KeyCode.Q)) switchWeapon();
+
         //timers
         moveBlockTimer -= Time.deltaTime;
         if(moveBlockTimer <= 0){
@@ -116,6 +121,13 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void switchWeapon(){
+        gunscript.disableSprite();
+        weaponOneActive = !weaponOneActive;
+        if(weaponOneActive) activeGun = guns[0];
+        else activeGun = guns[1];
+        gunscript = activeGun.GetComponent<Weapon>();
+    }
 
     void OnTriggerEnter2D(Collider2D other)
     {
