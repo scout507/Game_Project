@@ -15,15 +15,16 @@ public class MonsterController : MonoBehaviour
     public bool hasRangedAtk;
     public float rangeAtkRange;
     public float atkDelay = 0.5f;
+    public int lootWeight;
     public GameObject bullet;
     
-   
     
     Pathfinding.AIPath pathing;
     Pathfinding.AIDestinationSetter destSetter;
     private SpriteRenderer sR;
     private GameObject player;
     private bool aggro;
+    private bool dead;
     private bool hasAtkd;
     private float aktTimer;
     private float shotTimer;
@@ -33,7 +34,7 @@ public class MonsterController : MonoBehaviour
     Rigidbody2D rb;
     PlayerStats playerStats;
     Vector2 lookDir;
-
+    LootTable lootTable;
     public DmgPopUp lastPopUp;
 
     void Start()
@@ -45,6 +46,7 @@ public class MonsterController : MonoBehaviour
         destSetter = GetComponent<Pathfinding.AIDestinationSetter>();
         destSetter.target = player.transform;
         sR = GetComponentInChildren<SpriteRenderer>();
+        lootTable = GameObject.FindGameObjectWithTag("manager").GetComponent<LootTable>();
     }
 
     
@@ -127,7 +129,15 @@ public class MonsterController : MonoBehaviour
     }
 
     void die(){
-        Destroy(this.gameObject);
+        if(!dead){
+            dead = true;
+            if(Random.Range(0,100)<50) dropLoot();
+            Destroy(this.gameObject);
+        }  
+    }
+
+    void dropLoot(){
+       GameObject loot = Instantiate(lootTable.loot[lootTable.roll(lootWeight)], this.transform.position, Quaternion.identity);
     }
 
     DmgPopUp spawnDmgText(float dmgTaken){

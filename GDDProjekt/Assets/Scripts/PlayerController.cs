@@ -131,6 +131,8 @@ public class PlayerController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        //Debug.Log(other.gameObject);
+        if(other.tag == "collectible"){
+            other.GetComponent<Ressource>().collect(this.gameObject);
+        }
     }
 }
