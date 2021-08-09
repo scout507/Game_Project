@@ -30,7 +30,7 @@ public class LootTable : MonoBehaviour
 
     public int roll(int weight){
         int r = Random.Range(0,total)+weight;
-
+        
         for(int i = 0; i<lootTable.Length; i++){
             if(r < lootTable[i]) return i;
             else r -= lootTable[i];

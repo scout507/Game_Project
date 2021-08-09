@@ -14,7 +14,6 @@ public class MonsterBullet : MonoBehaviour
     {
         if(other.tag != "monster" && other.tag != "allowBullets" && other.tag != "collectible"){
             if(other.tag == "Player"){
-                Debug.Log("hallo");
                 splash();
             }
         }

@@ -41,11 +41,13 @@ public class MapGenerator : MonoBehaviour
     int monsters;
     AstarPath pathing;
     Manager manager;
+    MonsterTable monsterTable;
 
     void Awake()
     {
         pathing = GetComponent<AstarPath>();
         manager = GetComponent<Manager>();
+        monsterTable = GetComponent<MonsterTable>();
     }
 
     public void spawnMap(){
@@ -239,7 +241,7 @@ public class MapGenerator : MonoBehaviour
     void spawnMonsters(){
         for(int i = 0; i<manager.monsterAmount; i++){
             int r = Random.Range(0,freeSpots.Count);
-            GameObject monster = Instantiate(manager.monsters[0],freeSpots[r],Quaternion.identity);
+            GameObject monster = Instantiate(monsterTable.monsters[monsterTable.roll(manager.level*10, manager.level*100)],freeSpots[r],Quaternion.identity);
             manager.monstersInLevel.Add(monster);
             freeSpots.RemoveAt(r);
         }

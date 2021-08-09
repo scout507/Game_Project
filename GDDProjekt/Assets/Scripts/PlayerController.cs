@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     public Transform gun;
     public Transform gunHolder;
     public GameObject[] guns;
-    bool weaponOneActive;
+    bool weaponOneActive = true;
     GameObject activeGun;
 
 

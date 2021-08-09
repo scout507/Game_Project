@@ -5,14 +5,13 @@ using UnityEngine;
 public class PlayerStats : MonoBehaviour
 {
     public float hp;
-    
 
     void Start()
     {
         
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         
