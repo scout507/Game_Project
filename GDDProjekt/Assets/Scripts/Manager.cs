@@ -30,7 +30,6 @@ public class Manager : MonoBehaviour
         newMap();
     }
 
-    // Update is called once per frame
     void Update()
     {
         pathing = GetComponent<AstarPath>();
@@ -58,7 +57,7 @@ public class Manager : MonoBehaviour
         });
         monstersInLevel.Clear();
         props.Clear();
-        mapGenerator.spawnMap();
+        mapGenerator.spawnMap(15,2,2,Random.Range(2,5));
         level++;
         lvlTxt.text = "Level: " + level;
         Invoke("Scan",0.5f);

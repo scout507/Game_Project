@@ -50,12 +50,15 @@ public class MapGenerator : MonoBehaviour
         monsterTable = GetComponent<MonsterTable>();
     }
 
-    public void spawnMap(){
+    public void spawnMap(int ini, int birth, int death, int r){
+        iniChance = ini;
+        birthLimit = birth;
+        deathLimit = death;
         spawn = new Vector2(-0.5f*tmpSize.x+3, 0);
         end = new Vector2(0.5f*tmpSize.x, 0);
         hero.transform.position = spawn;
         clearMap(true);
-        createMap(numR);
+        createMap(r);
     }
 
     public void createMap(int nu)
