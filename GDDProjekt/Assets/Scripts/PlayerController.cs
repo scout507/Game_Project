@@ -15,7 +15,10 @@ public class PlayerController : MonoBehaviour
     
     
     public Transform gun;
-    public GameObject activeGun;
+    public Transform gunHolder;
+    public GameObject[] guns;
+    bool weaponOneActive;
+    GameObject activeGun;
 
 
     float angle;
@@ -33,7 +36,9 @@ public class PlayerController : MonoBehaviour
     {
         sR = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
+        activeGun = guns[0];
         gunscript = activeGun.GetComponent<Weapon>();
+        gunscript.active = true;
     }
 
     // Update is called once per frame
@@ -43,9 +48,11 @@ public class PlayerController : MonoBehaviour
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
         mouse = cam.ScreenToWorldPoint(Input.mousePosition);
-        if(Input.GetButton("Fire1")) activeGun.GetComponent<Weapon>().shoot(gun.position,gun.up,gun.rotation, Camera.main.ScreenToWorldPoint(Input.mousePosition));
+        if(Input.GetButton("Fire1")) activeGun.GetComponent<Weapon>().shoot(gun.position,gun.up, Quaternion.Euler(0,0,facing) , Camera.main.ScreenToWorldPoint(Input.mousePosition));
         if(Input.GetKeyDown(KeyCode.Space)) dash();
-    
+
+        if(Input.GetKeyDown(KeyCode.Q)) switchWeapon();
+
         //timers
         moveBlockTimer -= Time.deltaTime;
         if(moveBlockTimer <= 0){
@@ -79,9 +86,14 @@ public class PlayerController : MonoBehaviour
         if(!moveBlock){
             rb.MovePosition(rb.position+movement*tempMoveSpeed*Time.fixedDeltaTime);
         }
+        gunHandler();
         gun.rotation = Quaternion.Euler(0,0,angle);
     }
     
+    void rotationHandler(){
+        
+    }
+
     void dash(){
         if(movement != new Vector2(0,0)){
             moveBlockTimer = dashDuration;
@@ -90,8 +102,37 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void gunHandler(){
+        gunHolder.rotation = Quaternion.Euler(0,0,facing);
+        if(facing>90 || facing <-90){
+            //gun to the left
+            if(facing<0){
+                //gun in front
+                gunscript.changeSprite(0,3);
+            }
+            else gunscript.changeSprite(0,2);
+        }
+        else{
+            if(facing<0){
+                //gun in front
+                gunscript.changeSprite(1,3);
+            }
+            else gunscript.changeSprite(1,2);
+        }
+    }
+
+    void switchWeapon(){
+        gunscript.disableSprite();
+        weaponOneActive = !weaponOneActive;
+        if(weaponOneActive) activeGun = guns[0];
+        else activeGun = guns[1];
+        gunscript = activeGun.GetComponent<Weapon>();
+    }
+
     void OnTriggerEnter2D(Collider2D other)
     {
-        //Debug.Log(other.gameObject);
+        if(other.tag == "collectible"){
+            other.GetComponent<Ressource>().collect(this.gameObject);
+        }
     }
 }
