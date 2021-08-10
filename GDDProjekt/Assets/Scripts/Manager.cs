@@ -16,6 +16,9 @@ public class Manager : MonoBehaviour
     public List<GameObject> props; 
     public List<GameObject> loot;
 
+    string[] maps = {"15,2,2,2","15,2,2,3","15,2,2,4","15,2,2,5","15,2,1,3","6,1,2,3", "6,2,1,5", "6,2,1,10"};
+
+
     public Tilemap wall;
     public Tilemap floor;
     public Tilemap innerObs;
@@ -39,6 +42,8 @@ public class Manager : MonoBehaviour
     }
 
     void newMap(){
+        string mapCode = maps[Random.Range(0,maps.Length)];
+        string[] settings = mapCode.Split(',');
         monsterAmount += Mathf.RoundToInt(level*(4f/5f));
         if(monsterAmount >= 50) monsterAmount = 50;
         lighting.transform.position = new Vector3(Random.Range(-300,300), Random.Range(-300,300), 0);
@@ -57,7 +62,7 @@ public class Manager : MonoBehaviour
         });
         monstersInLevel.Clear();
         props.Clear();
-        mapGenerator.spawnMap(15,2,2,Random.Range(2,5));
+        mapGenerator.spawnMap(settings);
         level++;
         lvlTxt.text = "Level: " + level;
         Invoke("Scan",0.5f);
