@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 using UnityEngine.Tilemaps;
 
 public class Manager : MonoBehaviour
@@ -24,7 +23,7 @@ public class Manager : MonoBehaviour
     public Tilemap innerObs;
 
     //UI
-    public TextMeshProUGUI lvlTxt;
+    
     public GameObject lighting;
 
     void Start()
@@ -64,7 +63,6 @@ public class Manager : MonoBehaviour
         props.Clear();
         mapGenerator.spawnMap(settings);
         level++;
-        lvlTxt.text = "Level: " + level;
         Invoke("Scan",0.5f);
     }
 

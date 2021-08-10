@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class StatsManager : MonoBehaviour
 {
-    float hp;
-    float overheat;
-    public int[] loot;
+
+    
     
 
     void Start()

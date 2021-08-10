@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
     bool moveBlock;
     float moveBlockTimer;
 
-    Weapon gunscript;
+    public Weapon gunscript;
     Vector2 mouse;
     SpriteRenderer sR;
     Rigidbody2D rb;
