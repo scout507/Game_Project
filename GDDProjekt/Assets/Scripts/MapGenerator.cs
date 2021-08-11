@@ -31,7 +31,7 @@ public class MapGenerator : MonoBehaviour
     public Tile[] walls;
     public Tile[] innerWalls;
     public Tile[] floorTiles;
-    public Tile[] corners; // 0 = north, 1 = north-east, 2 = east, 3 = south-east, 4 = south, 5 = south-west, 6 = west, 7 = north-west, 8= North-east-south, 9= East-south-west, 10 =South-west-north, 11= West-North-East
+    public Tile[] corners; // 0 = north, 1 = north-east, 2 = east, 3 = south-east, 4 = south, 5 = south-west, 6 = west, 7 = north-west, 8= North-east-south, 9= East-south-west, 10 =South-west-north, 11= West-North-East, 12 = North-south, 13 = East-West
     public Tile marker;
     Dictionary<int, List<int>> knownSpots = new Dictionary<int, List<int>>();
     public int propAmount = 10;
@@ -155,6 +155,14 @@ public class MapGenerator : MonoBehaviour
                         else if(terrainMap[x, y+1] == 1 && terrainMap[x+1,y] == 1){
                             //South-west
                             floor.SetTile(new Vector3Int(-x + width / 2, -y + height / 2, 0), corners[5]);    
+                        }
+                        else if(terrainMap[x, y+1] == 1 && terrainMap[x,y-1] == 1){
+                            //north-south
+                            floor.SetTile(new Vector3Int(-x + width / 2, -y + height / 2, 0), corners[12]);    
+                        }
+                        else if(terrainMap[x+1, y] == 1 && terrainMap[x-1,y] == 1){
+                            //east-west
+                            floor.SetTile(new Vector3Int(-x + width / 2, -y + height / 2, 0), corners[13]);    
                         }
                         else if(terrainMap[x, y-1] == 1){
                             //North
@@ -296,6 +304,7 @@ public class MapGenerator : MonoBehaviour
                 usedPlaces.Add(r+j);
             }
         }
+        freePropsSpots.Clear();
     }
 
     public void clearMap(bool complete)
@@ -369,6 +378,6 @@ public class MapGenerator : MonoBehaviour
 
         manager.props.Add(portalSpawn);
         manager.props.Add(portalEnd);
-        hero.transform.position = spawn;
+        hero.transform.position = new Vector3(spawn.x+3, spawn.y, 0);
     }
 }
