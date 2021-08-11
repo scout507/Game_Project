@@ -25,6 +25,9 @@ public class Granade : MonoBehaviour
                 else if(distPercent > 0.125f) obj.GetComponent<MonsterController>().takeDamage(dmg*0.5f, (obj.transform.position-transform.position)*bulletforce);
                 else obj.GetComponent<MonsterController>().takeDamage(dmg*0.25f, (obj.transform.position-transform.position)*bulletforce);
             }
+            else if(obj.tag == "destructable"){
+                obj.GetComponent<DestructableProp>().die();
+            }
         }
         
         Destroy(this.gameObject);
@@ -32,7 +35,7 @@ public class Granade : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.tag != "Player" && other.tag != "allowBullets" && other.tag != "collectible"){
+        if(other.tag != "Player" && other.tag != "allowBullets" && other.tag != "collectible" && other.tag != "portal"){
             explode();
         }
     }

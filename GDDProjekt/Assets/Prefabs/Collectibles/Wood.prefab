@@ -46,9 +46,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 147afbe8cd31b4e4e94f130c5631ab99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 
-  maxAmount: 10
-  image: {fileID: 21300000, guid: 71620ffa1d5ddc84f98e39f1aab2dd4a, type: 3}
+  displayName: Wood
+  maxAmount: 5
+  type: 0
+  image: {fileID: 21300000, guid: b2866c7af08a4874587025448f6a2338, type: 3}
 --- !u!50 &3836516793527947685
 Rigidbody2D:
   serializedVersion: 4
@@ -125,7 +126,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

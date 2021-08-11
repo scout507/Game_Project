@@ -5,16 +5,23 @@ using UnityEngine;
 public class PlayerStats : MonoBehaviour
 {
     public float hp;
-    
+    public float maxhp;
+    public int[] loot;
+    public int essence;
 
     void Start()
     {
-        
+        hp = 100f;
+        maxhp = 100f;
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
+        essence = 0;
+        for(int i = 4; i<loot.Length; i++){
+            essence += loot[i];
+        }
         
     }
 

@@ -9,10 +9,13 @@ public class Bullet : MonoBehaviour
    
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.tag != "Player" && other.tag != "allowBullets" && other.tag != "collectible"){
+        if(other.tag != "Player" && other.tag != "allowBullets" && other.tag != "collectible" && other.tag != "portal"){
             Destroy(this.gameObject);
             if(other.tag == "monster"){
                 other.GetComponent<MonsterController>().takeDamage(dmg, bulletforce);
+            }
+            else if(other.tag == "destructable"){
+                other.GetComponent<DestructableProp>().die();
             }
         }
     }
