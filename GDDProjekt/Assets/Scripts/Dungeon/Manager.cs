@@ -14,6 +14,7 @@ public class Manager : MonoBehaviour
     public List<GameObject> monstersInLevel;
     public List<GameObject> props; 
     public List<GameObject> loot;
+    public bool paused;
 
     public GameObject[] guns;
 
@@ -32,6 +33,8 @@ public class Manager : MonoBehaviour
     GameManager gameManager;
     PlayerStats playerStats;
     PlayerController playerController;
+    UIController uIController;
+    
 
     void Start()
     {
@@ -40,6 +43,7 @@ public class Manager : MonoBehaviour
         playerStats = hero.GetComponent<PlayerStats>();
         playerController = hero.GetComponent<PlayerController>();
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        uIController = GetComponent<UIController>();
         loadFromManager();
         newMap();
     }
@@ -47,12 +51,9 @@ public class Manager : MonoBehaviour
     void Update()
     {
         pathing = GetComponent<AstarPath>();
-        if(Vector3.Distance(hero.transform.position, mapGenerator.end) < 1f){
-            newMap();
-        }   
     }
 
-    void newMap(){
+    public void newMap(){
         level++;
         monstersInLevel.ForEach( monster =>{
             Destroy(monster);
@@ -91,6 +92,19 @@ public class Manager : MonoBehaviour
         pathing.Scan();
     }
 
+
+    public void presentExit(){
+        pauseGame();
+        uIController.exitMenu();
+    }
+
+    void pauseGame(){
+        Time.timeScale = 0;
+    }
+
+    public void resumeGame(){
+        Time.timeScale = 1;
+    }
 
     void saveToManager(){
         for(int i = 0; i<playerStats.loot.Length; i++){

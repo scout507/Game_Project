@@ -53,9 +53,9 @@ public class PlayerController : MonoBehaviour
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
         mouse = cam.ScreenToWorldPoint(Input.mousePosition);
-        if(Input.GetButton("Fire1")) activeGun.GetComponent<Weapon>().shoot(gun.position,gun.up, Quaternion.Euler(0,0,facing) , Camera.main.ScreenToWorldPoint(Input.mousePosition));
-        if(Input.GetKeyDown(KeyCode.Space)) dash();
-        if(Input.GetKeyDown(KeyCode.Q)) switchWeapon();
+        if(Input.GetButton("Fire1") && !manager.paused) activeGun.GetComponent<Weapon>().shoot(gun.position,gun.up, Quaternion.Euler(0,0,facing) , Camera.main.ScreenToWorldPoint(Input.mousePosition));
+        if(Input.GetKeyDown(KeyCode.Space) && !manager.paused) dash();
+        if(Input.GetKeyDown(KeyCode.Q) && !manager.paused) switchWeapon();
         //timers
         moveBlockTimer -= Time.deltaTime;
         if(moveBlockTimer <= 0){
@@ -136,7 +136,9 @@ public class PlayerController : MonoBehaviour
             other.GetComponent<Ressource>().collect(this.gameObject);
         }
         if(other.tag == "portal"){
-            Debug.Log("portal");
+            if(other.GetComponent<Portal>().isExit){
+                manager.newMap();
+            }else manager.presentExit();
         }
     }
 }

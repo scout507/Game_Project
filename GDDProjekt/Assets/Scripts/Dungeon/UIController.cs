@@ -19,6 +19,16 @@ public class UIController : MonoBehaviour
     public TextMeshProUGUI goldTxt;
     public TextMeshProUGUI essenceTxt;
 
+    public GameObject exitScreen;
+    public TextMeshProUGUI woodCountTxt;
+    public TextMeshProUGUI stoneCountTxt;
+    public TextMeshProUGUI ironCountTxt;
+    public TextMeshProUGUI goldCountTxt;
+    public TextMeshProUGUI bluessenceTxt;
+    public TextMeshProUGUI greenssenceTxt;
+    public TextMeshProUGUI redssenceTxt;
+    public TextMeshProUGUI goldssenceTxt;
+
     public Image weapon1;
     public Image weapon2;
     public Image spinner;
@@ -64,9 +74,30 @@ public class UIController : MonoBehaviour
 
     }
 
+    public void exitMenu(){
+        exitScreen.SetActive(true);
+        woodCountTxt.text = playerStats.loot[0].ToString();
+        stoneCountTxt.text = playerStats.loot[1].ToString();
+        ironCountTxt.text = playerStats.loot[2].ToString();
+        goldCountTxt.text = playerStats.loot[3].ToString();
+        bluessenceTxt.text = playerStats.loot[4].ToString();
+        greenssenceTxt.text = playerStats.loot[5].ToString();
+        redssenceTxt.text = playerStats.loot[6].ToString();
+        goldssenceTxt.text = playerStats.loot[7].ToString();
+    }
+
+    public void continueButton(){
+        manager.resumeGame();
+        exitScreen.SetActive(false);
+    }
+
+    public void exitButton(){
+        exitScreen.SetActive(false);
+    }
+
 
     public void spinanim(){
-        //spinner.GetComponent<Animation>().Play();
+        spinner.GetComponent<Animator>().Play("spin");
     }
 
 }

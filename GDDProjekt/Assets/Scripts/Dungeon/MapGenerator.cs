@@ -374,6 +374,7 @@ public class MapGenerator : MonoBehaviour
         spawn = new Vector2(-xEnd + width / 2 ,-yEnd + height / 2 +1.5f);
         
         GameObject portalSpawn = Instantiate(portal, spawn, Quaternion.identity);
+        portalSpawn.GetComponent<Portal>().isExit = false;
         GameObject portalEnd = Instantiate(portal, end, Quaternion.Euler(180,0,180));
 
         manager.props.Add(portalSpawn);
