@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     public GameObject[] guns;
     [HideInInspector]
     public bool weaponOneActive = true;
-    GameObject activeGun;
+    public GameObject activeGun;
 
 
     float angle;
@@ -91,9 +91,6 @@ public class PlayerController : MonoBehaviour
         gun.rotation = Quaternion.Euler(0,0,angle);
     }
     
-    void rotationHandler(){
-        
-    }
 
     void dash(){
         if(movement != new Vector2(0,0)){
@@ -104,21 +101,23 @@ public class PlayerController : MonoBehaviour
     }
 
     void gunHandler(){
-        gunHolder.rotation = Quaternion.Euler(0,0,facing);
-        if(facing>90 || facing <-90){
-            //gun to the left
-            if(facing<0){
-                //gun in front
-                gunscript.changeSprite(0,3);
+        if(gunscript){
+            gunHolder.rotation = Quaternion.Euler(0,0,facing);
+            if(facing>90 || facing <-90){
+                //gun to the left
+                if(facing<0){
+                    //gun in front
+                    gunscript.changeSprite(0,3);
+                }
+                else gunscript.changeSprite(0,2);
             }
-            else gunscript.changeSprite(0,2);
-        }
-        else{
-            if(facing<0){
-                //gun in front
-                gunscript.changeSprite(1,3);
+            else{
+                if(facing<0){
+                    //gun in front
+                    gunscript.changeSprite(1,3);
+                }
+                else gunscript.changeSprite(1,2);
             }
-            else gunscript.changeSprite(1,2);
         }
     }
 

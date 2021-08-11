@@ -10,6 +10,8 @@ TagManager:
   - collectible
   - destructable
   - portal
+  - GameManager
+  - gunHolder
   layers:
   - Default
   - TransparentFX

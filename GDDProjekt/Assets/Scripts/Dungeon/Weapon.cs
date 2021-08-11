@@ -56,7 +56,7 @@ public abstract class Weapon: MonoBehaviour
     }
 
     public void changeSprite(int direction, int layer){
-
+        sr = GetComponent<SpriteRenderer>();
         sr.enabled = true;
         sr.sprite = sprites[direction];
         sr.sortingOrder = layer;
