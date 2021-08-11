@@ -103,7 +103,6 @@ public class MonsterController : MonoBehaviour
     }
 
     void rangeAtk(){
-        Debug.Log("range");
         GameObject shot = Instantiate(bullet, transform.position, Quaternion.identity);
         shot.GetComponent<MonsterBullet>().target = new Vector3(player.transform.position.x,player.transform.position.y,player.transform.position.z);
         shot.GetComponent<Rigidbody2D>().AddForce(lookDir*3f, ForceMode2D.Impulse); 

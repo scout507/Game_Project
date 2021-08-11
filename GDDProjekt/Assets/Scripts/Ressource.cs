@@ -6,6 +6,7 @@ public class Ressource : MonoBehaviour
 {
     public string displayName;
     public int maxAmount;
+    public int type;
     int amount;
     public Sprite image;
     
@@ -15,7 +16,8 @@ public class Ressource : MonoBehaviour
     SpriteRenderer sr;
     Rigidbody2D rb;
     Vector3 direction;
-    Manager manager;
+    GameObject manager;
+    PlayerStats playerStats;
 
     private void Awake()
     {
@@ -23,8 +25,9 @@ public class Ressource : MonoBehaviour
         sr.sprite = image;
         amount = Random.Range(1,maxAmount);
         rb = GetComponent<Rigidbody2D>();
-        manager = GameObject.FindGameObjectWithTag("manager").GetComponent<Manager>();
-        manager.loot.Add(this.gameObject);
+        manager = GameObject.FindGameObjectWithTag("manager");
+        manager.GetComponent<Manager>().loot.Add(this.gameObject);
+        playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
     }
 
 
@@ -44,6 +47,7 @@ public class Ressource : MonoBehaviour
     }
 
     void getCollected(){
+        playerStats.loot[type] += amount;
         Destroy(this.gameObject);
     }
 

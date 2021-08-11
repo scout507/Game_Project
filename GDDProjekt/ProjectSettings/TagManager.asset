@@ -8,6 +8,8 @@ TagManager:
   - allowBullets
   - manager
   - collectible
+  - destructable
+  - portal
   layers:
   - Default
   - TransparentFX
