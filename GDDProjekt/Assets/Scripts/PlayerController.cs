@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rb;
     Vector2 movement;
     UIController uIController;
+    Manager manager;
 
     void Start()
     {
@@ -42,6 +43,7 @@ public class PlayerController : MonoBehaviour
         gunscript = activeGun.GetComponent<Weapon>();
         gunscript.active = true;
         uIController = GameObject.FindGameObjectWithTag("manager").GetComponent<UIController>();
+        manager = GameObject.FindGameObjectWithTag("manager").GetComponent<Manager>();
     }
 
     // Update is called once per frame
@@ -53,9 +55,7 @@ public class PlayerController : MonoBehaviour
         mouse = cam.ScreenToWorldPoint(Input.mousePosition);
         if(Input.GetButton("Fire1")) activeGun.GetComponent<Weapon>().shoot(gun.position,gun.up, Quaternion.Euler(0,0,facing) , Camera.main.ScreenToWorldPoint(Input.mousePosition));
         if(Input.GetKeyDown(KeyCode.Space)) dash();
-
         if(Input.GetKeyDown(KeyCode.Q)) switchWeapon();
-
         //timers
         moveBlockTimer -= Time.deltaTime;
         if(moveBlockTimer <= 0){
@@ -66,8 +66,6 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-       
-
         Vector2 lookDir = mouse - rb.position;
         angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg-90;
         facing = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
@@ -137,6 +135,9 @@ public class PlayerController : MonoBehaviour
     {
         if(other.tag == "collectible"){
             other.GetComponent<Ressource>().collect(this.gameObject);
+        }
+        if(other.tag == "portal"){
+            Debug.Log("portal");
         }
     }
 }

@@ -18,9 +18,11 @@ public class MapGenerator : MonoBehaviour
     public Vector2 spawn;
     public Vector2 end;
     public GameObject hero;
+    public GameObject portal;
 
     private int[,] terrainMap;
     public List<Vector3> freeSpots;
+    public List<Vector3> freePropsSpots;
     public Vector3Int tmpSize;
     public Tilemap wall;
     public Tilemap floor;
@@ -104,7 +106,11 @@ public class MapGenerator : MonoBehaviour
                         }
                     } 
                     else {
-                        freeSpots.Add(new Vector3Int(-x + width / 2, -y + height / 2, 0));    
+                        if(x > 20 && x < width-20){
+                            freeSpots.Add(new Vector3Int(-x + width / 2, -y + height / 2, 0));
+                            freePropsSpots.Add(new Vector3Int(-x + width / 2, -y + height / 2, 0));
+                        }
+                        freePropsSpots.Add(new Vector3Int(-x + width / 2, -y + height / 2, 0));    
                     }
                     
                     if(terrainMap[x,y] == 3){
@@ -277,13 +283,13 @@ public class MapGenerator : MonoBehaviour
     void spawnProbs(){
         List<int> usedPlaces = new List<int>(); 
         for(int i = 0; i<propAmount; i++){
-            int r = Random.Range(0,freeSpots.Count);
+            int r = Random.Range(0,freePropsSpots.Count);
             if(i <= propLowAmount && !usedPlaces.Contains(r)){
-                GameObject prop = Instantiate(propsLowDensity[Random.Range(0,propsLowDensity.Length)],freeSpots[r],Quaternion.identity);
+                GameObject prop = Instantiate(propsLowDensity[Random.Range(0,propsLowDensity.Length)],freePropsSpots[r],Quaternion.identity);
                 manager.props.Add(prop);
             } 
             else if(!usedPlaces.Contains(r)){
-                GameObject prop = Instantiate(propsHighDensity[Random.Range(0,propsHighDensity.Length)],freeSpots[r],Quaternion.identity);
+                GameObject prop = Instantiate(propsHighDensity[Random.Range(0,propsHighDensity.Length)],freePropsSpots[r],Quaternion.identity);
                 manager.props.Add(prop);
             } 
             for(int j = -2; j<3; j++){
@@ -355,8 +361,14 @@ public class MapGenerator : MonoBehaviour
 
     void setStart(){
         //this switch between start and end is intentional
-        end = new Vector2(-xStart + width / 2,-yStart + height / 2);
-        spawn = new Vector2(-xEnd + width / 2,-yEnd + height / 2);
+        end = new Vector2(-xStart + width / 2 ,-yStart + height / 2 +1.5f);
+        spawn = new Vector2(-xEnd + width / 2 ,-yEnd + height / 2 +1.5f);
+        
+        GameObject portalSpawn = Instantiate(portal, spawn, Quaternion.identity);
+        GameObject portalEnd = Instantiate(portal, end, Quaternion.Euler(180,0,180));
+
+        manager.props.Add(portalSpawn);
+        manager.props.Add(portalEnd);
         hero.transform.position = spawn;
     }
 }

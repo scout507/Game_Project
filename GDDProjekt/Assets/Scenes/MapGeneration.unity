@@ -1590,7 +1590,9 @@ MonoBehaviour:
   spawn: {x: 0, y: 0}
   end: {x: 0, y: 0}
   hero: {fileID: 1012193880}
+  portal: {fileID: 5642299184679408660, guid: 00bc0a6fc8809a341ac0b8466c3ffa51, type: 3}
   freeSpots: []
+  freePropsSpots: []
   tmpSize: {x: 100, y: 60, z: 0}
   wall: {fileID: 1178090639}
   floor: {fileID: 1944636358}

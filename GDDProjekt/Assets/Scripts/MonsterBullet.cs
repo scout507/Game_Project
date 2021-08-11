@@ -12,7 +12,7 @@ public class MonsterBullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.tag != "monster" && other.tag != "allowBullets" && other.tag != "collectible"){
+        if(other.tag != "monster" && other.tag != "allowBullets" && other.tag != "collectible" && other.tag != "portal"){
             if(other.tag == "Player"){
                 splash();
             }

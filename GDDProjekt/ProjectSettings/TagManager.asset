@@ -9,6 +9,7 @@ TagManager:
   - manager
   - collectible
   - destructable
+  - portal
   layers:
   - Default
   - TransparentFX
