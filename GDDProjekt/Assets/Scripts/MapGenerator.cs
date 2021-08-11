@@ -61,9 +61,6 @@ public class MapGenerator : MonoBehaviour
         iniChance = int.Parse(settings[0]);
         birthLimit = int.Parse(settings[1]);
         deathLimit = int.Parse(settings[2]);
-        spawn = new Vector2(-0.5f*tmpSize.x+3, 0);
-        end = new Vector2(0.5f*tmpSize.x, 0);
-        hero.transform.position = spawn;
         clearMap(true);
         createMap(int.Parse(settings[3]));
     }
@@ -175,6 +172,7 @@ public class MapGenerator : MonoBehaviour
             }
             spawnProbs();
             spawnMonsters();
+            setStart();
             pathing.Scan();
         }
         else{
@@ -185,10 +183,12 @@ public class MapGenerator : MonoBehaviour
     }
 
     void cleanMap(int[,] map){
+        yStart = Random.Range(10, height-10);
+        yEnd = Random.Range(10,height-10);
        for(int x = 1; x < 10; x++){
           for(int y = -2; y<2; y++){
-                map[x,Mathf.RoundToInt(height/2)+y] = 0;
-                map[width-1-x,Mathf.RoundToInt(height/2)+y] = 0;
+                map[x,yStart+y] = 0;
+                map[width-1-x,yEnd+y] = 0;
             }
         }
 
@@ -353,4 +353,10 @@ public class MapGenerator : MonoBehaviour
         return true;
     }
 
+    void setStart(){
+        //this switch between start and end is intentional
+        end = new Vector2(-xStart + width / 2,-yStart + height / 2);
+        spawn = new Vector2(-xEnd + width / 2,-yEnd + height / 2);
+        hero.transform.position = spawn;
+    }
 }

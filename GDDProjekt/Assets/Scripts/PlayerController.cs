@@ -17,7 +17,8 @@ public class PlayerController : MonoBehaviour
     public Transform gun;
     public Transform gunHolder;
     public GameObject[] guns;
-    bool weaponOneActive = true;
+    [HideInInspector]
+    public bool weaponOneActive = true;
     GameObject activeGun;
 
 
@@ -31,6 +32,7 @@ public class PlayerController : MonoBehaviour
     SpriteRenderer sR;
     Rigidbody2D rb;
     Vector2 movement;
+    UIController uIController;
 
     void Start()
     {
@@ -39,6 +41,7 @@ public class PlayerController : MonoBehaviour
         activeGun = guns[0];
         gunscript = activeGun.GetComponent<Weapon>();
         gunscript.active = true;
+        uIController = GameObject.FindGameObjectWithTag("manager").GetComponent<UIController>();
     }
 
     // Update is called once per frame
@@ -122,6 +125,7 @@ public class PlayerController : MonoBehaviour
     }
 
     void switchWeapon(){
+        uIController.spinanim();
         gunscript.disableSprite();
         weaponOneActive = !weaponOneActive;
         if(weaponOneActive) activeGun = guns[0];

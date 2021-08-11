@@ -616,7 +616,9 @@ MonoBehaviour:
   gunHolder: {fileID: 1779176634}
   guns:
   - {fileID: 1440238480}
-  - {fileID: 828618300522672239}
+  - {fileID: 3321905866015147384}
+  weaponOneActive: 1
+  gunscript: {fileID: 0}
 --- !u!50 &7213277662982381494
 Rigidbody2D:
   serializedVersion: 4
@@ -653,6 +655,7 @@ MonoBehaviour:
   hp: 0
   maxhp: 0
   loot: 0000000000000000000000000000000000000000000000000000000000000000
+  essence: 0
 --- !u!70 &1012193884
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -697,7 +700,7 @@ MonoBehaviour:
   - {x: -0.41280127, y: -0.8744546, z: 0}
   m_ShapePathHash: 1592222199
   m_Mesh: {fileID: 0}
-  m_InstanceId: -1240
+  m_InstanceId: -1228
 --- !u!1 &7213277664003803217
 GameObject:
   m_ObjectHideFlags: 0
@@ -735,6 +738,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1779176634}
     m_Modifications:
+    - target: {fileID: 2406264280225130232, guid: 91e123da8d3224a4f805af581baa5a3c, type: 3}
+      propertyPath: icon
+      value: 
+      objectReference: {fileID: -179159622647844568, guid: 4706297436ce21b46b03c768435784b2, type: 3}
     - target: {fileID: 2406264280225130232, guid: 91e123da8d3224a4f805af581baa5a3c, type: 3}
       propertyPath: knockback
       value: 10
@@ -875,6 +882,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4188366717351721908, guid: 4c24148b3a5f2f74aa552b48e1c69338, type: 3}
+      propertyPath: icon
+      value: 
+      objectReference: {fileID: 5298150866232066731, guid: f6038c52a86671e43a1a6a29437ba1a9, type: 3}
+    - target: {fileID: 4188366717351721908, guid: 4c24148b3a5f2f74aa552b48e1c69338, type: 3}
       propertyPath: overheatPerShot
       value: 0.5
       objectReference: {fileID: 0}
@@ -916,7 +927,7 @@ PrefabInstance:
     - target: {fileID: 7499800593122930200, guid: b48f8a5113c9c2d44bec73b294aa1076, type: 3}
       propertyPath: icon
       value: 
-      objectReference: {fileID: -2958801877055369489, guid: c9dd6c29ceff0a74e9519a9ada11aa56, type: 3}
+      objectReference: {fileID: 5746739024804455488, guid: cf072ecbe8a71c642b870ab3e4050bdf, type: 3}
     - target: {fileID: 7499800593122930200, guid: b48f8a5113c9c2d44bec73b294aa1076, type: 3}
       propertyPath: force
       value: 50
