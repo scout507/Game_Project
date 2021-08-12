@@ -6,6 +6,12 @@ TagManager:
   tags:
   - monster
   - allowBullets
+  - building
+  - Camera
+  - bullet
+  - wall
+  - npc
+  - enemy
   layers:
   - Default
   - TransparentFX
@@ -14,9 +20,9 @@ TagManager:
   - Water
   - UI
   - Unmoveable
-  - 
-  - 
-  - 
+  - Player
+  - Building
+  - Bullet
   - 
   - 
   - 
