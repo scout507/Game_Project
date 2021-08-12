@@ -292,12 +292,13 @@ public class MapGenerator : MonoBehaviour
         List<int> usedPlaces = new List<int>(); 
         for(int i = 0; i<propAmount; i++){
             int r = Random.Range(0,freePropsSpots.Count);
+            Vector3 spawn = new Vector3(freePropsSpots[r].x+0.5f,freePropsSpots[r].y+0.5f,freePropsSpots[r].z);
             if(i <= propLowAmount && !usedPlaces.Contains(r)){
-                GameObject prop = Instantiate(propsLowDensity[Random.Range(0,propsLowDensity.Length)],freePropsSpots[r],Quaternion.identity);
+                GameObject prop = Instantiate(propsLowDensity[Random.Range(0,propsLowDensity.Length)],spawn,Quaternion.identity);
                 manager.props.Add(prop);
             } 
             else if(!usedPlaces.Contains(r)){
-                GameObject prop = Instantiate(propsHighDensity[Random.Range(0,propsHighDensity.Length)],freePropsSpots[r],Quaternion.identity);
+                GameObject prop = Instantiate(propsHighDensity[Random.Range(0,propsHighDensity.Length)],spawn,Quaternion.identity);
                 manager.props.Add(prop);
             } 
             for(int j = -2; j<3; j++){
