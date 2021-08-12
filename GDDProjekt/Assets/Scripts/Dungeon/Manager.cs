@@ -71,7 +71,7 @@ public class Manager : MonoBehaviour
         if(level % 10 != 0){
             string mapCode = maps[Random.Range(0,maps.Length)];
             string[] settings = mapCode.Split(',');
-            monsterAmount += Mathf.RoundToInt(level*(4f/5f));
+            monsterAmount = 10 + Mathf.RoundToInt(level*(4f/5f));
             if(monsterAmount >= 50) monsterAmount = 50;
             lighting.transform.position = new Vector3(Random.Range(-300,300), Random.Range(-300,300), 0);
             if(level == 10) floor.color = new Color(130f/255f, 184f/255f, 224f/255f,1);

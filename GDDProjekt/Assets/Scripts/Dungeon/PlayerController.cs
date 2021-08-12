@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed = 5f;
     public float dashForce;
     public float dashDuration;
+    public float dashTimer = 0f;
     public Camera cam;
     
     
@@ -39,9 +40,6 @@ public class PlayerController : MonoBehaviour
     {
         sR = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
-        activeGun = guns[0];
-        gunscript = activeGun.GetComponent<Weapon>();
-        gunscript.active = true;
         uIController = GameObject.FindGameObjectWithTag("manager").GetComponent<UIController>();
         manager = GameObject.FindGameObjectWithTag("manager").GetComponent<Manager>();
     }
@@ -54,14 +52,15 @@ public class PlayerController : MonoBehaviour
         movement.y = Input.GetAxisRaw("Vertical");
         mouse = cam.ScreenToWorldPoint(Input.mousePosition);
         if(Input.GetButton("Fire1") && !manager.paused) activeGun.GetComponent<Weapon>().shoot(gun.position,gun.up, Quaternion.Euler(0,0,facing) , Camera.main.ScreenToWorldPoint(Input.mousePosition));
-        if(Input.GetKeyDown(KeyCode.Space) && !manager.paused) dash();
+        if(Input.GetKeyDown(KeyCode.Space) && !manager.paused && dashTimer <= 0) dash();
         if(Input.GetKeyDown(KeyCode.Q) && !manager.paused) switchWeapon();
         //timers
         moveBlockTimer -= Time.deltaTime;
         if(moveBlockTimer <= 0){
             moveBlock = false;
             rb.velocity = Vector2.zero;
-        } 
+        }
+        dashTimer -= Time.deltaTime; 
     }
 
     void FixedUpdate()
@@ -94,6 +93,7 @@ public class PlayerController : MonoBehaviour
 
     void dash(){
         if(movement != new Vector2(0,0)){
+            dashTimer = 2.5f;
             moveBlockTimer = dashDuration;
             moveBlock = true;
             rb.velocity = movement*dashForce;

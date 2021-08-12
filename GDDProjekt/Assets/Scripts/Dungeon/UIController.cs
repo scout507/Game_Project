@@ -41,7 +41,7 @@ public class UIController : MonoBehaviour
         manager = GetComponent<Manager>();
         playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
-        weapon1.sprite = playerController.guns[0].GetComponent<Weapon>().icon;
+        weapon1.sprite = playerController.guns[0].GetComponent<Weapon>().iconActive;
         weapon2.sprite = playerController.guns[1].GetComponent<Weapon>().icon;
     }
 
@@ -64,11 +64,15 @@ public class UIController : MonoBehaviour
         overHeatSlider.value = playerController.gunscript.overheat;
         if(playerController.weaponOneActive){
             weapon1.color = new Color(1f,1f,1f,1f);
-            weapon2.color = new Color(1f,1f,1f,0.7f);
+            weapon2.color = new Color(1f,1f,1f,0.5f);
+            weapon1.sprite = playerController.guns[0].GetComponent<Weapon>().iconActive;
+            weapon2.sprite = playerController.guns[1].GetComponent<Weapon>().icon;
         }
         else{
-            weapon1.color = new Color(1f,1f,1f,0.7f);
+            weapon1.color = new Color(1f,1f,1f,0.5f);
             weapon2.color = new Color(1f,1f,1f,1f);
+            weapon1.sprite = playerController.guns[0].GetComponent<Weapon>().icon;
+            weapon2.sprite = playerController.guns[1].GetComponent<Weapon>().iconActive;
         }
 
 

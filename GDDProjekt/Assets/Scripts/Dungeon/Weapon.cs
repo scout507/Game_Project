@@ -7,6 +7,7 @@ public abstract class Weapon: MonoBehaviour
 {
     public string weaponName;
     public Sprite icon;
+    public Sprite iconActive;
     public GameObject bulletPrefab;
     public float damage;
     public float fireRate;
