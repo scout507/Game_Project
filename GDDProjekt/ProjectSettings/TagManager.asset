@@ -12,6 +12,12 @@ TagManager:
   - portal
   - GameManager
   - gunHolder
+  - building
+  - Camera
+  - bullet
+  - wall
+  - npc
+  - enemy
   layers:
   - Default
   - TransparentFX
@@ -20,9 +26,9 @@ TagManager:
   - Water
   - UI
   - Unmoveable
-  - 
-  - 
-  - 
+  - Player
+  - Building
+  - Bullet
   - 
   - 
   - 
