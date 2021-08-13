@@ -6,6 +6,12 @@ TagManager:
   tags:
   - monster
   - allowBullets
+  - manager
+  - collectible
+  - destructable
+  - portal
+  - GameManager
+  - gunHolder
   - building
   - Camera
   - bullet
