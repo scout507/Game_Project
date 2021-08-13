@@ -33,7 +33,6 @@ public class TurretWeaponSidescroll : MonoBehaviour
 
             if (!isRightFacing) facing -= 180f;
 
-            Debug.Log(facing);
             if (!isRightFacing && facing >= -60) transform.rotation = Quaternion.Euler(0, 0, facing);
             if (isRightFacing && facing <= 60 && facing >= 0) transform.rotation = Quaternion.Euler(0, 0, facing);
 

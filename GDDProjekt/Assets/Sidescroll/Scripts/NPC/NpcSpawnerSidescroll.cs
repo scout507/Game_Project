@@ -6,11 +6,11 @@ using UnityEditor;
 public class NpcSpawnerSidescroll : MonoBehaviour
 {
     //public variables
-    public GameObject noramlNpcPrefab;
+    public GameObject normalNpcPrefab;
     public GameObject sniperNpcPrefab;
     public GameObject mortarNpcPrefab;
 
-    public int amountNoramlNpcPrefabPerSide;
+    public int amountNormalNpcPrefabPerSide;
     public int amountSniperNpcPrefabPerSide;
     public int amountMortarNpcPrefabPerSide;
 
@@ -20,24 +20,21 @@ public class NpcSpawnerSidescroll : MonoBehaviour
     public float nextWaveDelay;
 
     public Transform cityHall;
-    public Transform wallRight;
-    public Transform wallLeft;
-    public Transform positionSniper;
-    public Transform positionMortar;
-
-    public List<Transform> enemysAboveLeft;
-    public List<Transform> enemysBelowLeft;
-    public List<Transform> enemysAboveRight;
-    public List<Transform> enemysBelowRight;
-
+    public Transform positionSniperLeft;
+    public Transform positionMortarLeft;
+    public Transform positionSniperRight;
+    public Transform positionMortarRight;
+    
     //private variables
     float wavesTimer;
     float waitTime;
     int wavesCounter;
+    AiManager aiManager;
 
     void Start()
     {
         waitTime = startDelay;
+        aiManager = GetComponent<AiManager>();
     }
 
     void Update()
@@ -49,46 +46,51 @@ public class NpcSpawnerSidescroll : MonoBehaviour
             waitTime = nextWaveDelay;
             wavesCounter++;
 
-            for (int i = 0; i < amountNoramlNpcPrefabPerSide; i++)
+            for (int i = 0; i < amountNormalNpcPrefabPerSide; i++)
             {
-                setValuesLeft(Instantiate(noramlNpcPrefab, spawner.transform.position, spawner.transform.rotation));
-                setValuesRight(Instantiate(noramlNpcPrefab, spawner.transform.position, spawner.transform.rotation));
+                setValuesLeft(Instantiate(normalNpcPrefab, spawner.transform.position, spawner.transform.rotation), aiManager.wallLeft.transform);
+                setValuesRight(Instantiate(normalNpcPrefab, spawner.transform.position, spawner.transform.rotation), aiManager.wallRight.transform);
             }
 
             for (int i = 0; i < amountMortarNpcPrefabPerSide; i++)
             {
-                setValuesLeft(Instantiate(mortarNpcPrefab, spawner.transform.position, spawner.transform.rotation));
-                setValuesRight(Instantiate(mortarNpcPrefab, spawner.transform.position, spawner.transform.rotation));
+                setValuesLeft(Instantiate(mortarNpcPrefab, spawner.transform.position, spawner.transform.rotation), positionMortarLeft);
+                setValuesRight(Instantiate(mortarNpcPrefab, spawner.transform.position, spawner.transform.rotation), positionMortarRight);
             }
 
             for (int i = 0; i < amountSniperNpcPrefabPerSide; i++)
             {
-                setValuesLeft(Instantiate(sniperNpcPrefab, spawner.transform.position, spawner.transform.rotation));
-                setValuesRight(Instantiate(sniperNpcPrefab, spawner.transform.position, spawner.transform.rotation));
+                setValuesLeft(Instantiate(sniperNpcPrefab, spawner.transform.position, spawner.transform.rotation), positionSniperLeft);
+                setValuesRight(Instantiate(sniperNpcPrefab, spawner.transform.position, spawner.transform.rotation), positionSniperRight);
             }
         }
     }
 
-    void setValuesRight(GameObject gb)
+    void setValuesRight(GameObject gb, Transform position)
     {
+        aiManager.npcsRight.Add(gb);
         NpcMovementSidescroll npcMovementSidescroll = gb.GetComponent<NpcMovementSidescroll>();
         NpcAttackSidescroll npcAttackSidescroll = gb.GetComponent<NpcAttackSidescroll>();
-        npcAttackSidescroll.enemysAbove = enemysAboveRight;
-        npcAttackSidescroll.enemysBelow = enemysBelowRight;
-        Debug.Log(PrefabUtility.GetPrefabAssetType(gb));
-        npcMovementSidescroll.targetToMove = wallRight;
+        npcAttackSidescroll.enemysAbove = aiManager.enemysAboveRight;
+        npcAttackSidescroll.enemysBelow = aiManager.enemysBelowRight;
+        npcAttackSidescroll.aiManager = aiManager;
+        npcMovementSidescroll.targetToMove = position;
         npcMovementSidescroll.speed += Random.Range(1, 4);
         npcMovementSidescroll.cityHall = cityHall;
+        npcMovementSidescroll.aiManager = aiManager;
     }
 
-    void setValuesLeft(GameObject gb)
+    void setValuesLeft(GameObject gb, Transform position)
     {
+        aiManager.npcsLeft.Add(gb);
         NpcMovementSidescroll npcMovementSidescroll = gb.GetComponent<NpcMovementSidescroll>();
         NpcAttackSidescroll npcAttackSidescroll = gb.GetComponent<NpcAttackSidescroll>();
-        npcAttackSidescroll.enemysAbove = enemysAboveLeft;
-        npcAttackSidescroll.enemysBelow = enemysBelowLeft;
-        npcMovementSidescroll.targetToMove = wallLeft;
+        npcAttackSidescroll.enemysAbove = aiManager.enemysAboveLeft;
+        npcAttackSidescroll.enemysBelow = aiManager.enemysBelowLeft;
+        npcAttackSidescroll.aiManager = aiManager;
+        npcMovementSidescroll.targetToMove = position;
         npcMovementSidescroll.speed += Random.Range(1, 4);
         npcMovementSidescroll.cityHall = cityHall;
+        npcMovementSidescroll.aiManager = aiManager;
     }
 }

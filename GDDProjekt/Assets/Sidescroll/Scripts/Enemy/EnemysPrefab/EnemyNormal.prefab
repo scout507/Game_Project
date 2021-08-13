@@ -133,6 +133,7 @@ MonoBehaviour:
   bulletWallPrefab: {fileID: 2741348265609809042, guid: 1118970380faec84b83d1514abbfe992, type: 3}
   npcs: []
   wall: {fileID: 0}
+  isFly: 0
 --- !u!70 &4888570139442329031
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -167,11 +168,12 @@ MonoBehaviour:
   cityHall: {fileID: 0}
   wallTarget: {fileID: 0}
   comeFromLeft: 0
-  target: {x: 0, y: 0, z: 0}
   move: 1
   gameEnd: 0
+  target: {x: 0, y: 0, z: 0}
   minDistance: 1
   maxDistance: 3
+  randomHold: 0
 --- !u!1 &4888570140867661592
 GameObject:
   m_ObjectHideFlags: 0

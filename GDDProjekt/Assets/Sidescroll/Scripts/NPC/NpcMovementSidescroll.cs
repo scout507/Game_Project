@@ -11,20 +11,22 @@ public class NpcMovementSidescroll : MonoBehaviour
     public Transform cityHall;
     public bool toLeft = false;
     public bool move = true;
-    public bool gameEnd = false;
+    public AiManager aiManager;
 
     //private
     Vector3 target;
+    float randomHold;
     
     void Start()
     {
+        randomHold = Random.Range(1.5f, 2);
         rb2D = GetComponent<Rigidbody2D>();
         target = targetToMove.position;
     }
 
     void Update()
     {
-        if (gameEnd)
+        if (aiManager.gameEndNpc)
         {
             target = cityHall.position;
             move = true;
@@ -36,11 +38,11 @@ public class NpcMovementSidescroll : MonoBehaviour
             rb2D.velocity = direction * speed;
         }
 
-        if (Vector2.Distance(transform.position, target) <= 1)
+        if (Vector2.Distance(transform.position, target) <= randomHold)
         {
             rb2D.velocity = Vector3.zero;
             move = false;
-            if (gameEnd) Destroy(gameObject);
+            if (aiManager.gameEndNpc) Destroy(gameObject);
         }
     }
 }

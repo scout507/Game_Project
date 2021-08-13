@@ -20,7 +20,7 @@ public class EnemyFlyMovementSidescroll : EnemyMovementSidescroll
 
     void FixedUpdate()
     {
-        if (gameEnd)
+        if (aiManager.gameEndEnemy)
         {
             target = cityHall.position;
             speed = gameEndSpeed;
@@ -31,7 +31,7 @@ public class EnemyFlyMovementSidescroll : EnemyMovementSidescroll
 
         if (Vector2.Distance(transform.position, target) <= 1)
         {
-            if (gameEnd)
+            if (aiManager.gameEndEnemy)
             {
                 move = false;
                 rb2D.velocity = Vector3.zero;

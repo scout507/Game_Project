@@ -12,10 +12,9 @@ public class EnemyMovementSidescroll : MonoBehaviour
     public Transform wallTarget;
     public bool comeFromLeft = false;
     public bool move = true;
-    public bool gameEnd = false;
-
-    //private
     public Vector3 target;
+    public AiManager aiManager;
+
 
     void Awake(){
         rb2D = GetComponent<Rigidbody2D>();
