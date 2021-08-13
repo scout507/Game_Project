@@ -10,6 +10,7 @@ public class WinManager : MonoBehaviour
     AiManager aiManager;
     float timer;
     bool entered = false;
+    bool entered2 = false;
     EnemySpawnerSidescroll enemySpawnerSidescroll;
 
     void Start()
@@ -22,9 +23,8 @@ public class WinManager : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        if (timer >= enemySpawnerSidescroll.startDelay + 3 && npcsDown() && !entered)
+        if (timer >= enemySpawnerSidescroll.startDelay + 3 && enemysDown() && !entered && enemySpawnerSidescroll.waves == enemySpawnerSidescroll.wavesCounter)
         {
-            timer = 0;
             entered = true;
             aiManager.gameEndNpc = true;
         }
@@ -38,13 +38,19 @@ public class WinManager : MonoBehaviour
         if (aiManager.wallLeft == null) Destroy(aiManager.wallRight);
         if (aiManager.wallRight == null) Destroy(aiManager.wallLeft);
 
-        if (aiManager.gameEndNpc && npcsDown() && timer >= delayBackToVillage)
+        if (aiManager.gameEndNpc && aiManager.npcsLeft.Count == 0 && aiManager.npcsRight.Count == 0 && !entered2)
+        {
+            timer = 0;
+            entered2 = true;
+        }
+
+        if (entered2 && timer >= delayBackToVillage)
         {
             SceneManager.LoadScene("Sidescroll");
         }
     }
 
-    bool npcsDown()
+    bool enemysDown()
     {
         if (aiManager.enemysAboveLeft.Count == 0 && aiManager.enemysBelowLeft.Count == 0 && aiManager.enemysAboveRight.Count == 0 && aiManager.enemysBelowRight.Count == 0)
             return true;

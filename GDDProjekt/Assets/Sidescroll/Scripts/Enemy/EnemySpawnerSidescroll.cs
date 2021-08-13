@@ -16,6 +16,7 @@ public class EnemySpawnerSidescroll : MonoBehaviour
     public int amountEnemyFlyPerSide;
     public int amountEnemyBothPerSide;
     public int waves;
+    public int wavesCounter;
     public float startDelay;
     public float nextWaveDelay;
     public Transform cityHall;
@@ -27,7 +28,6 @@ public class EnemySpawnerSidescroll : MonoBehaviour
     //private variables
     float wavesTimer;
     float waitTime;
-    int wavesCounter;
     AiManager aiManager;
 
     void Start()

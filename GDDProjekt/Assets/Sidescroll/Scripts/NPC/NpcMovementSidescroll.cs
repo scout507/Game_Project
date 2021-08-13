@@ -16,7 +16,7 @@ public class NpcMovementSidescroll : MonoBehaviour
     //private
     Vector3 target;
     float randomHold;
-    
+
     void Start()
     {
         randomHold = Random.Range(1.5f, 2);
@@ -42,7 +42,12 @@ public class NpcMovementSidescroll : MonoBehaviour
         {
             rb2D.velocity = Vector3.zero;
             move = false;
-            if (aiManager.gameEndNpc) Destroy(gameObject);
+            if (aiManager.gameEndNpc)
+            {
+                aiManager.npcsLeft.Remove(gameObject);
+                aiManager.npcsRight.Remove(gameObject);
+                Destroy(gameObject);
+            }
         }
     }
 }
