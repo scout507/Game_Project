@@ -6,7 +6,11 @@ using UnityEngine.Tilemaps;
 public class Manager : MonoBehaviour
 {
     public GameObject bossarena;
-    GameObject hero;
+    public Transform bossPlayerSpawn;
+    public Transform bossBossSpawn;
+    public GameObject portal;
+
+    public GameObject boss;
     public GameObject cam;
     public int level = 0;
     public int monsterAmount = 10;
@@ -24,6 +28,7 @@ public class Manager : MonoBehaviour
     public Tilemap wall;
     public Tilemap floor;
     public Tilemap innerObs;
+    public Tilemap bossTiles;
 
     //UI
     
@@ -35,6 +40,7 @@ public class Manager : MonoBehaviour
     PlayerController playerController;
     UIController uIController;
     
+    GameObject hero;
 
     void Start()
     {
@@ -54,6 +60,7 @@ public class Manager : MonoBehaviour
     }
 
     public void newMap(){
+        portal.SetActive(false);
         level++;
         monstersInLevel.ForEach( monster =>{
             Destroy(monster);
@@ -74,16 +81,31 @@ public class Manager : MonoBehaviour
             monsterAmount = 10 + Mathf.RoundToInt(level*(4f/5f));
             if(monsterAmount >= 50) monsterAmount = 50;
             lighting.transform.position = new Vector3(Random.Range(-300,300), Random.Range(-300,300), 0);
-            if(level == 10) floor.color = new Color(130f/255f, 184f/255f, 224f/255f,1);
-            if(level == 20) floor.color = new Color(130f/255f, 224f/255f, 170f/255f,1);
-            if(level == 30) floor.color = new Color(224f/255f, 130f/255f, 141f/255f,1);
-            if(level == 40) floor.color = new Color(213f/255f, 130f/255f, 224f/255f,1);
+            
+            
+            
+            if(level == 40){
+                floor.color = new Color(213f/255f, 130f/255f, 224f/255f,1);
+                bossTiles.color = new Color(213f/255f, 130f/255f, 224f/255f,1);
+            }
+            else if(level > 30){
+                floor.color = new Color(224f/255f, 130f/255f, 141f/255f,1);
+                bossTiles.color = new Color(224f/255f, 130f/255f, 141f/255f,1);
+            } 
+            else if(level > 20){
+                floor.color = new Color(130f/255f, 224f/255f, 170f/255f,1);
+                bossTiles.color = new Color(130f/255f, 224f/255f, 170f/255f,1);
+            } 
+            else if(level > 10){
+                floor.color = new Color(130f/255f, 184f/255f, 224f/255f,1);
+                bossTiles.color = new Color(130f/255f, 184f/255f, 224f/255f,1);
+            }  
             mapGenerator.spawnMap(settings); 
             Invoke("Scan",0.5f);
         }
         else{
-            
-            hero.transform.position = bossarena.transform.position;
+            Instantiate(boss, bossBossSpawn.position, Quaternion.identity);
+            hero.transform.position = bossPlayerSpawn.position;
         }
         cam.transform.position = new Vector3 (hero.transform.position.x, hero.transform.position.y, cam.transform.position.z);
     }
@@ -92,7 +114,6 @@ public class Manager : MonoBehaviour
         pathing.Scan();
     }
 
-
     public void presentExit(){
         pauseGame();
         uIController.exitMenu();
@@ -100,6 +121,10 @@ public class Manager : MonoBehaviour
 
     void pauseGame(){
         Time.timeScale = 0;
+    }
+
+    public void spawnPortal(){
+        portal.SetActive(true);
     }
 
     public void resumeGame(){

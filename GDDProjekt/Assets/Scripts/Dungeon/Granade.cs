@@ -31,6 +31,12 @@ public class Granade : MonoBehaviour
                 else if(obj.tag == "destructable"){
                     obj.GetComponent<DestructableProp>().die();
                 }
+                else if(obj.tag == "boss"){
+                    float distPercent = (exRadius/Vector2.Distance(this.transform.position,obj.transform.position))/exRadius;
+                    if(distPercent > 0.25f) obj.GetComponent<BossController>().takeDamage(dmg);
+                    else if(distPercent > 0.125f) obj.GetComponent<BossController>().takeDamage(dmg*0.5f);
+                    else obj.GetComponent<BossController>().takeDamage(dmg*0.25f);
+                }
             }
             explo = Instantiate(explo, transform.position, Quaternion.identity);
             Invoke("destroy", 0.5f);
