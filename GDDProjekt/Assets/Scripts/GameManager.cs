@@ -13,6 +13,14 @@ public class GameManager : MonoBehaviour
     public Weaponstats rifle;
     public Weaponstats shotgun;
     public Weaponstats grenadeLauncher;
+    public int day;
+
+    public int normalNpcLife = 100;
+    public int normalNpcDamage = 100;
+    public int sniperNpcLife = 100;
+    public int sniperNpcDamage = 100;
+    public int mortarNpcLife = 100;
+    public int mortarNpcDamage = 100;
     
     public int dungeonLevel;
 

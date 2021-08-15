@@ -20,7 +20,7 @@ public class EnemyFlyMovementSidescroll : EnemyMovementSidescroll
 
     void FixedUpdate()
     {
-        if (gameEnd)
+        if (aiManager.gameEndEnemy)
         {
             target = cityHall.position;
             speed = gameEndSpeed;
@@ -31,14 +31,22 @@ public class EnemyFlyMovementSidescroll : EnemyMovementSidescroll
 
         if (Vector2.Distance(transform.position, target) <= 1)
         {
-            if (gameEnd)
+            if (aiManager.gameEndEnemy)
             {
                 move = false;
                 rb2D.velocity = Vector3.zero;
             }
 
-            if (target == right) target = left;
-            else target = right;
+            if (target == right)
+            {
+                target = left;
+                transform.rotation = Quaternion.Euler(0, 180, 0);
+            }
+            else
+            {
+                target = right;
+                transform.rotation = Quaternion.Euler(0, 0, 0);
+            }
         }
     }
 }

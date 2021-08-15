@@ -17,9 +17,10 @@ public class EnemyAttackSidescroll : MonoBehaviour
     public Transform firepoint;
     public GameObject bulletNpcPrefab;
     public GameObject bulletWallPrefab;
-    public List<Transform> npcs;
+    public List<GameObject> npcs;
     public GameObject wall;
     public bool isFly;
+    public AiManager aiManager;
 
     //private
     float timer;
@@ -38,7 +39,7 @@ public class EnemyAttackSidescroll : MonoBehaviour
         timer += Time.deltaTime;
         npcTimer += Time.deltaTime;
 
-        if ((!enemyMovementSidescroll.move || isFly) && !enemyMovementSidescroll.gameEnd)
+        if ((!enemyMovementSidescroll.move || isFly) && !aiManager.gameEndEnemy)
         {
             switch (agro)
             {
@@ -55,7 +56,7 @@ public class EnemyAttackSidescroll : MonoBehaviour
             }
         }
 
-        if (life <= 0) Destroy(gameObject);
+        die();
     }
 
     void hitWall()
@@ -71,18 +72,11 @@ public class EnemyAttackSidescroll : MonoBehaviour
 
         if (npcs.Count > 0)
         {
-            if (npcs.First() == null)
-            {
-                npcs.Remove(npcs.First());
-                hitNpc();
-            }
-            else
-            {
-                Vector2 direction = (npcs.First().position - firepoint.position).normalized;
-                GameObject bullet = Instantiate(bulletNpcPrefab, firepoint.position, firepoint.rotation);
-                bullet.GetComponent<BulletEnemyNPCSidescroll>().damage = damageNpc;
-                bullet.GetComponent<Rigidbody2D>().velocity = direction * bulletSpeed;
-            }
+            GameObject npc = npcs[Random.Range(0, npcs.Count)];
+            Vector2 direction = (npc.transform.position - firepoint.position).normalized;
+            GameObject bullet = Instantiate(bulletNpcPrefab, firepoint.position, firepoint.rotation);
+            bullet.GetComponent<BulletEnemyNPCSidescroll>().damage = damageNpc;
+            bullet.GetComponent<Rigidbody2D>().velocity = direction * bulletSpeed;
         }
         else
         {
@@ -96,5 +90,17 @@ public class EnemyAttackSidescroll : MonoBehaviour
     public void takeDamage(int damage)
     {
         life -= damage;
+    }
+
+    void die()
+    {
+        if (life <= 0)
+        {
+            aiManager.enemysAboveLeft.Remove(gameObject);
+            aiManager.enemysBelowRight.Remove(gameObject);
+            aiManager.enemysAboveRight.Remove(gameObject);
+            aiManager.enemysBelowLeft.Remove(gameObject);
+            Destroy(gameObject);
+        }
     }
 }
