@@ -15,4 +15,9 @@ public class AiManager : MonoBehaviour
     public GameObject wallLeft;
     public GameObject wallRight;
     public bool stopNpcs = false;
+    public GameManager gameManager;
+
+    void Awake(){
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+    }
 }

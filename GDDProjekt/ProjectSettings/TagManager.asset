@@ -18,6 +18,7 @@ TagManager:
   - wall
   - npc
   - enemy
+  - ground
   layers:
   - Default
   - TransparentFX

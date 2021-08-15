@@ -27,6 +27,7 @@ public class NpcAttackSidescroll : MonoBehaviour
     {
         timer = cooldownHit;
         npcMovementSidescroll = GetComponent<NpcMovementSidescroll>();
+        life = maxLife;
     }
 
     void Update()
