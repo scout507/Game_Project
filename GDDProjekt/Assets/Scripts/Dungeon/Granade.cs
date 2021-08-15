@@ -41,6 +41,7 @@ public class Granade : MonoBehaviour
             explo = Instantiate(explo, transform.position, Quaternion.identity);
             Invoke("destroy", 0.5f);
             exploded = true;
+            FindObjectOfType<SoundManager>().Play("explosion");
             GetComponent<SpriteRenderer>().enabled = false;
         }
     }
