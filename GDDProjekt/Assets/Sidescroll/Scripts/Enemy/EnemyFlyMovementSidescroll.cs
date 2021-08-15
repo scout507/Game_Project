@@ -37,8 +37,16 @@ public class EnemyFlyMovementSidescroll : EnemyMovementSidescroll
                 rb2D.velocity = Vector3.zero;
             }
 
-            if (target == right) target = left;
-            else target = right;
+            if (target == right)
+            {
+                target = left;
+                transform.rotation = Quaternion.Euler(0, 180, 0);
+            }
+            else
+            {
+                target = right;
+                transform.rotation = Quaternion.Euler(0, 0, 0);
+            }
         }
     }
 }

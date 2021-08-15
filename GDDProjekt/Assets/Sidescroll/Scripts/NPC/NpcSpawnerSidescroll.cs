@@ -35,6 +35,12 @@ public class NpcSpawnerSidescroll : MonoBehaviour
     {
         waitTime = startDelay;
         aiManager = GetComponent<AiManager>();
+        normalNpcPrefab.GetComponent<NpcAttackSidescroll>().damage = aiManager.gameManager.normalNpcDamage;
+        normalNpcPrefab.GetComponent<NpcAttackSidescroll>().maxLife = aiManager.gameManager.normalNpcLife;
+        sniperNpcPrefab.GetComponent<NpcAttackSidescroll>().damage = aiManager.gameManager.sniperNpcDamage;
+        sniperNpcPrefab.GetComponent<NpcAttackSidescroll>().maxLife = aiManager.gameManager.sniperNpcLife;
+        mortarNpcPrefab.GetComponent<NpcAttackSidescroll>().damage = aiManager.gameManager.mortarNpcDamage;
+        mortarNpcPrefab.GetComponent<NpcAttackSidescroll>().maxLife = aiManager.gameManager.mortarNpcLife;
     }
 
     void Update()

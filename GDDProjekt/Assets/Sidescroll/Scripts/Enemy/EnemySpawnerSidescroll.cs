@@ -22,8 +22,6 @@ public class EnemySpawnerSidescroll : MonoBehaviour
     public Transform cityHall;
     public Transform turretRight;
     public Transform turretLeft;
-    public Transform wallRight;
-    public Transform wallLeft;
 
     //private variables
     float wavesTimer;
@@ -34,6 +32,10 @@ public class EnemySpawnerSidescroll : MonoBehaviour
     {
         waitTime = startDelay;
         aiManager = GetComponent<AiManager>();
+        amountEnemyNormalPerSide = aiManager.gameManager.day + 3;
+        amountEnemyFlyPerSide = Mathf.FloorToInt(aiManager.gameManager.day * 1f / 8f);
+        amountEnemyBothPerSide = Mathf.FloorToInt(aiManager.gameManager.day * 1f / 4f);
+        waves = aiManager.gameManager.day;
     }
 
     void FixedUpdate()
@@ -71,15 +73,11 @@ public class EnemySpawnerSidescroll : MonoBehaviour
         else aiManager.enemysBelowRight.Add(gb);
         EnemyMovementSidescroll enemyMovementSidescroll = gb.GetComponent<EnemyMovementSidescroll>();
         EnemyAttackSidescroll enemyAttackSidescroll = gb.GetComponent<EnemyAttackSidescroll>();
-        enemyAttackSidescroll.wall = wallRight.gameObject;
+        setValues(gb, enemyMovementSidescroll, enemyAttackSidescroll);
         enemyAttackSidescroll.npcs = aiManager.npcsRight;
-        enemyAttackSidescroll.aiManager = aiManager;
-
-        enemyMovementSidescroll.wallTarget = wallRight;
         enemyMovementSidescroll.comeFromLeft = false;
-        enemyMovementSidescroll.speed += Random.Range(1, 4);
-        enemyMovementSidescroll.aiManager = aiManager;
-        enemyMovementSidescroll.cityHall = cityHall;
+        enemyMovementSidescroll.wallTarget = aiManager.wallRight.transform;
+        enemyAttackSidescroll.wall = aiManager.wallRight;
     }
 
     void setValuesLeft(GameObject gb, bool isAbove)
@@ -88,15 +86,18 @@ public class EnemySpawnerSidescroll : MonoBehaviour
         else aiManager.enemysBelowLeft.Add(gb);
         EnemyMovementSidescroll enemyMovementSidescroll = gb.GetComponent<EnemyMovementSidescroll>();
         EnemyAttackSidescroll enemyAttackSidescroll = gb.GetComponent<EnemyAttackSidescroll>();
-
-        enemyAttackSidescroll.wall = wallLeft.gameObject;
+        setValues(gb, enemyMovementSidescroll, enemyAttackSidescroll);
         enemyAttackSidescroll.npcs = aiManager.npcsLeft;
-        enemyAttackSidescroll.aiManager = aiManager;
-
-        enemyMovementSidescroll.cityHall = cityHall;
-        enemyMovementSidescroll.wallTarget = wallLeft;
         enemyMovementSidescroll.comeFromLeft = true;
-        enemyMovementSidescroll.speed += Random.Range(1, 4);
+        enemyMovementSidescroll.wallTarget = aiManager.wallLeft.transform;
+        enemyAttackSidescroll.wall = aiManager.wallLeft;
+    }
+
+    void setValues(GameObject gb, EnemyMovementSidescroll enemyMovementSidescroll, EnemyAttackSidescroll enemyAttackSidescroll)
+    {
+        enemyAttackSidescroll.aiManager = aiManager;
         enemyMovementSidescroll.aiManager = aiManager;
+        enemyMovementSidescroll.speed += Random.Range(1, 4);
+        enemyMovementSidescroll.cityHall = cityHall;
     }
 }
