@@ -17,6 +17,9 @@ public class Bullet : MonoBehaviour
             else if(other.tag == "destructable"){
                 other.GetComponent<DestructableProp>().die();
             }
+            else if(other.tag == "boss"){
+                other.GetComponent<BossController>().takeDamage(dmg);
+            }
         }
     }
 }

@@ -19,6 +19,7 @@ TagManager:
   - npc
   - enemy
   - ground
+  - boss
   layers:
   - Default
   - TransparentFX

@@ -25,8 +25,8 @@ public class PlayerController : MonoBehaviour
 
     float angle;
     float facing;
-    bool moveBlock;
-    float moveBlockTimer;
+    public bool moveBlock;
+    public float moveBlockTimer;
 
     public Weapon gunscript;
     Vector2 mouse;
@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour
         movement.y = Input.GetAxisRaw("Vertical");
         mouse = cam.ScreenToWorldPoint(Input.mousePosition);
         if(Input.GetButton("Fire1") && !manager.paused) activeGun.GetComponent<Weapon>().shoot(gun.position,gun.up, Quaternion.Euler(0,0,facing) , Camera.main.ScreenToWorldPoint(Input.mousePosition));
-        if(Input.GetKeyDown(KeyCode.Space) && !manager.paused && dashTimer <= 0) dash();
+        if(Input.GetKeyDown(KeyCode.Space) && !manager.paused && dashTimer <= 0 && moveBlockTimer <= 0) dash();
         if(Input.GetKeyDown(KeyCode.Q) && !manager.paused) switchWeapon();
         //timers
         moveBlockTimer -= Time.deltaTime;
@@ -61,6 +61,8 @@ public class PlayerController : MonoBehaviour
             rb.velocity = Vector2.zero;
         }
         dashTimer -= Time.deltaTime; 
+
+        FindObjectOfType<SoundManager>().PlayOnToggle("walkOnRock", isMoving());
     }
 
     void FixedUpdate()
@@ -97,6 +99,7 @@ public class PlayerController : MonoBehaviour
             moveBlockTimer = dashDuration;
             moveBlock = true;
             rb.velocity = movement*dashForce;
+            FindObjectOfType<SoundManager>().Play("jumpOnRock");
         }
     }
 
@@ -128,6 +131,7 @@ public class PlayerController : MonoBehaviour
         if(weaponOneActive) activeGun = guns[0];
         else activeGun = guns[1];
         gunscript = activeGun.GetComponent<Weapon>();
+        FindObjectOfType<SoundManager>().Play("switchWeapon");
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -140,5 +144,14 @@ public class PlayerController : MonoBehaviour
                 manager.newMap();
             }else manager.presentExit();
         }
+    }
+
+    public void getStunned(float duration){
+        moveBlockTimer = duration;
+        moveBlock = true;
+    }
+    private bool isMoving()
+    {
+        return Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0;
     }
 }
