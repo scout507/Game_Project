@@ -38,17 +38,8 @@ public class SoundManager : MonoBehaviour
         {
             s.source = gameObject.AddComponent<AudioSource>();
             s.source.clip = s.clip;
-
-            if (globalVolume != 0)
-            {
-                s.source.volume = globalVolume;
-            }
-            else
-            {
-                s.source.volume = s.volume;
-            }
-
-            s.source.pitch = s.pitch;
+            s.source.volume = globalVolume*s.volume;
+            s.source.pitch = 1;
             s.source.loop = s.shouldLoop;
         }
     }
