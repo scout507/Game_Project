@@ -18,7 +18,7 @@ public class EnemyNormalMovement : EnemyMovementSidescroll
 
     void Update()
     {
-        if (gameEnd)
+        if (aiManager.gameEndEnemy)
         {
             target = cityHall.position;
             randomHold = 2;

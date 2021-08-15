@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 8715647931285613024}
   - component: {fileID: 8715647931285613027}
   m_Layer: 0
-  m_Name: NPCSpawnerLeft 1
+  m_Name: NPCSniperSidescroll
   m_TagString: npc
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -180,7 +180,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8715647931285613049}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 008b8cdb68429564f8a09cf6ccef6720, type: 3}
   m_Name: 
@@ -193,5 +193,6 @@ MonoBehaviour:
   bulletSpeed: 20
   firepoint: {fileID: 8715647930696434802}
   bulletNpcPrefab: {fileID: 2741348265609809042, guid: e318b9986cd5c1c4381a8f3bb2a25ed9, type: 3}
+  bulletMortarNpcPrefab: {fileID: 2741348265609809042, guid: 9500d596cd5f03b4c8f0e2b976803a63, type: 3}
   enemysBelow: []
   enemysAbove: []

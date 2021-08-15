@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4888570139442329025}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -65.88, y: -0.14, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4888570140867661593}
@@ -76,8 +76,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -9095717837082945937, guid: bd3cb4af8406d4436a2ae8c2aafe1f8d, type: 3}
-  m_Color: {r: 1, g: 0.023584902, b: 0.023584902, a: 1}
+  m_Sprite: {fileID: -5530627178743334547, guid: 0c28b0b086060034a806a969b27c12bc, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -133,6 +133,8 @@ MonoBehaviour:
   bulletWallPrefab: {fileID: 2741348265609809042, guid: 1118970380faec84b83d1514abbfe992, type: 3}
   npcs: []
   wall: {fileID: 0}
+  isFly: 0
+  aiManager: {fileID: 0}
 --- !u!70 &4888570139442329031
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -146,9 +148,9 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 2}
-  m_Direction: 0
+  m_Offset: {x: 0.0555286, y: -0.38871175}
+  m_Size: {x: 1.4129671, y: 0.65142447}
+  m_Direction: 1
 --- !u!114 &1840562686843148350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,11 +169,12 @@ MonoBehaviour:
   cityHall: {fileID: 0}
   wallTarget: {fileID: 0}
   comeFromLeft: 0
-  target: {x: 0, y: 0, z: 0}
   move: 1
-  gameEnd: 0
+  target: {x: 0, y: 0, z: 0}
+  aiManager: {fileID: 0}
   minDistance: 1
   maxDistance: 3
+  randomHold: 0
 --- !u!1 &4888570140867661592
 GameObject:
   m_ObjectHideFlags: 0
@@ -196,7 +199,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4888570140867661592}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.64, y: -0.04, z: 0}
+  m_LocalPosition: {x: 0.57, y: -0.58, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4888570139442329028}
