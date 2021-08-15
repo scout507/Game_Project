@@ -13,6 +13,9 @@ public class SoundManager : MonoBehaviour
     public Sound themeSound;
     public static SoundManager instance;
 
+    [Range(0f, 1f)]
+    public float globalVolume = 0f;
+
     void Awake()
     {
         // a singleton pattern to make sure that the
@@ -35,7 +38,16 @@ public class SoundManager : MonoBehaviour
         {
             s.source = gameObject.AddComponent<AudioSource>();
             s.source.clip = s.clip;
-            s.source.volume = s.volume;
+
+            if (globalVolume != 0)
+            {
+                s.source.volume = globalVolume;
+            }
+            else
+            {
+                s.source.volume = s.volume;
+            }
+
             s.source.pitch = s.pitch;
             s.source.loop = s.shouldLoop;
         }
