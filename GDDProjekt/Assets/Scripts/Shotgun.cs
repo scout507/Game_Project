@@ -33,6 +33,7 @@ public class Shotgun : Weapon
             lastShotTimer = 0f;
             overheat += overheatPerShot;
             muzzleFire.enabled = true;
+			FindObjectOfType<SoundManager>().Play("shootShotgun");
         }
     }
 }
