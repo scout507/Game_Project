@@ -61,6 +61,8 @@ public class PlayerController : MonoBehaviour
             rb.velocity = Vector2.zero;
         }
         dashTimer -= Time.deltaTime; 
+
+        FindObjectOfType<SoundManager>().PlayOnToggle("walkOnRock", isMoving());
     }
 
     void FixedUpdate()
@@ -97,6 +99,7 @@ public class PlayerController : MonoBehaviour
             moveBlockTimer = dashDuration;
             moveBlock = true;
             rb.velocity = movement*dashForce;
+            FindObjectOfType<SoundManager>().Play("jumpOnRock");
         }
     }
 
@@ -128,6 +131,7 @@ public class PlayerController : MonoBehaviour
         if(weaponOneActive) activeGun = guns[0];
         else activeGun = guns[1];
         gunscript = activeGun.GetComponent<Weapon>();
+        FindObjectOfType<SoundManager>().Play("switchWeapon");
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -145,5 +149,9 @@ public class PlayerController : MonoBehaviour
     public void getStunned(float duration){
         moveBlockTimer = duration;
         moveBlock = true;
+    }
+    private bool isMoving()
+    {
+        return Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0;
     }
 }
