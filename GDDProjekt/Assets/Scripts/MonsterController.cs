@@ -8,6 +8,7 @@ public class MonsterController : MonoBehaviour
     public Sprite[] sprites;
     public float hp;
     public float dmg;
+    public bool isDmging;
     public float moveSpeed;
     public float atkSpeed;
     public float meleeAtkRange;
@@ -99,7 +100,10 @@ public class MonsterController : MonoBehaviour
     }
 
     void meleeAtk(){
+        isDmging = true;
         playerStats.takeDamage(dmg);
+        FindObjectOfType<SoundManager>().PlayOnToggle("monsterBite", isDmging);
+        isDmging = false;
     }
 
     void rangeAtk(){
