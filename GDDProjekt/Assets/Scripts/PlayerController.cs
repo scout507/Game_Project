@@ -61,7 +61,9 @@ public class PlayerController : MonoBehaviour
         if(moveBlockTimer <= 0){
             moveBlock = false;
             rb.velocity = Vector2.zero;
-        } 
+        }
+
+        FindObjectOfType<SoundManager>().PlayOnToggle("walkOnRock", isMoving());
     }
 
     void FixedUpdate()
@@ -100,6 +102,7 @@ public class PlayerController : MonoBehaviour
             moveBlockTimer = dashDuration;
             moveBlock = true;
             rb.velocity = movement*dashForce;
+            FindObjectOfType<SoundManager>().Play("jumpOnRock");
         }
     }
 
@@ -129,6 +132,7 @@ public class PlayerController : MonoBehaviour
         if(weaponOneActive) activeGun = guns[0];
         else activeGun = guns[1];
         gunscript = activeGun.GetComponent<Weapon>();
+        FindObjectOfType<SoundManager>().Play("switchWeapon");
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -139,5 +143,10 @@ public class PlayerController : MonoBehaviour
         if(other.tag == "portal"){
             Debug.Log("portal");
         }
+    }
+
+    private bool isMoving()
+    {
+        return Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0;
     }
 }

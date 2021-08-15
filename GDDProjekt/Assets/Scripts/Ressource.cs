@@ -49,6 +49,7 @@ public class Ressource : MonoBehaviour
     void getCollected(){
         playerStats.loot[type] += amount;
         Destroy(this.gameObject);
+        FindObjectOfType<SoundManager>().Play("itemPickup");
     }
 
 }

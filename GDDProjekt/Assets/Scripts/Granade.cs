@@ -31,6 +31,7 @@ public class Granade : MonoBehaviour
         }
         
         Destroy(this.gameObject);
+        FindObjectOfType<SoundManager>().Play("explosion");
     }
 
     private void OnTriggerEnter2D(Collider2D other)
