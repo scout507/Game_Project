@@ -32,7 +32,7 @@ public class BossController : MonoBehaviour
     float skill1Timer; // Slam
     float skill2Timer; // Projectiles   
     float skill3Timer; // Minion
-    float skill4Timer; //WIP
+    float skill4Timer; // WIP
 
     public float stunDuration;
         
@@ -128,13 +128,13 @@ public class BossController : MonoBehaviour
         } 
         else if(coolDown <= 0){
             target = new Vector2(0,0);
-            if(skill4Timer <= 0){
+            if(skill4Timer <= 0 && bosslevel >= 4){
                 skill4();
             }
-            else if(skill3Timer <= 0){
+            else if(skill3Timer <= 0 && bosslevel >= 3){
                 skill3();
             }
-            else if(skill2Timer <= 0){
+            else if(skill2Timer <= 0 && bosslevel >= 2){
                 skill2();
             }
             else if(skill1Timer <= 0){

@@ -14,7 +14,14 @@ public class GameManager : MonoBehaviour
     public Weaponstats shotgun;
     public Weaponstats grenadeLauncher;
     
-    
+    public int dungeonLevel;
+
+    //Settings
+
+
+    //SaveGame
+
+
 
 
     private void Awake()

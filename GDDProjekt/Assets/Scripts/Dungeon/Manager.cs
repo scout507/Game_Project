@@ -138,11 +138,16 @@ public class Manager : MonoBehaviour
     }
 
     void loadFromManager(){
+        
+        level = gameManager.dungeonLevel;
+
+
+        //Set up Weapons
         GameObject gunHolder = GameObject.FindGameObjectWithTag("gunHolder");
         GameObject gun;
         bool activeSelected = false;
         Vector3 spawnPoint = new Vector3(gunHolder.transform.position.x+0.5f, gunHolder.transform.position.y, gunHolder.transform.position.z);
-        //Set up Weapons
+        
         
         for(int i = 0; i < 2; i++){
             Weapon weaponScript;
