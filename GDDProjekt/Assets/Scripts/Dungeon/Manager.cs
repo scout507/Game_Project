@@ -131,9 +131,9 @@ public class Manager : MonoBehaviour
         Time.timeScale = 1;
     }
 
-    void saveToManager(){
+    public void saveToManager(){
         for(int i = 0; i<playerStats.loot.Length; i++){
-            gameManager.resources[i] = playerStats.loot[i];
+            gameManager.resources[i] += playerStats.loot[i];
         }
     }
 

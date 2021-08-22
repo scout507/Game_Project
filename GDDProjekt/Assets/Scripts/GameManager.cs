@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
     public int dungeonLevel;
 
     //Settings
-
+    public int hardCoreMode;
 
     //SaveGame
 

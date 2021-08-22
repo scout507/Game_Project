@@ -10,6 +10,7 @@ public class UIController : MonoBehaviour
     public TextMeshProUGUI lvlTxt;
 
     public Slider hpSlider;
+    public Slider esSlider;
     public Slider overHeatSlider;
     public TextMeshProUGUI currentHealthTxt;
     public TextMeshProUGUI maxHealthTxt;
@@ -34,6 +35,13 @@ public class UIController : MonoBehaviour
     public Image weapon2;
     public Image spinner;
 
+
+    public GameObject dialogueHolder;
+    public TextMeshProUGUI diaNametxt;
+    public TextMeshProUGUI diatxt;
+    public string dialogueName;
+    public string dialogue;
+
     Manager manager;
     PlayerStats playerStats;
     PlayerController playerController;
@@ -53,6 +61,8 @@ public class UIController : MonoBehaviour
         maxHealthTxt.text = Mathf.RoundToInt(playerStats.maxhp).ToString();
         hpSlider.maxValue = playerStats.maxhp;
         hpSlider.value = playerStats.hp;
+        esSlider.maxValue = playerStats.maxEnergyShield;
+        esSlider.value = playerStats.energyShield;
         
         //Collectibles
         woodTxt.text = playerStats.loot[0].ToString();
@@ -76,6 +86,8 @@ public class UIController : MonoBehaviour
             weapon2.sprite = playerController.guns[1].GetComponent<Weapon>().iconActive;
         }
 
+        diaNametxt.text = dialogueName;
+        diatxt.text = dialogue;
 
     }
 
@@ -98,12 +110,22 @@ public class UIController : MonoBehaviour
 
     public void exitButton(){
         exitScreen.SetActive(false);
+        manager.resumeGame();
+        manager.saveToManager();
         SceneManager.LoadScene("Sidescroll");
     }
 
 
     public void spinanim(){
         spinner.GetComponent<Animator>().Play("spin");
+    }
+
+    public void startDialogue(){
+        dialogueHolder.SetActive(true);
+    }
+
+    public void endDialogue(){
+        dialogueHolder.SetActive(false);
     }
 
 }
