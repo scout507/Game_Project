@@ -108,6 +108,14 @@ MonoBehaviour:
   - {fileID: -3856233466873844498, guid: 1ef1a95e119c89b4abf87821e74a9fc8, type: 3}
   dmgPopUp: {fileID: 8669903535900010463, guid: 50cab34027a89554faccd1863ef59964, type: 3}
   lastPopUp: {fileID: 0}
+  startConvo:
+    NPCname: Boss
+    sentences:
+    - TEST
+  endConvo:
+    NPCname: Boss
+    sentences:
+    - TEST2
   bosslevel: 0
   hp: 1000
   maxhp: 1000
