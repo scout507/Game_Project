@@ -160,6 +160,7 @@ public class Manager : MonoBehaviour
                 gun.transform.parent = gunHolder.transform;
                 weaponScript = gun.GetComponent<Weapon>();
                 Shotgun shotgun = gun.GetComponent<Shotgun>();
+                Debug.Log(copyStats);
                 shotgun.projectiles = copyStats.projectiles;
                 shotgun.centering = copyStats.centering;
                 playerController.guns[i] = gun;

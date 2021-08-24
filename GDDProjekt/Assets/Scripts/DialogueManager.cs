@@ -14,10 +14,10 @@ public class DialogueManager : MonoBehaviour
     }
 
     public void startDialogue(Dialogue dialogue){
-        //Pause Game
+        // Pause Game
         Time.timeScale = 0;
         uiController.dialogueName = dialogue.NPCname;
-        //init Dialogue;
+        // init dialogue;
         quedSentences.Clear();
         foreach (string sentence in dialogue.sentences)
         {
