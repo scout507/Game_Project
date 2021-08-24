@@ -34,10 +34,13 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        loadSettings();
+
         rifle = new Weaponstats();
         shotgun = new Weaponstats();
         grenadeLauncher = new Weaponstats();
         initWeapons();
+
         if (instance == null) instance = this;
         else if (instance != this) Destroy(gameObject);  
         DontDestroyOnLoad(this.gameObject);
@@ -45,6 +48,9 @@ public class GameManager : MonoBehaviour
         
         saveGame();
         loadGame();
+
+        //get the settings
+
     }
 
     void startNewGame(){
@@ -63,7 +69,6 @@ public class GameManager : MonoBehaviour
         //TODO add filename
         SaveGame save = new SaveGame(resources,rifle,shotgun,grenadeLauncher,day);
         string json = JsonUtility.ToJson(save);
-        Debug.Log(json);
         File.WriteAllText(Application.dataPath + "/save.txt", json);
     }
 
@@ -78,6 +83,25 @@ public class GameManager : MonoBehaviour
             this.grenadeLauncher = loadedSave.grenadeLauncher;
             this.day = loadedSave.day;
         }      
+    }
+
+    void saveSettings(float master, float sfxVolume, float musicVolume){
+        Settings settings = new Settings(master,sfxVolume,musicVolume);
+        string json = JsonUtility.ToJson(settings);
+        
+        File.WriteAllText(Application.dataPath + "/settings.txt", json);
+    }
+
+    void loadSettings(){
+
+        if(File.Exists(Application.dataPath + "/settings.txt")){
+            string saveString = File.ReadAllText(Application.dataPath + "/save.txt");
+            Settings loadedSettings = JsonUtility.FromJson<Settings>(saveString);
+            SoundManager soundManager = GetComponentInChildren<SoundManager>();
+            soundManager.globalVolume = loadedSettings.masterVolume;
+            soundManager.sfxVolume = loadedSettings.sfxVolume;
+            soundManager.musicVolume = loadedSettings.musicVolume;
+        }
     }
 
 
@@ -97,6 +121,18 @@ public class GameManager : MonoBehaviour
             this.grenadeLauncher = grenadeLauncher;
             this.day = day;
         } 
+    }
+
+    public class Settings{
+        public float masterVolume;
+        public float sfxVolume;
+        public float musicVolume;
+
+        public Settings(float master, float sfx, float music){
+            this.masterVolume = master;
+            this.sfxVolume = sfx;
+            this.musicVolume = music;
+        }
     }
 
 
