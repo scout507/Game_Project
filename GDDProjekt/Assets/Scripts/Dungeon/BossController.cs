@@ -8,6 +8,8 @@ public class BossController : MonoBehaviour
     public Sprite[] sprites;
     public Transform dmgPopUp;
     public DmgPopUp lastPopUp;
+    public Dialogue startConvo;
+    public Dialogue endConvo; 
 
     public int bosslevel;
     public float hp;
@@ -50,6 +52,8 @@ public class BossController : MonoBehaviour
     Rigidbody2D rb;
     LootTable lootTable;
     Vector2 target;
+    DialogueManager dialogueManager;
+    GameObject manager;
 
     bool skill1Active;
     bool skill2Active;
@@ -63,12 +67,16 @@ public class BossController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player");
         hp = maxhp;
-        lootTable = GameObject.FindGameObjectWithTag("manager").GetComponent<LootTable>();
+        manager = GameObject.FindGameObjectWithTag("manager");
+        lootTable = manager.GetComponent<LootTable>();
+        dialogueManager = manager.GetComponent<DialogueManager>();
 
         skill1Timer = skill1Cd;
         skill2Timer = skill2Cd;
         skill3Timer = skill3Cd;
         skill4Timer = skill4Cd;
+
+        dialogueManager.startDialogue(startConvo);
     }
 
     // Update is called once per frame
@@ -213,6 +221,7 @@ public class BossController : MonoBehaviour
     
     void die(){
         if(!dead){
+            dialogueManager.startDialogue(endConvo);
             GameObject.FindGameObjectWithTag("manager").GetComponent<Manager>().spawnPortal();
             dead = true;
             Destroy(this.gameObject);
