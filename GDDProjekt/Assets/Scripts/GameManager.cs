@@ -1,6 +1,7 @@
 using System.Collections;
 using System.IO;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -28,10 +29,12 @@ public class GameManager : MonoBehaviour
     //Settings
     public int hardCoreMode;
     public Settings currentSettings;
+    
     public float master;
     public float sfx;
     public float music;
-     // 0=easy, 1=normal, 2=hardcore; 
+
+    // 0=easy, 1=normal, 2=hardcore; 
 
 
     //SaveGame
@@ -68,6 +71,7 @@ public class GameManager : MonoBehaviour
     void startNewGame(){
         initWeapons();
         saveGame();
+        SceneManager.LoadScene("Sidescroll");
     }
 
     void initWeapons(){
@@ -75,7 +79,6 @@ public class GameManager : MonoBehaviour
         shotgun.init(25,1,1,1,6,4,0);
         grenadeLauncher.init(50,1,11,2.5f,0,0,6);
     }
-
 
     void saveGame(){
         //TODO add filename
@@ -95,10 +98,14 @@ public class GameManager : MonoBehaviour
             this.grenadeLauncher = loadedSave.grenadeLauncher;
             this.day = loadedSave.day;
             this.difficulty = loadedSave.difficulty;
+            SceneManager.LoadScene("Sidescroll");
         }      
     }
 
     void saveSettings(Settings settings){
+        settings.masterVolume = master;
+        settings.musicVolume = music;
+        settings.sfxVolume = sfx;
         string json = JsonUtility.ToJson(settings);
         File.WriteAllText(Application.dataPath + "/settings.txt", json);
     }
@@ -141,6 +148,7 @@ public class GameManager : MonoBehaviour
         } 
     }
 
+    
     public class Settings{
         public float masterVolume;
         public float sfxVolume;
