@@ -5,15 +5,16 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-
-    //Player related stats
     public static GameManager instance = null; 
+
+    //Save Game related stats
     public int[] resources;
     public int[] selectedWeapons;
     public Weaponstats rifle;
     public Weaponstats shotgun;
     public Weaponstats grenadeLauncher;
     public int day;
+    public int difficulty;
 
     public int normalNpcLife = 100;
     public int normalNpcDamage = 100;
@@ -26,6 +27,12 @@ public class GameManager : MonoBehaviour
 
     //Settings
     public int hardCoreMode;
+    public Settings currentSettings;
+    public float master;
+    public float sfx;
+    public float music;
+     // 0=easy, 1=normal, 2=hardcore; 
+
 
     //SaveGame
 
@@ -50,7 +57,12 @@ public class GameManager : MonoBehaviour
         loadGame();
 
         //get the settings
-
+        currentSettings = loadSettings();
+        //if there are no saved settings init new ones
+        if(currentSettings == null){
+            currentSettings = new Settings(master, sfx, music);
+            saveSettings(currentSettings);
+        } 
     }
 
     void startNewGame(){
@@ -67,7 +79,7 @@ public class GameManager : MonoBehaviour
 
     void saveGame(){
         //TODO add filename
-        SaveGame save = new SaveGame(resources,rifle,shotgun,grenadeLauncher,day);
+        SaveGame save = new SaveGame(resources,rifle,shotgun,grenadeLauncher,day,difficulty);
         string json = JsonUtility.ToJson(save);
         File.WriteAllText(Application.dataPath + "/save.txt", json);
     }
@@ -82,26 +94,30 @@ public class GameManager : MonoBehaviour
             this.shotgun = loadedSave.shotgun;
             this.grenadeLauncher = loadedSave.grenadeLauncher;
             this.day = loadedSave.day;
+            this.difficulty = loadedSave.difficulty;
         }      
     }
 
-    void saveSettings(float master, float sfxVolume, float musicVolume){
-        Settings settings = new Settings(master,sfxVolume,musicVolume);
+    void saveSettings(Settings settings){
         string json = JsonUtility.ToJson(settings);
-        
         File.WriteAllText(Application.dataPath + "/settings.txt", json);
     }
 
-    void loadSettings(){
+    Settings loadSettings(){
 
         if(File.Exists(Application.dataPath + "/settings.txt")){
             string saveString = File.ReadAllText(Application.dataPath + "/save.txt");
             Settings loadedSettings = JsonUtility.FromJson<Settings>(saveString);
             SoundManager soundManager = GetComponentInChildren<SoundManager>();
             soundManager.globalVolume = loadedSettings.masterVolume;
+            master = loadedSettings.masterVolume;
             soundManager.sfxVolume = loadedSettings.sfxVolume;
+            sfx = loadedSettings.sfxVolume;
             soundManager.musicVolume = loadedSettings.musicVolume;
+            music = loadedSettings.musicVolume;
+            return loadedSettings;
         }
+        return null;
     }
 
 
@@ -113,13 +129,15 @@ public class GameManager : MonoBehaviour
         public Weaponstats shotgun;
         public Weaponstats grenadeLauncher;
         public int day;
+        public int difficulty;
 
-        public SaveGame(int[] res, Weaponstats rifle, Weaponstats shotgun, Weaponstats grenadeLauncher, int day){
+        public SaveGame(int[] res, Weaponstats rifle, Weaponstats shotgun, Weaponstats grenadeLauncher, int day, int difficulty){
             this.resources = res;
             this.rifle = rifle;
             this.shotgun = shotgun;
             this.grenadeLauncher = grenadeLauncher;
             this.day = day;
+            this.difficulty = difficulty;
         } 
     }
 
