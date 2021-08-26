@@ -20,6 +20,8 @@ public class SoundManager : MonoBehaviour
     [Range(0f, 1f)]
     public float musicVolume = 1f;
 
+    GameManager gameManager;
+
     void Awake()
     {
         // a singleton pattern to make sure that the
@@ -42,7 +44,7 @@ public class SoundManager : MonoBehaviour
         {
             s.source = gameObject.AddComponent<AudioSource>();
             s.source.clip = s.clip;
-            s.source.volume = globalVolume*sfxVolume*s.volume;
+            s.source.volume = s.volume*gameManager.master*gameManager.sfx;
             s.source.pitch = 1;
             s.source.loop = s.shouldLoop;
         }
@@ -50,12 +52,13 @@ public class SoundManager : MonoBehaviour
 
     private void Start()
     {
+        gameManager = GetComponentInParent<GameManager>();
         if (themeSound != null && themeSound.clip != null)
         {
             AudioSource source = gameObject.AddComponent<AudioSource>();
             source.clip = themeSound.clip;
             source.loop = themeSound.shouldLoop;
-            source.volume = themeSound.volume*musicVolume*globalVolume;
+            source.volume = themeSound.volume*gameManager.music*gameManager.master;
             source.pitch = themeSound.pitch;
             source.Play();
         }
