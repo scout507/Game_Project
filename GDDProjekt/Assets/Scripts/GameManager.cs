@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
     //SaveGame
 
     // In-Game Menu
-    public static bool GamePaused = false;
+    public bool GamePaused = false;
     PauseMenu pauseMenu;
 
     private void Awake()
@@ -113,7 +113,7 @@ public class GameManager : MonoBehaviour
         grenadeLauncher.init(50,1,11,2.5f,0,0,6);
     }
 
-    void saveGame(){
+    public void saveGame(){
         //TODO add filename
         SaveGame save = new SaveGame(resources,rifle,shotgun,grenadeLauncher,day,difficulty);
         string json = JsonUtility.ToJson(save);

@@ -7,15 +7,23 @@ public class PauseMenu : MonoBehaviour
 {
 
     public GameObject pauseMenuUI;
+    GameManager gm;
+
+    private void Start()
+    {
+        gm = GetComponentInParent<GameManager>();
+    }
 
     public void Resume()
     {
+        gm.GamePaused = false;
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
     }
 
     public void Pause()
     {
+        gm.GamePaused = true;
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
     }
@@ -33,6 +41,7 @@ public class PauseMenu : MonoBehaviour
 
     public void SaveGame()
     {
-        // TODO: save the game
+        gm.saveGame();
+        Resume();
     }
 }

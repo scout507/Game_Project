@@ -94,6 +94,12 @@ public class SoundManager : MonoBehaviour
             return;
         }
 
+        if (s.source == null)
+        {
+            Debug.LogError("'" + s.name + "' has no source");
+            return;
+        }
+
         s.source.Play();
     }
 
