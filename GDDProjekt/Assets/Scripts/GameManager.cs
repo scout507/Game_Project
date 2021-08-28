@@ -39,8 +39,9 @@ public class GameManager : MonoBehaviour
 
     //SaveGame
 
-
-
+    // In-Game Menu
+    public static bool GamePaused = false;
+    PauseMenu pauseMenu;
 
     private void Awake()
     {
@@ -66,6 +67,27 @@ public class GameManager : MonoBehaviour
             currentSettings = new Settings(master, sfx, music);
             saveSettings(currentSettings);
         } 
+    }
+
+    private void Start()
+    {
+        pauseMenu = GetComponentInChildren<PauseMenu>();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (GamePaused)
+            {
+                pauseMenu.Resume();
+                GamePaused = false;
+            } else
+            {
+                pauseMenu.Pause();
+                GamePaused = true;
+            }
+        }
     }
 
     public void startNewGame(){
@@ -144,7 +166,6 @@ public class GameManager : MonoBehaviour
         return null;
     }
 
-
     public class SaveGame{
 
         public int[] resources;
@@ -164,7 +185,6 @@ public class GameManager : MonoBehaviour
             this.difficulty = difficulty;
         } 
     }
-
     
     public class Settings{
         public float masterVolume;
