@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 {
 
     //Player related stats
-    public static GameManager instance = null; 
+    public static GameManager instance = null;
     public int[] resources;
     public int[] selectedWeapons;
     public Weaponstats rifle;
@@ -17,10 +17,12 @@ public class GameManager : MonoBehaviour
     public bool wasInDungeon = false;
     public bool hasSlept = true;
 
-    public int normalNpcLevel = 1;
-    public int sniperNpcLevel = 1;
-    public int mortarNpcLevel = 1;
-    
+    public int normalNpcLevel = 0;
+    public int sniperNpcLevel = 0;
+    public int mortarNpcLevel = 0;
+    public int wall = 0;
+    public int turret = 0;
+
     public int dungeonLevel;
 
     //Settings
@@ -34,17 +36,19 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         if (instance == null) instance = this;
-        else if (instance != this) Destroy(gameObject);  
+        else if (instance != this) Destroy(gameObject);
         DontDestroyOnLoad(this.gameObject);
     }
 
-    void startNewGame(){
+    void startNewGame()
+    {
         //initialize weapons with standart values
-        rifle.init(10,5,0.5f,2,0,0,0);
+        rifle.init(10, 5, 0.5f, 2, 0, 0, 0);
     }
 
 
-    void saveGame(){
+    void saveGame()
+    {
 
     }
 

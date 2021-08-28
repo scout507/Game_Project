@@ -3,13 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //Index = Level
-
-public class LevelCostsSidescroll : MonoBehaviour
+[System.Serializable]
+public class LevelCostsSidescroll
 {
-    public int[] ressource1Amount = new int[1];
-    public int[] ressource2Amount = new int[1];
-    public int[] ressource3Amount = new int[1];
-    public int[] ressource1Name = new int[1];
-    public int[] ressource2Name = new int[1];
-    public int[] ressource3Name = new int[1];
+    public ComponentsSidescroll[] level = new ComponentsSidescroll[3];
+}
+
+[System.Serializable]
+public class ComponentsSidescroll
+{
+    public RessourceSidescroll[] componenten = new RessourceSidescroll[3];
+}
+
+[System.Serializable]
+public class RessourceSidescroll
+{
+    public int amount = 1;
+    public int id = 0;
 }
