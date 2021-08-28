@@ -35,12 +35,12 @@ public class NpcSpawnerSidescroll : MonoBehaviour
     {
         waitTime = startDelay;
         aiManager = GetComponent<AiManager>();
-        normalNpcPrefab.GetComponent<NpcAttackSidescroll>().damage = aiManager.gameManager.normalNpcDamage;
-        normalNpcPrefab.GetComponent<NpcAttackSidescroll>().maxLife = aiManager.gameManager.normalNpcLife;
-        sniperNpcPrefab.GetComponent<NpcAttackSidescroll>().damage = aiManager.gameManager.sniperNpcDamage;
-        sniperNpcPrefab.GetComponent<NpcAttackSidescroll>().maxLife = aiManager.gameManager.sniperNpcLife;
-        mortarNpcPrefab.GetComponent<NpcAttackSidescroll>().damage = aiManager.gameManager.mortarNpcDamage;
-        mortarNpcPrefab.GetComponent<NpcAttackSidescroll>().maxLife = aiManager.gameManager.mortarNpcLife;
+        normalNpcPrefab.GetComponent<NpcAttackSidescroll>().damage = aiManager.gameManager.normalNpcLevel;
+        normalNpcPrefab.GetComponent<NpcAttackSidescroll>().maxLife = aiManager.gameManager.normalNpcLevel;
+        sniperNpcPrefab.GetComponent<NpcAttackSidescroll>().damage = aiManager.gameManager.sniperNpcLevel;
+        sniperNpcPrefab.GetComponent<NpcAttackSidescroll>().maxLife = aiManager.gameManager.sniperNpcLevel;
+        mortarNpcPrefab.GetComponent<NpcAttackSidescroll>().damage = aiManager.gameManager.mortarNpcLevel;
+        mortarNpcPrefab.GetComponent<NpcAttackSidescroll>().maxLife = aiManager.gameManager.mortarNpcLevel;
     }
 
     void Update()

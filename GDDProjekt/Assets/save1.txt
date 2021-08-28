@@ -1,0 +1,1 @@
+{"ressource1Amount":[0],"ressource2Amount":[0],"ressource3Amount":[0],"ressource1Name":[0],"ressource2Name":[0],"ressource3Name":[0]}
