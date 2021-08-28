@@ -59,10 +59,11 @@ public class SleepSidescroll : BuildingOverClassSidescroll
     public void intoDefense()
     {
         gameManager.day++;
+        gameManager.hasSlept = true;
+        gameManager.wasInDungeon = false;
+
         if (gameManager.day % 3 == 0)
         {
-            gameManager.wasInDungeon = false;
-            gameManager.hasSlept = true;
             textMeshProTitle = textMeshProTitleOld;
             textMeshProTitleInteract = textMeshProTitleInteractOld;
             SceneManager.LoadScene("Defense");

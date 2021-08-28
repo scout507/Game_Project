@@ -10,7 +10,7 @@ public class UpgradeWeaponsSidescroll : BuildingOverClassSidescroll
     //private variables
     PlayerMovementSidescroll playerMovementSidescroll;
     Canvas menuCanvas;
-    
+
 
     void Start()
     {
@@ -21,12 +21,12 @@ public class UpgradeWeaponsSidescroll : BuildingOverClassSidescroll
     public override void activateMenu()
     {
         playerMovementSidescroll.inEvent = true;
-        menuCanvas.enabled = true;
+        menu.SetActive(true);
     }
 
     public override void deactivateMenu()
     {
         playerMovementSidescroll.inEvent = false;
-        menuCanvas.enabled = false;
+        menu.SetActive(false);
     }
 }

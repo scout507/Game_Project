@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using TMPro;
-using UnityEngine.UI;
 
 
 public class VillageUpgradeMenuSidescroll : MonoBehaviour

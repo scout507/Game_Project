@@ -21,6 +21,11 @@ public class Weaponstats : ScriptableObject
     public float overheatPerShot;
     public float overheatLossRate;
 
+    public int fireRateLevel;
+    public int damageLevel;
+    public int cooldownLevel;
+    public int explosionRadiusLevel;
+
     //shotgun
     public int projectiles;
     public int centering;

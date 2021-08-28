@@ -1,0 +1,48 @@
+{
+    "level": [
+        {
+            "componenten": [
+                {
+                    "amount": 1,
+                    "id": 0
+                },
+                {
+                    "amount": 1,
+                    "id": 0
+                },
+                {
+                    "amount": 1,
+                    "id": 0
+                }
+            ]
+        },
+        {
+            "componenten": [
+                {
+                    "amount": 4,
+                    "id": 1
+                },
+                {
+                    "amount": 5,
+                    "id": 0
+                }
+            ]
+        },
+        {
+            "componenten": [
+                {
+                    "amount": 1,
+                    "id": 0
+                },
+                {
+                    "amount": 1,
+                    "id": 0
+                },
+                {
+                    "amount": 1,
+                    "id": 0
+                }
+            ]
+        }
+    ]
+}
