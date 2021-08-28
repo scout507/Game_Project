@@ -68,10 +68,21 @@ public class GameManager : MonoBehaviour
         } 
     }
 
-    void startNewGame(){
+    public void startNewGame(){
         initWeapons();
         saveGame();
         SceneManager.LoadScene("Sidescroll");
+        SoundManager soundManager = GetComponentInChildren<SoundManager>();
+        soundManager.StopThemeSound();
+    }
+
+    public void startLoadedGame()
+    {
+        initWeapons();
+        // saveGame();
+        SceneManager.LoadScene("Sidescroll");
+        SoundManager soundManager = GetComponentInChildren<SoundManager>();
+        soundManager.StopThemeSound();
     }
 
     void initWeapons(){
@@ -98,7 +109,7 @@ public class GameManager : MonoBehaviour
             this.grenadeLauncher = loadedSave.grenadeLauncher;
             this.day = loadedSave.day;
             this.difficulty = loadedSave.difficulty;
-            SceneManager.LoadScene("Sidescroll");
+            //SceneManager.LoadScene("Sidescroll"); -> this was causing to skip the menu
         }      
     }
 
@@ -110,10 +121,16 @@ public class GameManager : MonoBehaviour
         File.WriteAllText(Application.dataPath + "/settings.txt", json);
     }
 
-    Settings loadSettings(){
+    public void saveMenuSettings()
+    {
+        string json = JsonUtility.ToJson(currentSettings);
+        File.WriteAllText(Application.dataPath + "/settings.txt", json);
+    }
+
+    public Settings loadSettings(){
 
         if(File.Exists(Application.dataPath + "/settings.txt")){
-            string saveString = File.ReadAllText(Application.dataPath + "/save.txt");
+            string saveString = File.ReadAllText(Application.dataPath + "/settings.txt");
             Settings loadedSettings = JsonUtility.FromJson<Settings>(saveString);
             SoundManager soundManager = GetComponentInChildren<SoundManager>();
             soundManager.globalVolume = loadedSettings.masterVolume;

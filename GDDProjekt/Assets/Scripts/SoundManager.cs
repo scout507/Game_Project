@@ -21,6 +21,7 @@ public class SoundManager : MonoBehaviour
     public float musicVolume = 1f;
 
     GameManager gameManager;
+    AudioSource themeSource;
 
     void Awake()
     {
@@ -52,15 +53,31 @@ public class SoundManager : MonoBehaviour
 
     private void Start()
     {
-        gameManager = GetComponentInParent<GameManager>();
-        if (themeSound != null && themeSound.clip != null)
+        StartThemeSound();   
+    }
+
+    public void StartThemeSound()
+    {
+        if (themeSound != null && themeSound.clip != null && themeSource == null)
         {
-            AudioSource source = gameObject.AddComponent<AudioSource>();
-            source.clip = themeSound.clip;
-            source.loop = themeSound.shouldLoop;
-            source.volume = themeSound.volume*gameManager.music*gameManager.master;
-            source.pitch = themeSound.pitch;
-            source.Play();
+            gameManager = GetComponentInParent<GameManager>();
+            themeSource = gameObject.AddComponent<AudioSource>();
+            themeSource.clip = themeSound.clip;
+            themeSource.loop = themeSound.shouldLoop;
+            themeSource.volume = themeSound.volume * gameManager.music * gameManager.master;
+            themeSource.pitch = themeSound.pitch;
+            themeSource.Play();
+        } else if (themeSource != null)
+        {
+            themeSource.Play();
+        }
+    }
+
+    public void StopThemeSound()
+    {
+        if (themeSource != null)
+        {
+            themeSource.Stop();
         }
     }
 
