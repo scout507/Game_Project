@@ -8,7 +8,8 @@ public class PlayerController : MonoBehaviour
     [Tooltip("Sprites: 0: down, 1: down-right, 2: right, 3: top-right, 4: top, 5: top-left, 6: left, 7: down-left")]
     public Sprite[] sprites;
     public LayerMask noMove;
-    public float moveSpeed = 5f;
+    public float moveSpeed;
+    public float regularMoveSpeed =5f;
     public float dashForce;
     public float dashDuration;
     public float dashTimer = 0f;
@@ -26,6 +27,7 @@ public class PlayerController : MonoBehaviour
     float angle;
     float facing;
     public bool moveBlock;
+    float slowTimer;
     public float moveBlockTimer;
 
     public Weapon gunscript;
@@ -56,6 +58,10 @@ public class PlayerController : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Q) && !manager.paused) switchWeapon();
         //timers
         moveBlockTimer -= Time.deltaTime;
+        slowTimer -= Time.deltaTime;
+        if(slowTimer > 0) moveSpeed = regularMoveSpeed*0.7f;
+        else moveSpeed = regularMoveSpeed;
+        
         if(moveBlockTimer <= 0){
             moveBlock = false;
             rb.velocity = Vector2.zero;
@@ -150,6 +156,11 @@ public class PlayerController : MonoBehaviour
         moveBlockTimer = duration;
         moveBlock = true;
     }
+
+    public void getSlowed(float duration){
+        slowTimer = duration;
+    }
+
     private bool isMoving()
     {
         return Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0;

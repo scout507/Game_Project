@@ -21,7 +21,6 @@ public class BossController : MonoBehaviour
     public float meleeAtkRange;
     public float slamRadius;
     public float slamDamage;
-    public float waveSlamDmg;
 
      
     public int lootWeight; 
@@ -37,7 +36,7 @@ public class BossController : MonoBehaviour
     public GameObject projectile;
     public GameObject minion;
     public Vector3[] positions;
-    public GameObject wave;
+    public GameObject ball;
 
     float coolDown;
     float atkTimer;    // Auto-Atk
@@ -91,6 +90,7 @@ public class BossController : MonoBehaviour
     void Update()
     {
         atkTimer -= Time.deltaTime;
+        skill0Timer -= Time.deltaTime;
         skill1Timer -= Time.deltaTime;
         skill2Timer -= Time.deltaTime;
         skill3Timer -= Time.deltaTime;
@@ -187,7 +187,7 @@ public class BossController : MonoBehaviour
     void skill0(){
         skill0Timer = skill0Cd;
         moveblockDuration = 1f;
-        waveSlam();
+        spawnBalls();
     }
 
     void skill1(){
@@ -205,7 +205,7 @@ public class BossController : MonoBehaviour
             randomList.Add(i);
         }
 
-        int projectileNumber = Random.Range(3,7);
+        int projectileNumber = Random.Range(4,9);
         for(int j = 0; j < projectileNumber; j++){
             int r = randomList[Random.Range(0,randomList.Count)];
             randomList.Remove(r);
@@ -260,11 +260,22 @@ public class BossController : MonoBehaviour
         }    
     }
 
-    void waveSlam(){
-        GameObject currentWave = Instantiate(wave,this.transform.position,Quaternion.identity);
-        Wave waveScript = currentWave.GetComponent<Wave>();
-        waveScript.damage = waveSlamDmg;
-        waveScript.target = player.transform.position;
+    void spawnBalls(){
+        moveblockDuration = 1f;
+        skill2Timer = skill2Cd;
+        List<int> randomList = new List<int>();
+
+        for(int i = 0; i < 20; i++){
+            randomList.Add(i);
+        }
+
+        int ballsNumber = Random.Range(3,6);
+        for(int j = 0; j < ballsNumber; j++){
+            int r = randomList[Random.Range(0,randomList.Count)];
+            randomList.Remove(r);
+            Vector3 spawnSpot = positions[r];
+            Instantiate(ball, spawnSpot, Quaternion.identity);
+        }
     }
 
     public void takeDamage(float dmgTaken){
