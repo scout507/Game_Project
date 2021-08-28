@@ -21,29 +21,35 @@ public class BossController : MonoBehaviour
     public float meleeAtkRange;
     public float slamRadius;
     public float slamDamage;
+    public float waveSlamDmg;
 
-    public float coolDown;    
+     
     public int lootWeight; 
 
+    public float skill0Cd;
     public float skill1Cd; 
     public float skill2Cd; 
     public float skill3Cd; 
     public float skill4Cd; 
-
-    float atkTimer;    // Auto-Atk
-    float skill1Timer; // Slam
-    float skill2Timer; // Projectiles   
-    float skill3Timer; // Minion
-    float skill4Timer; // WIP
 
     public float stunDuration;
         
     public GameObject projectile;
     public GameObject minion;
     public Vector3[] positions;
+    public GameObject wave;
+
+    float coolDown;
+    float atkTimer;    // Auto-Atk
+    float skill0Timer; // Wave-Atk
+    float skill1Timer; // Slam
+    float skill2Timer; // Projectiles   
+    float skill3Timer; // Minion
+    float skill4Timer; // WIP
 
     bool dead;
     bool moveblock;
+    float facing;
     float moveblockDuration;
     float dmgPopTimer;
     Vector2 lookDir;
@@ -55,6 +61,7 @@ public class BossController : MonoBehaviour
     DialogueManager dialogueManager;
     GameObject manager;
 
+    bool skill0Active;
     bool skill1Active;
     bool skill2Active;
     bool skill3Active;
@@ -71,6 +78,7 @@ public class BossController : MonoBehaviour
         lootTable = manager.GetComponent<LootTable>();
         dialogueManager = manager.GetComponent<DialogueManager>();
 
+        skill0Timer = skill0Cd;
         skill1Timer = skill1Cd;
         skill2Timer = skill2Cd;
         skill3Timer = skill3Cd;
@@ -109,7 +117,7 @@ public class BossController : MonoBehaviour
     private void FixedUpdate()
     {
         lookDir = new Vector2(player.transform.position.x, player.transform.position.y) - rb.position;
-        float facing = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
+        facing = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
         //down = -112,5 - -67,5 / down-right -67,5 - -22,5 / right -22,5 - 22,5 / top right = 22,5 - 67,5 / top = 67,5 - 112,5 / top-left = 157,5 / left = < 157,5 | > -157,5 / down-left = -112,5 - -157,5
         if(facing >= -112.5f && facing < -67.5f) sR.sprite = sprites[0]; //down
         else if(facing >= -67.5f && facing < -22.5f) sR.sprite = sprites[1]; //donw-right
@@ -148,6 +156,9 @@ public class BossController : MonoBehaviour
             else if(skill1Timer <= 0){
                 skill1();
             }
+            else if(skill0Timer <= 0){
+                skill0();
+            }
             coolDown = 1.5f;
         }
         if(!moveblock) move();
@@ -171,6 +182,12 @@ public class BossController : MonoBehaviour
         Vector2 direction = new Vector2(target.x - transform.position.x, target.y-transform.position.y);
         rb.AddForce(direction*leapSpeed, ForceMode2D.Impulse);
         moveblockDuration = 2f;
+    }
+
+    void skill0(){
+        skill0Timer = skill0Cd;
+        moveblockDuration = 1f;
+        waveSlam();
     }
 
     void skill1(){
@@ -242,7 +259,14 @@ public class BossController : MonoBehaviour
                 } 
         }    
     }
-    
+
+    void waveSlam(){
+        GameObject currentWave = Instantiate(wave,this.transform.position,Quaternion.identity);
+        Wave waveScript = currentWave.GetComponent<Wave>();
+        waveScript.damage = waveSlamDmg;
+        waveScript.target = player.transform.position;
+    }
+
     public void takeDamage(float dmgTaken){
         if(lastPopUp == null){
             lastPopUp = spawnDmgText(dmgTaken);

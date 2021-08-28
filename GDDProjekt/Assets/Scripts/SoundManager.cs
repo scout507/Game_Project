@@ -24,6 +24,7 @@ public class SoundManager : MonoBehaviour
 
     void Awake()
     {
+        gameManager = GetComponentInParent<GameManager>();
         // a singleton pattern to make sure that the
         // sound manager won't be destroyed when we
         // change between scenes
@@ -35,30 +36,26 @@ public class SoundManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-
-        // to make the sound manager persistent between
-        // scenes
-        DontDestroyOnLoad(gameObject);
-
-        foreach (Sound s in sounds)
-        {
-            s.source = gameObject.AddComponent<AudioSource>();
-            s.source.clip = s.clip;
-            s.source.volume = s.volume*gameManager.master*gameManager.sfx;
-            s.source.pitch = 1;
-            s.source.loop = s.shouldLoop;
-        }
+        
     }
 
     private void Start()
     {
-        gameManager = GetComponentInParent<GameManager>();
+        foreach (Sound s in sounds)
+        {
+            s.source = gameObject.AddComponent<AudioSource>();
+            s.source.clip = s.clip;
+            s.source.volume = s.volume*gameManager.currentSettings.sfxVolume*gameManager.currentSettings.masterVolume;
+            s.source.pitch = 1;
+            s.source.loop = s.shouldLoop;
+        }
+        
         if (themeSound != null && themeSound.clip != null)
         {
             AudioSource source = gameObject.AddComponent<AudioSource>();
             source.clip = themeSound.clip;
             source.loop = themeSound.shouldLoop;
-            source.volume = themeSound.volume*gameManager.music*gameManager.master;
+            source.volume = themeSound.volume*gameManager.currentSettings.musicVolume*gameManager.currentSettings.masterVolume;
             source.pitch = themeSound.pitch;
             source.Play();
         }

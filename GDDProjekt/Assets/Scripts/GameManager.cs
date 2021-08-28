@@ -29,18 +29,11 @@ public class GameManager : MonoBehaviour
     //Settings
     public int hardCoreMode;
     public Settings currentSettings;
-    
-    public float master;
-    public float sfx;
-    public float music;
 
     // 0=easy, 1=normal, 2=hardcore; 
 
 
     //SaveGame
-
-
-
 
     private void Awake()
     {
@@ -57,13 +50,13 @@ public class GameManager : MonoBehaviour
 
         
         saveGame();
-        loadGame();
+        //loadGame();
 
         //get the settings
         currentSettings = loadSettings();
         //if there are no saved settings init new ones
         if(currentSettings == null){
-            currentSettings = new Settings(master, sfx, music);
+            currentSettings = new Settings(1, 1, 1);
             saveSettings(currentSettings);
         } 
     }
@@ -103,9 +96,6 @@ public class GameManager : MonoBehaviour
     }
 
     void saveSettings(Settings settings){
-        settings.masterVolume = master;
-        settings.musicVolume = music;
-        settings.sfxVolume = sfx;
         string json = JsonUtility.ToJson(settings);
         File.WriteAllText(Application.dataPath + "/settings.txt", json);
     }
@@ -117,16 +107,12 @@ public class GameManager : MonoBehaviour
             Settings loadedSettings = JsonUtility.FromJson<Settings>(saveString);
             SoundManager soundManager = GetComponentInChildren<SoundManager>();
             soundManager.globalVolume = loadedSettings.masterVolume;
-            master = loadedSettings.masterVolume;
             soundManager.sfxVolume = loadedSettings.sfxVolume;
-            sfx = loadedSettings.sfxVolume;
             soundManager.musicVolume = loadedSettings.musicVolume;
-            music = loadedSettings.musicVolume;
             return loadedSettings;
         }
         return null;
     }
-
 
     public class SaveGame{
 
@@ -148,7 +134,6 @@ public class GameManager : MonoBehaviour
         } 
     }
 
-    
     public class Settings{
         public float masterVolume;
         public float sfxVolume;
