@@ -35,6 +35,10 @@ public class GameManager : MonoBehaviour
 
     //SaveGame
 
+    // In-Game Menu
+    public bool GamePaused = false;
+    PauseMenu pauseMenu;
+
     private void Awake()
     {
         loadSettings();
@@ -45,12 +49,11 @@ public class GameManager : MonoBehaviour
         initWeapons();
 
         if (instance == null) instance = this;
-        else if (instance != this) Destroy(gameObject);  
+        else if (instance != this){
+            Debug.Log("hallo");
+            Destroy(gameObject); 
+        }  
         DontDestroyOnLoad(this.gameObject);
-
-        
-        saveGame();
-        //loadGame();
 
         //get the settings
         currentSettings = loadSettings();
@@ -61,9 +64,43 @@ public class GameManager : MonoBehaviour
         } 
     }
 
-    void startNewGame(){
+    private void Start()
+    {
+        
+    }
+
+    private void Update()
+    {
+        
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            pauseMenu = GameObject.FindGameObjectWithTag("PauseMenu").GetComponent<PauseMenu>();
+            if (GamePaused)
+            {
+                if(pauseMenu != null) pauseMenu.Resume();
+                GamePaused = false;
+            } else
+            {
+                if(pauseMenu != null) pauseMenu.Pause();
+                GamePaused = true;
+            }
+        }
+    }
+
+    public void startNewGame(){
         initWeapons();
         saveGame();
+        SceneManager.LoadScene("Sidescroll");
+        SoundManager soundManager = GetComponentInChildren<SoundManager>();
+        soundManager.StopThemeSound();
+    }
+
+    public void startLoadedGame()
+    {
+        initWeapons();
+        SoundManager soundManager = GetComponentInChildren<SoundManager>();
+        soundManager.StopThemeSound();
+        loadGame();
         SceneManager.LoadScene("Sidescroll");
     }
 
@@ -73,7 +110,7 @@ public class GameManager : MonoBehaviour
         grenadeLauncher.init(50,1,11,2.5f,0,0,6);
     }
 
-    void saveGame(){
+    public void saveGame(){
         //TODO add filename
         SaveGame save = new SaveGame(resources,rifle,shotgun,grenadeLauncher,day,difficulty);
         string json = JsonUtility.ToJson(save);
@@ -83,6 +120,7 @@ public class GameManager : MonoBehaviour
     void loadGame(){
         //TODO add filename
         if(File.Exists(Application.dataPath + "/save.txt")){
+            Debug.Log("found Game");
             string saveString = File.ReadAllText(Application.dataPath + "/save.txt");
             SaveGame loadedSave = JsonUtility.FromJson<SaveGame>(saveString);
             this.resources = loadedSave.resources;
@@ -91,19 +129,21 @@ public class GameManager : MonoBehaviour
             this.grenadeLauncher = loadedSave.grenadeLauncher;
             this.day = loadedSave.day;
             this.difficulty = loadedSave.difficulty;
-            SceneManager.LoadScene("Sidescroll");
+        }
+        else{
+            Debug.Log("no savegame");
         }      
     }
 
-    void saveSettings(Settings settings){
+    public void saveSettings(Settings settings){
         string json = JsonUtility.ToJson(settings);
         File.WriteAllText(Application.dataPath + "/settings.txt", json);
     }
 
-    Settings loadSettings(){
+    public Settings loadSettings(){
 
         if(File.Exists(Application.dataPath + "/settings.txt")){
-            string saveString = File.ReadAllText(Application.dataPath + "/save.txt");
+            string saveString = File.ReadAllText(Application.dataPath + "/settings.txt");
             Settings loadedSettings = JsonUtility.FromJson<Settings>(saveString);
             SoundManager soundManager = GetComponentInChildren<SoundManager>();
             soundManager.globalVolume = loadedSettings.masterVolume;
@@ -133,7 +173,7 @@ public class GameManager : MonoBehaviour
             this.difficulty = difficulty;
         } 
     }
-
+    
     public class Settings{
         public float masterVolume;
         public float sfxVolume;
