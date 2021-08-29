@@ -35,6 +35,13 @@ public class UIController : MonoBehaviour
     public Image weapon2;
     public Image spinner;
 
+    public GameObject stunHolder;
+    public TextMeshProUGUI stunTime;
+    public GameObject slowHolder;
+    public TextMeshProUGUI slowTime;
+    public GameObject dashHolder;
+    public TextMeshProUGUI dashTime;
+
 
     public GameObject dialogueHolder;
     public TextMeshProUGUI diaNametxt;
@@ -88,6 +95,28 @@ public class UIController : MonoBehaviour
 
         diaNametxt.text = dialogueName;
         diatxt.text = dialogue;
+
+        
+        
+        
+
+        if(playerController.moveBlockTimer > 0.2){
+            stunTime.text =  playerController.moveBlockTimer.ToString("F1");
+            stunHolder.SetActive(true);
+        } 
+        else stunHolder.SetActive(false);
+        
+        if(playerController.slowTimer > 0){
+            slowTime.text =  playerController.slowTimer.ToString("F1");
+            slowHolder.SetActive(true);
+        } 
+        else slowHolder.SetActive(false);
+        
+        if(playerController.dashTimer > 0){
+            dashTime.text =  playerController.dashTimer.ToString("F1");
+            dashHolder.SetActive(true);
+        } 
+        else dashHolder.SetActive(false);
 
     }
 

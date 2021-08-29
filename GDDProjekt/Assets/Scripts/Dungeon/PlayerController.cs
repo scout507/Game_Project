@@ -14,7 +14,8 @@ public class PlayerController : MonoBehaviour
     public float dashDuration;
     public float dashTimer = 0f;
     public Camera cam;
-    
+    public float slowTimer;
+    public float moveBlockTimer;
     
     public Transform gun;
     public Transform gunHolder;
@@ -27,8 +28,7 @@ public class PlayerController : MonoBehaviour
     float angle;
     float facing;
     public bool moveBlock;
-    float slowTimer;
-    public float moveBlockTimer;
+    
 
     public Weapon gunscript;
     Vector2 mouse;

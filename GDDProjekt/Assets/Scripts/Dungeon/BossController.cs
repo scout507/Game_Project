@@ -40,7 +40,7 @@ public class BossController : MonoBehaviour
 
     float coolDown;
     float atkTimer;    // Auto-Atk
-    float skill0Timer; // Wave-Atk
+    float skill0Timer; // Balls-Atk
     float skill1Timer; // Slam
     float skill2Timer; // Projectiles   
     float skill3Timer; // Minion
@@ -144,16 +144,16 @@ public class BossController : MonoBehaviour
         } 
         else if(coolDown <= 0){
             target = new Vector2(0,0);
-            if(skill4Timer <= 0 && bosslevel >= 4){
+            if(skill4Timer <= 0 && bosslevel >= 5){
                 skill4();
             }
-            else if(skill3Timer <= 0 && bosslevel >= 3){
+            else if(skill3Timer <= 0 && bosslevel >= 4){
                 skill3();
             }
-            else if(skill2Timer <= 0 && bosslevel >= 2){
+            else if(skill2Timer <= 0 && bosslevel >= 3){
                 skill2();
             }
-            else if(skill1Timer <= 0){
+            else if(skill1Timer <= 0 && bosslevel >= 2){
                 skill1();
             }
             else if(skill0Timer <= 0){
@@ -269,7 +269,7 @@ public class BossController : MonoBehaviour
             randomList.Add(i);
         }
 
-        int ballsNumber = Random.Range(3,6);
+        int ballsNumber = Random.Range(2,5);
         for(int j = 0; j < ballsNumber; j++){
             int r = randomList[Random.Range(0,randomList.Count)];
             randomList.Remove(r);
