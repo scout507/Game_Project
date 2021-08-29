@@ -44,6 +44,8 @@ public class UIController : MonoBehaviour
     public GameObject poisonHolder;
     public TextMeshProUGUI poisonStacks;
 
+    public GameObject deathScreen;
+    public TextMeshProUGUI deathScreenText;
 
     public GameObject dialogueHolder;
     public TextMeshProUGUI diaNametxt;
@@ -54,11 +56,13 @@ public class UIController : MonoBehaviour
     Manager manager;
     PlayerStats playerStats;
     PlayerController playerController;
+    GameManager gameManager;
 
     private void Start() {
         manager = GetComponent<Manager>();
         playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         weapon1.sprite = playerController.guns[0].GetComponent<Weapon>().iconActive;
         weapon2.sprite = playerController.guns[1].GetComponent<Weapon>().icon;
     }
@@ -162,6 +166,33 @@ public class UIController : MonoBehaviour
 
     public void endDialogue(){
         dialogueHolder.SetActive(false);
+    }
+
+    public void presentDeathScreen(){
+        deathScreen.SetActive(true);
+        if(gameManager.difficulty == 0){
+            deathScreenText.text = "You've lost half your loot.";
+        }
+        else if(gameManager.difficulty == 1){
+            deathScreenText.text = "You've lost all your loot.";
+        }
+        else{
+            deathScreenText.text = "Your journey ends after " + gameManager.day + " days.";
+        }
+    }
+
+    public void exitDeathSceen(){
+        deathScreen.SetActive(false);
+        manager.resumeGame();
+        if(gameManager.difficulty == 0){
+            manager.exitEasy();
+        }
+        else if(gameManager.difficulty == 1){
+            manager.exitNormal();
+        }
+        else{
+            manager.exitHard();
+        }
     }
 
 }

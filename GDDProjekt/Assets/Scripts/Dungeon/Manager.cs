@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.SceneManagement;
 
 public class Manager : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class Manager : MonoBehaviour
     public List<GameObject> props; 
     public List<GameObject> loot;
     public bool paused;
+    public bool rdy;
 
     public GameObject[] guns;
 
@@ -60,6 +62,7 @@ public class Manager : MonoBehaviour
     }
 
     public void newMap(){
+        rdy = false;
         portal.SetActive(false);
         level++;
         monstersInLevel.ForEach( monster =>{
@@ -75,7 +78,7 @@ public class Manager : MonoBehaviour
         props.Clear();
         
 
-        if(level % 2 != 0){
+        if(level % 10 != 0){
             string mapCode = maps[Random.Range(0,maps.Length)];
             string[] settings = mapCode.Split(',');
             monsterAmount = 10 + Mathf.RoundToInt(level*(4f/5f));
@@ -199,5 +202,21 @@ public class Manager : MonoBehaviour
         }
         
 
+    }
+
+    public void exitEasy(){
+        for(int i = 0; i<playerStats.loot.Length; i++){
+            gameManager.resources[i] += playerStats.loot[i]/2;
+        }
+        SceneManager.LoadScene("Sidescroll");
+    }
+
+    public void exitNormal(){
+        SceneManager.LoadScene("Sidescroll");
+    }
+    
+    public void exitHard(){
+        SceneManager.LoadScene("Menu");
+        //Delete Save-file
     }
 }
