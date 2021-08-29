@@ -41,6 +41,8 @@ public class UIController : MonoBehaviour
     public TextMeshProUGUI slowTime;
     public GameObject dashHolder;
     public TextMeshProUGUI dashTime;
+    public GameObject poisonHolder;
+    public TextMeshProUGUI poisonStacks;
 
 
     public GameObject dialogueHolder;
@@ -117,6 +119,11 @@ public class UIController : MonoBehaviour
             dashHolder.SetActive(true);
         } 
         else dashHolder.SetActive(false);
+        if(playerController.poisonStacks > 0){
+            poisonStacks.text =  playerController.poisonStacks.ToString();
+            poisonHolder.SetActive(true);
+        } 
+        else poisonHolder.SetActive(false);
 
     }
 

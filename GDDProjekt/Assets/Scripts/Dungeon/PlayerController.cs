@@ -28,7 +28,10 @@ public class PlayerController : MonoBehaviour
     float angle;
     float facing;
     public bool moveBlock;
-    
+    public int poisonStacks;
+    float poisonDuration = 0.4f;
+    float poisonDPS = 2.5f;
+    float poisonTimer;
 
     public Weapon gunscript;
     Vector2 mouse;
@@ -36,6 +39,7 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rb;
     Vector2 movement;
     UIController uIController;
+    PlayerStats playerStats;
     Manager manager;
 
     void Start()
@@ -44,6 +48,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         uIController = GameObject.FindGameObjectWithTag("manager").GetComponent<UIController>();
         manager = GameObject.FindGameObjectWithTag("manager").GetComponent<Manager>();
+        playerStats = GetComponent<PlayerStats>();
     }
 
     // Update is called once per frame
@@ -68,6 +73,15 @@ public class PlayerController : MonoBehaviour
         }
         dashTimer -= Time.deltaTime; 
 
+        if(poisonStacks > 0){
+            poisonTimer -= Time.deltaTime;
+            if(poisonTimer <= 0){
+                poisonStacks -= 1;
+                poisonTimer = poisonDuration;
+            }
+            playerStats.takeDamage(poisonDPS*Time.deltaTime*poisonStacks);
+        }
+
         FindObjectOfType<SoundManager>().PlayOnToggle("walkOnRock", isMoving());
     }
 
@@ -88,7 +102,7 @@ public class PlayerController : MonoBehaviour
 
         float tempMoveSpeed = moveSpeed;
         if((lookDir.x >= 0 && movement.x < 0) || (lookDir.y >= 0 && movement.y < 0 ) || (lookDir.x <= 0 && movement.x > 0) || (lookDir.y <= 0 && movement.y > 0)){
-            //tempMoveSpeed = moveSpeed*0.5f;
+            tempMoveSpeed = moveSpeed*0.7f;
             //this needs more refinement
         }
         if(!moveBlock){
@@ -159,6 +173,11 @@ public class PlayerController : MonoBehaviour
 
     public void getSlowed(float duration){
         slowTimer = duration;
+    }
+
+    public void getPoisoned(int stacks){
+        poisonTimer = poisonDuration;
+        poisonStacks += stacks;
     }
 
     private bool isMoving()

@@ -15,7 +15,8 @@ public class GameManager : MonoBehaviour
     public Weaponstats shotgun;
     public Weaponstats grenadeLauncher;
     public int day;
-    public int difficulty;
+    // 0=easy, 1=normal, 2=hardcore; 
+    public int difficulty = 1;
 
     public int normalNpcLife = 100;
     public int normalNpcDamage = 100;
@@ -24,16 +25,11 @@ public class GameManager : MonoBehaviour
     public int mortarNpcLife = 100;
     public int mortarNpcDamage = 100;
     
-    public int dungeonLevel;
+    public int dungeonLevel = 0;
 
     //Settings
-    public int hardCoreMode;
     public Settings currentSettings;
 
-    // 0=easy, 1=normal, 2=hardcore; 
-
-
-    //SaveGame
 
     private void Awake()
     {
