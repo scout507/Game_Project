@@ -56,17 +56,26 @@ public class WeaponUpgradeMenuSidescroll : MonoBehaviour
             ressourcesText[i].text = gameManager.resources[i].ToString();
         }
 
-        rifle.villageUpgradeUiHolderSidescrolls[0].show(gameManager.rifle.damageLevel, rifleDamageCostsSidescroll, imageList);
-        rifle.villageUpgradeUiHolderSidescrolls[1].show(gameManager.rifle.fireRateLevel, rifleFireRateCostsSidescroll, imageList);
-        rifle.villageUpgradeUiHolderSidescrolls[2].show(gameManager.rifle.cooldownLevel, rifleCooldownCostsSidescroll, imageList);
+        if (rifleMenu.activeSelf)
+        {
+            rifle.villageUpgradeUiHolderSidescrolls[0].show(gameManager.rifle.damageLevel, rifleDamageCostsSidescroll, imageList);
+            rifle.villageUpgradeUiHolderSidescrolls[1].show(gameManager.rifle.fireRateLevel, rifleFireRateCostsSidescroll, imageList);
+            rifle.villageUpgradeUiHolderSidescrolls[2].show(gameManager.rifle.cooldownLevel, rifleCooldownCostsSidescroll, imageList);
+        }
 
-        grenadeLauncher.villageUpgradeUiHolderSidescrolls[0].show(gameManager.grenadeLauncher.damageLevel, grenadeLauncherDamageCostsSidescroll, imageList);
-        grenadeLauncher.villageUpgradeUiHolderSidescrolls[1].show(gameManager.grenadeLauncher.explosionRadiusLevel, grenadeLauncherexplosionRadiusCostsSidescroll, imageList);
-        grenadeLauncher.villageUpgradeUiHolderSidescrolls[2].show(gameManager.grenadeLauncher.cooldownLevel, grenadeLauncherCooldownCostsSidescroll, imageList);
+        if (grenadeLauncherMenu.activeSelf)
+        {
+            grenadeLauncher.villageUpgradeUiHolderSidescrolls[0].show(gameManager.grenadeLauncher.damageLevel, grenadeLauncherDamageCostsSidescroll, imageList);
+            grenadeLauncher.villageUpgradeUiHolderSidescrolls[1].show(gameManager.grenadeLauncher.explosionRadiusLevel, grenadeLauncherexplosionRadiusCostsSidescroll, imageList);
+            grenadeLauncher.villageUpgradeUiHolderSidescrolls[2].show(gameManager.grenadeLauncher.cooldownLevel, grenadeLauncherCooldownCostsSidescroll, imageList);
+        }
 
-        shotgun.villageUpgradeUiHolderSidescrolls[0].show(gameManager.shotgun.damageLevel, shotgunDamageCostsSidescroll, imageList);
-        shotgun.villageUpgradeUiHolderSidescrolls[1].show(gameManager.shotgun.fireRateLevel, shotgunFireRateCostsSidescroll, imageList);
-        shotgun.villageUpgradeUiHolderSidescrolls[2].show(gameManager.shotgun.cooldownLevel, shotgunCooldownCostsSidescroll, imageList);
+        if (shotgunMenu.activeSelf)
+        {
+            shotgun.villageUpgradeUiHolderSidescrolls[0].show(gameManager.shotgun.damageLevel, shotgunDamageCostsSidescroll, imageList);
+            shotgun.villageUpgradeUiHolderSidescrolls[1].show(gameManager.shotgun.fireRateLevel, shotgunFireRateCostsSidescroll, imageList);
+            shotgun.villageUpgradeUiHolderSidescrolls[2].show(gameManager.shotgun.cooldownLevel, shotgunCooldownCostsSidescroll, imageList);
+        }
     }
 
     public void toggleRifleMenu()
@@ -78,14 +87,14 @@ public class WeaponUpgradeMenuSidescroll : MonoBehaviour
 
     public void toggleGrenadeLauncherMenu()
     {
-        rifleMenu.SetActive(!rifleMenu.activeSelf);
+        grenadeLauncherMenu.SetActive(!grenadeLauncherMenu.activeSelf);
         chooseGun.SetActive(!chooseGun.activeSelf);
         backBttn.SetActive(!backBttn.activeSelf);
     }
 
     public void toggleShotgunMenu()
     {
-        rifleMenu.SetActive(!rifleMenu.activeSelf);
+        shotgunMenu.SetActive(!shotgunMenu.activeSelf);
         chooseGun.SetActive(!chooseGun.activeSelf);
         backBttn.SetActive(!backBttn.activeSelf);
     }
@@ -235,7 +244,7 @@ public class WeaponUpgradeMenuSidescroll : MonoBehaviour
         }
     }
 
-    public void upgradeExplosionRadius(int index)
+    public void upgradeExplosionRadius()
     {
         LevelCostsSidescroll levelCostsSidescroll = grenadeLauncherexplosionRadiusCostsSidescroll;
         int level = gameManager.grenadeLauncher.explosionRadiusLevel;

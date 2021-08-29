@@ -38,7 +38,7 @@ public class VillageUpgradeUiHolderSidescroll : MonoBehaviour
 
     public void show(int level, LevelCostsSidescroll levelCostsSidescroll, Sprite[] imageList)
     {
-        levelTextMesh.text = "Level " + level.ToString();
+        //levelTextMesh.text = "Level " + level.ToString();
         level++;
         int amount = levelCostsSidescroll.level[level].componenten.Length;
 
