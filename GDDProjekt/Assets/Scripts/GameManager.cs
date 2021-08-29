@@ -1,19 +1,22 @@
 using System.Collections;
 using System.IO;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-
-    //Player related stats
     public static GameManager instance = null; 
+
+    //Save Game related stats
     public int[] resources;
     public int[] selectedWeapons;
     public Weaponstats rifle;
     public Weaponstats shotgun;
     public Weaponstats grenadeLauncher;
     public int day;
+    // 0=easy, 1=normal, 2=hardcore; 
+    public int difficulty = 1;
 
     public int normalNpcLife = 100;
     public int normalNpcDamage = 100;
@@ -22,14 +25,10 @@ public class GameManager : MonoBehaviour
     public int mortarNpcLife = 100;
     public int mortarNpcDamage = 100;
     
-    public int dungeonLevel;
+    public int dungeonLevel = 0;
 
     //Settings
-    public int hardCoreMode;
-
-    //SaveGame
-
-
+    public Settings currentSettings;
 
 
     private void Awake()
@@ -47,15 +46,21 @@ public class GameManager : MonoBehaviour
 
         
         saveGame();
-        loadGame();
+        //loadGame();
 
         //get the settings
-
+        currentSettings = loadSettings();
+        //if there are no saved settings init new ones
+        if(currentSettings == null){
+            currentSettings = new Settings(1, 1, 1);
+            saveSettings(currentSettings);
+        } 
     }
 
     void startNewGame(){
         initWeapons();
         saveGame();
+        SceneManager.LoadScene("Sidescroll");
     }
 
     void initWeapons(){
@@ -64,10 +69,9 @@ public class GameManager : MonoBehaviour
         grenadeLauncher.init(50,1,11,2.5f,0,0,6);
     }
 
-
     void saveGame(){
         //TODO add filename
-        SaveGame save = new SaveGame(resources,rifle,shotgun,grenadeLauncher,day);
+        SaveGame save = new SaveGame(resources,rifle,shotgun,grenadeLauncher,day,difficulty);
         string json = JsonUtility.ToJson(save);
         File.WriteAllText(Application.dataPath + "/save.txt", json);
     }
@@ -82,17 +86,17 @@ public class GameManager : MonoBehaviour
             this.shotgun = loadedSave.shotgun;
             this.grenadeLauncher = loadedSave.grenadeLauncher;
             this.day = loadedSave.day;
+            this.difficulty = loadedSave.difficulty;
+            SceneManager.LoadScene("Sidescroll");
         }      
     }
 
-    void saveSettings(float master, float sfxVolume, float musicVolume){
-        Settings settings = new Settings(master,sfxVolume,musicVolume);
+    void saveSettings(Settings settings){
         string json = JsonUtility.ToJson(settings);
-        
         File.WriteAllText(Application.dataPath + "/settings.txt", json);
     }
 
-    void loadSettings(){
+    Settings loadSettings(){
 
         if(File.Exists(Application.dataPath + "/settings.txt")){
             string saveString = File.ReadAllText(Application.dataPath + "/save.txt");
@@ -101,9 +105,10 @@ public class GameManager : MonoBehaviour
             soundManager.globalVolume = loadedSettings.masterVolume;
             soundManager.sfxVolume = loadedSettings.sfxVolume;
             soundManager.musicVolume = loadedSettings.musicVolume;
+            return loadedSettings;
         }
+        return null;
     }
-
 
     public class SaveGame{
 
@@ -113,13 +118,15 @@ public class GameManager : MonoBehaviour
         public Weaponstats shotgun;
         public Weaponstats grenadeLauncher;
         public int day;
+        public int difficulty;
 
-        public SaveGame(int[] res, Weaponstats rifle, Weaponstats shotgun, Weaponstats grenadeLauncher, int day){
+        public SaveGame(int[] res, Weaponstats rifle, Weaponstats shotgun, Weaponstats grenadeLauncher, int day, int difficulty){
             this.resources = res;
             this.rifle = rifle;
             this.shotgun = shotgun;
             this.grenadeLauncher = grenadeLauncher;
             this.day = day;
+            this.difficulty = difficulty;
         } 
     }
 
