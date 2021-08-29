@@ -8,12 +8,14 @@ public class PlayerController : MonoBehaviour
     [Tooltip("Sprites: 0: down, 1: down-right, 2: right, 3: top-right, 4: top, 5: top-left, 6: left, 7: down-left")]
     public Sprite[] sprites;
     public LayerMask noMove;
-    public float moveSpeed = 5f;
+    public float moveSpeed;
+    public float regularMoveSpeed =5f;
     public float dashForce;
     public float dashDuration;
     public float dashTimer = 0f;
     public Camera cam;
-    
+    public float slowTimer;
+    public float moveBlockTimer;
     
     public Transform gun;
     public Transform gunHolder;
@@ -26,7 +28,10 @@ public class PlayerController : MonoBehaviour
     float angle;
     float facing;
     public bool moveBlock;
-    public float moveBlockTimer;
+    public int poisonStacks;
+    float poisonDuration = 0.4f;
+    float poisonDPS = 2.5f;
+    float poisonTimer;
 
     public Weapon gunscript;
     Vector2 mouse;
@@ -34,6 +39,7 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rb;
     Vector2 movement;
     UIController uIController;
+    PlayerStats playerStats;
     Manager manager;
 
     void Start()
@@ -42,6 +48,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         uIController = GameObject.FindGameObjectWithTag("manager").GetComponent<UIController>();
         manager = GameObject.FindGameObjectWithTag("manager").GetComponent<Manager>();
+        playerStats = GetComponent<PlayerStats>();
     }
 
     // Update is called once per frame
@@ -56,11 +63,24 @@ public class PlayerController : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Q) && !manager.paused) switchWeapon();
         //timers
         moveBlockTimer -= Time.deltaTime;
+        slowTimer -= Time.deltaTime;
+        if(slowTimer > 0) moveSpeed = regularMoveSpeed*0.7f;
+        else moveSpeed = regularMoveSpeed;
+        
         if(moveBlockTimer <= 0){
             moveBlock = false;
             rb.velocity = Vector2.zero;
         }
         dashTimer -= Time.deltaTime; 
+
+        if(poisonStacks > 0){
+            poisonTimer -= Time.deltaTime;
+            if(poisonTimer <= 0){
+                poisonStacks -= 1;
+                poisonTimer = poisonDuration;
+            }
+            playerStats.takeDamage(poisonDPS*Time.deltaTime*poisonStacks);
+        }
 
         FindObjectOfType<SoundManager>().PlayOnToggle("walkOnRock", isMoving());
     }
@@ -82,7 +102,7 @@ public class PlayerController : MonoBehaviour
 
         float tempMoveSpeed = moveSpeed;
         if((lookDir.x >= 0 && movement.x < 0) || (lookDir.y >= 0 && movement.y < 0 ) || (lookDir.x <= 0 && movement.x > 0) || (lookDir.y <= 0 && movement.y > 0)){
-            //tempMoveSpeed = moveSpeed*0.5f;
+            tempMoveSpeed = moveSpeed*0.7f;
             //this needs more refinement
         }
         if(!moveBlock){
@@ -150,6 +170,16 @@ public class PlayerController : MonoBehaviour
         moveBlockTimer = duration;
         moveBlock = true;
     }
+
+    public void getSlowed(float duration){
+        slowTimer = duration;
+    }
+
+    public void getPoisoned(int stacks){
+        poisonTimer = poisonDuration;
+        poisonStacks += stacks;
+    }
+
     private bool isMoving()
     {
         return Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0;

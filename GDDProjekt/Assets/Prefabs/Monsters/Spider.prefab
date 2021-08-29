@@ -27,6 +27,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: spider
       objectReference: {fileID: 0}
+    - target: {fileID: 2963240178191708164, guid: 3b7b3ca5cd90f3640833ff984470770b, type: 3}
+      propertyPath: slowdownDistance
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2963240178191708164, guid: 3b7b3ca5cd90f3640833ff984470770b, type: 3}
+      propertyPath: endReachedDistance
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2963240178191708164, guid: 3b7b3ca5cd90f3640833ff984470770b, type: 3}
+      propertyPath: pickNextWaypointDist
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2963240178191708171, guid: 3b7b3ca5cd90f3640833ff984470770b, type: 3}
+      propertyPath: moveSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2963240178191708171, guid: 3b7b3ca5cd90f3640833ff984470770b, type: 3}
+      propertyPath: meleeAtkRange
+      value: 2.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2963240178191708171, guid: 3b7b3ca5cd90f3640833ff984470770b, type: 3}
       propertyPath: sprites.Array.size
       value: 8

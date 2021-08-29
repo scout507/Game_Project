@@ -10,6 +10,7 @@ public class UIController : MonoBehaviour
     public TextMeshProUGUI lvlTxt;
 
     public Slider hpSlider;
+    public Slider esSlider;
     public Slider overHeatSlider;
     public TextMeshProUGUI currentHealthTxt;
     public TextMeshProUGUI maxHealthTxt;
@@ -34,6 +35,22 @@ public class UIController : MonoBehaviour
     public Image weapon2;
     public Image spinner;
 
+    public GameObject stunHolder;
+    public TextMeshProUGUI stunTime;
+    public GameObject slowHolder;
+    public TextMeshProUGUI slowTime;
+    public GameObject dashHolder;
+    public TextMeshProUGUI dashTime;
+    public GameObject poisonHolder;
+    public TextMeshProUGUI poisonStacks;
+
+
+    public GameObject dialogueHolder;
+    public TextMeshProUGUI diaNametxt;
+    public TextMeshProUGUI diatxt;
+    public string dialogueName;
+    public string dialogue;
+
     Manager manager;
     PlayerStats playerStats;
     PlayerController playerController;
@@ -53,6 +70,8 @@ public class UIController : MonoBehaviour
         maxHealthTxt.text = Mathf.RoundToInt(playerStats.maxhp).ToString();
         hpSlider.maxValue = playerStats.maxhp;
         hpSlider.value = playerStats.hp;
+        esSlider.maxValue = playerStats.maxEnergyShield;
+        esSlider.value = playerStats.energyShield;
         
         //Collectibles
         woodTxt.text = playerStats.loot[0].ToString();
@@ -76,6 +95,35 @@ public class UIController : MonoBehaviour
             weapon2.sprite = playerController.guns[1].GetComponent<Weapon>().iconActive;
         }
 
+        diaNametxt.text = dialogueName;
+        diatxt.text = dialogue;
+
+        
+        
+        
+
+        if(playerController.moveBlockTimer > 0.2){
+            stunTime.text =  playerController.moveBlockTimer.ToString("F1");
+            stunHolder.SetActive(true);
+        } 
+        else stunHolder.SetActive(false);
+        
+        if(playerController.slowTimer > 0){
+            slowTime.text =  playerController.slowTimer.ToString("F1");
+            slowHolder.SetActive(true);
+        } 
+        else slowHolder.SetActive(false);
+        
+        if(playerController.dashTimer > 0){
+            dashTime.text =  playerController.dashTimer.ToString("F1");
+            dashHolder.SetActive(true);
+        } 
+        else dashHolder.SetActive(false);
+        if(playerController.poisonStacks > 0){
+            poisonStacks.text =  playerController.poisonStacks.ToString();
+            poisonHolder.SetActive(true);
+        } 
+        else poisonHolder.SetActive(false);
 
     }
 
@@ -98,12 +146,22 @@ public class UIController : MonoBehaviour
 
     public void exitButton(){
         exitScreen.SetActive(false);
+        manager.resumeGame();
+        manager.saveToManager();
         SceneManager.LoadScene("Sidescroll");
     }
 
 
     public void spinanim(){
         spinner.GetComponent<Animator>().Play("spin");
+    }
+
+    public void startDialogue(){
+        dialogueHolder.SetActive(true);
+    }
+
+    public void endDialogue(){
+        dialogueHolder.SetActive(false);
     }
 
 }

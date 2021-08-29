@@ -13,6 +13,7 @@ public class MonsterController : MonoBehaviour
     public float atkSpeed;
     public float meleeAtkRange;
     public float aggroRange;
+    public float rangeDmg;
     public bool hasRangedAtk;
     public float rangeAtkRange;
     public float atkDelay = 0.5f;
@@ -48,6 +49,7 @@ public class MonsterController : MonoBehaviour
         destSetter.target = player.transform;
         sR = GetComponentInChildren<SpriteRenderer>();
         lootTable = GameObject.FindGameObjectWithTag("manager").GetComponent<LootTable>();
+        pathing.maxSpeed = moveSpeed;
     }
 
     
@@ -109,6 +111,7 @@ public class MonsterController : MonoBehaviour
     void rangeAtk(){
         isDmging = true;
         GameObject shot = Instantiate(bullet, transform.position, Quaternion.identity);
+        shot.GetComponent<MonsterBullet>().dmg = rangeDmg;
         shot.GetComponent<MonsterBullet>().target = new Vector3(player.transform.position.x,player.transform.position.y,player.transform.position.z);
         shot.GetComponent<Rigidbody2D>().AddForce(lookDir*3f, ForceMode2D.Impulse);
         FindObjectOfType<SoundManager>().PlayOnToggle("monsterRange", isDmging);

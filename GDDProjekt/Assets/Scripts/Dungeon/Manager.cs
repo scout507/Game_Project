@@ -75,7 +75,7 @@ public class Manager : MonoBehaviour
         props.Clear();
         
 
-        if(level % 10 != 0){
+        if(level % 2 != 0){
             string mapCode = maps[Random.Range(0,maps.Length)];
             string[] settings = mapCode.Split(',');
             monsterAmount = 10 + Mathf.RoundToInt(level*(4f/5f));
@@ -131,9 +131,9 @@ public class Manager : MonoBehaviour
         Time.timeScale = 1;
     }
 
-    void saveToManager(){
+    public void saveToManager(){
         for(int i = 0; i<playerStats.loot.Length; i++){
-            gameManager.resources[i] = playerStats.loot[i];
+            gameManager.resources[i] += playerStats.loot[i];
         }
     }
 
@@ -160,6 +160,7 @@ public class Manager : MonoBehaviour
                 gun.transform.parent = gunHolder.transform;
                 weaponScript = gun.GetComponent<Weapon>();
                 Shotgun shotgun = gun.GetComponent<Shotgun>();
+                Debug.Log(copyStats);
                 shotgun.projectiles = copyStats.projectiles;
                 shotgun.centering = copyStats.centering;
                 playerController.guns[i] = gun;

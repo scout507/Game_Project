@@ -8,6 +8,8 @@ public class BossController : MonoBehaviour
     public Sprite[] sprites;
     public Transform dmgPopUp;
     public DmgPopUp lastPopUp;
+    public Dialogue startConvo;
+    public Dialogue endConvo; 
 
     public int bosslevel;
     public float hp;
@@ -20,28 +22,33 @@ public class BossController : MonoBehaviour
     public float slamRadius;
     public float slamDamage;
 
-    public float coolDown;    
+     
     public int lootWeight; 
 
+    public float skill0Cd;
     public float skill1Cd; 
     public float skill2Cd; 
     public float skill3Cd; 
     public float skill4Cd; 
-
-    float atkTimer;    // Auto-Atk
-    float skill1Timer; // Slam
-    float skill2Timer; // Projectiles   
-    float skill3Timer; // Minion
-    float skill4Timer; // WIP
 
     public float stunDuration;
         
     public GameObject projectile;
     public GameObject minion;
     public Vector3[] positions;
+    public GameObject ball;
+
+    float coolDown;
+    float atkTimer;    // Auto-Atk
+    float skill0Timer; // Balls-Atk
+    float skill1Timer; // Slam
+    float skill2Timer; // Projectiles   
+    float skill3Timer; // Minion
+    float skill4Timer; // WIP
 
     bool dead;
     bool moveblock;
+    float facing;
     float moveblockDuration;
     float dmgPopTimer;
     Vector2 lookDir;
@@ -50,7 +57,10 @@ public class BossController : MonoBehaviour
     Rigidbody2D rb;
     LootTable lootTable;
     Vector2 target;
+    DialogueManager dialogueManager;
+    GameObject manager;
 
+    bool skill0Active;
     bool skill1Active;
     bool skill2Active;
     bool skill3Active;
@@ -63,18 +73,24 @@ public class BossController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player");
         hp = maxhp;
-        lootTable = GameObject.FindGameObjectWithTag("manager").GetComponent<LootTable>();
+        manager = GameObject.FindGameObjectWithTag("manager");
+        lootTable = manager.GetComponent<LootTable>();
+        dialogueManager = manager.GetComponent<DialogueManager>();
 
+        skill0Timer = skill0Cd;
         skill1Timer = skill1Cd;
         skill2Timer = skill2Cd;
         skill3Timer = skill3Cd;
         skill4Timer = skill4Cd;
+
+        dialogueManager.startDialogue(startConvo);
     }
 
     // Update is called once per frame
     void Update()
     {
         atkTimer -= Time.deltaTime;
+        skill0Timer -= Time.deltaTime;
         skill1Timer -= Time.deltaTime;
         skill2Timer -= Time.deltaTime;
         skill3Timer -= Time.deltaTime;
@@ -101,7 +117,7 @@ public class BossController : MonoBehaviour
     private void FixedUpdate()
     {
         lookDir = new Vector2(player.transform.position.x, player.transform.position.y) - rb.position;
-        float facing = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
+        facing = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
         //down = -112,5 - -67,5 / down-right -67,5 - -22,5 / right -22,5 - 22,5 / top right = 22,5 - 67,5 / top = 67,5 - 112,5 / top-left = 157,5 / left = < 157,5 | > -157,5 / down-left = -112,5 - -157,5
         if(facing >= -112.5f && facing < -67.5f) sR.sprite = sprites[0]; //down
         else if(facing >= -67.5f && facing < -22.5f) sR.sprite = sprites[1]; //donw-right
@@ -128,17 +144,20 @@ public class BossController : MonoBehaviour
         } 
         else if(coolDown <= 0){
             target = new Vector2(0,0);
-            if(skill4Timer <= 0 && bosslevel >= 4){
+            if(skill4Timer <= 0 && bosslevel >= 5){
                 skill4();
             }
-            else if(skill3Timer <= 0 && bosslevel >= 3){
+            else if(skill3Timer <= 0 && bosslevel >= 4){
                 skill3();
             }
-            else if(skill2Timer <= 0 && bosslevel >= 2){
+            else if(skill2Timer <= 0 && bosslevel >= 3){
                 skill2();
             }
-            else if(skill1Timer <= 0){
+            else if(skill1Timer <= 0 && bosslevel >= 2){
                 skill1();
+            }
+            else if(skill0Timer <= 0){
+                skill0();
             }
             coolDown = 1.5f;
         }
@@ -165,6 +184,12 @@ public class BossController : MonoBehaviour
         moveblockDuration = 2f;
     }
 
+    void skill0(){
+        skill0Timer = skill0Cd;
+        moveblockDuration = 1f;
+        spawnBalls();
+    }
+
     void skill1(){
         skill1Timer = skill1Cd;
         leap();
@@ -180,7 +205,7 @@ public class BossController : MonoBehaviour
             randomList.Add(i);
         }
 
-        int projectileNumber = Random.Range(3,7);
+        int projectileNumber = Random.Range(4,9);
         for(int j = 0; j < projectileNumber; j++){
             int r = randomList[Random.Range(0,randomList.Count)];
             randomList.Remove(r);
@@ -213,6 +238,7 @@ public class BossController : MonoBehaviour
     
     void die(){
         if(!dead){
+            dialogueManager.startDialogue(endConvo);
             GameObject.FindGameObjectWithTag("manager").GetComponent<Manager>().spawnPortal();
             dead = true;
             Destroy(this.gameObject);
@@ -233,7 +259,25 @@ public class BossController : MonoBehaviour
                 } 
         }    
     }
-    
+
+    void spawnBalls(){
+        moveblockDuration = 1f;
+        skill2Timer = skill2Cd;
+        List<int> randomList = new List<int>();
+
+        for(int i = 0; i < 20; i++){
+            randomList.Add(i);
+        }
+
+        int ballsNumber = Random.Range(2,5);
+        for(int j = 0; j < ballsNumber; j++){
+            int r = randomList[Random.Range(0,randomList.Count)];
+            randomList.Remove(r);
+            Vector3 spawnSpot = positions[r];
+            Instantiate(ball, spawnSpot, Quaternion.identity);
+        }
+    }
+
     public void takeDamage(float dmgTaken){
         if(lastPopUp == null){
             lastPopUp = spawnDmgText(dmgTaken);

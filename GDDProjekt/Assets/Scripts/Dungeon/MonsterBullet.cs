@@ -28,7 +28,7 @@ public class MonsterBullet : MonoBehaviour
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, splashRadius);
         foreach (Collider2D obj in colliders)
         {
-            if(obj.tag == "Player" && obj.isTrigger){
+            if(obj.tag == "Player"){
                 obj.GetComponent<PlayerStats>().takeDamage(dmg);
             }
         }

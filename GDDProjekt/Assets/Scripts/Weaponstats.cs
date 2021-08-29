@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu]
-public class Weaponstats : ScriptableObject
+[System.Serializable]
+public class Weaponstats
 {
     public void init(float damage, float fireRate, float overheatPerShot, float overheatLossRate, int projectiles, int centering, float explosionRadius){
 

@@ -108,6 +108,14 @@ MonoBehaviour:
   - {fileID: -3856233466873844498, guid: 1ef1a95e119c89b4abf87821e74a9fc8, type: 3}
   dmgPopUp: {fileID: 8669903535900010463, guid: 50cab34027a89554faccd1863ef59964, type: 3}
   lastPopUp: {fileID: 0}
+  startConvo:
+    NPCname: Boss
+    sentences:
+    - TEST
+  endConvo:
+    NPCname: Boss
+    sentences:
+    - TEST2
   bosslevel: 0
   hp: 1000
   maxhp: 1000
@@ -118,8 +126,9 @@ MonoBehaviour:
   meleeAtkRange: 2
   slamRadius: 3.5
   slamDamage: 20
-  coolDown: 3
+  ballsDmg: 20
   lootWeight: 0
+  skill0Cd: 2
   skill1Cd: 5
   skill2Cd: 10
   skill3Cd: 20
@@ -148,6 +157,7 @@ MonoBehaviour:
   - {x: -74.51, y: 195.24, z: 0}
   - {x: -75.14, y: 200.84, z: 0}
   - {x: -57.95, y: 199.08, z: 0}
+  ball: {fileID: 4578503802139512355, guid: 6eefb86ae32e6764aad369e058ab9dd5, type: 3}
 --- !u!58 &2746192055822138008
 CircleCollider2D:
   m_ObjectHideFlags: 0
