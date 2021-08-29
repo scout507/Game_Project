@@ -19,8 +19,6 @@ public class DungeonSidescroll : BuildingOverClassSidescroll
     Canvas menuCanvas;
     TextMeshProUGUI textMeshProTitle;
     TextMeshProUGUI textMeshProTitleInteract;
-    TextMeshProUGUI textMeshProTitleOld;
-    TextMeshProUGUI textMeshProTitleInteractOld;
 
     void Start()
     {
@@ -31,6 +29,23 @@ public class DungeonSidescroll : BuildingOverClassSidescroll
         textMeshProTitleInteract = interact.GetComponent<TextMeshProUGUI>();
     }
 
+    void Update()
+    {
+        if (highlightCanvas.enabled)
+        {
+            if (gameManager.wasInDungeon)
+            {
+                textMeshProTitle.text = "Du musst erst schlafen";
+                textMeshProTitleInteract.text = "";
+            }
+            else
+            {
+                textMeshProTitle.text = "Dungeon";
+                textMeshProTitleInteract.text = "[E]";
+            }
+        }
+    }
+
     public override void activateMenu()
     {
         if (!gameManager.wasInDungeon)
@@ -38,11 +53,6 @@ public class DungeonSidescroll : BuildingOverClassSidescroll
             playerMovementSidescroll.inEvent = true;
             highlightCanvas.enabled = false;
             menuCanvas.enabled = true;
-        }
-        else
-        {
-            textMeshProTitle.text = "Du musst erst schlafen";
-            textMeshProTitleInteract.text = "";
         }
     }
 
@@ -57,9 +67,7 @@ public class DungeonSidescroll : BuildingOverClassSidescroll
     {
         gameManager.wasInDungeon = true;
         gameManager.hasSlept = false;
-        textMeshProTitle = textMeshProTitleOld;
-        textMeshProTitleInteract = textMeshProTitleInteractOld;
+        gameManager.saveGame();
         SceneManager.LoadScene("MapGeneration");
-
     }
 }

@@ -19,8 +19,6 @@ public class SleepSidescroll : BuildingOverClassSidescroll
     Canvas menuCanvas;
     TextMeshProUGUI textMeshProTitle;
     TextMeshProUGUI textMeshProTitleInteract;
-    TextMeshProUGUI textMeshProTitleOld;
-    TextMeshProUGUI textMeshProTitleInteractOld;
 
     void Start()
     {
@@ -29,8 +27,23 @@ public class SleepSidescroll : BuildingOverClassSidescroll
         playerMovementSidescroll = player.GetComponent<PlayerMovementSidescroll>();
         textMeshProTitle = title.GetComponent<TextMeshProUGUI>();
         textMeshProTitleInteract = interact.GetComponent<TextMeshProUGUI>();
-        textMeshProTitleOld = textMeshProTitle;
-        textMeshProTitleInteractOld = textMeshProTitleInteract;
+    }
+
+    void Update()
+    {
+        if (highlightCanvas.enabled)
+        {
+            if (gameManager.hasSlept)
+            {
+                textMeshProTitle.text = "Du musst erst in den Dungeon";
+                textMeshProTitleInteract.text = "";
+            }
+            else
+            {
+                textMeshProTitle.text = "Bed";
+                textMeshProTitleInteract.text = "[E]";
+            }
+        }
     }
 
     public override void activateMenu()
@@ -40,11 +53,6 @@ public class SleepSidescroll : BuildingOverClassSidescroll
             playerMovementSidescroll.inEvent = true;
             highlightCanvas.enabled = false;
             menuCanvas.enabled = true;
-        }
-        else
-        {
-            textMeshProTitle.text = "Du musst erst in den Dungeon";
-            textMeshProTitleInteract.text = "";
         }
     }
 
@@ -59,15 +67,15 @@ public class SleepSidescroll : BuildingOverClassSidescroll
     public void intoDefense()
     {
         gameManager.day++;
+        gameManager.saveGame();
         gameManager.hasSlept = true;
         gameManager.wasInDungeon = false;
 
         if (gameManager.day % 3 == 0)
         {
-            textMeshProTitle = textMeshProTitleOld;
-            textMeshProTitleInteract = textMeshProTitleInteractOld;
             SceneManager.LoadScene("Defense");
-        }else
+        }
+        else
         {
             deactivateMenu();
         }
