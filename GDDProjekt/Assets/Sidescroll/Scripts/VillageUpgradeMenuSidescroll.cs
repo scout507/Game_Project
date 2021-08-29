@@ -53,7 +53,7 @@ public class VillageUpgradeMenuSidescroll : MonoBehaviour
     public void upgrade(int index)
     {
         int level = 0;
-        LevelCostsSidescroll levelCostsSidescroll = new LevelCostsSidescroll(); ;
+        LevelCostsSidescroll levelCostsSidescroll = new LevelCostsSidescroll();
 
         switch (index)
         {

@@ -69,7 +69,6 @@ public class WeaponUpgradeMenuSidescroll : MonoBehaviour
         shotgun.villageUpgradeUiHolderSidescrolls[2].show(gameManager.shotgun.cooldownLevel, shotgunCooldownCostsSidescroll, imageList);
     }
 
-
     public void toggleRifleMenu()
     {
         rifleMenu.SetActive(!rifleMenu.activeSelf);
@@ -89,5 +88,170 @@ public class WeaponUpgradeMenuSidescroll : MonoBehaviour
         rifleMenu.SetActive(!rifleMenu.activeSelf);
         chooseGun.SetActive(!chooseGun.activeSelf);
         backBttn.SetActive(!backBttn.activeSelf);
+    }
+
+    //0: rifle, 1: grenadeLauncher, 2: shotgun
+    public void upgradeDamage(int index)
+    {
+        int level = 0;
+        LevelCostsSidescroll levelCostsSidescroll = new LevelCostsSidescroll();
+
+        switch (index)
+        {
+            case 0:
+                level = gameManager.rifle.damageLevel;
+                levelCostsSidescroll = rifleDamageCostsSidescroll;
+                break;
+            case 1:
+                level = gameManager.grenadeLauncher.damageLevel;
+                levelCostsSidescroll = grenadeLauncherDamageCostsSidescroll;
+                break;
+            case 2:
+                level = gameManager.shotgun.damageLevel;
+                levelCostsSidescroll = shotgunDamageCostsSidescroll;
+                break;
+        }
+
+        level++;
+
+        for (int i = 0; i < levelCostsSidescroll.level[level].componenten.Length; i++)
+        {
+            if (levelCostsSidescroll.level[level].componenten[i].amount > gameManager.resources[levelCostsSidescroll.level[level].componenten[i].id]) return;
+        }
+
+        for (int i = 0; i < levelCostsSidescroll.level[level].componenten.Length; i++)
+        {
+            gameManager.resources[levelCostsSidescroll.level[level].componenten[i].id] -= levelCostsSidescroll.level[level].componenten[i].amount;
+        }
+
+        switch (index)
+        {
+            case 0:
+                gameManager.rifle.damageLevel++;
+                gameManager.rifle.damage *= 1.1f;
+                break;
+            case 1:
+                gameManager.grenadeLauncher.damageLevel++;
+                gameManager.grenadeLauncher.damage *= 1.1f;
+                break;
+            case 2:
+                gameManager.shotgun.damageLevel++;
+                gameManager.shotgun.damage *= 1.1f;
+                break;
+        }
+    }
+
+    //0: rifle, 1: shotgun
+    public void upgradeFireRate(int index)
+    {
+        int level = 0;
+        LevelCostsSidescroll levelCostsSidescroll = new LevelCostsSidescroll();
+
+        switch (index)
+        {
+            case 0:
+                level = gameManager.rifle.fireRateLevel;
+                levelCostsSidescroll = rifleFireRateCostsSidescroll;
+                break;
+            case 1:
+                level = gameManager.shotgun.fireRateLevel;
+                levelCostsSidescroll = shotgunFireRateCostsSidescroll;
+                break;
+        }
+
+        level++;
+
+        for (int i = 0; i < levelCostsSidescroll.level[level].componenten.Length; i++)
+        {
+            if (levelCostsSidescroll.level[level].componenten[i].amount > gameManager.resources[levelCostsSidescroll.level[level].componenten[i].id]) return;
+        }
+
+        for (int i = 0; i < levelCostsSidescroll.level[level].componenten.Length; i++)
+        {
+            gameManager.resources[levelCostsSidescroll.level[level].componenten[i].id] -= levelCostsSidescroll.level[level].componenten[i].amount;
+        }
+
+        switch (index)
+        {
+            case 0:
+                gameManager.rifle.fireRateLevel++;
+                gameManager.rifle.fireRate *= 1.1f;
+                break;
+            case 2:
+                gameManager.shotgun.fireRateLevel++;
+                gameManager.shotgun.fireRate *= 1.1f;
+                break;
+        }
+    }
+
+    //0: rifle, 1: grenadeLauncher, 2: shotgun
+    public void upgradeCooldown(int index)
+    {
+        int level = 0;
+        LevelCostsSidescroll levelCostsSidescroll = new LevelCostsSidescroll();
+
+        switch (index)
+        {
+            case 0:
+                level = gameManager.rifle.cooldownLevel;
+                levelCostsSidescroll = rifleCooldownCostsSidescroll;
+                break;
+            case 1:
+                level = gameManager.grenadeLauncher.cooldownLevel;
+                levelCostsSidescroll = grenadeLauncherCooldownCostsSidescroll;
+                break;
+            case 2:
+                level = gameManager.shotgun.cooldownLevel;
+                levelCostsSidescroll = shotgunCooldownCostsSidescroll;
+                break;
+        }
+
+        level++;
+
+        for (int i = 0; i < levelCostsSidescroll.level[level].componenten.Length; i++)
+        {
+            if (levelCostsSidescroll.level[level].componenten[i].amount > gameManager.resources[levelCostsSidescroll.level[level].componenten[i].id]) return;
+        }
+
+        for (int i = 0; i < levelCostsSidescroll.level[level].componenten.Length; i++)
+        {
+            gameManager.resources[levelCostsSidescroll.level[level].componenten[i].id] -= levelCostsSidescroll.level[level].componenten[i].amount;
+        }
+
+        switch (index)
+        {
+            case 0:
+                gameManager.rifle.cooldownLevel++;
+                gameManager.rifle.overheatLossRate *= 1.1f;
+                break;
+            case 1:
+                gameManager.grenadeLauncher.cooldownLevel++;
+                gameManager.grenadeLauncher.overheatLossRate *= 1.1f;
+                break;
+            case 2:
+                gameManager.shotgun.cooldownLevel++;
+                gameManager.shotgun.overheatLossRate *= 1.1f;
+                break;
+        }
+    }
+
+    public void upgradeExplosionRadius(int index)
+    {
+        LevelCostsSidescroll levelCostsSidescroll = grenadeLauncherexplosionRadiusCostsSidescroll;
+        int level = gameManager.grenadeLauncher.explosionRadiusLevel;
+        level++;
+
+        for (int i = 0; i < levelCostsSidescroll.level[level].componenten.Length; i++)
+        {
+            if (levelCostsSidescroll.level[level].componenten[i].amount > gameManager.resources[levelCostsSidescroll.level[level].componenten[i].id]) return;
+        }
+
+        for (int i = 0; i < levelCostsSidescroll.level[level].componenten.Length; i++)
+        {
+            gameManager.resources[levelCostsSidescroll.level[level].componenten[i].id] -= levelCostsSidescroll.level[level].componenten[i].amount;
+        }
+
+        gameManager.grenadeLauncher.explosionRadiusLevel++;
+        gameManager.grenadeLauncher.explosionRadius *= 1.1f;
     }
 }
