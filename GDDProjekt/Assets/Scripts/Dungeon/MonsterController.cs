@@ -49,6 +49,7 @@ public class MonsterController : MonoBehaviour
         destSetter.target = player.transform;
         sR = GetComponentInChildren<SpriteRenderer>();
         lootTable = GameObject.FindGameObjectWithTag("manager").GetComponent<LootTable>();
+        pathing.maxSpeed = moveSpeed;
     }
 
     

@@ -22,7 +22,10 @@ public class BossProjectile : MonoBehaviour
     void explode(){
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 1.5f);
         foreach (Collider2D obj in colliders){
-            if(obj.tag == "Player") obj.GetComponent<PlayerStats>().takeDamage(dmg);
+            if(obj.tag == "Player"){
+                obj.GetComponent<PlayerController>().getStunned(0.8f);
+                obj.GetComponent<PlayerStats>().takeDamage(dmg);
+            } 
         }
         Destroy(this.gameObject);    
     }

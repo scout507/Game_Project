@@ -75,7 +75,7 @@ public class Manager : MonoBehaviour
         props.Clear();
         
 
-        if(level % 10 != 0){
+        if(level % 2 != 0){
             string mapCode = maps[Random.Range(0,maps.Length)];
             string[] settings = mapCode.Split(',');
             monsterAmount = 10 + Mathf.RoundToInt(level*(4f/5f));
