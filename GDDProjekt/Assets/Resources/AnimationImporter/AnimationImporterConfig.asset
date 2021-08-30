@@ -22,10 +22,10 @@ MonoBehaviour:
   _spriteAlignmentCustomY: 0
   _spritesTargetLocation:
     _locationType: 2
-    _globalDirectory: Assets/Sprites/Top-Down/UI
+    _globalDirectory: Assets/Sprites/Top-Down/Monsters/Boss/AnimationSprite
   _animationsTargetLocation:
-    _locationType: 0
-    _globalDirectory: Assets
+    _locationType: 2
+    _globalDirectory: Assets/Sprites/Top-Down/Monsters/Boss/Animations
   _animationControllersTargetLocation:
     _locationType: 0
     _globalDirectory: Assets
