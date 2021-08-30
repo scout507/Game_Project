@@ -50,7 +50,6 @@ MonoBehaviour:
   bulletforce: 0
   target: {x: 0, y: 0}
   exRadius: 0
-  explo: {fileID: 7063513705554689054, guid: 3f43b710da09a2749ba0e7d1dda54ac7, type: 3}
 --- !u!212 &6265685329700839109
 SpriteRenderer:
   m_ObjectHideFlags: 0
