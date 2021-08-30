@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public class BossController : MonoBehaviour
@@ -61,6 +62,7 @@ public class BossController : MonoBehaviour
     DialogueManager dialogueManager;
     GameObject manager;
     Animator anim;
+    Slider hpBar;
 
     bool skill0Active;
     bool skill1Active;
@@ -79,6 +81,8 @@ public class BossController : MonoBehaviour
         lootTable = manager.GetComponent<LootTable>();
         dialogueManager = manager.GetComponent<DialogueManager>();
         anim = GetComponent<Animator>();
+        hpBar = GetComponentInChildren<Slider>();
+        hpBar.maxValue = maxhp;
 
         skill0Timer = skill0Cd;
         skill1Timer = skill1Cd;
@@ -92,6 +96,8 @@ public class BossController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        hpBar.value = hp;
+
         atkTimer -= Time.deltaTime;
         skill0Timer -= Time.deltaTime;
         skill1Timer -= Time.deltaTime;
