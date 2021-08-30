@@ -152,6 +152,7 @@ public class UIController : MonoBehaviour
         exitScreen.SetActive(false);
         manager.resumeGame();
         manager.saveToManager();
+        gameManager.saveGame();
         SceneManager.LoadScene("Sidescroll");
     }
 
