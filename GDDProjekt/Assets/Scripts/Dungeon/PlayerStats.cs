@@ -8,6 +8,7 @@ public class PlayerStats : MonoBehaviour
     public float maxhp;
     public int[] loot;
     public int essence;
+    public bool dead = false;
 
     public float energyShield;
     public float maxEnergyShield;
@@ -15,6 +16,7 @@ public class PlayerStats : MonoBehaviour
     public float esTimer;
 
     float lastHitTimer;
+
     
 
     void Start()
@@ -51,6 +53,7 @@ public class PlayerStats : MonoBehaviour
     }
 
     void die(){
-
+        dead = true;
+        GameObject.FindGameObjectWithTag("manager").GetComponent<UIController>().presentDeathScreen();
     }
 }

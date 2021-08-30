@@ -9,7 +9,13 @@ public class Granade : MonoBehaviour
     public Vector2 target;
     public float exRadius;
     public GameObject explo;
-    bool exploded;    
+    bool exploded;   
+    GameObject cam;
+
+    private void Start()
+    {
+        cam = GameObject.FindGameObjectWithTag("MainCamera");
+    } 
 
     private void FixedUpdate()
     {
@@ -43,6 +49,7 @@ public class Granade : MonoBehaviour
             exploded = true;
             FindObjectOfType<SoundManager>().Play("explosion");
             GetComponent<SpriteRenderer>().enabled = false;
+            cam.GetComponent<CamController>().shake();
         }
     }
 

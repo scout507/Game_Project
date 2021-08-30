@@ -37,6 +37,7 @@ public class MonsterController : MonoBehaviour
     PlayerStats playerStats;
     Vector2 lookDir;
     LootTable lootTable;
+    Manager manager;
     public DmgPopUp lastPopUp;
 
     void Start()
@@ -49,6 +50,7 @@ public class MonsterController : MonoBehaviour
         destSetter.target = player.transform;
         sR = GetComponentInChildren<SpriteRenderer>();
         lootTable = GameObject.FindGameObjectWithTag("manager").GetComponent<LootTable>();
+        manager = GameObject.FindGameObjectWithTag("manager").GetComponent<Manager>();
         pathing.maxSpeed = moveSpeed;
     }
 
@@ -62,7 +64,7 @@ public class MonsterController : MonoBehaviour
 
         distanceToEnemy = Vector3.Distance(player.transform.position, this.transform.position);
         if(distanceToEnemy < aggroRange) aggro =  true;
-        if(aggro){
+        if(aggro && manager.rdy){
             pathing.canSearch = true;
         }
         if(hasAtkd) aktTimer += Time.deltaTime;
