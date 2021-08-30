@@ -1,1 +1,1 @@
-{"masterVolume":0.815872073173523,"sfxVolume":0.8120689392089844,"musicVolume":1.0}
+{"masterVolume":1.0,"sfxVolume":0.8120689392089844,"musicVolume":1.0}
