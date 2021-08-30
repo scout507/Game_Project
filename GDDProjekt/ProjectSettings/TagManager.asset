@@ -8,6 +8,18 @@ TagManager:
   - allowBullets
   - manager
   - collectible
+  - destructable
+  - portal
+  - GameManager
+  - gunHolder
+  - building
+  - Camera
+  - bullet
+  - wall
+  - npc
+  - enemy
+  - ground
+  - boss
   layers:
   - Default
   - TransparentFX
@@ -16,10 +28,10 @@ TagManager:
   - Water
   - UI
   - Unmoveable
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Building
+  - Bullet
+  - Ground
   - 
   - 
   - 
