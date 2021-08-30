@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class BossController : MonoBehaviour
 {
     [Tooltip("Sprites: 0: down, 1: down-right, 2: right, 3: top-right, 4: top, 5: top-left, 6: left, 7: down-left")]
@@ -59,6 +60,7 @@ public class BossController : MonoBehaviour
     Vector2 target;
     DialogueManager dialogueManager;
     GameObject manager;
+    Animator anim;
 
     bool skill0Active;
     bool skill1Active;
@@ -76,6 +78,7 @@ public class BossController : MonoBehaviour
         manager = GameObject.FindGameObjectWithTag("manager");
         lootTable = manager.GetComponent<LootTable>();
         dialogueManager = manager.GetComponent<DialogueManager>();
+        anim = GetComponent<Animator>();
 
         skill0Timer = skill0Cd;
         skill1Timer = skill1Cd;
@@ -119,19 +122,44 @@ public class BossController : MonoBehaviour
         lookDir = new Vector2(player.transform.position.x, player.transform.position.y) - rb.position;
         facing = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
         //down = -112,5 - -67,5 / down-right -67,5 - -22,5 / right -22,5 - 22,5 / top right = 22,5 - 67,5 / top = 67,5 - 112,5 / top-left = 157,5 / left = < 157,5 | > -157,5 / down-left = -112,5 - -157,5
-        if(facing >= -112.5f && facing < -67.5f) sR.sprite = sprites[0]; //down
-        else if(facing >= -67.5f && facing < -22.5f) sR.sprite = sprites[1]; //donw-right
-        else if(facing >= -22.5f && facing < 22.5f) sR.sprite = sprites[2]; //right
-        else if(facing >= 22.5f && facing < 67.5f) sR.sprite = sprites[3]; //top-right
-        else if(facing >= 67.5f && facing < 112.5f) sR.sprite = sprites[4]; //top
-        else if(facing >= 112.5f && facing < 157.5f) sR.sprite = sprites[5]; //top-left
-        else if(facing >= -157.5f && facing < -112.5f) sR.sprite = sprites[7]; //down-left
-        else sR.sprite = sprites[6]; //left
+        if(facing >= -112.5f && facing < -67.5f){
+            anim.SetInteger("dircetion", 0);
+            sR.sprite = sprites[0]; //down
+        } 
+        else if(facing >= -67.5f && facing < -22.5f){
+            anim.SetInteger("dircetion", 1);
+            sR.sprite = sprites[1]; //donw-right
+        } 
+        else if(facing >= -22.5f && facing < 22.5f){
+            anim.SetInteger("dircetion", 2);
+            sR.sprite = sprites[2]; //right
+        } 
+        else if(facing >= 22.5f && facing < 67.5f){
+            anim.SetInteger("dircetion", 3);
+            sR.sprite = sprites[3]; //top-right
+        } 
+        else if(facing >= 67.5f && facing < 112.5f){
+            anim.SetInteger("dircetion", 4);
+            sR.sprite = sprites[4]; //top
+        } 
+        else if(facing >= 112.5f && facing < 157.5f){
+            anim.SetInteger("dircetion", 5);
+            sR.sprite = sprites[5]; //top-left
+        } 
+        else if(facing >= -157.5f && facing < -112.5f){
+            anim.SetInteger("dircetion", 7);
+            sR.sprite = sprites[7]; //down-left
+        } 
+        else{
+            anim.SetInteger("dircetion", 6);
+            sR.sprite = sprites[6]; //left
+        } 
 
 
         //constant moving
         if(target != new Vector2(0,0) && Vector2.Distance(target, transform.position) >= meleeAtkRange && !moveblock){
             // move
+            setAnim("walking");
             Vector2 direction = new Vector2(target.x - transform.position.x, target.y-transform.position.y);
             rb.velocity = direction.normalized*moveSpeed*Time.fixedDeltaTime;
         }
@@ -166,6 +194,7 @@ public class BossController : MonoBehaviour
     }
 
     void autoAtk(){
+        setAnim("attacking");
         atkTimer = atkSpeed;
         rb.velocity = Vector2.zero;
         moveblockDuration = 1f;
@@ -177,7 +206,7 @@ public class BossController : MonoBehaviour
     }
 
     void leap(){
-        Debug.Log("leaping");
+        setAnim("jumping");
         target = new Vector2(player.transform.position.x,player.transform.position.y);
         Vector2 direction = new Vector2(target.x - transform.position.x, target.y-transform.position.y);
         rb.AddForce(direction*leapSpeed, ForceMode2D.Impulse);
@@ -297,6 +326,14 @@ public class BossController : MonoBehaviour
         DmgPopUp dmgPopUpScript = damagePopUpTrans.GetComponent<DmgPopUp>();;
         dmgPopUpScript.Setup(dmgTaken);
         return dmgPopUpScript;
+    }
+
+    public void setAnim(string animName){
+        anim.SetBool("walking", false);
+        anim.SetBool("jumping", false);
+        anim.SetBool("attacking", false);
+
+        anim.SetBool(animName, true);
     }
 }
 
