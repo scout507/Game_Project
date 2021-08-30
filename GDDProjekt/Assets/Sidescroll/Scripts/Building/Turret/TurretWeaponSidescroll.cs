@@ -14,6 +14,7 @@ public class TurretWeaponSidescroll : MonoBehaviour
     public float cooldown = 0.3f;
     public GameManager gameManager;
     public int damage;
+    public AiManager aiManager;
 
     //private variables
     Vector3 mouse;
@@ -31,7 +32,7 @@ public class TurretWeaponSidescroll : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        if (entered)
+        if (entered && !aiManager.gameEndEnemy)
         {
             mouse = cam.ScreenToWorldPoint(Input.mousePosition);
             dirct = mouse - firepoint.position;

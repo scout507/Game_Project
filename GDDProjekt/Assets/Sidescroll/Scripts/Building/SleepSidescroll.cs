@@ -35,7 +35,7 @@ public class SleepSidescroll : BuildingOverClassSidescroll
         {
             if (gameManager.hasSlept)
             {
-                textMeshProTitle.text = "Du musst erst in den Dungeon";
+                textMeshProTitle.text = "You must first enter the dungeon";
                 textMeshProTitleInteract.text = "";
             }
             else

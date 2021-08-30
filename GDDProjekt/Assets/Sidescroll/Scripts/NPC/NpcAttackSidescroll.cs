@@ -99,7 +99,6 @@ public class NpcAttackSidescroll : MonoBehaviour
     public void takeDamage(int damage)
     {
         life -= damage;
-        if (life <= 0) Destroy(gameObject);
     }
 
     void die()
