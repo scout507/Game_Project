@@ -21,6 +21,11 @@ public class Weaponstats
     public float overheatPerShot;
     public float overheatLossRate;
 
+    public int fireRateLevel = 0;
+    public int damageLevel = 0;
+    public int cooldownLevel = 0;
+    public int explosionRadiusLevel = 0;
+
     //shotgun
     public int projectiles;
     public int centering;
