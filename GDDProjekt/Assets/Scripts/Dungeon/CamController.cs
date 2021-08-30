@@ -6,6 +6,13 @@ public class CamController : MonoBehaviour
 {
     public Transform player;
     public float lerpSpeed = 2.5f;
+    CameraShake camShake;
+
+
+    private void Start()
+    {
+        camShake = GetComponent<CameraShake>();
+    }
   
     void FixedUpdate () 
     {
@@ -14,5 +21,9 @@ public class CamController : MonoBehaviour
         position.x = Mathf.Lerp(this.transform.position.x, player.position.x, lerpSpeed*Time.deltaTime);
         this.transform.position = position;
     }
- 
+
+    public void shake(){
+        StartCoroutine(camShake.Shake(0.15f,0.4f));
+    }
+
 }
