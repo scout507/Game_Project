@@ -11,7 +11,7 @@ public class Manager : MonoBehaviour
     public Transform bossBossSpawn;
     public GameObject portal;
 
-    public GameObject boss;
+    public GameObject[] bosses;
     public GameObject cam;
     public int level = 0;
     public int monsterAmount = 10;
@@ -107,7 +107,7 @@ public class Manager : MonoBehaviour
             Invoke("Scan",0.5f);
         }
         else{
-            Instantiate(boss, bossBossSpawn.position, Quaternion.identity);
+            Instantiate(bosses[(level/2)-1], bossBossSpawn.position, Quaternion.identity);
             hero.transform.position = bossPlayerSpawn.position;
         }
         cam.transform.position = new Vector3 (hero.transform.position.x, hero.transform.position.y, cam.transform.position.z);

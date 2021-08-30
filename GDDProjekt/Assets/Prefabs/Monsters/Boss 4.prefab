@@ -216,7 +216,7 @@ GameObject:
   - component: {fileID: 526297532383829175}
   - component: {fileID: 2319186915607591998}
   m_Layer: 0
-  m_Name: Boss
+  m_Name: Boss 4
   m_TagString: boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -324,7 +324,7 @@ MonoBehaviour:
     NPCname: Boss
     sentences:
     - TEST2
-  bosslevel: 1
+  bosslevel: 5
   hp: 1000
   maxhp: 1000
   dmg: 10
