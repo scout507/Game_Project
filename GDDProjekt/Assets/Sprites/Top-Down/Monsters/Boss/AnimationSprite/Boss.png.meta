@@ -224,6 +224,96 @@ TextureImporter:
   - first:
       213: -966574191862441673
     second: Boss 73
+  - first:
+      213: -1983617887531149358
+    second: Boss 74
+  - first:
+      213: -5031473415018743152
+    second: Boss 75
+  - first:
+      213: 2559213710876479066
+    second: Boss 76
+  - first:
+      213: 2604911445567509484
+    second: Boss 77
+  - first:
+      213: -1578161266040320284
+    second: Boss 78
+  - first:
+      213: -6238067881867299493
+    second: Boss 79
+  - first:
+      213: 4559235719510472259
+    second: Boss 80
+  - first:
+      213: -1122104457571101777
+    second: Boss 81
+  - first:
+      213: -4878562005756395858
+    second: Boss 82
+  - first:
+      213: 3764347779744965938
+    second: Boss 83
+  - first:
+      213: 1801452549913888586
+    second: Boss 84
+  - first:
+      213: 6581895415807564395
+    second: Boss 85
+  - first:
+      213: -3425566984324025650
+    second: Boss 86
+  - first:
+      213: 518012132178372366
+    second: Boss 87
+  - first:
+      213: 7371965149844289629
+    second: Boss 88
+  - first:
+      213: -6052711447994337341
+    second: Boss 89
+  - first:
+      213: -3395196349877154728
+    second: Boss 90
+  - first:
+      213: -609197438827894053
+    second: Boss 91
+  - first:
+      213: 5384725669459745948
+    second: Boss 92
+  - first:
+      213: 3054592529395307580
+    second: Boss 93
+  - first:
+      213: 2719646390835924573
+    second: Boss 94
+  - first:
+      213: 2376933056972783681
+    second: Boss 95
+  - first:
+      213: 3432992213075372684
+    second: Boss 96
+  - first:
+      213: -4938583958344032633
+    second: Boss 97
+  - first:
+      213: 7111668988823801773
+    second: Boss 98
+  - first:
+      213: -4585388784756076976
+    second: Boss 99
+  - first:
+      213: 918551023675245363
+    second: Boss 100
+  - first:
+      213: -7553509457336573289
+    second: Boss 101
+  - first:
+      213: -4545390453054960222
+    second: Boss 102
+  - first:
+      213: -6061988637627087006
+    second: Boss 103
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -287,7 +377,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 432
+    maxTextureSize: 480
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -305,7 +395,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 336
+        y: 432
         width: 48
         height: 48
       alignment: 0
@@ -326,7 +416,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 48
-        y: 336
+        y: 432
         width: 48
         height: 48
       alignment: 0
@@ -347,7 +437,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 96
-        y: 336
+        y: 432
         width: 48
         height: 48
       alignment: 0
@@ -368,7 +458,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 144
-        y: 336
+        y: 432
         width: 48
         height: 48
       alignment: 0
@@ -389,7 +479,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 192
-        y: 336
+        y: 432
         width: 48
         height: 48
       alignment: 0
@@ -410,7 +500,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 240
-        y: 336
+        y: 432
         width: 48
         height: 48
       alignment: 0
@@ -431,7 +521,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 288
-        y: 336
+        y: 432
         width: 48
         height: 48
       alignment: 0
@@ -452,7 +542,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 336
-        y: 336
+        y: 432
         width: 48
         height: 48
       alignment: 0
@@ -473,7 +563,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 384
-        y: 336
+        y: 432
         width: 48
         height: 48
       alignment: 0
@@ -493,8 +583,8 @@ TextureImporter:
       name: Boss 9
       rect:
         serializedVersion: 2
-        x: 0
-        y: 288
+        x: 432
+        y: 432
         width: 48
         height: 48
       alignment: 0
@@ -514,8 +604,8 @@ TextureImporter:
       name: Boss 10
       rect:
         serializedVersion: 2
-        x: 48
-        y: 288
+        x: 0
+        y: 384
         width: 48
         height: 48
       alignment: 0
@@ -535,8 +625,8 @@ TextureImporter:
       name: Boss 11
       rect:
         serializedVersion: 2
-        x: 96
-        y: 288
+        x: 48
+        y: 384
         width: 48
         height: 48
       alignment: 0
@@ -556,8 +646,8 @@ TextureImporter:
       name: Boss 12
       rect:
         serializedVersion: 2
-        x: 144
-        y: 288
+        x: 96
+        y: 384
         width: 48
         height: 48
       alignment: 0
@@ -577,8 +667,8 @@ TextureImporter:
       name: Boss 13
       rect:
         serializedVersion: 2
-        x: 192
-        y: 288
+        x: 144
+        y: 384
         width: 48
         height: 48
       alignment: 0
@@ -598,8 +688,8 @@ TextureImporter:
       name: Boss 14
       rect:
         serializedVersion: 2
-        x: 240
-        y: 288
+        x: 192
+        y: 384
         width: 48
         height: 48
       alignment: 0
@@ -619,8 +709,8 @@ TextureImporter:
       name: Boss 15
       rect:
         serializedVersion: 2
-        x: 288
-        y: 288
+        x: 240
+        y: 384
         width: 48
         height: 48
       alignment: 0
@@ -640,8 +730,8 @@ TextureImporter:
       name: Boss 16
       rect:
         serializedVersion: 2
-        x: 336
-        y: 288
+        x: 288
+        y: 384
         width: 48
         height: 48
       alignment: 0
@@ -661,8 +751,8 @@ TextureImporter:
       name: Boss 17
       rect:
         serializedVersion: 2
-        x: 384
-        y: 288
+        x: 336
+        y: 384
         width: 48
         height: 48
       alignment: 0
@@ -682,8 +772,8 @@ TextureImporter:
       name: Boss 18
       rect:
         serializedVersion: 2
-        x: 0
-        y: 240
+        x: 384
+        y: 384
         width: 48
         height: 48
       alignment: 0
@@ -703,8 +793,8 @@ TextureImporter:
       name: Boss 19
       rect:
         serializedVersion: 2
-        x: 48
-        y: 240
+        x: 432
+        y: 384
         width: 48
         height: 48
       alignment: 0
@@ -724,8 +814,8 @@ TextureImporter:
       name: Boss 20
       rect:
         serializedVersion: 2
-        x: 96
-        y: 240
+        x: 0
+        y: 336
         width: 48
         height: 48
       alignment: 0
@@ -745,8 +835,8 @@ TextureImporter:
       name: Boss 21
       rect:
         serializedVersion: 2
-        x: 144
-        y: 240
+        x: 48
+        y: 336
         width: 48
         height: 48
       alignment: 0
@@ -766,8 +856,8 @@ TextureImporter:
       name: Boss 22
       rect:
         serializedVersion: 2
-        x: 192
-        y: 240
+        x: 96
+        y: 336
         width: 48
         height: 48
       alignment: 0
@@ -787,8 +877,8 @@ TextureImporter:
       name: Boss 23
       rect:
         serializedVersion: 2
-        x: 240
-        y: 240
+        x: 144
+        y: 336
         width: 48
         height: 48
       alignment: 0
@@ -808,8 +898,8 @@ TextureImporter:
       name: Boss 24
       rect:
         serializedVersion: 2
-        x: 288
-        y: 240
+        x: 192
+        y: 336
         width: 48
         height: 48
       alignment: 0
@@ -829,8 +919,8 @@ TextureImporter:
       name: Boss 25
       rect:
         serializedVersion: 2
-        x: 336
-        y: 240
+        x: 240
+        y: 336
         width: 48
         height: 48
       alignment: 0
@@ -850,8 +940,8 @@ TextureImporter:
       name: Boss 26
       rect:
         serializedVersion: 2
-        x: 384
-        y: 240
+        x: 288
+        y: 336
         width: 48
         height: 48
       alignment: 0
@@ -871,8 +961,8 @@ TextureImporter:
       name: Boss 27
       rect:
         serializedVersion: 2
-        x: 0
-        y: 192
+        x: 336
+        y: 336
         width: 48
         height: 48
       alignment: 0
@@ -893,7 +983,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 144
-        y: 336
+        y: 432
         width: 48
         height: 48
       alignment: 0
@@ -913,8 +1003,8 @@ TextureImporter:
       name: Boss 29
       rect:
         serializedVersion: 2
-        x: 48
-        y: 192
+        x: 384
+        y: 336
         width: 48
         height: 48
       alignment: 0
@@ -934,8 +1024,8 @@ TextureImporter:
       name: Boss 30
       rect:
         serializedVersion: 2
-        x: 96
-        y: 192
+        x: 432
+        y: 336
         width: 48
         height: 48
       alignment: 0
@@ -955,8 +1045,8 @@ TextureImporter:
       name: Boss 31
       rect:
         serializedVersion: 2
-        x: 144
-        y: 192
+        x: 0
+        y: 288
         width: 48
         height: 48
       alignment: 0
@@ -976,8 +1066,8 @@ TextureImporter:
       name: Boss 32
       rect:
         serializedVersion: 2
-        x: 192
-        y: 192
+        x: 48
+        y: 288
         width: 48
         height: 48
       alignment: 0
@@ -997,8 +1087,8 @@ TextureImporter:
       name: Boss 33
       rect:
         serializedVersion: 2
-        x: 240
-        y: 192
+        x: 96
+        y: 288
         width: 48
         height: 48
       alignment: 0
@@ -1018,8 +1108,8 @@ TextureImporter:
       name: Boss 34
       rect:
         serializedVersion: 2
-        x: 192
-        y: 192
+        x: 48
+        y: 288
         width: 48
         height: 48
       alignment: 0
@@ -1039,8 +1129,8 @@ TextureImporter:
       name: Boss 35
       rect:
         serializedVersion: 2
-        x: 288
-        y: 192
+        x: 144
+        y: 288
         width: 48
         height: 48
       alignment: 0
@@ -1060,8 +1150,8 @@ TextureImporter:
       name: Boss 36
       rect:
         serializedVersion: 2
-        x: 336
-        y: 192
+        x: 192
+        y: 288
         width: 48
         height: 48
       alignment: 0
@@ -1081,8 +1171,8 @@ TextureImporter:
       name: Boss 37
       rect:
         serializedVersion: 2
-        x: 384
-        y: 192
+        x: 240
+        y: 288
         width: 48
         height: 48
       alignment: 0
@@ -1102,8 +1192,8 @@ TextureImporter:
       name: Boss 38
       rect:
         serializedVersion: 2
-        x: 336
-        y: 192
+        x: 192
+        y: 288
         width: 48
         height: 48
       alignment: 0
@@ -1123,8 +1213,8 @@ TextureImporter:
       name: Boss 39
       rect:
         serializedVersion: 2
-        x: 0
-        y: 144
+        x: 288
+        y: 288
         width: 48
         height: 48
       alignment: 0
@@ -1144,8 +1234,8 @@ TextureImporter:
       name: Boss 40
       rect:
         serializedVersion: 2
-        x: 48
-        y: 144
+        x: 336
+        y: 288
         width: 48
         height: 48
       alignment: 0
@@ -1165,8 +1255,8 @@ TextureImporter:
       name: Boss 41
       rect:
         serializedVersion: 2
-        x: 96
-        y: 144
+        x: 384
+        y: 288
         width: 48
         height: 48
       alignment: 0
@@ -1186,8 +1276,8 @@ TextureImporter:
       name: Boss 42
       rect:
         serializedVersion: 2
-        x: 144
-        y: 144
+        x: 432
+        y: 288
         width: 48
         height: 48
       alignment: 0
@@ -1207,8 +1297,8 @@ TextureImporter:
       name: Boss 43
       rect:
         serializedVersion: 2
-        x: 192
-        y: 144
+        x: 0
+        y: 240
         width: 48
         height: 48
       alignment: 0
@@ -1228,8 +1318,8 @@ TextureImporter:
       name: Boss 44
       rect:
         serializedVersion: 2
-        x: 240
-        y: 144
+        x: 48
+        y: 240
         width: 48
         height: 48
       alignment: 0
@@ -1249,8 +1339,8 @@ TextureImporter:
       name: Boss 45
       rect:
         serializedVersion: 2
-        x: 288
-        y: 144
+        x: 96
+        y: 240
         width: 48
         height: 48
       alignment: 0
@@ -1270,8 +1360,8 @@ TextureImporter:
       name: Boss 46
       rect:
         serializedVersion: 2
-        x: 336
-        y: 144
+        x: 144
+        y: 240
         width: 48
         height: 48
       alignment: 0
@@ -1291,8 +1381,8 @@ TextureImporter:
       name: Boss 47
       rect:
         serializedVersion: 2
-        x: 384
-        y: 144
+        x: 192
+        y: 240
         width: 48
         height: 48
       alignment: 0
@@ -1312,8 +1402,8 @@ TextureImporter:
       name: Boss 48
       rect:
         serializedVersion: 2
-        x: 0
-        y: 96
+        x: 240
+        y: 240
         width: 48
         height: 48
       alignment: 0
@@ -1333,8 +1423,8 @@ TextureImporter:
       name: Boss 49
       rect:
         serializedVersion: 2
-        x: 48
-        y: 96
+        x: 288
+        y: 240
         width: 48
         height: 48
       alignment: 0
@@ -1354,8 +1444,8 @@ TextureImporter:
       name: Boss 50
       rect:
         serializedVersion: 2
-        x: 96
-        y: 96
+        x: 336
+        y: 240
         width: 48
         height: 48
       alignment: 0
@@ -1375,8 +1465,8 @@ TextureImporter:
       name: Boss 51
       rect:
         serializedVersion: 2
-        x: 144
-        y: 96
+        x: 384
+        y: 240
         width: 48
         height: 48
       alignment: 0
@@ -1396,8 +1486,8 @@ TextureImporter:
       name: Boss 52
       rect:
         serializedVersion: 2
-        x: 192
-        y: 96
+        x: 432
+        y: 240
         width: 48
         height: 48
       alignment: 0
@@ -1417,8 +1507,8 @@ TextureImporter:
       name: Boss 53
       rect:
         serializedVersion: 2
-        x: 240
-        y: 96
+        x: 0
+        y: 192
         width: 48
         height: 48
       alignment: 0
@@ -1438,8 +1528,8 @@ TextureImporter:
       name: Boss 54
       rect:
         serializedVersion: 2
-        x: 288
-        y: 96
+        x: 48
+        y: 192
         width: 48
         height: 48
       alignment: 0
@@ -1459,8 +1549,8 @@ TextureImporter:
       name: Boss 55
       rect:
         serializedVersion: 2
-        x: 336
-        y: 96
+        x: 96
+        y: 192
         width: 48
         height: 48
       alignment: 0
@@ -1481,7 +1571,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 336
+        y: 432
         width: 48
         height: 48
       alignment: 0
@@ -1501,8 +1591,8 @@ TextureImporter:
       name: Boss 57
       rect:
         serializedVersion: 2
-        x: 384
-        y: 96
+        x: 144
+        y: 192
         width: 48
         height: 48
       alignment: 0
@@ -1522,8 +1612,8 @@ TextureImporter:
       name: Boss 58
       rect:
         serializedVersion: 2
-        x: 0
-        y: 48
+        x: 192
+        y: 192
         width: 48
         height: 48
       alignment: 0
@@ -1544,7 +1634,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 144
-        y: 336
+        y: 432
         width: 48
         height: 48
       alignment: 0
@@ -1564,8 +1654,8 @@ TextureImporter:
       name: Boss 60
       rect:
         serializedVersion: 2
-        x: 48
-        y: 48
+        x: 240
+        y: 192
         width: 48
         height: 48
       alignment: 0
@@ -1585,8 +1675,8 @@ TextureImporter:
       name: Boss 61
       rect:
         serializedVersion: 2
-        x: 96
-        y: 48
+        x: 288
+        y: 192
         width: 48
         height: 48
       alignment: 0
@@ -1606,8 +1696,8 @@ TextureImporter:
       name: Boss 62
       rect:
         serializedVersion: 2
-        x: 144
-        y: 48
+        x: 336
+        y: 192
         width: 48
         height: 48
       alignment: 0
@@ -1627,8 +1717,8 @@ TextureImporter:
       name: Boss 63
       rect:
         serializedVersion: 2
-        x: 192
-        y: 48
+        x: 384
+        y: 192
         width: 48
         height: 48
       alignment: 0
@@ -1648,8 +1738,8 @@ TextureImporter:
       name: Boss 64
       rect:
         serializedVersion: 2
-        x: 240
-        y: 48
+        x: 432
+        y: 192
         width: 48
         height: 48
       alignment: 0
@@ -1669,8 +1759,8 @@ TextureImporter:
       name: Boss 65
       rect:
         serializedVersion: 2
-        x: 288
-        y: 48
+        x: 0
+        y: 144
         width: 48
         height: 48
       alignment: 0
@@ -1690,8 +1780,8 @@ TextureImporter:
       name: Boss 66
       rect:
         serializedVersion: 2
-        x: 336
-        y: 48
+        x: 48
+        y: 144
         width: 48
         height: 48
       alignment: 0
@@ -1711,8 +1801,8 @@ TextureImporter:
       name: Boss 67
       rect:
         serializedVersion: 2
-        x: 384
-        y: 48
+        x: 96
+        y: 144
         width: 48
         height: 48
       alignment: 0
@@ -1732,8 +1822,8 @@ TextureImporter:
       name: Boss 68
       rect:
         serializedVersion: 2
-        x: 144
-        y: 288
+        x: 96
+        y: 384
         width: 48
         height: 48
       alignment: 0
@@ -1753,8 +1843,8 @@ TextureImporter:
       name: Boss 69
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
+        x: 144
+        y: 144
         width: 48
         height: 48
       alignment: 0
@@ -1774,8 +1864,8 @@ TextureImporter:
       name: Boss 70
       rect:
         serializedVersion: 2
-        x: 48
-        y: 0
+        x: 192
+        y: 144
         width: 48
         height: 48
       alignment: 0
@@ -1795,8 +1885,8 @@ TextureImporter:
       name: Boss 71
       rect:
         serializedVersion: 2
-        x: 96
-        y: 0
+        x: 240
+        y: 144
         width: 48
         height: 48
       alignment: 0
@@ -1816,8 +1906,8 @@ TextureImporter:
       name: Boss 72
       rect:
         serializedVersion: 2
-        x: 144
-        y: 0
+        x: 288
+        y: 144
         width: 48
         height: 48
       alignment: 0
@@ -1837,8 +1927,8 @@ TextureImporter:
       name: Boss 73
       rect:
         serializedVersion: 2
-        x: 192
-        y: 0
+        x: 336
+        y: 144
         width: 48
         height: 48
       alignment: 0
@@ -1850,6 +1940,636 @@ TextureImporter:
       bones: []
       spriteID: 7399af4c4e90692f0800000000000000
       internalID: -966574191862441673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss 74
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 144
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d7589b7a06c874e0800000000000000
+      internalID: -1983617887531149358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss 75
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 144
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09a7cf0469d9c2ab0800000000000000
+      internalID: -5031473415018743152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss 76
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 96
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5e0a1d8f47248320800000000000000
+      internalID: 2559213710876479066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss 77
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 96
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce396688821862420800000000000000
+      internalID: 2604911445567509484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss 78
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 96
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4eec263a0be391ae0800000000000000
+      internalID: -1578161266040320284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss 79
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 96
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b55b688ef4eed69a0800000000000000
+      internalID: -6238067881867299493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss 80
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 192
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 346b1b42bb8a54f30800000000000000
+      internalID: 4559235719510472259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss 81
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 96
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa39795e0fb7d60f0800000000000000
+      internalID: -1122104457571101777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss 82
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 96
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eae3c2814bddb4cb0800000000000000
+      internalID: -4878562005756395858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss 83
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 192
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 235aabe7c56ad3430800000000000000
+      internalID: 3764347779744965938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss 84
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 96
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a47c655bc8b000910800000000000000
+      internalID: 1801452549913888586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss 85
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 96
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b6a5bff1207975b50800000000000000
+      internalID: 6581895415807564395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss 86
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 192
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec27f092af0f570d0800000000000000
+      internalID: -3425566984324025650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss 87
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 96
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e07a5d72a49503700800000000000000
+      internalID: 518012132178372366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss 88
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 96
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d583705de3b7e4660800000000000000
+      internalID: 7371965149844289629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss 89
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 144
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c77b56b103700ca0800000000000000
+      internalID: -6052711447994337341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss 90
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 48
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 85c8ed688e6d1e0d0800000000000000
+      internalID: -3395196349877154728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss 91
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 48
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bdae5943822bb87f0800000000000000
+      internalID: -609197438827894053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss 92
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 48
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c9c531587736aba40800000000000000
+      internalID: 5384725669459745948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss 93
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 48
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c345b28b8b7146a20800000000000000
+      internalID: 3054592529395307580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss 94
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 48
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5ec270bbff1eb520800000000000000
+      internalID: 2719646390835924573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss 95
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 144
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1400fb395009cf020800000000000000
+      internalID: 2376933056972783681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss 96
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 48
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c8a2a01aa3074af20800000000000000
+      internalID: 3432992213075372684
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss 97
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 48
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 78e167d3e00a67bb0800000000000000
+      internalID: -4938583958344032633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss 98
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 48
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: daf010f1449b1b260800000000000000
+      internalID: 7111668988823801773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss 99
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 48
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05ecd87d13d6d50c0800000000000000
+      internalID: -4585388784756076976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss 100
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 48
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3330c321a495fbc00800000000000000
+      internalID: 918551023675245363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss 101
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 79266e33b2b8c2790800000000000000
+      internalID: -7553509457336573289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss 102
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ad053827778be0c0800000000000000
+      internalID: -4545390453054960222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss 103
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26788cda37d7fdba0800000000000000
+      internalID: -6061988637627087006
       vertices: []
       indices: 
       edges: []
