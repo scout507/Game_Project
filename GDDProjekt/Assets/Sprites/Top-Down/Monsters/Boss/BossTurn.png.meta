@@ -1,31 +1,31 @@
 fileFormatVersion: 2
-guid: 25aa28d6ffc71514b82c0f9e27ed0481
+guid: ddeebb964e8d691499d9d4116427079d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8794224428945983929
-    second: BossTurn 0
+      213: -6756755576431642159
+    second: BossTurn_0
   - first:
-      213: 2017385741131326406
-    second: BossTurn 1
+      213: 5732723244519903608
+    second: BossTurn_1
   - first:
-      213: 3436224577797431823
-    second: BossTurn 2
+      213: -3527217724965457036
+    second: BossTurn_2
   - first:
-      213: 412240651035289171
-    second: BossTurn 3
+      213: 332089755505968839
+    second: BossTurn_3
   - first:
-      213: -5951070182193425350
-    second: BossTurn 4
+      213: -8124708024671023168
+    second: BossTurn_4
   - first:
-      213: -5672449183665185188
-    second: BossTurn 5
+      213: 4390561884329439160
+    second: BossTurn_5
   - first:
-      213: -6215492445123270134
-    second: BossTurn 6
+      213: -9062292492018211242
+    second: BossTurn_6
   - first:
-      213: -7401941495721582600
-    second: BossTurn 7
+      213: -1210953608187523886
+    second: BossTurn_7
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -70,7 +70,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -89,7 +89,19 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 144
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -103,7 +115,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BossTurn 0
+      name: BossTurn_0
       rect:
         serializedVersion: 2
         x: 0
@@ -115,16 +127,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 746bc95c973a4f580800000000000000
-      internalID: -8794224428945983929
+      spriteID: 1d9f6a02a9e2b32a0800000000000000
+      internalID: -6756755576431642159
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BossTurn 1
+      name: BossTurn_1
       rect:
         serializedVersion: 2
         x: 48
@@ -136,16 +148,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 6c3221b94a13ffb10800000000000000
-      internalID: 2017385741131326406
+      spriteID: 871db39ea69be8f40800000000000000
+      internalID: 5732723244519903608
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BossTurn 2
+      name: BossTurn_2
       rect:
         serializedVersion: 2
         x: 96
@@ -157,16 +169,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: f0225103c0cefaf20800000000000000
-      internalID: 3436224577797431823
+      spriteID: 473f8f9ca2ecc0fc0800000000000000
+      internalID: -3527217724965457036
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BossTurn 3
+      name: BossTurn_3
       rect:
         serializedVersion: 2
         x: 0
@@ -178,16 +190,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 3562fee10b298b500800000000000000
-      internalID: 412240651035289171
+      spriteID: 7c6ca768fd1db9400800000000000000
+      internalID: 332089755505968839
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BossTurn 4
+      name: BossTurn_4
       rect:
         serializedVersion: 2
         x: 48
@@ -199,16 +211,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: a3411fc033d896da0800000000000000
-      internalID: -5951070182193425350
+      spriteID: 0cfc7bd191d3f3f80800000000000000
+      internalID: -8124708024671023168
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BossTurn 5
+      name: BossTurn_5
       rect:
         serializedVersion: 2
         x: 96
@@ -220,16 +232,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: c5e9e2975896741b0800000000000000
-      internalID: -5672449183665185188
+      spriteID: 8bf63d785c86eec30800000000000000
+      internalID: 4390561884329439160
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BossTurn 6
+      name: BossTurn_6
       rect:
         serializedVersion: 2
         x: 0
@@ -241,16 +253,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: a0aad406d822eb9a0800000000000000
-      internalID: -6215492445123270134
+      spriteID: 656a09a1ef44c3280800000000000000
+      internalID: -9062292492018211242
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BossTurn 7
+      name: BossTurn_7
       rect:
         serializedVersion: 2
         x: 48
@@ -262,10 +274,10 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 8ff9a434d65074990800000000000000
-      internalID: -7401941495721582600
+      spriteID: 2dc4188fb14d13fe0800000000000000
+      internalID: -1210953608187523886
       vertices: []
       indices: 
       edges: []

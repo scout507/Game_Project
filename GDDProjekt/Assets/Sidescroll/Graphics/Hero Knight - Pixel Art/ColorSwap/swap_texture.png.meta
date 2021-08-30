@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:GDDProjekt/Assets/Sidescroll/Graphics/Hero Knight - Pixel Art/Sprites/Fire.png.meta
+guid: e2437c2db13575f47a401bce9259ff06
+=======
 guid: 5f8c87aa3e6c2aa47bee2ff396a98f2c
+>>>>>>> dungeon:GDDProjekt/Assets/Sidescroll/Graphics/Hero Knight - Pixel Art/ColorSwap/swap_texture.png.meta
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -61,7 +65,7 @@ TextureImporter:
   compressionQualitySet: 0
   textureFormatSet: 0
   ignorePngGamma: 0
-  applyGammaDecoding: 1
+  applyGammaDecoding: 0
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform

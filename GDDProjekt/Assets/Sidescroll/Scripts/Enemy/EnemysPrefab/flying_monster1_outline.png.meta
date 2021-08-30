@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:GDDProjekt/Assets/Sidescroll/Graphics/Hero Knight - Pixel Art/Sprites/Gewehrnpc.png.meta
+guid: 51eb4a1c1e42f7c45a1f9a45e71e57f5
+=======
 guid: 2583bc37ae3a7c245b548e0f7e62ffe7
+>>>>>>> dungeon:GDDProjekt/Assets/Sidescroll/Scripts/Enemy/EnemysPrefab/flying_monster1_outline.png.meta
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}

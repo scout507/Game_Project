@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:GDDProjekt/Assets/Sidescroll/Graphics/Hero Knight - Pixel Art/Sprites/Gewehrturm.png.meta
+guid: 42185b73e4eb3ec40809904eeefc995d
+=======
 guid: c279f985dbe2e534dba0eb675814938b
+>>>>>>> dungeon:GDDProjekt/Assets/Sprites/Top-Down/Explosion/explo_0.png.meta
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}

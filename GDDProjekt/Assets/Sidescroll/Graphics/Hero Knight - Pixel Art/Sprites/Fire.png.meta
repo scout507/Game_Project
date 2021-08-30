@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:GDDProjekt/Assets/Sidescroll/Graphics/Hero Knight - Pixel Art/Sprites/Fire.png.meta
 guid: e2437c2db13575f47a401bce9259ff06
+=======
+guid: 5f8c87aa3e6c2aa47bee2ff396a98f2c
+>>>>>>> dungeon:GDDProjekt/Assets/Sidescroll/Graphics/Hero Knight - Pixel Art/ColorSwap/swap_texture.png.meta
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -74,14 +78,14 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
   spriteSheet:
     serializedVersion: 2
     sprites: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 710f23cd6cd974f48beb7e6996205c9a
     internalID: 0
     vertices: []
     indices: 
