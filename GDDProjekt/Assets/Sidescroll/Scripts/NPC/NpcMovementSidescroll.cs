@@ -29,6 +29,7 @@ public class NpcMovementSidescroll : MonoBehaviour
         if (aiManager.gameEndNpc)
         {
             target = cityHall.position;
+            GetComponent<SpriteRenderer>().flipX = true;
             move = true;
         }
 

@@ -15,15 +15,17 @@ public class GameManager : MonoBehaviour
     public Weaponstats shotgun;
     public Weaponstats grenadeLauncher;
     public int day;
+    public bool wasInDungeon = false;
+    public bool hasSlept = true;
+
+    public int normalNpcLevel = 0;
+    public int sniperNpcLevel = 0;
+    public int mortarNpcLevel = 0;
+    public int wall = 0;
+    public int turret = 0;
+    
     // 0=easy, 1=normal, 2=hardcore; 
     public int difficulty = 1;
-
-    public int normalNpcLife = 100;
-    public int normalNpcDamage = 100;
-    public int sniperNpcLife = 100;
-    public int sniperNpcDamage = 100;
-    public int mortarNpcLife = 100;
-    public int mortarNpcDamage = 100;
     
     public int dungeonLevel = 0;
 
@@ -33,6 +35,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        loadGame();
         loadSettings();
 
         rifle = new Weaponstats();
@@ -41,7 +44,7 @@ public class GameManager : MonoBehaviour
         initWeapons();
 
         if (instance == null) instance = this;
-        else if (instance != this) Destroy(gameObject);  
+        else if (instance != this) Destroy(gameObject);
         DontDestroyOnLoad(this.gameObject);
 
         
@@ -69,7 +72,7 @@ public class GameManager : MonoBehaviour
         grenadeLauncher.init(50,1,11,2.5f,0,0,6);
     }
 
-    void saveGame(){
+    public void saveGame(){
         //TODO add filename
         SaveGame save = new SaveGame(resources,rifle,shotgun,grenadeLauncher,day,difficulty);
         string json = JsonUtility.ToJson(save);
@@ -87,7 +90,7 @@ public class GameManager : MonoBehaviour
             this.grenadeLauncher = loadedSave.grenadeLauncher;
             this.day = loadedSave.day;
             this.difficulty = loadedSave.difficulty;
-            SceneManager.LoadScene("Sidescroll");
+            //SceneManager.LoadScene("Sidescroll");
         }      
     }
 
