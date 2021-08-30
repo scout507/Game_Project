@@ -38,8 +38,11 @@ public class VillageUpgradeUiHolderSidescroll : MonoBehaviour
 
     public void show(int level, LevelCostsSidescroll levelCostsSidescroll, Sprite[] imageList)
     {
-        //levelTextMesh.text = "Level " + level.ToString();
+        Start();
+        levelTextMesh.text = "Level " + level.ToString();
+
         level++;
+
         int amount = levelCostsSidescroll.level[level].componenten.Length;
 
         if (amount == 3)
@@ -55,22 +58,22 @@ public class VillageUpgradeUiHolderSidescroll : MonoBehaviour
         else if (amount == 2)
         {
             ressource1ImageFormat.sprite = imageList[levelCostsSidescroll.level[level].componenten[0].id];
-            ressource2ImageFormat.sprite = null;
+            ressource2ImageFormat.sprite = imageList[8];
             ressource3ImageFormat.sprite = imageList[levelCostsSidescroll.level[level].componenten[1].id];
 
             ressource1TextMesh.text = levelCostsSidescroll.level[level].componenten[0].amount.ToString();
-            ressource2TextMesh.text = null;
+            ressource2TextMesh.text = "";
             ressource3TextMesh.text = levelCostsSidescroll.level[level].componenten[1].amount.ToString();
         }
         else
         {
-            ressource1ImageFormat.sprite = null;
+            ressource1ImageFormat.sprite = imageList[8];
             ressource2ImageFormat.sprite = imageList[levelCostsSidescroll.level[level].componenten[0].id];
-            ressource3ImageFormat.sprite = null;
+            ressource3ImageFormat.sprite = imageList[8];
 
-            ressource1TextMesh.text = null;
+            ressource1TextMesh.text = "";
             ressource2TextMesh.text = levelCostsSidescroll.level[level].componenten[0].amount.ToString();
-            ressource3TextMesh.text = null;
+            ressource3TextMesh.text = "";
         }
     }
 

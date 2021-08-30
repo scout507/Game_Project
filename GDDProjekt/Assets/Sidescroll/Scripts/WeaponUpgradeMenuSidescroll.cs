@@ -55,7 +55,7 @@ public class WeaponUpgradeMenuSidescroll : MonoBehaviour
         {
             ressourcesText[i].text = gameManager.resources[i].ToString();
         }
-
+        
         if (rifleMenu.activeSelf)
         {
             rifle.villageUpgradeUiHolderSidescrolls[0].show(gameManager.rifle.damageLevel, rifleDamageCostsSidescroll, imageList);

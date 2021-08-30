@@ -12,6 +12,7 @@ public class WallSidescroll : BuildingOverClassSidescroll
     public int life;
     public int maxlife;
     public float maxtimer = 10;
+    public GameManager gameManager;
 
     //private
     PlayerMovementSidescroll playerMovementSidescroll;
@@ -24,9 +25,11 @@ public class WallSidescroll : BuildingOverClassSidescroll
 
     void Start()
     {
+        maxlife = Mathf.CeilToInt((float)maxlife * Mathf.Pow(1.1f, gameManager.wall));
         playerMovementSidescroll = player.GetComponent<PlayerMovementSidescroll>();
         textMeshProTitle = title.GetComponent<TextMeshProUGUI>();
         textMeshProTitleInteract = interact.GetComponent<TextMeshProUGUI>();
+        life = maxlife;
     }
 
     void Update()

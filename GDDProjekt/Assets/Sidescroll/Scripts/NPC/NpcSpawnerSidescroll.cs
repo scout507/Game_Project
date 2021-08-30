@@ -14,7 +14,8 @@ public class NpcSpawnerSidescroll : MonoBehaviour
     public int amountSniperNpcPrefabPerSide;
     public int amountMortarNpcPrefabPerSide;
 
-    public GameObject spawner;
+    public GameObject spawnerRight;
+    public GameObject spawnerLeft;
     public int waves;
     public float startDelay;
     public float nextWaveDelay;
@@ -24,7 +25,7 @@ public class NpcSpawnerSidescroll : MonoBehaviour
     public Transform positionMortarLeft;
     public Transform positionSniperRight;
     public Transform positionMortarRight;
-    
+
     //private variables
     float wavesTimer;
     float waitTime;
@@ -35,12 +36,15 @@ public class NpcSpawnerSidescroll : MonoBehaviour
     {
         waitTime = startDelay;
         aiManager = GetComponent<AiManager>();
-        normalNpcPrefab.GetComponent<NpcAttackSidescroll>().damage = aiManager.gameManager.normalNpcLevel;
-        normalNpcPrefab.GetComponent<NpcAttackSidescroll>().maxLife = aiManager.gameManager.normalNpcLevel;
-        sniperNpcPrefab.GetComponent<NpcAttackSidescroll>().damage = aiManager.gameManager.sniperNpcLevel;
-        sniperNpcPrefab.GetComponent<NpcAttackSidescroll>().maxLife = aiManager.gameManager.sniperNpcLevel;
-        mortarNpcPrefab.GetComponent<NpcAttackSidescroll>().damage = aiManager.gameManager.mortarNpcLevel;
-        mortarNpcPrefab.GetComponent<NpcAttackSidescroll>().maxLife = aiManager.gameManager.mortarNpcLevel;
+        
+        normalNpcPrefab.GetComponent<NpcAttackSidescroll>().damage = (int)(1 * Mathf.Pow(1.1f, aiManager.gameManager.normalNpcLevel));
+        normalNpcPrefab.GetComponent<NpcAttackSidescroll>().maxLife = (int)(100 * Mathf.Pow(1.1f, aiManager.gameManager.normalNpcLevel));
+
+        sniperNpcPrefab.GetComponent<NpcAttackSidescroll>().damage = (int)(1 * Mathf.Pow(1.1f, aiManager.gameManager.sniperNpcLevel));
+        sniperNpcPrefab.GetComponent<NpcAttackSidescroll>().maxLife = (int)(100 * Mathf.Pow(1.1f, aiManager.gameManager.sniperNpcLevel));
+
+        mortarNpcPrefab.GetComponent<NpcAttackSidescroll>().damage = (int)(1 * Mathf.Pow(1.1f, aiManager.gameManager.mortarNpcLevel));
+        mortarNpcPrefab.GetComponent<NpcAttackSidescroll>().maxLife = (int)(100 * Mathf.Pow(1.1f, aiManager.gameManager.mortarNpcLevel));
     }
 
     void Update()
@@ -54,20 +58,20 @@ public class NpcSpawnerSidescroll : MonoBehaviour
 
             for (int i = 0; i < amountNormalNpcPrefabPerSide; i++)
             {
-                setValuesLeft(Instantiate(normalNpcPrefab, spawner.transform.position, spawner.transform.rotation), aiManager.wallLeft.transform);
-                setValuesRight(Instantiate(normalNpcPrefab, spawner.transform.position, spawner.transform.rotation), aiManager.wallRight.transform);
+                setValuesLeft(Instantiate(normalNpcPrefab, spawnerLeft.transform.position, spawnerLeft.transform.rotation), aiManager.wallLeft.transform);
+                setValuesRight(Instantiate(normalNpcPrefab, spawnerRight.transform.position, spawnerRight.transform.rotation), aiManager.wallRight.transform);
             }
 
             for (int i = 0; i < amountMortarNpcPrefabPerSide; i++)
             {
-                setValuesLeft(Instantiate(mortarNpcPrefab, spawner.transform.position, spawner.transform.rotation), positionMortarLeft);
-                setValuesRight(Instantiate(mortarNpcPrefab, spawner.transform.position, spawner.transform.rotation), positionMortarRight);
+                setValuesLeft(Instantiate(mortarNpcPrefab, spawnerLeft.transform.position, spawnerLeft.transform.rotation), positionMortarLeft);
+                setValuesRight(Instantiate(mortarNpcPrefab, spawnerRight.transform.position, spawnerRight.transform.rotation), positionMortarRight);
             }
 
             for (int i = 0; i < amountSniperNpcPrefabPerSide; i++)
             {
-                setValuesLeft(Instantiate(sniperNpcPrefab, spawner.transform.position, spawner.transform.rotation), positionSniperLeft);
-                setValuesRight(Instantiate(sniperNpcPrefab, spawner.transform.position, spawner.transform.rotation), positionSniperRight);
+                setValuesLeft(Instantiate(sniperNpcPrefab, spawnerLeft.transform.position, spawnerLeft.transform.rotation), positionSniperLeft);
+                setValuesRight(Instantiate(sniperNpcPrefab, spawnerRight.transform.position, spawnerRight.transform.rotation), positionSniperRight);
             }
         }
     }

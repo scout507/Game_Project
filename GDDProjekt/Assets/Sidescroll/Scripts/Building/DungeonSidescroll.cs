@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using TMPro;
 
 public class DungeonSidescroll : BuildingOverClassSidescroll
@@ -12,6 +11,7 @@ public class DungeonSidescroll : BuildingOverClassSidescroll
     public GameManager gameManager;
     public GameObject title;
     public GameObject interact;
+    public GameObject dungeonEnterMenu;
 
     //private variables
     PlayerMovementSidescroll playerMovementSidescroll;
@@ -65,9 +65,6 @@ public class DungeonSidescroll : BuildingOverClassSidescroll
 
     public void intoDungeon()
     {
-        gameManager.wasInDungeon = true;
-        gameManager.hasSlept = false;
-        gameManager.saveGame();
-        SceneManager.LoadScene("MapGeneration");
+        dungeonEnterMenu.SetActive(true);
     }
 }

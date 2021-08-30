@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        loadGame();
         loadSettings();
 
         rifle = new Weaponstats();
@@ -89,7 +90,7 @@ public class GameManager : MonoBehaviour
             this.grenadeLauncher = loadedSave.grenadeLauncher;
             this.day = loadedSave.day;
             this.difficulty = loadedSave.difficulty;
-            SceneManager.LoadScene("Sidescroll");
+            //SceneManager.LoadScene("Sidescroll");
         }      
     }
 
