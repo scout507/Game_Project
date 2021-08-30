@@ -156,7 +156,7 @@ public class Manager : MonoBehaviour
         for(int i = 0; i < 2; i++){
             Weapon weaponScript;
             Weaponstats copyStats;
-            if(gameManager.selectedWeapons[i] == 0){
+            if(gameManager.selectedWeapons[i] == 1){
                 //shotgun
                 
                 copyStats = gameManager.shotgun;
@@ -169,7 +169,7 @@ public class Manager : MonoBehaviour
                 shotgun.centering = copyStats.centering;
                 playerController.guns[i] = gun;
             }
-            else if(gameManager.selectedWeapons[i] == 1){
+            else if(gameManager.selectedWeapons[i] == 0){
                 //Rifle
                 
                 copyStats = gameManager.rifle;

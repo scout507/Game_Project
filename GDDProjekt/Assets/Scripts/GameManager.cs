@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
 
     //Save Game related stats
     public int[] resources;
-    public int[] selectedWeapons;
+    public int[] selectedWeapons = new int[2];
     public Weaponstats rifle;
     public Weaponstats shotgun;
     public Weaponstats grenadeLauncher;
