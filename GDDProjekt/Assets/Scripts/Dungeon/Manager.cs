@@ -78,7 +78,7 @@ public class Manager : MonoBehaviour
         props.Clear();
         
 
-        if(level % 2 != 0){
+        if(level % 10 != 0){
             string mapCode = maps[Random.Range(0,maps.Length)];
             string[] settings = mapCode.Split(',');
             monsterAmount = 10 + Mathf.RoundToInt(level*(4f/5f));
@@ -107,7 +107,7 @@ public class Manager : MonoBehaviour
             Invoke("Scan",0.5f);
         }
         else{
-            Instantiate(bosses[(level/2)-1], bossBossSpawn.position, Quaternion.identity);
+            Instantiate(bosses[(level/10)-1], bossBossSpawn.position, Quaternion.identity);
             hero.transform.position = bossPlayerSpawn.position;
         }
         cam.transform.position = new Vector3 (hero.transform.position.x, hero.transform.position.y, cam.transform.position.z);
