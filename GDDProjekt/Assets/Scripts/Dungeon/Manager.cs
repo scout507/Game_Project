@@ -78,7 +78,7 @@ public class Manager : MonoBehaviour
         props.Clear();
         
 
-        if(level % 10 != 0){
+        if(level % 2 != 0){
             string mapCode = maps[Random.Range(0,maps.Length)];
             string[] settings = mapCode.Split(',');
             monsterAmount = 10 + Mathf.RoundToInt(level*(4f/5f));
@@ -138,6 +138,7 @@ public class Manager : MonoBehaviour
         for(int i = 0; i<playerStats.loot.Length; i++){
             gameManager.resources[i] += playerStats.loot[i];
         }
+        gameManager.saveGame();
     }
 
     void loadFromManager(){
@@ -208,15 +209,16 @@ public class Manager : MonoBehaviour
         for(int i = 0; i<playerStats.loot.Length; i++){
             gameManager.resources[i] += playerStats.loot[i]/2;
         }
-        SceneManager.LoadScene("Sidescroll");
+        
+        gameManager.saveGame();
     }
 
     public void exitNormal(){
-        SceneManager.LoadScene("Sidescroll");
+        
+        gameManager.saveGame();
     }
     
     public void exitHard(){
-        SceneManager.LoadScene("Menu");
         //Delete Save-file
     }
 }

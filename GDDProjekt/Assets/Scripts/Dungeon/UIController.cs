@@ -172,12 +172,15 @@ public class UIController : MonoBehaviour
         deathScreen.SetActive(true);
         if(gameManager.difficulty == 0){
             deathScreenText.text = "You've lost half your loot.";
+            manager.exitEasy();
         }
         else if(gameManager.difficulty == 1){
             deathScreenText.text = "You've lost all your loot.";
+            manager.exitNormal();
         }
         else{
             deathScreenText.text = "Your journey ends after " + gameManager.day + " days.";
+            manager.exitHard();
         }
     }
 
@@ -185,13 +188,13 @@ public class UIController : MonoBehaviour
         deathScreen.SetActive(false);
         manager.resumeGame();
         if(gameManager.difficulty == 0){
-            manager.exitEasy();
+            SceneManager.LoadScene("Sidescroll");
         }
         else if(gameManager.difficulty == 1){
-            manager.exitNormal();
+            SceneManager.LoadScene("Sidescroll");
         }
         else{
-            manager.exitHard();
+            SceneManager.LoadScene("Menu");
         }
     }
 

@@ -58,6 +58,7 @@ public class PlayerController : MonoBehaviour
             //Input
             movement.x = Input.GetAxisRaw("Horizontal");
             movement.y = Input.GetAxisRaw("Vertical");
+            if(movement.x != 0 && movement.y != 0) movement *= 0.75f;
             mouse = cam.ScreenToWorldPoint(Input.mousePosition);
             if(Input.GetButton("Fire1") && !manager.paused){
                 activeGun.GetComponent<Weapon>().shoot(gun.position,gun.up, Quaternion.Euler(0,0,facing) , Camera.main.ScreenToWorldPoint(Input.mousePosition));

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 787429514124680261}
   - component: {fileID: 2746192055822138008}
   - component: {fileID: 1322823173604313040}
+  - component: {fileID: 526297532383829175}
   m_Layer: 0
   m_Name: Boss
   m_TagString: boss
@@ -29,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 6013853698580812577}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -66.41, y: 197.9, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -74,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 2054944239883716787, guid: 1ef1a95e119c89b4abf87821e74a9fc8, type: 3}
+  m_Sprite: {fileID: -6756755576431642159, guid: ddeebb964e8d691499d9d4116427079d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -98,14 +99,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprites:
-  - {fileID: 2054944239883716787, guid: 1ef1a95e119c89b4abf87821e74a9fc8, type: 3}
-  - {fileID: -4934376649119647584, guid: 1ef1a95e119c89b4abf87821e74a9fc8, type: 3}
-  - {fileID: 7965028980401244577, guid: 1ef1a95e119c89b4abf87821e74a9fc8, type: 3}
-  - {fileID: -626438865425142461, guid: 1ef1a95e119c89b4abf87821e74a9fc8, type: 3}
-  - {fileID: -1205908007716408365, guid: 1ef1a95e119c89b4abf87821e74a9fc8, type: 3}
-  - {fileID: -5890490305682777685, guid: 1ef1a95e119c89b4abf87821e74a9fc8, type: 3}
-  - {fileID: -3579322373697549740, guid: 1ef1a95e119c89b4abf87821e74a9fc8, type: 3}
-  - {fileID: -3856233466873844498, guid: 1ef1a95e119c89b4abf87821e74a9fc8, type: 3}
+  - {fileID: -6756755576431642159, guid: ddeebb964e8d691499d9d4116427079d, type: 3}
+  - {fileID: 5732723244519903608, guid: ddeebb964e8d691499d9d4116427079d, type: 3}
+  - {fileID: -3527217724965457036, guid: ddeebb964e8d691499d9d4116427079d, type: 3}
+  - {fileID: 332089755505968839, guid: ddeebb964e8d691499d9d4116427079d, type: 3}
+  - {fileID: -8124708024671023168, guid: ddeebb964e8d691499d9d4116427079d, type: 3}
+  - {fileID: 4390561884329439160, guid: ddeebb964e8d691499d9d4116427079d, type: 3}
+  - {fileID: -9062292492018211242, guid: ddeebb964e8d691499d9d4116427079d, type: 3}
+  - {fileID: -1210953608187523886, guid: ddeebb964e8d691499d9d4116427079d, type: 3}
   dmgPopUp: {fileID: 8669903535900010463, guid: 50cab34027a89554faccd1863ef59964, type: 3}
   lastPopUp: {fileID: 0}
   startConvo:
@@ -126,7 +127,6 @@ MonoBehaviour:
   meleeAtkRange: 2
   slamRadius: 3.5
   slamDamage: 20
-  ballsDmg: 20
   lootWeight: 0
   skill0Cd: 2
   skill1Cd: 5
@@ -173,7 +173,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.5}
   serializedVersion: 2
-  m_Radius: 0.6
+  m_Radius: 0.35
 --- !u!50 &1322823173604313040
 Rigidbody2D:
   serializedVersion: 4
@@ -195,3 +195,34 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &526297532383829175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6013853698580812577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 00000000574483f7
+  m_ShapePath:
+  - {x: 0.07364702, y: -0.73335147, z: 0}
+  - {x: 0.28143215, y: -0.7569742, z: 0}
+  - {x: 0.28840446, y: -0.52444446, z: 0}
+  - {x: 0.45090222, y: -0.3560965, z: 0}
+  - {x: -0.3702023, y: -0.3480265, z: 0}
+  - {x: -0.26910925, y: -0.5164234, z: 0}
+  - {x: -0.26871777, y: -0.7584251, z: 0}
+  - {x: -0.075038195, y: -0.7664951, z: 0}
+  - {x: 0.005661726, y: -0.5163255, z: 0}
+  m_ShapePathHash: -1556138205
+  m_Mesh: {fileID: 0}
+  m_InstanceId: -11198
