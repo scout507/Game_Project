@@ -12,9 +12,17 @@ public class EnemySpawnerSidescroll : MonoBehaviour
     public GameObject normalEnemyPrefab;
     public GameObject flyEnemyPrefab;
     public GameObject bothEnemyPrefab;
-    public int amountEnemyNormalPerSide;
-    public int amountEnemyFlyPerSide;
-    public int amountEnemyBothPerSide;
+
+    //Spawn per Wave
+    int amountEnemyNormalPerSide = 8;
+    int amountEnemyFlyPerSide = 2;
+    int amountEnemyBothPerSide = 3;
+
+    //Spawn total amount
+    public int totalAmountEnemyNormalPerSide;
+    public int totalAmountEnemyFlyPerSide;
+    public int totalAmountEnemyBothPerSide;
+
     public int waves;
     public int wavesCounter;
     public float startDelay;
@@ -32,10 +40,16 @@ public class EnemySpawnerSidescroll : MonoBehaviour
     {
         waitTime = startDelay;
         aiManager = GetComponent<AiManager>();
-        amountEnemyNormalPerSide = aiManager.gameManager.day + 3;
-        amountEnemyFlyPerSide = Mathf.FloorToInt(aiManager.gameManager.day * 1f / 8f);
-        amountEnemyBothPerSide = Mathf.FloorToInt(aiManager.gameManager.day * 1f / 4f);
-        waves = aiManager.gameManager.day;
+
+        totalAmountEnemyNormalPerSide = aiManager.gameManager.day + 3;
+        totalAmountEnemyFlyPerSide = Mathf.FloorToInt(aiManager.gameManager.day * 1f / 8f);
+        totalAmountEnemyBothPerSide = Mathf.FloorToInt(aiManager.gameManager.day * 1f / 4f);
+        waves = Mathf.CeilToInt((float)totalAmountEnemyNormalPerSide / (float)amountEnemyNormalPerSide);
+        int tmp1 = Mathf.CeilToInt((float)totalAmountEnemyFlyPerSide / (float)amountEnemyFlyPerSide);
+        int tmp2 = Mathf.CeilToInt((float)totalAmountEnemyBothPerSide / (float)amountEnemyBothPerSide);
+
+        if (tmp1 > waves) waves = tmp1;
+        if (tmp2 > waves) waves = tmp2;
     }
 
     void FixedUpdate()
@@ -46,6 +60,27 @@ public class EnemySpawnerSidescroll : MonoBehaviour
         {
             waitTime = nextWaveDelay;
             wavesCounter++;
+
+            if (amountEnemyNormalPerSide <= totalAmountEnemyNormalPerSide) totalAmountEnemyNormalPerSide -= amountEnemyNormalPerSide;
+            else
+            {
+                amountEnemyNormalPerSide = totalAmountEnemyNormalPerSide;
+                totalAmountEnemyNormalPerSide = 0;
+            }
+
+            if (amountEnemyFlyPerSide <= totalAmountEnemyFlyPerSide) totalAmountEnemyFlyPerSide -= amountEnemyFlyPerSide;
+            else
+            {
+                amountEnemyFlyPerSide = totalAmountEnemyFlyPerSide;
+                totalAmountEnemyFlyPerSide = 0;
+            }
+
+            if (amountEnemyBothPerSide <= totalAmountEnemyBothPerSide) totalAmountEnemyBothPerSide -= amountEnemyBothPerSide;
+            else
+            {
+                amountEnemyBothPerSide = totalAmountEnemyBothPerSide;
+                totalAmountEnemyBothPerSide = 0;
+            }
 
             for (int i = 0; i < amountEnemyNormalPerSide; i++)
             {
