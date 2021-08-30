@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:GDDProjekt/Assets/Sidescroll/Graphics/Hero Knight - Pixel Art/Sprites/Hut.png.meta
+guid: 01e708f6f46e25141ab738cfa75c74d6
+=======
 guid: ed7c58d65ad882c44932316de3a5115a
+>>>>>>> dungeon:GDDProjekt/Assets/Sprites/Top-Down/Explosion/explo_1.png.meta
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}

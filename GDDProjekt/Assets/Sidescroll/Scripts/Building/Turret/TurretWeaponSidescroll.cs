@@ -12,7 +12,7 @@ public class TurretWeaponSidescroll : MonoBehaviour
     public bool isRightFacing = false;
     public float speed = 10f;
     public float cooldown = 0.3f;
-    public GameManager gameManager;
+    GameManager gameManager;
     public int damage;
 
     //private variables
@@ -24,6 +24,7 @@ public class TurretWeaponSidescroll : MonoBehaviour
 
     void Start()
     {
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         damage = Mathf.CeilToInt((float)damage * Mathf.Pow(1.1f, gameManager.turret));
     }
 

@@ -53,63 +53,75 @@ public class PlayerController : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        //Input
-        movement.x = Input.GetAxisRaw("Horizontal");
-        movement.y = Input.GetAxisRaw("Vertical");
-        mouse = cam.ScreenToWorldPoint(Input.mousePosition);
-        if(Input.GetButton("Fire1") && !manager.paused) activeGun.GetComponent<Weapon>().shoot(gun.position,gun.up, Quaternion.Euler(0,0,facing) , Camera.main.ScreenToWorldPoint(Input.mousePosition));
-        if(Input.GetKeyDown(KeyCode.Space) && !manager.paused && dashTimer <= 0 && moveBlockTimer <= 0) dash();
-        if(Input.GetKeyDown(KeyCode.Q) && !manager.paused) switchWeapon();
-        //timers
-        moveBlockTimer -= Time.deltaTime;
-        slowTimer -= Time.deltaTime;
-        if(slowTimer > 0) moveSpeed = regularMoveSpeed*0.7f;
-        else moveSpeed = regularMoveSpeed;
-        
-        if(moveBlockTimer <= 0){
-            moveBlock = false;
-            rb.velocity = Vector2.zero;
-        }
-        dashTimer -= Time.deltaTime; 
-
-        if(poisonStacks > 0){
-            poisonTimer -= Time.deltaTime;
-            if(poisonTimer <= 0){
-                poisonStacks -= 1;
-                poisonTimer = poisonDuration;
+    {   
+        if(!playerStats.dead){
+            //Input
+            movement.x = Input.GetAxisRaw("Horizontal");
+            movement.y = Input.GetAxisRaw("Vertical");
+            if(movement.x != 0 && movement.y != 0) movement *= 0.75f;
+            mouse = cam.ScreenToWorldPoint(Input.mousePosition);
+            if(Input.GetButton("Fire1") && !manager.paused){
+                activeGun.GetComponent<Weapon>().shoot(gun.position,gun.up, Quaternion.Euler(0,0,facing) , Camera.main.ScreenToWorldPoint(Input.mousePosition));
+                manager.rdy = true;
+            } 
+            if(Input.GetKeyDown(KeyCode.Space) && !manager.paused && dashTimer <= 0 && moveBlockTimer <= 0){
+                dash();
+                manager.rdy = true;
+            } 
+            if(isMoving() && !manager.rdy) manager.rdy = true;
+            if(Input.GetKeyDown(KeyCode.Q) && !manager.paused) switchWeapon();
+            //timers
+            moveBlockTimer -= Time.deltaTime;
+            slowTimer -= Time.deltaTime;
+            if(slowTimer > 0) moveSpeed = regularMoveSpeed*0.7f;
+            else moveSpeed = regularMoveSpeed;
+            
+            if(moveBlockTimer <= 0){
+                moveBlock = false;
+                rb.velocity = Vector2.zero;
             }
-            playerStats.takeDamage(poisonDPS*Time.deltaTime*poisonStacks);
-        }
+            dashTimer -= Time.deltaTime; 
 
-        FindObjectOfType<SoundManager>().PlayOnToggle("walkOnRock", isMoving());
+            if(poisonStacks > 0){
+                poisonTimer -= Time.deltaTime;
+                if(poisonTimer <= 0){
+                    poisonStacks -= 1;
+                    poisonTimer = poisonDuration;
+                }
+                playerStats.takeDamage(poisonDPS*Time.deltaTime*poisonStacks);
+            }
+
+            FindObjectOfType<SoundManager>().PlayOnToggle("walkOnRock", isMoving());
+        }
     }
 
     void FixedUpdate()
     {
-        Vector2 lookDir = mouse - rb.position;
-        angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg-90;
-        facing = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
-        //down = -112,5 - -67,5 / down-right -67,5 - -22,5 / right -22,5 - 22,5 / top right = 22,5 - 67,5 / top = 67,5 - 112,5 / top-left = 157,5 / left = < 157,5 | > -157,5 / down-left = -112,5 - -157,5
-        if(facing >= -112.5f && facing < -67.5f) sR.sprite = sprites[0]; //down
-        else if(facing >= -67.5f && facing < -22.5f) sR.sprite = sprites[1]; //donw-right
-        else if(facing >= -22.5f && facing < 22.5f) sR.sprite = sprites[2]; //right
-        else if(facing >= 22.5f && facing < 67.5f) sR.sprite = sprites[3]; //top-right
-        else if(facing >= 67.5f && facing < 112.5f) sR.sprite = sprites[4]; //top
-        else if(facing >= 112.5f && facing < 157.5f) sR.sprite = sprites[5]; //top-left
-        else if(facing >= -157.5f && facing < -112.5f) sR.sprite = sprites[7]; //down-left
-        else sR.sprite = sprites[6]; //left
+        if(!playerStats.dead){
+            Vector2 lookDir = mouse - rb.position;
+            angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg-90;
+            facing = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
+            //down = -112,5 - -67,5 / down-right -67,5 - -22,5 / right -22,5 - 22,5 / top right = 22,5 - 67,5 / top = 67,5 - 112,5 / top-left = 157,5 / left = < 157,5 | > -157,5 / down-left = -112,5 - -157,5
+            if(facing >= -112.5f && facing < -67.5f) sR.sprite = sprites[0]; //down
+            else if(facing >= -67.5f && facing < -22.5f) sR.sprite = sprites[1]; //donw-right
+            else if(facing >= -22.5f && facing < 22.5f) sR.sprite = sprites[2]; //right
+            else if(facing >= 22.5f && facing < 67.5f) sR.sprite = sprites[3]; //top-right
+            else if(facing >= 67.5f && facing < 112.5f) sR.sprite = sprites[4]; //top
+            else if(facing >= 112.5f && facing < 157.5f) sR.sprite = sprites[5]; //top-left
+            else if(facing >= -157.5f && facing < -112.5f) sR.sprite = sprites[7]; //down-left
+            else sR.sprite = sprites[6]; //left
 
-        float tempMoveSpeed = moveSpeed;
-        if((lookDir.x >= 0 && movement.x < 0) || (lookDir.y >= 0 && movement.y < 0 ) || (lookDir.x <= 0 && movement.x > 0) || (lookDir.y <= 0 && movement.y > 0)){
-            tempMoveSpeed = moveSpeed*0.7f;
-            //this needs more refinement
+            float tempMoveSpeed = moveSpeed;
+            if((lookDir.x >= 0 && movement.x < 0) || (lookDir.y >= 0 && movement.y < 0 ) || (lookDir.x <= 0 && movement.x > 0) || (lookDir.y <= 0 && movement.y > 0)){
+                tempMoveSpeed = moveSpeed*0.7f;
+                //this needs more refinement
+            }
+            if(!moveBlock){
+                rb.MovePosition(rb.position+movement*tempMoveSpeed*Time.fixedDeltaTime);
+            }
+            gunHandler();
+            gun.rotation = Quaternion.Euler(0,0,angle);
         }
-        if(!moveBlock){
-            rb.MovePosition(rb.position+movement*tempMoveSpeed*Time.fixedDeltaTime);
-        }
-        gunHandler();
-        gun.rotation = Quaternion.Euler(0,0,angle);
     }
     
 

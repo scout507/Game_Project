@@ -13,7 +13,7 @@ public class WeaponUpgradeMenuSidescroll : MonoBehaviour
     public GameObject shotgunMenu;
     public GameObject chooseGun;
     public GameObject backBttn;
-    public GameManager gameManager;
+    GameManager gameManager;
 
     public WeaponUpgradeMenuHolderSidescroll rifle;
     public WeaponUpgradeMenuHolderSidescroll grenadeLauncher;
@@ -35,6 +35,8 @@ public class WeaponUpgradeMenuSidescroll : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+
         rifleDamageCostsSidescroll = JsonUtility.FromJson<LevelCostsSidescroll>(File.ReadAllText(Application.dataPath + "/weaponCosts/rifleDamageCostsSidescroll.json"));
         rifleFireRateCostsSidescroll = JsonUtility.FromJson<LevelCostsSidescroll>(File.ReadAllText(Application.dataPath + "/weaponCosts/rifleFireRateCostsSidescroll.json"));
         rifleCooldownCostsSidescroll = JsonUtility.FromJson<LevelCostsSidescroll>(File.ReadAllText(Application.dataPath + "/weaponCosts/rifleCooldownCostsSidescroll.json"));
