@@ -6840,14 +6840,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ressourcesText:
-  - {fileID: 1443124734}
-  - {fileID: 1626290106}
-  - {fileID: 1272574648}
-  - {fileID: 1820858844}
-  - {fileID: 1864042026}
-  - {fileID: 1899484213}
-  - {fileID: 1575852047}
-  - {fileID: 1699958252}
+  - {fileID: 568924774}
+  - {fileID: 311476486}
+  - {fileID: 948015616}
+  - {fileID: 1453939055}
+  - {fileID: 1846084375}
+  - {fileID: 1575403574}
+  - {fileID: 258815932}
+  - {fileID: 1693012281}
   gameManager: {fileID: 1810816796}
   dayText: {fileID: 1185560222}
 --- !u!1 &482956239
@@ -12607,6 +12607,7 @@ MonoBehaviour:
   cooldown: 0.3
   gameManager: {fileID: 1810816796}
   damage: 0
+  aiManager: {fileID: 1416820188}
 --- !u!1 &775685525
 GameObject:
   m_ObjectHideFlags: 0
@@ -15311,6 +15312,7 @@ Transform:
   - {fileID: 1820477492}
   - {fileID: 1160827335}
   - {fileID: 466774661}
+  - {fileID: 1416820187}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -20821,6 +20823,62 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1401217270}
   m_CullTransparentMesh: 1
+--- !u!1 &1416820186
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1416820187}
+  - component: {fileID: 1416820188}
+  m_Layer: 0
+  m_Name: AiManager Placeholder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1416820187
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1416820186}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 936962029}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1416820188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1416820186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf600f03abd186643bc2cd60175aaa77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  npcsLeft: []
+  enemysAboveLeft: []
+  enemysBelowLeft: []
+  npcsRight: []
+  enemysAboveRight: []
+  enemysBelowRight: []
+  gameEndEnemy: 0
+  gameEndNpc: 0
+  wallLeft: {fileID: 0}
+  wallRight: {fileID: 0}
+  cityHall: {fileID: 0}
+  stopNpcs: 0
+  gameManager: {fileID: 0}
 --- !u!1 &1421464759
 GameObject:
   m_ObjectHideFlags: 0
@@ -21293,6 +21351,7 @@ MonoBehaviour:
   cooldown: 0.3
   gameManager: {fileID: 1810816796}
   damage: 0
+  aiManager: {fileID: 1416820188}
 --- !u!61 &1430589942
 BoxCollider2D:
   m_ObjectHideFlags: 0
