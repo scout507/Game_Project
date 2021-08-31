@@ -37,6 +37,7 @@ public class GameManager : MonoBehaviour
 
     // In-Game Menu
     public bool GamePaused = false;
+    public bool InGameMenu = true;
     PauseMenu pauseMenu;
 
     private void Awake()
@@ -72,7 +73,7 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && InGameMenu)
         {
             pauseMenu = GameObject.FindGameObjectWithTag("PauseMenu").GetComponent<PauseMenu>();
             if (GamePaused)
@@ -138,6 +139,7 @@ public class GameManager : MonoBehaviour
     public void saveSettings(Settings settings){
         string json = JsonUtility.ToJson(settings);
         File.WriteAllText(Application.dataPath + "/settings.txt", json);
+        GetComponentInChildren<SoundManager>().ResetAllSounds();
     }
 
     public Settings loadSettings(){
