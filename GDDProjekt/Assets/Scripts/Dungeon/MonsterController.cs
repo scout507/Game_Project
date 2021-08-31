@@ -55,12 +55,12 @@ public class MonsterController : MonoBehaviour
         manager = GameObject.FindGameObjectWithTag("manager").GetComponent<Manager>();
         pathing.maxSpeed = moveSpeed;
 
-        cursor = (Texture2D)Resources.Load("Cursors/Cursor_Attack");
+        cursor = (Texture2D)Resources.Load("Cursors/Cursor_Move2");
     }
 
     void OnMouseEnter()
     {
-        Cursor.SetCursor(cursor, Vector2.zero, CursorMode.Auto);
+        Cursor.SetCursor(cursor, new Vector2(32, 32), CursorMode.Auto);
     }
 
     void OnMouseExit()

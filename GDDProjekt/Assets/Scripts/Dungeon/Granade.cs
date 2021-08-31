@@ -49,7 +49,7 @@ public class Granade : MonoBehaviour
             exploded = true;
             FindObjectOfType<SoundManager>().Play("explosion");
             GetComponent<SpriteRenderer>().enabled = false;
-            cam.GetComponent<CamController>().shake();
+            cam.GetComponent<CamController>().shake(0.4f,0.15f);
         }
     }
 

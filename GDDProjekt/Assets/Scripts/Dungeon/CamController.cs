@@ -22,8 +22,8 @@ public class CamController : MonoBehaviour
         this.transform.position = position;
     }
 
-    public void shake(){
-        StartCoroutine(camShake.Shake(0.15f,0.4f));
+    public void shake(float duration, float intensity){
+        StartCoroutine(camShake.Shake(duration,intensity));
     }
 
 }
