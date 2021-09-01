@@ -54,6 +54,19 @@ public class SoundManager : MonoBehaviour
         StartThemeSound(); 
     }
 
+    public void ResetAllSounds()
+    {
+        foreach (Sound s in sounds)
+        {
+            s.source.volume = s.volume * gameManager.currentSettings.sfxVolume * gameManager.currentSettings.masterVolume;
+        }
+
+        if (themeSound != null && themeSound.clip != null)
+        {
+            themeSource.volume = themeSound.volume * gameManager.currentSettings.musicVolume * gameManager.currentSettings.masterVolume;
+        }
+    }
+
     public void StartThemeSound()
     {
         if (themeSound != null && themeSound.clip != null && themeSource == null)

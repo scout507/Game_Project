@@ -8,24 +8,32 @@ public class MonsterController : MonoBehaviour
     public Sprite[] sprites;
     public float hp;
     public float dmg;
-    public bool isDmging;
+    
     public float moveSpeed;
     public float atkSpeed;
     public float meleeAtkRange;
-    public float aggroRange;
     public float rangeDmg;
     public bool hasRangedAtk;
-    public float rangeAtkRange;
-    public float atkDelay = 0.5f;
+    public int posionChance;
+    public int slowChance;
+    
+    public string meleeAtkSound;
+    public string rangeAtkSound;
+    public string dmgSound;
+    public string deathSound;
+
     public int lootWeight;
     public GameObject bullet;
-    
     
     Pathfinding.AIPath pathing;
     Pathfinding.AIDestinationSetter destSetter;
     private SpriteRenderer sR;
     private GameObject player;
+    bool isDmging;
+    float atkDelay = 0.5f;
+    float rangeAtkRange = 10;
     private bool aggro;
+    float aggroRange = 20;
     private bool dead;
     private bool hasAtkd;
     private float aktTimer;
@@ -35,6 +43,7 @@ public class MonsterController : MonoBehaviour
     public Transform dmgPopUp;
     Rigidbody2D rb;
     PlayerStats playerStats;
+    PlayerController playerController;
     Vector2 lookDir;
     LootTable lootTable;
     Manager manager;
@@ -47,6 +56,7 @@ public class MonsterController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player");
         playerStats = player.GetComponent<PlayerStats>();
+        playerController = player.GetComponent<PlayerController>();
         pathing = GetComponent<Pathfinding.AIPath>();
         destSetter = GetComponent<Pathfinding.AIDestinationSetter>();
         destSetter.target = player.transform;
@@ -111,17 +121,22 @@ public class MonsterController : MonoBehaviour
     void meleeAtk(){
         isDmging = true;
         playerStats.takeDamage(dmg);
-        FindObjectOfType<SoundManager>().PlayOnToggle("monsterBite", isDmging);
+        if(Random.Range(1,101) <= slowChance) playerController.getSlowed(2.5f);
+        if(Random.Range(1,101) <= posionChance) playerController.getPoisoned(Random.Range(1,4));
+        //FindObjectOfType<SoundManager>().PlayOnToggle(meleeAtkSound, isDmging);
         isDmging = false;
     }
 
     void rangeAtk(){
         isDmging = true;
         GameObject shot = Instantiate(bullet, transform.position, Quaternion.identity);
-        shot.GetComponent<MonsterBullet>().dmg = rangeDmg;
-        shot.GetComponent<MonsterBullet>().target = new Vector3(player.transform.position.x,player.transform.position.y,player.transform.position.z);
+        MonsterBullet bulletScript = shot.GetComponent<MonsterBullet>();
+        bulletScript.dmg = rangeDmg;
+        bulletScript.target = new Vector3(player.transform.position.x,player.transform.position.y,player.transform.position.z);
+        bulletScript.poisionChance = posionChance;
+        bulletScript.slowChance = slowChance;
         shot.GetComponent<Rigidbody2D>().AddForce(lookDir*3f, ForceMode2D.Impulse);
-        FindObjectOfType<SoundManager>().PlayOnToggle("monsterRange", isDmging);
+        //FindObjectOfType<SoundManager>().PlayOnToggle(rangeAtkSound, isDmging);
         isDmging = false;
     }
 
@@ -130,6 +145,7 @@ public class MonsterController : MonoBehaviour
         Invoke("startMoving", 0.1f);
         pathing.canMove = false;
         rb.AddForce(force,ForceMode2D.Impulse);
+        //FindObjectOfType<SoundManager>().Play(dmgSound);
 
         if(lastPopUp == null){
             lastPopUp = spawnDmgText(dmgTaken);
@@ -145,6 +161,7 @@ public class MonsterController : MonoBehaviour
     }
 
     void die(){
+        //FindObjectOfType<SoundManager>().Play(deathSound);
         if(!dead){
             dead = true;
             if(Random.Range(0,100)<50) dropLoot();

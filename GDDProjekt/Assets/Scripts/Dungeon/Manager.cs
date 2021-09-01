@@ -105,6 +105,7 @@ public class Manager : MonoBehaviour
             }  
             mapGenerator.spawnMap(settings); 
             Invoke("Scan",0.5f);
+            gameManager.maxLevel = level;
         }
         else{
             Instantiate(bosses[(level/10)-1], bossBossSpawn.position, Quaternion.identity);

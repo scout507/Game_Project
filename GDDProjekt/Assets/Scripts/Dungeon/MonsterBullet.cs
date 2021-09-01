@@ -8,6 +8,8 @@ public class MonsterBullet : MonoBehaviour
     public Vector3 target;
     public Vector3 bulletforce;
     public float splashRadius = 5f;
+    public int slowChance;
+    public int poisionChance;
 
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -30,6 +32,8 @@ public class MonsterBullet : MonoBehaviour
         {
             if(obj.tag == "Player"){
                 obj.GetComponent<PlayerStats>().takeDamage(dmg);
+                if(Random.Range(1,101) <= slowChance) obj.GetComponent<PlayerController>().getSlowed(2.5f);
+                if(Random.Range(1,101) <= poisionChance) obj.GetComponent<PlayerController>().getPoisoned(Random.Range(1,4));
             }
         }
         Destroy(this.gameObject);

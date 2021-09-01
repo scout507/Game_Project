@@ -61,3 +61,6 @@ TagManager:
   - name: Text
     uniqueID: 4152575063
     locked: 0
+  - name: Hero
+    uniqueID: 53740943
+    locked: 0

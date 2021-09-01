@@ -281,6 +281,7 @@ public class MapGenerator : MonoBehaviour
     void spawnMonsters(){
         for(int i = 0; i<manager.monsterAmount; i++){
             int r = Random.Range(0,freeSpots.Count);
+            Debug.Log(monsterTable.roll(manager.level*10, manager.level*100));
             GameObject monster = Instantiate(monsterTable.monsters[monsterTable.roll(manager.level*10, manager.level*100)],freeSpots[r],Quaternion.identity);
             manager.monstersInLevel.Add(monster);
             freeSpots.RemoveAt(r);
