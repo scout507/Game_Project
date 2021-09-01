@@ -118,8 +118,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponName: GrenadeLauncher
-  icon: {fileID: -179159622647844568, guid: 4706297436ce21b46b03c768435784b2, type: 3}
-  iconActive: {fileID: 21300000, guid: b298a3a8335f0fb42b147b49b0f09139, type: 3}
+  icon: {fileID: 21300000, guid: 925bd0a80a11d6d428193251bfad796a, type: 3}
+  iconActive: {fileID: 21300000, guid: 21925149582b61d43a612ac8b8a4f568, type: 3}
   bulletPrefab: {fileID: 1384360571865061328, guid: 63fe810d111dbcf4099b422b394440f6, type: 3}
   damage: 50
   fireRate: 1
