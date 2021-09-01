@@ -14,6 +14,7 @@ public class AiManager : MonoBehaviour
     public bool gameEndNpc = false;
     public GameObject wallLeft;
     public GameObject wallRight;
+    public GameObject cityHall;
     public bool stopNpcs = false;
     public GameManager gameManager;
 

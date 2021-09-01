@@ -56,7 +56,9 @@ public class PlayerStats : MonoBehaviour
     }
 
     void die(){
-        dead = true;
-        GameObject.FindGameObjectWithTag("manager").GetComponent<UIController>().presentDeathScreen();
+        if(!dead){
+            dead = true;
+            GameObject.FindGameObjectWithTag("manager").GetComponent<UIController>().presentDeathScreen();
+        }
     }
 }
