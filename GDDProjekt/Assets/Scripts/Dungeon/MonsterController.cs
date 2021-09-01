@@ -27,6 +27,7 @@ public class MonsterController : MonoBehaviour
     private GameObject player;
     private bool aggro;
     private bool dead;
+    bool takingDmg;
     private bool hasAtkd;
     private float aktTimer;
     private float shotTimer;
@@ -38,6 +39,7 @@ public class MonsterController : MonoBehaviour
     Vector2 lookDir;
     LootTable lootTable;
     Manager manager;
+    SoundManager soundManager;
     public DmgPopUp lastPopUp;
 
     Texture2D cursor;
@@ -54,7 +56,7 @@ public class MonsterController : MonoBehaviour
         lootTable = GameObject.FindGameObjectWithTag("manager").GetComponent<LootTable>();
         manager = GameObject.FindGameObjectWithTag("manager").GetComponent<Manager>();
         pathing.maxSpeed = moveSpeed;
-
+        soundManager = FindObjectOfType<SoundManager>();
         cursor = (Texture2D)Resources.Load("Cursors/Cursor_Move2");
     }
 
@@ -111,7 +113,9 @@ public class MonsterController : MonoBehaviour
     void meleeAtk(){
         isDmging = true;
         playerStats.takeDamage(dmg);
-        FindObjectOfType<SoundManager>().PlayOnToggle("monsterBite", isDmging);
+        if(Random.Range(1,101) <= slowChance) playerController.getSlowed(2.5f);
+        if(Random.Range(1,101) <= posionChance) playerController.getPoisoned(Random.Range(1,4));
+        //soundManager.PlayOnToggle(meleeAtkSound, isDmging);
         isDmging = false;
     }
 
@@ -121,15 +125,17 @@ public class MonsterController : MonoBehaviour
         shot.GetComponent<MonsterBullet>().dmg = rangeDmg;
         shot.GetComponent<MonsterBullet>().target = new Vector3(player.transform.position.x,player.transform.position.y,player.transform.position.z);
         shot.GetComponent<Rigidbody2D>().AddForce(lookDir*3f, ForceMode2D.Impulse);
-        FindObjectOfType<SoundManager>().PlayOnToggle("monsterRange", isDmging);
+        soundManager.PlayOnToggle(rangeAtkSound, isDmging);
         isDmging = false;
     }
 
     public void takeDamage(float dmgTaken, Vector3 force){
+        takingDmg = true;
         pathing.canMove = false;
         Invoke("startMoving", 0.1f);
         pathing.canMove = false;
         rb.AddForce(force,ForceMode2D.Impulse);
+        soundManager.PlayOnToggle(dmgSound, takingDmg);
 
         if(lastPopUp == null){
             lastPopUp = spawnDmgText(dmgTaken);
@@ -142,6 +148,7 @@ public class MonsterController : MonoBehaviour
         if(hp <= 0){
             die();
         }
+        takingDmg = false;
     }
 
     void die(){
