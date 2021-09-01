@@ -53,6 +53,7 @@ public class WallSidescroll : BuildingOverClassSidescroll
         if (life <= 0)
         {
             collosionCollider.GetComponent<SpriteRenderer>().enabled = false;
+            foreach (var item in GameObject.FindGameObjectsWithTag("WallLatern")) Destroy(item);
         }
     }
 

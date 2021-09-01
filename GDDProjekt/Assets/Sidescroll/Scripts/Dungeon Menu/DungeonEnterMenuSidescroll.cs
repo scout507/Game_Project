@@ -3,12 +3,16 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class DungeonEnterMenuSidescroll : MonoBehaviour
 {
     public Toggle rifle;
     public Toggle grenadelauncher;
     public Toggle shotgun;
+    public GameObject level;
+    public TextMeshProUGUI levelText;
+    public Toggle levelToggle;
     GameManager gameManager;
 
     private void Start()
@@ -18,6 +22,13 @@ public class DungeonEnterMenuSidescroll : MonoBehaviour
     void Update()
     {
         if (rifle.isOn && grenadelauncher.isOn && shotgun.isOn) rifle.isOn = false;
+
+
+        if (gameManager.maxLevel > 10)
+        {
+            level.SetActive(true);
+            levelText.text = "Starting at level " + gameManager.maxLevel + "?";
+        }
     }
 
     public void back()
@@ -40,6 +51,7 @@ public class DungeonEnterMenuSidescroll : MonoBehaviour
             gameManager.saveGame();
             gameManager.selectedWeapons[0] = tmp[0];
             gameManager.selectedWeapons[1] = tmp[1];
+            if (levelToggle.isOn) gameManager.dungeonLevel = gameManager.maxLevel;
             SceneManager.LoadScene("MapGeneration");
         }
     }
