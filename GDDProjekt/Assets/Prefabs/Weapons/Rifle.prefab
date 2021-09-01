@@ -46,8 +46,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponName: Rilfe
-  icon: {fileID: 5298150866232066731, guid: f6038c52a86671e43a1a6a29437ba1a9, type: 3}
-  iconActive: {fileID: 21300000, guid: cab7a68fbfca5a34aaa30696f3f7bd57, type: 3}
+  icon: {fileID: 21300000, guid: 1ed4a3ca84c505f42bf689e6d26ad844, type: 3}
+  iconActive: {fileID: 21300000, guid: 029a281a514d1ca45aa61c050551c7ba, type: 3}
   bulletPrefab: {fileID: 1384360571865061328, guid: 6f226cd2e4377dd47bddfc62868bbf4f, type: 3}
   damage: 10
   fireRate: 5
@@ -59,7 +59,7 @@ MonoBehaviour:
   muzzleFire: {fileID: 6646220717803829938}
   sprites:
   - {fileID: 2318361781820853425, guid: 9bd9233e8b695044586157ec46b50dcd, type: 3}
-  - {fileID: -8957083366528949100, guid: 978e26e631492aa47a37ae42f4ee1345, type: 3}
+  - {fileID: 242598451965430973, guid: 9bd9233e8b695044586157ec46b50dcd, type: 3}
   lastShotTimer: 0
   overheated: 0
   coolDown: 2

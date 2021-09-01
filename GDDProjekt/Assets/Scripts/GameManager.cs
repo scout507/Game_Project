@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
 
     // In-Game Menu
     public bool GamePaused = false;
-    //PauseMenu pauseMenu;
+    PauseMenu pauseMenu;
 
     private void Awake()
     {
@@ -65,14 +65,14 @@ public class GameManager : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            //pauseMenu = GameObject.FindGameObjectWithTag("PauseMenu").GetComponent<PauseMenu>();
+            pauseMenu = GameObject.FindGameObjectWithTag("PauseMenu").GetComponent<PauseMenu>();
             if (GamePaused)
             {
-                //if(pauseMenu != null) pauseMenu.Resume();
+                if(pauseMenu != null) pauseMenu.Resume();
                 GamePaused = false;
             } else
             {
-                //if(pauseMenu != null) pauseMenu.Pause();
+                if(pauseMenu != null) pauseMenu.Pause();
                 GamePaused = true;
             }
         }

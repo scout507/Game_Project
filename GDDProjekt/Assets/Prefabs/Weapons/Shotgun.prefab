@@ -46,8 +46,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponName: Shotgun
-  icon: {fileID: 5746739024804455488, guid: cf072ecbe8a71c642b870ab3e4050bdf, type: 3}
-  iconActive: {fileID: 21300000, guid: d4afb99d8ebf72b40b32424b9946307f, type: 3}
+  icon: {fileID: 21300000, guid: d56da9816311c5f4599d5e31da68dc7c, type: 3}
+  iconActive: {fileID: 21300000, guid: c7ec885fe8dbee14a9e534cd9ef23672, type: 3}
   bulletPrefab: {fileID: 1384360571865061328, guid: 6f226cd2e4377dd47bddfc62868bbf4f, type: 3}
   damage: 25
   fireRate: 1
@@ -58,8 +58,8 @@ MonoBehaviour:
   knockback: 4
   muzzleFire: {fileID: 6983172952935671874}
   sprites:
-  - {fileID: 21300000, guid: 6ca3fb58a93b28842882111bf61b4129, type: 3}
-  - {fileID: 5990112749846577567, guid: a886b62d5c3e39c40bf82a37cad8949b, type: 3}
+  - {fileID: -2233747661550228910, guid: a886b62d5c3e39c40bf82a37cad8949b, type: 3}
+  - {fileID: 3862049830053228040, guid: a886b62d5c3e39c40bf82a37cad8949b, type: 3}
   lastShotTimer: 0
   overheated: 0
   coolDown: 0
