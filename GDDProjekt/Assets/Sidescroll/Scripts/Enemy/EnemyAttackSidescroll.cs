@@ -72,7 +72,7 @@ public class EnemyAttackSidescroll : MonoBehaviour
 
         if (npcs.Count > 0)
         {
-            GameObject npc = npcs[Random.Range(0, npcs.Count)];
+            GameObject npc = npcs.ToArray()[Random.Range(0, npcs.Count)];
             Vector2 direction = (npc.transform.position - firepoint.position).normalized;
             GameObject bullet = Instantiate(bulletNpcPrefab, firepoint.position, firepoint.rotation);
             bullet.GetComponent<BulletEnemyNPCSidescroll>().damage = damageNpc;
