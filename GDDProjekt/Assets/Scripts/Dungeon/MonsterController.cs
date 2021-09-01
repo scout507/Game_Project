@@ -123,8 +123,8 @@ public class MonsterController : MonoBehaviour
     void meleeAtk(){
         isDmging = true;
         playerStats.takeDamage(dmg);
-        if(Random.Range(1,101) <= slowChance) playerController.getSlowed(2.5f);
-        if(Random.Range(1,101) <= posionChance) playerController.getPoisoned(Random.Range(1,4));
+        //if(Random.Range(1,101) <= slowChance) playerController.getSlowed(2.5f);
+        //if(Random.Range(1,101) <= posionChance) playerController.getPoisoned(Random.Range(1,4));
         //soundManager.PlayOnToggle(meleeAtkSound, isDmging);
         isDmging = false;
     }
@@ -138,7 +138,7 @@ public class MonsterController : MonoBehaviour
         bulletScript.poisionChance = posionChance;
         bulletScript.slowChance = slowChance;
         shot.GetComponent<Rigidbody2D>().AddForce(lookDir*3f, ForceMode2D.Impulse);
-        soundManager.PlayOnToggle(rangeAtkSound, isDmging);
+        //soundManager.PlayOnToggle(rangeAtkSound, isDmging);
         isDmging = false;
     }
 
@@ -148,7 +148,7 @@ public class MonsterController : MonoBehaviour
         Invoke("startMoving", 0.1f);
         pathing.canMove = false;
         rb.AddForce(force,ForceMode2D.Impulse);
-        soundManager.PlayOnToggle(dmgSound, takingDmg);
+        //soundManager.PlayOnToggle(dmgSound, takingDmg);
 
         if(lastPopUp == null){
             lastPopUp = spawnDmgText(dmgTaken);
