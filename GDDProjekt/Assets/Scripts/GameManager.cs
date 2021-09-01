@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
     
     // 0=easy, 1=normal, 2=hardcore; 
     public int difficulty = 1;
-    
+    public int maxLevel;
     public int dungeonLevel = 0;
 
     //Settings
@@ -39,7 +39,6 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        //loadGame();
         loadSettings();
 
         rifle = new Weaponstats();
