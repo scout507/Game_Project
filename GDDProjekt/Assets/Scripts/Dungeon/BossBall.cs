@@ -6,20 +6,17 @@ public class BossBall : MonoBehaviour
 {
     public float baseDamage;
     public float increase;
-    public float speed;
+    public float expansionSpeed;
     float initialDamage = 10f;
     public GameObject target;
     float deathTimer;
     bool playerContact;
     float damage;
 
-    Rigidbody2D rb;
-
     // Start is called before the first frame update
     void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player");
-        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -32,12 +29,14 @@ public class BossBall : MonoBehaviour
             target.GetComponent<PlayerController>().getSlowed(1f);
             damage += increase*Time.deltaTime;
         } 
+        Vector3 oldScale = new Vector3(1,1,1);
+        this.transform.localScale += new Vector3(oldScale.x*expansionSpeed*Time.deltaTime,oldScale.y*expansionSpeed*Time.deltaTime,0); 
     }
 
     void FixedUpdate()
     {
-        Vector2 direction = new Vector2(target.transform.position.x - transform.position.x, target.transform.position.y-transform.position.y);
-        rb.velocity = direction.normalized*speed*Time.fixedDeltaTime;
+        //Vector2 direction = new Vector2(target.transform.position.x - transform.position.x, target.transform.position.y-transform.position.y);
+        //rb.velocity = direction.normalized*speed*Time.fixedDeltaTime;
     }
 
     private void OnTriggerEnter2D(Collider2D other)

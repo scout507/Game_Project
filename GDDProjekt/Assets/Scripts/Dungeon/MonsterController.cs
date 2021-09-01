@@ -37,7 +37,10 @@ public class MonsterController : MonoBehaviour
     PlayerStats playerStats;
     Vector2 lookDir;
     LootTable lootTable;
+    Manager manager;
     public DmgPopUp lastPopUp;
+
+    Texture2D cursor;
 
     void Start()
     {
@@ -49,10 +52,14 @@ public class MonsterController : MonoBehaviour
         destSetter.target = player.transform;
         sR = GetComponentInChildren<SpriteRenderer>();
         lootTable = GameObject.FindGameObjectWithTag("manager").GetComponent<LootTable>();
+        manager = GameObject.FindGameObjectWithTag("manager").GetComponent<Manager>();
         pathing.maxSpeed = moveSpeed;
+
+        cursor = (Texture2D)Resources.Load("Cursors/Cursor_Move2");
     }
 
-    
+
+
     void Update()
     {   
         dmgPopTimer += Time.deltaTime;
@@ -62,7 +69,7 @@ public class MonsterController : MonoBehaviour
 
         distanceToEnemy = Vector3.Distance(player.transform.position, this.transform.position);
         if(distanceToEnemy < aggroRange) aggro =  true;
-        if(aggro){
+        if(aggro && manager.rdy){
             pathing.canSearch = true;
         }
         if(hasAtkd) aktTimer += Time.deltaTime;
@@ -159,6 +166,17 @@ public class MonsterController : MonoBehaviour
 
     void startMoving(){
         pathing.canMove = true;
+    }
+
+    //vvv Aien vvv
+    void OnMouseEnter()
+    {
+        Cursor.SetCursor(cursor, new Vector2(32, 32), CursorMode.Auto);
+    }
+
+    void OnMouseExit()
+    {
+        Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
     }
 
     

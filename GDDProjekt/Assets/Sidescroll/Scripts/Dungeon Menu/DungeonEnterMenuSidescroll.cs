@@ -9,8 +9,12 @@ public class DungeonEnterMenuSidescroll : MonoBehaviour
     public Toggle rifle;
     public Toggle grenadelauncher;
     public Toggle shotgun;
-    public GameManager gameManager;
+    GameManager gameManager;
 
+    private void Start()
+    {
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+    }
     void Update()
     {
         if (rifle.isOn && grenadelauncher.isOn && shotgun.isOn) rifle.isOn = false;

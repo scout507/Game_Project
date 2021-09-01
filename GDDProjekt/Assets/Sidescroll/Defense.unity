@@ -713,7 +713,6 @@ MonoBehaviour:
   player: {fileID: 0}
   canvas: {fileID: 219599678}
   menu: {fileID: 1259797900}
-  gameManager: {fileID: 0}
   title: {fileID: 1242404422}
   interact: {fileID: 192023251}
 --- !u!61 &342612668
@@ -1007,6 +1006,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 462037777}
   m_CullTransparentMesh: 1
+--- !u!1001 &466872963
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6659216773499661952, guid: ef02687b6585341a4ba6e760b9be1fb5, type: 3}
+      propertyPath: m_Name
+      value: LevelLoader
+      objectReference: {fileID: 0}
+    - target: {fileID: 6659216773499661983, guid: ef02687b6585341a4ba6e760b9be1fb5, type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6659216773499661983, guid: ef02687b6585341a4ba6e760b9be1fb5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1850.0461
+      objectReference: {fileID: 0}
+    - target: {fileID: 6659216773499661983, guid: ef02687b6585341a4ba6e760b9be1fb5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1086.3982
+      objectReference: {fileID: 0}
+    - target: {fileID: 6659216773499661983, guid: ef02687b6585341a4ba6e760b9be1fb5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -704.7538
+      objectReference: {fileID: 0}
+    - target: {fileID: 6659216773499661983, guid: ef02687b6585341a4ba6e760b9be1fb5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6659216773499661983, guid: ef02687b6585341a4ba6e760b9be1fb5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6659216773499661983, guid: ef02687b6585341a4ba6e760b9be1fb5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6659216773499661983, guid: ef02687b6585341a4ba6e760b9be1fb5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6659216773499661983, guid: ef02687b6585341a4ba6e760b9be1fb5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6659216773499661983, guid: ef02687b6585341a4ba6e760b9be1fb5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6659216773499661983, guid: ef02687b6585341a4ba6e760b9be1fb5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ef02687b6585341a4ba6e760b9be1fb5, type: 3}
 --- !u!1 &471071414
 GameObject:
   m_ObjectHideFlags: 0
@@ -2354,7 +2410,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &766736344
@@ -2511,7 +2567,6 @@ MonoBehaviour:
   isRightFacing: 1
   speed: 40
   cooldown: 0
-  gameManager: {fileID: 1344437026}
   damage: 1000
   aiManager: {fileID: 1314838901}
 --- !u!1 &789375057
@@ -3208,7 +3263,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1011412296
@@ -5611,7 +5666,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 221
+  - m_RefCount: 440
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -6681,7 +6736,9 @@ MonoBehaviour:
   wall: 1
   turret: 0
   difficulty: 0
+  maxLevel: 0
   dungeonLevel: 0
+  GamePaused: 0
 --- !u!4 &1344437027
 Transform:
   m_ObjectHideFlags: 0
@@ -6692,7 +6749,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -28.465113, y: 11.526246, z: -1.7818598}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1987372517}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6734,7 +6792,6 @@ MonoBehaviour:
   isRightFacing: 0
   speed: 40
   cooldown: 0
-  gameManager: {fileID: 1344437026}
   damage: 5000
   aiManager: {fileID: 1314838901}
 --- !u!61 &1430589942
@@ -7827,7 +7884,6 @@ MonoBehaviour:
   player: {fileID: 0}
   canvas: {fileID: 1672044275}
   menu: {fileID: 2008298950}
-  gameManager: {fileID: 0}
   title: {fileID: 725876321}
   interact: {fileID: 1793698052}
   dungeonEnterMenu: {fileID: 0}
@@ -8760,6 +8816,114 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1983326823}
   m_CullTransparentMesh: 1
+--- !u!1 &1987372516
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1987372517}
+  - component: {fileID: 1987372518}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1987372517
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1987372516}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1344437027}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1987372518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1987372516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed7842b15006948e0977e0015e57b24d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: walkOnRock
+    clip: {fileID: 8300000, guid: 977693cfd06e94c71a25f72d69ace5c9, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    shouldLoop: 0
+  - name: jumpOnRock
+    clip: {fileID: 8300000, guid: 13b6f481f85ba41f5beeb022f8937db9, type: 3}
+    volume: 1
+    pitch: 0.1
+    source: {fileID: 0}
+    shouldLoop: 0
+  - name: monsterRange
+    clip: {fileID: 8300000, guid: f818b86deafd14d40b3373f8d4401b31, type: 3}
+    volume: 1
+    pitch: 0
+    source: {fileID: 0}
+    shouldLoop: 0
+  - name: monsterBite
+    clip: {fileID: 8300000, guid: ea8887f0cf6ff40b0b76fd089a16d9e5, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    shouldLoop: 0
+  - name: explosion
+    clip: {fileID: 8300000, guid: 2080b39832c0a4097b861339613496d5, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    shouldLoop: 0
+  - name: shootRifle
+    clip: {fileID: 8300000, guid: 0650cc114704b4be2bfb18e9efb99c2d, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    shouldLoop: 0
+  - name: shootShotgun
+    clip: {fileID: 8300000, guid: ef3f0e8d96db544c597cf1f826401c3a, type: 3}
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+    shouldLoop: 0
+  - name: switchWeapon
+    clip: {fileID: 8300000, guid: c14fc83580a9e435c8b78a35742ac74a, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    shouldLoop: 0
+  - name: itemPickup
+    clip: {fileID: 8300000, guid: 9087fccfd99f94c689fab40e6bb24425, type: 3}
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+    shouldLoop: 0
+  themeSound:
+    name: 
+    clip: {fileID: 0}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    shouldLoop: 0
+  globalVolume: 1
+  sfxVolume: 1
+  musicVolume: 1
 --- !u!1 &2007201069
 GameObject:
   m_ObjectHideFlags: 0
@@ -9904,7 +10068,6 @@ MonoBehaviour:
   life: 100
   maxlife: 1000
   maxtimer: 10
-  gameManager: {fileID: 1344437026}
 --- !u!61 &2483290627985987023
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10063,7 +10226,6 @@ MonoBehaviour:
   life: 100
   maxlife: 1000
   maxtimer: 10
-  gameManager: {fileID: 1344437026}
 --- !u!223 &6047481289968301705
 Canvas:
   m_ObjectHideFlags: 0

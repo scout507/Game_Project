@@ -8,7 +8,7 @@ using TMPro;
 public class VillageUpgradeMenuSidescroll : MonoBehaviour
 {
     public TextMeshProUGUI[] ressourcesText;
-    public GameManager gameManager;
+    GameManager gameManager;
     public Sprite[] imageList;
 
     public VillageUpgradeUiHolderSidescroll sniperNpc;
@@ -28,6 +28,7 @@ public class VillageUpgradeMenuSidescroll : MonoBehaviour
 
     void Start()
     {
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         sniperNpclevelCostsSidescroll = JsonUtility.FromJson<LevelCostsSidescroll>(File.ReadAllText(Application.dataPath + "/sniperNpclevelCostsSidescroll.json"));
         mortarNpclevelCostsSidescroll = JsonUtility.FromJson<LevelCostsSidescroll>(File.ReadAllText(Application.dataPath + "/mortarNpclevelCostsSidescroll.json"));
         normalNpclevelCostsSidescroll = JsonUtility.FromJson<LevelCostsSidescroll>(File.ReadAllText(Application.dataPath + "/normalNpclevelCostsSidescroll.json"));

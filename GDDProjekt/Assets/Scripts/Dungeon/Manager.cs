@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.SceneManagement;
 
 public class Manager : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class Manager : MonoBehaviour
     public Transform bossBossSpawn;
     public GameObject portal;
 
-    public GameObject boss;
+    public GameObject[] bosses;
     public GameObject cam;
     public int level = 0;
     public int monsterAmount = 10;
@@ -19,6 +20,7 @@ public class Manager : MonoBehaviour
     public List<GameObject> props; 
     public List<GameObject> loot;
     public bool paused;
+    public bool rdy;
 
     public GameObject[] guns;
 
@@ -60,6 +62,7 @@ public class Manager : MonoBehaviour
     }
 
     public void newMap(){
+        rdy = false;
         portal.SetActive(false);
         level++;
         monstersInLevel.ForEach( monster =>{
@@ -75,7 +78,7 @@ public class Manager : MonoBehaviour
         props.Clear();
         
 
-        if(level % 2 != 0){
+        if(level % 10 != 0){
             string mapCode = maps[Random.Range(0,maps.Length)];
             string[] settings = mapCode.Split(',');
             monsterAmount = 10 + Mathf.RoundToInt(level*(4f/5f));
@@ -104,7 +107,7 @@ public class Manager : MonoBehaviour
             Invoke("Scan",0.5f);
         }
         else{
-            Instantiate(boss, bossBossSpawn.position, Quaternion.identity);
+            Instantiate(bosses[(level/10)-1], bossBossSpawn.position, Quaternion.identity);
             hero.transform.position = bossPlayerSpawn.position;
         }
         cam.transform.position = new Vector3 (hero.transform.position.x, hero.transform.position.y, cam.transform.position.z);
@@ -135,6 +138,7 @@ public class Manager : MonoBehaviour
         for(int i = 0; i<playerStats.loot.Length; i++){
             gameManager.resources[i] += playerStats.loot[i];
         }
+        gameManager.saveGame();
     }
 
     void loadFromManager(){
@@ -152,7 +156,7 @@ public class Manager : MonoBehaviour
         for(int i = 0; i < 2; i++){
             Weapon weaponScript;
             Weaponstats copyStats;
-            if(gameManager.selectedWeapons[i] == 0){
+            if(gameManager.selectedWeapons[i] == 1){
                 //shotgun
                 
                 copyStats = gameManager.shotgun;
@@ -165,7 +169,7 @@ public class Manager : MonoBehaviour
                 shotgun.centering = copyStats.centering;
                 playerController.guns[i] = gun;
             }
-            else if(gameManager.selectedWeapons[i] == 1){
+            else if(gameManager.selectedWeapons[i] == 0){
                 //Rifle
                 
                 copyStats = gameManager.rifle;
@@ -199,5 +203,22 @@ public class Manager : MonoBehaviour
         }
         
 
+    }
+
+    public void exitEasy(){
+        for(int i = 0; i<playerStats.loot.Length; i++){
+            gameManager.resources[i] += playerStats.loot[i]/2;
+        }
+        
+        gameManager.saveGame();
+    }
+
+    public void exitNormal(){
+        
+        gameManager.saveGame();
+    }
+    
+    public void exitHard(){
+        //Delete Save-file
     }
 }

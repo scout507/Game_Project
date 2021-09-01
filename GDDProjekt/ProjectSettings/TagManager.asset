@@ -20,6 +20,7 @@ TagManager:
   - enemy
   - ground
   - boss
+  - PauseMenu
   layers:
   - Default
   - TransparentFX

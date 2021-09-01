@@ -6,8 +6,13 @@ using TMPro;
 public class HudSidescroll : MonoBehaviour
 {
     public TextMeshProUGUI[] ressourcesText;
-    public GameManager gameManager;
     public TextMeshProUGUI dayText;
+    GameManager gameManager;
+
+    private void Start()
+    {
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+    }
 
     void Update()
     {

@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class BossController : MonoBehaviour
 {
@@ -59,6 +61,8 @@ public class BossController : MonoBehaviour
     Vector2 target;
     DialogueManager dialogueManager;
     GameObject manager;
+    Animator anim;
+    Slider hpBar;
 
     bool skill0Active;
     bool skill1Active;
@@ -76,6 +80,9 @@ public class BossController : MonoBehaviour
         manager = GameObject.FindGameObjectWithTag("manager");
         lootTable = manager.GetComponent<LootTable>();
         dialogueManager = manager.GetComponent<DialogueManager>();
+        anim = GetComponent<Animator>();
+        hpBar = GetComponentInChildren<Slider>();
+        hpBar.maxValue = maxhp;
 
         skill0Timer = skill0Cd;
         skill1Timer = skill1Cd;
@@ -89,51 +96,82 @@ public class BossController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        atkTimer -= Time.deltaTime;
-        skill0Timer -= Time.deltaTime;
-        skill1Timer -= Time.deltaTime;
-        skill2Timer -= Time.deltaTime;
-        skill3Timer -= Time.deltaTime;
-        skill4Timer -= Time.deltaTime;
-        coolDown -= Time.deltaTime;
-        moveblockDuration -= Time.deltaTime;
+        if(!dead){
+            hpBar.value = hp;
 
-        if(moveblockDuration > 0) moveblock = true;
-        else moveblock = false;
+            atkTimer -= Time.deltaTime;
+            skill0Timer -= Time.deltaTime;
+            skill1Timer -= Time.deltaTime;
+            skill2Timer -= Time.deltaTime;
+            skill3Timer -= Time.deltaTime;
+            skill4Timer -= Time.deltaTime;
+            coolDown -= Time.deltaTime;
+            moveblockDuration -= Time.deltaTime;
 
-        dmgPopTimer += Time.deltaTime;
-        if(dmgPopTimer >= 0.1f){
-            lastPopUp = null;
+            if(moveblockDuration > 0) moveblock = true;
+            else moveblock = false;
+
+            dmgPopTimer += Time.deltaTime;
+            if(dmgPopTimer >= 0.1f){
+                lastPopUp = null;
+            }
+
+            //Skill 1
+            if(skill1Active && Vector2.Distance(transform.position, target) <= 1f) slam();
+
+
+            if(hp <= 0) die();
+            decider();
         }
-
-        //Skill 1
-        if(skill1Active && Vector2.Distance(transform.position, target) <= 1f) slam();
-
-
-        if(hp <= 0) die();
-        decider();
     }
 
     private void FixedUpdate()
     {
-        lookDir = new Vector2(player.transform.position.x, player.transform.position.y) - rb.position;
-        facing = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
-        //down = -112,5 - -67,5 / down-right -67,5 - -22,5 / right -22,5 - 22,5 / top right = 22,5 - 67,5 / top = 67,5 - 112,5 / top-left = 157,5 / left = < 157,5 | > -157,5 / down-left = -112,5 - -157,5
-        if(facing >= -112.5f && facing < -67.5f) sR.sprite = sprites[0]; //down
-        else if(facing >= -67.5f && facing < -22.5f) sR.sprite = sprites[1]; //donw-right
-        else if(facing >= -22.5f && facing < 22.5f) sR.sprite = sprites[2]; //right
-        else if(facing >= 22.5f && facing < 67.5f) sR.sprite = sprites[3]; //top-right
-        else if(facing >= 67.5f && facing < 112.5f) sR.sprite = sprites[4]; //top
-        else if(facing >= 112.5f && facing < 157.5f) sR.sprite = sprites[5]; //top-left
-        else if(facing >= -157.5f && facing < -112.5f) sR.sprite = sprites[7]; //down-left
-        else sR.sprite = sprites[6]; //left
+        if(!dead){
+            lookDir = new Vector2(player.transform.position.x, player.transform.position.y) - rb.position;
+            facing = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
+            //down = -112,5 - -67,5 / down-right -67,5 - -22,5 / right -22,5 - 22,5 / top right = 22,5 - 67,5 / top = 67,5 - 112,5 / top-left = 157,5 / left = < 157,5 | > -157,5 / down-left = -112,5 - -157,5
+            if(facing >= -112.5f && facing < -67.5f){
+                anim.SetInteger("direction", 0);
+                sR.sprite = sprites[0]; //down
+            } 
+            else if(facing >= -67.5f && facing < -22.5f){
+                anim.SetInteger("direction", 1);
+                sR.sprite = sprites[1]; //donw-right
+            } 
+            else if(facing >= -22.5f && facing < 22.5f){
+                anim.SetInteger("direction", 2);
+                sR.sprite = sprites[2]; //right
+            } 
+            else if(facing >= 22.5f && facing < 67.5f){
+                anim.SetInteger("direction", 3);
+                sR.sprite = sprites[3]; //top-right
+            } 
+            else if(facing >= 67.5f && facing < 112.5f){
+                anim.SetInteger("direction", 4);
+                sR.sprite = sprites[4]; //top
+            } 
+            else if(facing >= 112.5f && facing < 157.5f){
+                anim.SetInteger("direction", 5);
+                sR.sprite = sprites[5]; //top-left
+            } 
+            else if(facing >= -157.5f && facing < -112.5f){
+                anim.SetInteger("direction", 7);
+                sR.sprite = sprites[7]; //down-left
+            } 
+            else{
+                anim.SetInteger("direction", 6);
+                sR.sprite = sprites[6]; //left
+            } 
 
 
-        //constant moving
-        if(target != new Vector2(0,0) && Vector2.Distance(target, transform.position) >= meleeAtkRange && !moveblock){
-            // move
-            Vector2 direction = new Vector2(target.x - transform.position.x, target.y-transform.position.y);
-            rb.velocity = direction.normalized*moveSpeed*Time.fixedDeltaTime;
+            //constant moving
+            if(target != new Vector2(0,0) && Vector2.Distance(target, transform.position) >= meleeAtkRange && !moveblock){
+                // move
+                anim.SetTrigger("walking");
+                Vector2 direction = new Vector2(target.x - transform.position.x, target.y-transform.position.y);
+                rb.velocity = direction.normalized*moveSpeed*Time.fixedDeltaTime;
+            }
         }
     }
 
@@ -166,6 +204,7 @@ public class BossController : MonoBehaviour
     }
 
     void autoAtk(){
+        anim.SetTrigger("attacking");
         atkTimer = atkSpeed;
         rb.velocity = Vector2.zero;
         moveblockDuration = 1f;
@@ -177,7 +216,7 @@ public class BossController : MonoBehaviour
     }
 
     void leap(){
-        Debug.Log("leaping");
+        anim.SetTrigger("jumping");
         target = new Vector2(player.transform.position.x,player.transform.position.y);
         Vector2 direction = new Vector2(target.x - transform.position.x, target.y-transform.position.y);
         rb.AddForce(direction*leapSpeed, ForceMode2D.Impulse);
@@ -185,6 +224,7 @@ public class BossController : MonoBehaviour
     }
 
     void skill0(){
+        anim.SetTrigger("summoning");
         skill0Timer = skill0Cd;
         moveblockDuration = 1f;
         spawnBalls();
@@ -197,6 +237,7 @@ public class BossController : MonoBehaviour
     }
 
     void skill2(){
+        anim.SetTrigger("summoning");
         moveblockDuration = 1f;
         skill2Timer = skill2Cd;
         List<int> randomList = new List<int>();
@@ -215,7 +256,7 @@ public class BossController : MonoBehaviour
     }
 
     void skill3(){
-
+        anim.SetTrigger("summoning");
         moveblockDuration = 1f;
         skill3Timer = skill3Cd;
         List<int> randomList = new List<int>();
@@ -241,9 +282,10 @@ public class BossController : MonoBehaviour
             dialogueManager.startDialogue(endConvo);
             GameObject.FindGameObjectWithTag("manager").GetComponent<Manager>().spawnPortal();
             dead = true;
-            Destroy(this.gameObject);
+            anim.SetTrigger("death");
+            //Destroy(this.gameObject);
+            GameObject loot = Instantiate(lootTable.loot[lootTable.roll(lootWeight)], this.transform.position, Quaternion.identity);
         } 
-        GameObject loot = Instantiate(lootTable.loot[lootTable.roll(lootWeight)], this.transform.position, Quaternion.identity);
     }
 
     void slam(){
@@ -298,5 +340,6 @@ public class BossController : MonoBehaviour
         dmgPopUpScript.Setup(dmgTaken);
         return dmgPopUpScript;
     }
+
 }
 

@@ -8,7 +8,7 @@ public class DungeonSidescroll : BuildingOverClassSidescroll
     //public variables
     public GameObject canvas;
     public GameObject menu;
-    public GameManager gameManager;
+    GameManager gameManager;
     public GameObject title;
     public GameObject interact;
     public GameObject dungeonEnterMenu;
@@ -22,6 +22,7 @@ public class DungeonSidescroll : BuildingOverClassSidescroll
 
     void Start()
     {
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         highlightCanvas = canvas.GetComponent<Canvas>();
         menuCanvas = menu.GetComponent<Canvas>();
         playerMovementSidescroll = player.GetComponent<PlayerMovementSidescroll>();
