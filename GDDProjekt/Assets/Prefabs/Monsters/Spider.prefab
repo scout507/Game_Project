@@ -44,12 +44,24 @@ PrefabInstance:
       value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 2963240178191708171, guid: 3b7b3ca5cd90f3640833ff984470770b, type: 3}
+      propertyPath: dmgSound
+      value: spider_pain
+      objectReference: {fileID: 0}
+    - target: {fileID: 2963240178191708171, guid: 3b7b3ca5cd90f3640833ff984470770b, type: 3}
       propertyPath: moveSpeed
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2963240178191708171, guid: 3b7b3ca5cd90f3640833ff984470770b, type: 3}
       propertyPath: meleeAtkRange
       value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2963240178191708171, guid: 3b7b3ca5cd90f3640833ff984470770b, type: 3}
+      propertyPath: meleeAtkSound
+      value: spider_atk
+      objectReference: {fileID: 0}
+    - target: {fileID: 2963240178191708171, guid: 3b7b3ca5cd90f3640833ff984470770b, type: 3}
+      propertyPath: rangeAtkSound
+      value: spider_atk
       objectReference: {fileID: 0}
     - target: {fileID: 2963240178191708171, guid: 3b7b3ca5cd90f3640833ff984470770b, type: 3}
       propertyPath: sprites.Array.size
