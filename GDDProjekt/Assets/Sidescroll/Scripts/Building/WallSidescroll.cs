@@ -45,8 +45,8 @@ public class WallSidescroll : BuildingOverClassSidescroll
             }
             else
             {
-                textMeshProTitle.text = "Vollständig repariert";
-                textMeshProTitleInteract.text = "zurück [E]";
+                textMeshProTitle.text = "Completely repaired";
+                textMeshProTitleInteract.text = "back [E]";
             }
         }
 
@@ -63,7 +63,7 @@ public class WallSidescroll : BuildingOverClassSidescroll
         playerMovementSidescroll.inEvent = true;
         textMeshProTitleOld = textMeshProTitle.text;
         textMeshProTitleInteractOld = textMeshProTitleInteract.text;
-        textMeshProTitle.text = "wird repariert...";
+        textMeshProTitle.text = "will be repaired...";
 
     }
 

@@ -164,8 +164,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb2D: {fileID: 0}
-  speed: 3
-  gameEndSpeed: 3
+  speed: 2
+  gameEndSpeed: 2
   cityHall: {fileID: 0}
   wallTarget: {fileID: 0}
   comeFromLeft: 0

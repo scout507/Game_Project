@@ -106,12 +106,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 2583bc37ae3a7c245b548e0f7e62ffe7, type: 3}
+  m_Sprite: {fileID: -4401459963750986862, guid: fddea8b7c47c4824587d5c98b419a0f5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 2, y: 2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -161,8 +161,7 @@ MonoBehaviour:
   firepoint: {fileID: 4402858947545578566}
   bulletNpcPrefab: {fileID: 2741348265609809042, guid: 4cae83ecce53b864081db5ed377201aa, type: 3}
   bulletWallPrefab: {fileID: 2741348265609809042, guid: 1118970380faec84b83d1514abbfe992, type: 3}
-  npcs:
-  - {fileID: 0}
+  npcs: []
   wall: {fileID: 0}
   isFly: 1
   aiManager: {fileID: 0}
@@ -195,8 +194,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb2D: {fileID: 0}
-  speed: 3
-  gameEndSpeed: 3
+  speed: 2
+  gameEndSpeed: 2
   cityHall: {fileID: 0}
   wallTarget: {fileID: 0}
   comeFromLeft: 0

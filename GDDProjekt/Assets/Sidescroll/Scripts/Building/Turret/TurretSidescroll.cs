@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering.Universal;
 using Cinemachine;
 
 public class TurretSidescroll : BuildingOverClassSidescroll
@@ -29,6 +30,7 @@ public class TurretSidescroll : BuildingOverClassSidescroll
         oldfocus = cinemachineVirtualCamera.Follow;
         cinemachineVirtualCamera.Follow = focus;
         transform.GetComponent<TurretWeaponSidescroll>().entered = true;
+        GetComponentInChildren<Light2D>().enabled = true;
     }
 
     public override void deactivateMenu()
@@ -37,5 +39,6 @@ public class TurretSidescroll : BuildingOverClassSidescroll
         spriteRenderer.enabled = true;
         cinemachineVirtualCamera.Follow = oldfocus;
         transform.GetComponent<TurretWeaponSidescroll>().entered = false;
+        GetComponentInChildren<Light2D>().enabled = false;
     }
 }
