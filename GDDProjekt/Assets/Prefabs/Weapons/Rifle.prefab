@@ -59,7 +59,7 @@ MonoBehaviour:
   muzzleFire: {fileID: 6646220717803829938}
   sprites:
   - {fileID: 2318361781820853425, guid: 9bd9233e8b695044586157ec46b50dcd, type: 3}
-  - {fileID: -8957083366528949100, guid: 978e26e631492aa47a37ae42f4ee1345, type: 3}
+  - {fileID: 242598451965430973, guid: 9bd9233e8b695044586157ec46b50dcd, type: 3}
   lastShotTimer: 0
   overheated: 0
   coolDown: 2
