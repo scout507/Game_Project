@@ -121,8 +121,8 @@ public class MonsterController : MonoBehaviour
     void meleeAtk(){
         isDmging = true;
         playerStats.takeDamage(dmg);
-        if(Random.Range(1,101) >= slowChance) playerController.getSlowed(2.5f);
-        if(Random.Range(1,101) >= posionChance) playerController.getPoisoned(Random.Range(1,4));
+        if(Random.Range(1,101) <= slowChance) playerController.getSlowed(2.5f);
+        if(Random.Range(1,101) <= posionChance) playerController.getPoisoned(Random.Range(1,4));
         //FindObjectOfType<SoundManager>().PlayOnToggle(meleeAtkSound, isDmging);
         isDmging = false;
     }

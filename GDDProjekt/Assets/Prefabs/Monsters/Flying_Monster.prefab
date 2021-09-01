@@ -18,7 +18,11 @@ PrefabInstance:
     - target: {fileID: 2963240176192395459, guid: 3b7b3ca5cd90f3640833ff984470770b, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -1354669531827684805, guid: 0c28b0b086060034a806a969b27c12bc, type: 3}
+      objectReference: {fileID: 5640993839483410564, guid: fddea8b7c47c4824587d5c98b419a0f5, type: 3}
+    - target: {fileID: 2963240176192395459, guid: 3b7b3ca5cd90f3640833ff984470770b, type: 3}
+      propertyPath: m_SortingOrder
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 2963240176192395459, guid: 3b7b3ca5cd90f3640833ff984470770b, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
@@ -41,11 +45,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2963240178191708165, guid: 3b7b3ca5cd90f3640833ff984470770b, type: 3}
       propertyPath: graphMask.value
-      value: -5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2963240178191708171, guid: 3b7b3ca5cd90f3640833ff984470770b, type: 3}
       propertyPath: moveSpeed
-      value: 10
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2963240178191708171, guid: 3b7b3ca5cd90f3640833ff984470770b, type: 3}
       propertyPath: meleeAtkRange
@@ -58,42 +62,42 @@ PrefabInstance:
     - target: {fileID: 2963240178191708171, guid: 3b7b3ca5cd90f3640833ff984470770b, type: 3}
       propertyPath: sprites.Array.data[0]
       value: 
-      objectReference: {fileID: -1354669531827684805, guid: 0c28b0b086060034a806a969b27c12bc, type: 3}
+      objectReference: {fileID: 5640993839483410564, guid: fddea8b7c47c4824587d5c98b419a0f5, type: 3}
     - target: {fileID: 2963240178191708171, guid: 3b7b3ca5cd90f3640833ff984470770b, type: 3}
       propertyPath: sprites.Array.data[1]
       value: 
-      objectReference: {fileID: -8744274425694027655, guid: 0c28b0b086060034a806a969b27c12bc, type: 3}
+      objectReference: {fileID: -4914811490777151245, guid: fddea8b7c47c4824587d5c98b419a0f5, type: 3}
     - target: {fileID: 2963240178191708171, guid: 3b7b3ca5cd90f3640833ff984470770b, type: 3}
       propertyPath: sprites.Array.data[2]
       value: 
-      objectReference: {fileID: -5530627178743334547, guid: 0c28b0b086060034a806a969b27c12bc, type: 3}
+      objectReference: {fileID: -4401459963750986862, guid: fddea8b7c47c4824587d5c98b419a0f5, type: 3}
     - target: {fileID: 2963240178191708171, guid: 3b7b3ca5cd90f3640833ff984470770b, type: 3}
       propertyPath: sprites.Array.data[3]
       value: 
-      objectReference: {fileID: 8285729356457923197, guid: 0c28b0b086060034a806a969b27c12bc, type: 3}
+      objectReference: {fileID: 6593585993354863328, guid: fddea8b7c47c4824587d5c98b419a0f5, type: 3}
     - target: {fileID: 2963240178191708171, guid: 3b7b3ca5cd90f3640833ff984470770b, type: 3}
       propertyPath: sprites.Array.data[4]
       value: 
-      objectReference: {fileID: -4421955484837205554, guid: 0c28b0b086060034a806a969b27c12bc, type: 3}
+      objectReference: {fileID: -1085584318707338813, guid: fddea8b7c47c4824587d5c98b419a0f5, type: 3}
     - target: {fileID: 2963240178191708171, guid: 3b7b3ca5cd90f3640833ff984470770b, type: 3}
       propertyPath: sprites.Array.data[5]
       value: 
-      objectReference: {fileID: 3969898314667053475, guid: 0c28b0b086060034a806a969b27c12bc, type: 3}
+      objectReference: {fileID: 5154506160954672412, guid: fddea8b7c47c4824587d5c98b419a0f5, type: 3}
     - target: {fileID: 2963240178191708171, guid: 3b7b3ca5cd90f3640833ff984470770b, type: 3}
       propertyPath: sprites.Array.data[6]
       value: 
-      objectReference: {fileID: 8041428850567248591, guid: 0c28b0b086060034a806a969b27c12bc, type: 3}
+      objectReference: {fileID: 649194127093973658, guid: fddea8b7c47c4824587d5c98b419a0f5, type: 3}
     - target: {fileID: 2963240178191708171, guid: 3b7b3ca5cd90f3640833ff984470770b, type: 3}
       propertyPath: sprites.Array.data[7]
       value: 
-      objectReference: {fileID: -823225795891089742, guid: 0c28b0b086060034a806a969b27c12bc, type: 3}
+      objectReference: {fileID: 982977300376955478, guid: fddea8b7c47c4824587d5c98b419a0f5, type: 3}
     - target: {fileID: 4194071505633568457, guid: 3b7b3ca5cd90f3640833ff984470770b, type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4194071505633568457, guid: 3b7b3ca5cd90f3640833ff984470770b, type: 3}
       propertyPath: m_InstanceId
-      value: -1344
+      value: -309448
       objectReference: {fileID: 0}
     - target: {fileID: 4194071505633568457, guid: 3b7b3ca5cd90f3640833ff984470770b, type: 3}
       propertyPath: m_ShapePathHash
@@ -177,7 +181,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7567307232195515333, guid: 3b7b3ca5cd90f3640833ff984470770b, type: 3}
       propertyPath: m_Name
-      value: Spider
+      value: Flying_Monster
       objectReference: {fileID: 0}
     - target: {fileID: 7567307232195515337, guid: 3b7b3ca5cd90f3640833ff984470770b, type: 3}
       propertyPath: m_RootOrder
@@ -223,5 +227,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2963240178191708167, guid: 3b7b3ca5cd90f3640833ff984470770b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3b7b3ca5cd90f3640833ff984470770b, type: 3}

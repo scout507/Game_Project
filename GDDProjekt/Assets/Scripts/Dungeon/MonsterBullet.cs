@@ -32,8 +32,8 @@ public class MonsterBullet : MonoBehaviour
         {
             if(obj.tag == "Player"){
                 obj.GetComponent<PlayerStats>().takeDamage(dmg);
-                if(Random.Range(1,101) >= slowChance) obj.GetComponent<PlayerController>().getSlowed(2.5f);
-                if(Random.Range(1,101) >= poisionChance) obj.GetComponent<PlayerController>().getPoisoned(Random.Range(1,4));
+                if(Random.Range(1,101) <= slowChance) obj.GetComponent<PlayerController>().getSlowed(2.5f);
+                if(Random.Range(1,101) <= poisionChance) obj.GetComponent<PlayerController>().getPoisoned(Random.Range(1,4));
             }
         }
         Destroy(this.gameObject);
