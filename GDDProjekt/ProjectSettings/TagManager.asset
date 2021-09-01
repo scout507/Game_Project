@@ -21,6 +21,7 @@ TagManager:
   - ground
   - boss
   - PauseMenu
+  - WallLatern
   layers:
   - Default
   - TransparentFX

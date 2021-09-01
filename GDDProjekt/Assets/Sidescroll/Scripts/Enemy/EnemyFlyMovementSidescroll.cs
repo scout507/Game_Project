@@ -7,6 +7,7 @@ public class EnemyFlyMovementSidescroll : EnemyMovementSidescroll
     //public
     public Vector3 left;
     public Vector3 right;
+    bool lookingToMid = true;
 
     void Start()
     {
@@ -22,6 +23,8 @@ public class EnemyFlyMovementSidescroll : EnemyMovementSidescroll
     {
         if (aiManager.gameEndEnemy)
         {
+            if (!lookingToMid && comeFromLeft) transform.rotation = Quaternion.Euler(0, 0, 0);
+            if (!lookingToMid && !comeFromLeft) transform.rotation = Quaternion.Euler(0, 180, 0);
             target = cityHall.position;
             speed = gameEndSpeed;
             move = true;
@@ -39,11 +42,13 @@ public class EnemyFlyMovementSidescroll : EnemyMovementSidescroll
 
             if (target == right)
             {
+                lookingToMid = !lookingToMid;
                 target = left;
                 transform.rotation = Quaternion.Euler(0, 180, 0);
             }
             else
             {
+                lookingToMid = !lookingToMid;
                 target = right;
                 transform.rotation = Quaternion.Euler(0, 0, 0);
             }

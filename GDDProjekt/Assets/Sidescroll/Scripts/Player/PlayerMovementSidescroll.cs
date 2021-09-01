@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Animations;
 
 public class PlayerMovementSidescroll : MonoBehaviour
 {
@@ -12,7 +11,6 @@ public class PlayerMovementSidescroll : MonoBehaviour
     public float runspeed = 40f;
     public bool inEvent = false;
     public UnityEvent onLandEvent;
-    Animation animation;
 
     //private variables
     Rigidbody2D rb2D;
@@ -29,7 +27,6 @@ public class PlayerMovementSidescroll : MonoBehaviour
         rb2D = GetComponent<Rigidbody2D>();
         if (onLandEvent == null) onLandEvent = new UnityEvent();
         animator = GetComponent<Animator>();
-        animation = GetComponent<Animation>();
     }
 
     void Update()
