@@ -6,6 +6,7 @@ public class MonsterController : MonoBehaviour
 {
     [Tooltip("Sprites: 0: down, 1: down-right, 2: right, 3: top-right, 4: top, 5: top-left, 6: left, 7: down-left")]
     public Sprite[] sprites;
+    public Sprite deathSprite;
     public float hp;
     public float dmg;
     
@@ -74,50 +75,54 @@ public class MonsterController : MonoBehaviour
 
     void Update()
     {   
-        dmgPopTimer += Time.deltaTime;
-        if(dmgPopTimer >= 0.1f){
-            lastPopUp = null;
-        }
+        if(!dead){
+            dmgPopTimer += Time.deltaTime;
+            if(dmgPopTimer >= 0.1f){
+                lastPopUp = null;
+            }
 
-        distanceToEnemy = Vector3.Distance(player.transform.position, this.transform.position);
-        if(distanceToEnemy < aggroRange) aggro =  true;
-        if(aggro && manager.rdy){
-            pathing.canSearch = true;
-        }
-        if(hasAtkd) aktTimer += Time.deltaTime;
-        if(aktTimer >= atkSpeed){
-            aktTimer = 0;
-            hasAtkd = false;
-        }
-        if(distanceToEnemy <= meleeAtkRange && !hasAtkd){
-            pathing.canMove = false;
-            hasAtkd = true;
-            meleeAtk();
-            rb.velocity = Vector3.zero;
-            Invoke("startMoving", atkDelay);
-        }
-        if(distanceToEnemy <= rangeAtkRange && !hasAtkd && hasRangedAtk){
-            pathing.canMove = false;
-            hasAtkd = true;
-            rangeAtk();
-            rb.velocity = Vector3.zero;
-            Invoke("startMoving", atkDelay);
+            distanceToEnemy = Vector3.Distance(player.transform.position, this.transform.position);
+            if(distanceToEnemy < aggroRange) aggro =  true;
+            if(aggro && manager.rdy){
+                pathing.canSearch = true;
+            }
+            if(hasAtkd) aktTimer += Time.deltaTime;
+            if(aktTimer >= atkSpeed){
+                aktTimer = 0;
+                hasAtkd = false;
+            }
+            if(distanceToEnemy <= meleeAtkRange && !hasAtkd){
+                pathing.canMove = false;
+                hasAtkd = true;
+                meleeAtk();
+                rb.velocity = Vector3.zero;
+                Invoke("startMoving", atkDelay);
+            }
+            if(distanceToEnemy <= rangeAtkRange && !hasAtkd && hasRangedAtk){
+                pathing.canMove = false;
+                hasAtkd = true;
+                rangeAtk();
+                rb.velocity = Vector3.zero;
+                Invoke("startMoving", atkDelay);
+            }
         }
     }
 
     void FixedUpdate()
     {
-        lookDir = new Vector2(player.transform.position.x, player.transform.position.y) - rb.position;
-        float facing = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
-        //down = -112,5 - -67,5 / down-right -67,5 - -22,5 / right -22,5 - 22,5 / top right = 22,5 - 67,5 / top = 67,5 - 112,5 / top-left = 157,5 / left = < 157,5 | > -157,5 / down-left = -112,5 - -157,5
-        if(facing >= -112.5f && facing < -67.5f) sR.sprite = sprites[0]; //down
-        else if(facing >= -67.5f && facing < -22.5f) sR.sprite = sprites[1]; //donw-right
-        else if(facing >= -22.5f && facing < 22.5f) sR.sprite = sprites[2]; //right
-        else if(facing >= 22.5f && facing < 67.5f) sR.sprite = sprites[3]; //top-right
-        else if(facing >= 67.5f && facing < 112.5f) sR.sprite = sprites[4]; //top
-        else if(facing >= 112.5f && facing < 157.5f) sR.sprite = sprites[5]; //top-left
-        else if(facing >= -157.5f && facing < -112.5f) sR.sprite = sprites[7]; //down-left
-        else sR.sprite = sprites[6]; //left
+        if(!dead){
+            lookDir = new Vector2(player.transform.position.x, player.transform.position.y) - rb.position;
+            float facing = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
+            //down = -112,5 - -67,5 / down-right -67,5 - -22,5 / right -22,5 - 22,5 / top right = 22,5 - 67,5 / top = 67,5 - 112,5 / top-left = 157,5 / left = < 157,5 | > -157,5 / down-left = -112,5 - -157,5
+            if(facing >= -112.5f && facing < -67.5f) sR.sprite = sprites[0]; //down
+            else if(facing >= -67.5f && facing < -22.5f) sR.sprite = sprites[1]; //donw-right
+            else if(facing >= -22.5f && facing < 22.5f) sR.sprite = sprites[2]; //right
+            else if(facing >= 22.5f && facing < 67.5f) sR.sprite = sprites[3]; //top-right
+            else if(facing >= 67.5f && facing < 112.5f) sR.sprite = sprites[4]; //top
+            else if(facing >= 112.5f && facing < 157.5f) sR.sprite = sprites[5]; //top-left
+            else if(facing >= -157.5f && facing < -112.5f) sR.sprite = sprites[7]; //down-left
+            else sR.sprite = sprites[6]; //left
+        }
     }
 
     void meleeAtk(){
@@ -143,33 +148,40 @@ public class MonsterController : MonoBehaviour
     }
 
     public void takeDamage(float dmgTaken, Vector3 force){
-        takingDmg = true;
-        pathing.canMove = false;
-        Invoke("startMoving", 0.1f);
-        pathing.canMove = false;
-        rb.AddForce(force,ForceMode2D.Impulse);
-        soundManager.PlayOnToggle(dmgSound, takingDmg);
+        if(!dead){
+            takingDmg = true;
+            pathing.canMove = false;
+            Invoke("startMoving", 0.1f);
+            pathing.canMove = false;
+            rb.AddForce(force,ForceMode2D.Impulse);
+            soundManager.PlayOnToggle(dmgSound, takingDmg);
 
-        if(lastPopUp == null){
-            lastPopUp = spawnDmgText(dmgTaken);
-            dmgPopTimer = 0f;
-        }else{
-            lastPopUp.updateText(dmgTaken);
-        }
+            if(lastPopUp == null){
+                lastPopUp = spawnDmgText(dmgTaken);
+                dmgPopTimer = 0f;
+            }else{
+                lastPopUp.updateText(dmgTaken);
+            }
 
-        hp -= dmgTaken;
-        if(hp <= 0){
-            die();
+            hp -= dmgTaken;
+            if(hp <= 0){
+                die();
+            }
+            takingDmg = false;
         }
-        takingDmg = false;
     }
 
     void die(){
         soundManager.Play(deathSound);
         if(!dead){
             dead = true;
+            GetComponent<CircleCollider2D>().enabled = false;
+            GetComponent<CapsuleCollider2D>().enabled = false;
+            pathing.canMove = false;
+            rb.velocity = Vector2.zero;
             if(Random.Range(0,100)<30) dropLoot();
-            Destroy(this.gameObject);
+            sR.sprite = deathSprite;
+            Invoke("selfDestroy", 1.5f);
         }  
     }
 
@@ -186,7 +198,11 @@ public class MonsterController : MonoBehaviour
     }
 
     void startMoving(){
-        pathing.canMove = true;
+        if(!dead) pathing.canMove = true;
+    }
+
+    void selfDestroy(){
+        Destroy(this.gameObject);
     }
 
     //vvv Aien vvv

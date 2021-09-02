@@ -98,7 +98,7 @@ public class GameManager : MonoBehaviour
 
     void initWeapons(){
         rifle.init(10,5,0.5f,2,0,0,0);
-        shotgun.init(15,1,6,1,6,4,0);
+        shotgun.init(15,1,1.7f,1,6,4,0);
         grenadeLauncher.init(80,1,11,2.5f,0,0,6);
     }
 
@@ -107,6 +107,10 @@ public class GameManager : MonoBehaviour
         SaveGame save = new SaveGame(resources,rifle,shotgun,grenadeLauncher,day,difficulty);
         string json = JsonUtility.ToJson(save);
         File.WriteAllText(Application.dataPath + "/save.txt", json);
+    }
+
+    public void deleteGame(){
+        File.Delete(Application.dataPath + "/save.txt");
     }
 
     void loadGame(){
