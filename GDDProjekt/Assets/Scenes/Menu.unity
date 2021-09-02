@@ -470,20 +470,20 @@ MonoBehaviour:
     source: {fileID: 0}
     shouldLoop: 0
   - name: explosion
-    clip: {fileID: 8300000, guid: 2080b39832c0a4097b861339613496d5, type: 3}
-    volume: 1
+    clip: {fileID: 8300000, guid: 48aba2972d78eff409f1c80bbb511622, type: 3}
+    volume: 0.6
     pitch: 1
     source: {fileID: 0}
     shouldLoop: 0
   - name: shootRifle
     clip: {fileID: 8300000, guid: 0650cc114704b4be2bfb18e9efb99c2d, type: 3}
-    volume: 1
-    pitch: 1
+    volume: 0.2
+    pitch: 1.2
     source: {fileID: 0}
     shouldLoop: 0
   - name: shootShotgun
-    clip: {fileID: 8300000, guid: ef3f0e8d96db544c597cf1f826401c3a, type: 3}
-    volume: 0.5
+    clip: {fileID: 8300000, guid: 35019b066571fb444a90a0cc456e5ab8, type: 3}
+    volume: 0.2
     pitch: 1
     source: {fileID: 0}
     shouldLoop: 0
@@ -499,14 +499,32 @@ MonoBehaviour:
     pitch: 1
     source: {fileID: 0}
     shouldLoop: 0
+  - name: grenade_launcher
+    clip: {fileID: 8300000, guid: 393b0ca8530e3e64fbf3a3468815152a, type: 3}
+    volume: 0.7
+    pitch: 1
+    source: {fileID: 0}
+    shouldLoop: 0
+  - name: spider_pain
+    clip: {fileID: 8300000, guid: 5cd921b91deac4f47b05c451951f7a53, type: 3}
+    volume: 0.3
+    pitch: 2
+    source: {fileID: 0}
+    shouldLoop: 0
+  - name: spider_atk
+    clip: {fileID: 8300000, guid: 8b9826c915109c446be0c38d54721a2d, type: 3}
+    volume: 0.3
+    pitch: 2.5
+    source: {fileID: 0}
+    shouldLoop: 0
   themeSound:
-    name: menu
-    clip: {fileID: 8300000, guid: ff0e2f6c0857f48ec8c2dbf7322d7e05, type: 3}
+    name: 
+    clip: {fileID: 0}
     volume: 1
     pitch: 1
     source: {fileID: 0}
     shouldLoop: 0
-  globalVolume: 1
+  globalVolume: 0.1
   sfxVolume: 1
   musicVolume: 1
 --- !u!1 &248727181
@@ -5231,6 +5249,7 @@ MonoBehaviour:
   wall: 0
   turret: 0
   difficulty: 0
+  maxLevel: 0
   dungeonLevel: 0
   GamePaused: 0
 --- !u!4 &2140058484

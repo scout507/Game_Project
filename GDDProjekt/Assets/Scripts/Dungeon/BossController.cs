@@ -108,7 +108,10 @@ public class BossController : MonoBehaviour
             coolDown -= Time.deltaTime;
             moveblockDuration -= Time.deltaTime;
 
-            if(moveblockDuration > 0) moveblock = true;
+            if(moveblockDuration > 0){
+                anim.SetBool("walking", false);
+                moveblock = true;
+            } 
             else moveblock = false;
 
             dmgPopTimer += Time.deltaTime;
@@ -168,9 +171,11 @@ public class BossController : MonoBehaviour
             //constant moving
             if(target != new Vector2(0,0) && Vector2.Distance(target, transform.position) >= meleeAtkRange && !moveblock){
                 // move
-                anim.SetTrigger("walking");
                 Vector2 direction = new Vector2(target.x - transform.position.x, target.y-transform.position.y);
                 rb.velocity = direction.normalized*moveSpeed*Time.fixedDeltaTime;
+            }
+            if(moveblock){
+                rb.velocity = Vector2.zero;
             }
         }
     }
@@ -212,6 +217,7 @@ public class BossController : MonoBehaviour
     }
 
     void move(){
+        anim.SetBool("walking", true);
         target = new Vector2(player.transform.position.x,player.transform.position.y);
     }
 
@@ -224,9 +230,9 @@ public class BossController : MonoBehaviour
     }
 
     void skill0(){
+        moveblockDuration = 1.5f;
         anim.SetTrigger("summoning");
         skill0Timer = skill0Cd;
-        moveblockDuration = 1f;
         spawnBalls();
     }
 
@@ -238,7 +244,7 @@ public class BossController : MonoBehaviour
 
     void skill2(){
         anim.SetTrigger("summoning");
-        moveblockDuration = 1f;
+        moveblockDuration = 1.5f;
         skill2Timer = skill2Cd;
         List<int> randomList = new List<int>();
 
@@ -257,7 +263,7 @@ public class BossController : MonoBehaviour
 
     void skill3(){
         anim.SetTrigger("summoning");
-        moveblockDuration = 1f;
+        moveblockDuration = 1.5f;
         skill3Timer = skill3Cd;
         List<int> randomList = new List<int>();
         for(int i = 0; i < 20; i++){
