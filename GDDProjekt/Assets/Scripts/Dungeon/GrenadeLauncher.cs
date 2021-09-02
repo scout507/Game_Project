@@ -22,6 +22,7 @@ public class GrenadeLauncher : Weapon
             rocketSkript.target = target;
             rbBull.AddForce(dir*force,ForceMode2D.Impulse);
             muzzleFire.enabled = true;
+            FindObjectOfType<SoundManager>().Play("grenade_launcher");
         }          
    }
 }
