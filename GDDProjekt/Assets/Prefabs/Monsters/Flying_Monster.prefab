@@ -48,6 +48,14 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2963240178191708171, guid: 3b7b3ca5cd90f3640833ff984470770b, type: 3}
+      propertyPath: hp
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 2963240178191708171, guid: 3b7b3ca5cd90f3640833ff984470770b, type: 3}
+      propertyPath: dmg
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 2963240178191708171, guid: 3b7b3ca5cd90f3640833ff984470770b, type: 3}
       propertyPath: moveSpeed
       value: 6
       objectReference: {fileID: 0}

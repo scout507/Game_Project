@@ -325,9 +325,9 @@ MonoBehaviour:
     sentences:
     - TEST2
   bosslevel: 3
-  hp: 1000
-  maxhp: 1000
-  dmg: 10
+  hp: 1600
+  maxhp: 1600
+  dmg: 40
   moveSpeed: 200
   leapSpeed: 2.5
   atkSpeed: 1
