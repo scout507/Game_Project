@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
     public bool moveBlock;
     public int poisonStacks;
     float poisonDuration = 0.4f;
-    float poisonDPS = 2.5f;
+    float poisonDPS = 1.5f;
     float poisonTimer;
 
     public Weapon gunscript;
@@ -190,6 +190,7 @@ public class PlayerController : MonoBehaviour
     public void getPoisoned(int stacks){
         poisonTimer = poisonDuration;
         poisonStacks += stacks;
+        if(poisonStacks >= 15) poisonStacks = 15;
     }
 
     private bool isMoving()

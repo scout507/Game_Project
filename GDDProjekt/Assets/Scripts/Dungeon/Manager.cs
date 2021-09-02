@@ -14,7 +14,7 @@ public class Manager : MonoBehaviour
     public GameObject[] bosses;
     public GameObject cam;
     public int level = 0;
-    public int monsterAmount = 10;
+    public int monsterAmount = 15;
     public GameObject[] monsters;
     public List<GameObject> monstersInLevel;
     public List<GameObject> props; 
@@ -82,7 +82,7 @@ public class Manager : MonoBehaviour
             string mapCode = maps[Random.Range(0,maps.Length)];
             string[] settings = mapCode.Split(',');
             monsterAmount = 10 + Mathf.RoundToInt(level*(4f/5f));
-            if(monsterAmount >= 50) monsterAmount = 50;
+            if(monsterAmount >= 40) monsterAmount = 40;
             lighting.transform.position = new Vector3(Random.Range(-300,300), Random.Range(-300,300), 0);
             
             
