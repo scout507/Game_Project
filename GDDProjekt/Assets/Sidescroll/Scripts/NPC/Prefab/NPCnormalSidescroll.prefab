@@ -528,9 +528,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 008b8cdb68429564f8a09cf6ccef6720, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 100
-  maxLife: 100
-  damage: 1
+  life: 50
+  maxLife: 50
+  damage: 8
   agro: 1
   cooldownHit: 0.5
   bulletSpeed: 20
@@ -565,7 +565,7 @@ MonoBehaviour:
   - {x: -0.13502884, y: -0.062245347, z: 0}
   m_ShapePathHash: 42628737
   m_Mesh: {fileID: 0}
-  m_InstanceId: 68840
+  m_InstanceId: 211532
 --- !u!95 &-2501695531446642472
 Animator:
   serializedVersion: 3

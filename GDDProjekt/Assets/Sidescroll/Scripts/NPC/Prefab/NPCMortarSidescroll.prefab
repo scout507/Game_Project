@@ -189,11 +189,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 008b8cdb68429564f8a09cf6ccef6720, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 100
-  maxLife: 110
-  damage: 1
+  life: 50
+  maxLife: 50
+  damage: 17
   agro: 3
-  cooldownHit: 0.5
+  cooldownHit: 2
   bulletSpeed: 20
   firepoint: {fileID: 2411456882443673595}
   bulletNpcPrefab: {fileID: 2741348265609809042, guid: e318b9986cd5c1c4381a8f3bb2a25ed9, type: 3}
@@ -226,7 +226,7 @@ MonoBehaviour:
   - {x: -0.13502884, y: -0.062245347, z: 0}
   m_ShapePathHash: 42628737
   m_Mesh: {fileID: 0}
-  m_InstanceId: 68694
+  m_InstanceId: 211154
 --- !u!95 &-4348234091292063875
 Animator:
   serializedVersion: 3

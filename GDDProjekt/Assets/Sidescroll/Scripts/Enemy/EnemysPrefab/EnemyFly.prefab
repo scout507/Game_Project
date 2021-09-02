@@ -150,10 +150,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 618fc727952133c4a8a5028362a63053, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 100
-  maxLife: 100
+  life: 250
+  maxLife: 250
   damageWall: 1
-  damageNpc: 1
+  damageNpc: 50
   agro: 2
   cooldownHitWall: 2
   cooldownHitNpc: 2

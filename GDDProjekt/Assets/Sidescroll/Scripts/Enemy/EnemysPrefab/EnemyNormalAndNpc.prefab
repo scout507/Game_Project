@@ -120,13 +120,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 618fc727952133c4a8a5028362a63053, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 100
-  maxLife: 100
-  damageWall: 1
-  damageNpc: 1
+  life: 400
+  maxLife: 400
+  damageWall: 2
+  damageNpc: 25
   agro: 3
   cooldownHitWall: 2
-  cooldownHitNpc: 2
+  cooldownHitNpc: 4
   bulletSpeed: 20
   firepoint: {fileID: 3145354925695109631}
   bulletNpcPrefab: {fileID: 2741348265609809042, guid: 4cae83ecce53b864081db5ed377201aa, type: 3}

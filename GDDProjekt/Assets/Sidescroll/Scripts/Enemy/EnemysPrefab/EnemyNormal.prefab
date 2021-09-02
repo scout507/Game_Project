@@ -123,7 +123,7 @@ MonoBehaviour:
   life: 100
   maxLife: 100
   damageWall: 1
-  damageNpc: 50
+  damageNpc: 0
   agro: 1
   cooldownHitWall: 2
   cooldownHitNpc: 2
