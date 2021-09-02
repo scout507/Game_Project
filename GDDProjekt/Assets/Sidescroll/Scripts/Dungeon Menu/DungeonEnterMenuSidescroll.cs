@@ -24,11 +24,11 @@ public class DungeonEnterMenuSidescroll : MonoBehaviour
         if (rifle.isOn && grenadelauncher.isOn && shotgun.isOn) rifle.isOn = false;
 
 
-        if (gameManager.maxLevel > 10)
-        {
+        //if (gameManager.maxLevel > 10)
+        //{
             level.SetActive(true);
             levelText.text = "Starting at level " + gameManager.maxLevel + "?";
-        }
+        //}
     }
 
     public void back()
