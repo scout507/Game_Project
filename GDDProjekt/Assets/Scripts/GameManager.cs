@@ -79,6 +79,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void startNewGame(){
+        Debug.Log("newGame");
         initWeapons();
         saveGame();
         SceneManager.LoadScene("Sidescroll");
