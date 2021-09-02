@@ -109,6 +109,10 @@ public class GameManager : MonoBehaviour
         File.WriteAllText(Application.dataPath + "/save.txt", json);
     }
 
+    public void deleteGame(){
+        File.Delete(Application.dataPath + "/save.txt");
+    }
+
     void loadGame(){
         //TODO add filename
         if(File.Exists(Application.dataPath + "/save.txt")){
