@@ -144,7 +144,7 @@ public class Manager : MonoBehaviour
 
     void loadFromManager(){
         
-        level = gameManager.dungeonLevel;
+        level = gameManager.dungeonLevel-1;
 
 
         //Set up Weapons
