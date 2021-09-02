@@ -7,7 +7,7 @@ public class MonsterBullet : MonoBehaviour
     public float dmg;
     public Vector3 target;
     public Vector3 bulletforce;
-    public float splashRadius = 5f;
+    public float splashRadius = 3f;
     public int slowChance;
     public int poisionChance;
 

@@ -12,8 +12,8 @@ public class PlayerStats : MonoBehaviour
 
     public float energyShield;
     public float maxEnergyShield;
-    public float esRechargeRate;
-    public float esTimer;
+    float esRechargeRate;
+    float esTimer = 5f;
 
     float lastHitTimer;
     CamController camScript;
@@ -23,8 +23,11 @@ public class PlayerStats : MonoBehaviour
     {
         hp = 100f;
         maxhp = 100f;
+        maxEnergyShield = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>().maxEs;
+        esRechargeRate = maxEnergyShield/5f;
         energyShield = maxEnergyShield;
         camScript = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CamController>();
+        
     }
 
     
