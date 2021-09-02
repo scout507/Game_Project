@@ -288,6 +288,7 @@ public class BossController : MonoBehaviour
             dialogueManager.startDialogue(endConvo);
             GameObject.FindGameObjectWithTag("manager").GetComponent<Manager>().spawnPortal();
             dead = true;
+            anim.SetBool("walking", false);
             anim.SetTrigger("death");
             //Destroy(this.gameObject);
             GameObject loot = Instantiate(lootTable.loot[lootTable.roll(lootWeight)], this.transform.position, Quaternion.identity);
