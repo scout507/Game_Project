@@ -11,10 +11,10 @@ public class LootTable : MonoBehaviour
         400,
         200,
         100,
-        50,
         25,
         12,
-        6
+        6,
+        3
     };
     
     private void Start()
