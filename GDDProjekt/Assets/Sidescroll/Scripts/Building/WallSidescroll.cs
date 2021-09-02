@@ -14,6 +14,9 @@ public class WallSidescroll : BuildingOverClassSidescroll
     public int maxlife;
     public float maxtimer = 10;
     GameManager gameManager;
+    public Sprite damageWall;
+    public Sprite wall;
+    public Sprite halfDamagewall;
 
     //private
     PlayerMovementSidescroll playerMovementSidescroll;
@@ -52,6 +55,11 @@ public class WallSidescroll : BuildingOverClassSidescroll
                 textMeshProTitleInteract.text = "back [E]";
             }
         }
+
+        if (life < maxlife / 3) GetComponentInChildren<SpriteRenderer>().sprite = damageWall;
+        else if (life < (maxlife / 3) * 2) GetComponentInChildren<SpriteRenderer>().sprite = halfDamagewall;
+        else GetComponentInChildren<SpriteRenderer>().sprite = wall;
+
 
         if (life <= 0)
         {
