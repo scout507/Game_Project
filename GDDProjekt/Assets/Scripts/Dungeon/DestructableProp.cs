@@ -12,8 +12,8 @@ public class DestructableProp : MonoBehaviour
     }
 
     public void die(){
-        Instantiate(lootTable.loot[lootTable.roll(lootWeight)], this.transform.position, Quaternion.identity);
-        Instantiate(lootTable.loot[lootTable.roll(lootWeight)], this.transform.position, Quaternion.identity);
+        Instantiate(lootTable.loot[lootTable.rollTresure()], this.transform.position, Quaternion.identity);
+        Instantiate(lootTable.loot[lootTable.rollTresure()], this.transform.position, Quaternion.identity);
         Destroy(this.gameObject);        
     }
 }

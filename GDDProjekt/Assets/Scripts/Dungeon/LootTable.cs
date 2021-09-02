@@ -36,4 +36,14 @@ public class LootTable : MonoBehaviour
         return lootTable.Length-1;
     }
 
+    public int rollTresure(){
+
+        int r = Random.Range(800,1500);
+            
+            for(int i = 0; i<lootTable.Length; i++){
+                if(r < lootTable[i]) return i;
+                else r -= lootTable[i];
+            }
+            return lootTable.Length-1;
+    }    
 }
