@@ -40,6 +40,7 @@ public class VillageUpgradeUiHolderSidescroll : MonoBehaviour
     {
         Start();
         levelTextMesh.text = "Level " + level.ToString();
+        if (level + 1 >= levelCostsSidescroll.level.Length) return;
 
         level++;
 

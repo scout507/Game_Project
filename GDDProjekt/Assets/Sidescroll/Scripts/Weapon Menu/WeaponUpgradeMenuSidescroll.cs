@@ -57,7 +57,7 @@ public class WeaponUpgradeMenuSidescroll : MonoBehaviour
         {
             ressourcesText[i].text = gameManager.resources[i].ToString();
         }
-        
+
         if (rifleMenu.activeSelf)
         {
             rifle.villageUpgradeUiHolderSidescrolls[0].show(gameManager.rifle.damageLevel, rifleDamageCostsSidescroll, imageList);
@@ -125,6 +125,9 @@ public class WeaponUpgradeMenuSidescroll : MonoBehaviour
 
         level++;
 
+
+        if (level >= levelCostsSidescroll.level.Length) return;
+
         for (int i = 0; i < levelCostsSidescroll.level[level].componenten.Length; i++)
         {
             if (levelCostsSidescroll.level[level].componenten[i].amount > gameManager.resources[levelCostsSidescroll.level[level].componenten[i].id]) return;
@@ -172,6 +175,8 @@ public class WeaponUpgradeMenuSidescroll : MonoBehaviour
 
         level++;
 
+        if (level >= levelCostsSidescroll.level.Length) return;
+
         for (int i = 0; i < levelCostsSidescroll.level[level].componenten.Length; i++)
         {
             if (levelCostsSidescroll.level[level].componenten[i].amount > gameManager.resources[levelCostsSidescroll.level[level].componenten[i].id]) return;
@@ -188,7 +193,7 @@ public class WeaponUpgradeMenuSidescroll : MonoBehaviour
                 gameManager.rifle.fireRateLevel++;
                 gameManager.rifle.fireRate *= 1.1f;
                 break;
-            case 2:
+            case 1:
                 gameManager.shotgun.fireRateLevel++;
                 gameManager.shotgun.fireRate *= 1.1f;
                 break;
@@ -218,6 +223,8 @@ public class WeaponUpgradeMenuSidescroll : MonoBehaviour
         }
 
         level++;
+
+        if (level >= levelCostsSidescroll.level.Length) return;
 
         for (int i = 0; i < levelCostsSidescroll.level[level].componenten.Length; i++)
         {
@@ -251,6 +258,8 @@ public class WeaponUpgradeMenuSidescroll : MonoBehaviour
         LevelCostsSidescroll levelCostsSidescroll = grenadeLauncherexplosionRadiusCostsSidescroll;
         int level = gameManager.grenadeLauncher.explosionRadiusLevel;
         level++;
+
+        if (level >= levelCostsSidescroll.level.Length) return;
 
         for (int i = 0; i < levelCostsSidescroll.level[level].componenten.Length; i++)
         {
