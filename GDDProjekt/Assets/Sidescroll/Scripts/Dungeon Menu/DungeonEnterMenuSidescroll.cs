@@ -52,6 +52,7 @@ public class DungeonEnterMenuSidescroll : MonoBehaviour
             gameManager.selectedWeapons[0] = tmp[0];
             gameManager.selectedWeapons[1] = tmp[1];
             if (levelToggle.isOn) gameManager.dungeonLevel = gameManager.maxLevel;
+            else gameManager.dungeonLevel = 0;
             SceneManager.LoadScene("MapGeneration");
         }
     }
