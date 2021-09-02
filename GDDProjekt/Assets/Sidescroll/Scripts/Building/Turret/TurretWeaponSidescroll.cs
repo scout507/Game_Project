@@ -15,6 +15,7 @@ public class TurretWeaponSidescroll : MonoBehaviour
     GameManager gameManager;
     public int damage;
     public AiManager aiManager;
+    public Transform pipe;
 
     //private variables
     Vector3 mouse;
@@ -41,12 +42,12 @@ public class TurretWeaponSidescroll : MonoBehaviour
 
             if (!isRightFacing) facing -= 180f;
 
-            if (!isRightFacing && facing >= -60) transform.rotation = Quaternion.Euler(0, 0, facing);
-            if (isRightFacing && facing <= 60 && facing >= 0) transform.rotation = Quaternion.Euler(0, 0, facing);
+            if (!isRightFacing && facing >= -60) pipe.rotation = Quaternion.Euler(0, 0, facing);
+            if (isRightFacing && facing <= 60 && facing >= 0) pipe.rotation = Quaternion.Euler(0, 0, facing);
 
             if (Input.GetButtonDown("Fire1") && timer >= cooldown) shoot();
         }
-        else transform.rotation = Quaternion.Euler(0, 0, 0);
+        else pipe.rotation = Quaternion.Euler(0, 0, 0);
     }
 
     void shoot()
@@ -54,8 +55,9 @@ public class TurretWeaponSidescroll : MonoBehaviour
         timer = 0;
 
         angle = Mathf.Atan2(dirct.y, dirct.x) * Mathf.Rad2Deg - 90;
+        float angle2 = Mathf.Atan2(dirct.y, dirct.x) * Mathf.Rad2Deg;
         firepoint.rotation = Quaternion.Euler(0, 0, angle);
-        GameObject bullet = Instantiate(bulletPrefab, firepoint.position, firepoint.rotation);
+        GameObject bullet = Instantiate(bulletPrefab, firepoint.position, Quaternion.Euler(0, 0, angle2));
         bullet.GetComponent<BulletTurretSidescroll>().damage = damage;
         bullet.GetComponent<Rigidbody2D>().AddForce(firepoint.up * speed, ForceMode2D.Impulse);
     }

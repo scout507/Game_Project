@@ -142,14 +142,14 @@ public class PlayerController : MonoBehaviour
                 //gun to the left
                 if(facing<0){
                     //gun in front
-                    gunscript.changeSprite(0,4);
+                    gunscript.changeSprite(0,3);
                 }
                 else gunscript.changeSprite(0,2);
             }
             else{
                 if(facing<0){
                     //gun in front
-                    gunscript.changeSprite(1,4);
+                    gunscript.changeSprite(1,3);
                 }
                 else gunscript.changeSprite(1,2);
             }

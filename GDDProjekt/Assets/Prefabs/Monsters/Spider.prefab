@@ -39,10 +39,6 @@ PrefabInstance:
       propertyPath: pickNextWaypointDist
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 2963240178191708165, guid: 3b7b3ca5cd90f3640833ff984470770b, type: 3}
-      propertyPath: graphMask.value
-      value: -5
-      objectReference: {fileID: 0}
     - target: {fileID: 2963240178191708171, guid: 3b7b3ca5cd90f3640833ff984470770b, type: 3}
       propertyPath: dmgSound
       value: spider_pain

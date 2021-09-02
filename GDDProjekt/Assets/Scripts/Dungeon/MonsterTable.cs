@@ -5,14 +5,18 @@ using UnityEngine;
 public class MonsterTable : MonoBehaviour
 {
     public GameObject[] monsters;
-    int total = 975;
+    int total;
     int[] monsterTable = {
         500,
-        250,
-        125,
-        60,
-        40
+        250 
     };
+
+    private void Start() {
+        foreach (int chance in monsterTable)
+        {
+            total += chance;
+        }
+    }
 
     public int roll(int weight, int cap){
         int r = Random.Range(0,total)+weight;

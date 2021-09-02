@@ -45,14 +45,15 @@ public class WallSidescroll : BuildingOverClassSidescroll
             }
             else
             {
-                textMeshProTitle.text = "Vollständig repariert";
-                textMeshProTitleInteract.text = "zurück [E]";
+                textMeshProTitle.text = "Completely repaired";
+                textMeshProTitleInteract.text = "back [E]";
             }
         }
 
         if (life <= 0)
         {
             collosionCollider.GetComponent<SpriteRenderer>().enabled = false;
+            foreach (var item in GameObject.FindGameObjectsWithTag("WallLatern")) Destroy(item);
         }
     }
 
@@ -63,7 +64,7 @@ public class WallSidescroll : BuildingOverClassSidescroll
         playerMovementSidescroll.inEvent = true;
         textMeshProTitleOld = textMeshProTitle.text;
         textMeshProTitleInteractOld = textMeshProTitleInteract.text;
-        textMeshProTitle.text = "wird repariert...";
+        textMeshProTitle.text = "will be repaired...";
 
     }
 

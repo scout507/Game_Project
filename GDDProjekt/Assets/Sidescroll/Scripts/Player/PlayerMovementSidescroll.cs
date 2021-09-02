@@ -11,7 +11,7 @@ public class PlayerMovementSidescroll : MonoBehaviour
     public float runspeed = 40f;
     public bool inEvent = false;
     public UnityEvent onLandEvent;
-    
+
     //private variables
     Rigidbody2D rb2D;
     Vector3 velocity = Vector3.zero;
@@ -20,11 +20,13 @@ public class PlayerMovementSidescroll : MonoBehaviour
     bool jump = false;
     float groundedRadius = .2f;
     float horizontalMove = 0f;
+    Animator animator;
 
     private void Awake()
     {
         rb2D = GetComponent<Rigidbody2D>();
         if (onLandEvent == null) onLandEvent = new UnityEvent();
+        animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -65,8 +67,18 @@ public class PlayerMovementSidescroll : MonoBehaviour
         Vector3 targetVelocity = new Vector2(move * 10f, rb2D.velocity.y);
         rb2D.velocity = Vector3.SmoothDamp(rb2D.velocity, targetVelocity, ref velocity, movementSmoothing);
 
-        if (move > 0 && !facingRight) Flip();
-        else if (move < 0 && facingRight) Flip();
+        if (move > 0 && !facingRight)
+        {
+            Flip();
+        }
+        else if (move < 0 && facingRight)
+        {
+            Flip();
+        }
+
+        if (move != 0) animator.SetBool("Walking", true);
+        else animator.SetBool("Walking", false);
+
 
         if (grounded && jump)
         {

@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2411456882443673596}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.89, y: 0, z: 0}
+  m_LocalPosition: {x: 0.275, y: -0.191, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2411456882995360364}
@@ -44,6 +44,8 @@ GameObject:
   - component: {fileID: 2411456882995360363}
   - component: {fileID: 2411456882995360361}
   - component: {fileID: 2411456882995360362}
+  - component: {fileID: 3625445340986261000}
+  - component: {fileID: -4348234091292063875}
   m_Layer: 0
   m_Name: NPCMortarSidescroll
   m_TagString: npc
@@ -167,12 +169,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb2D: {fileID: 0}
-  speed: 5
+  speed: 4
   targetToMove: {fileID: 0}
   cityHall: {fileID: 0}
   toLeft: 1
   move: 1
   aiManager: {fileID: 0}
+  mortar: 1
 --- !u!114 &2411456882995360362
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,7 +189,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life: 100
-  maxLife: 100
+  maxLife: 110
   damage: 1
   agro: 3
   cooldownHit: 0.5
@@ -197,3 +200,48 @@ MonoBehaviour:
   enemysBelow: []
   enemysAbove: []
   aiManager: {fileID: 0}
+--- !u!114 &3625445340986261000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2411456882995360368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 00000000574483f7
+  m_ShapePath:
+  - {x: -0.14261627, y: -0.46887723, z: 0}
+  - {x: 0.06674099, y: -0.46128973, z: 0}
+  - {x: 0.051566124, y: -0.0925952, z: 0}
+  - {x: -0.13502884, y: -0.062245347, z: 0}
+  m_ShapePathHash: 42628737
+  m_Mesh: {fileID: 0}
+  m_InstanceId: 367992
+--- !u!95 &-4348234091292063875
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2411456882995360368}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2a148b2e42d659944a95e8bd5b59b072, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

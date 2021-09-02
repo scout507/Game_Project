@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8361717768225948583}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.89, y: 0, z: 0}
+  m_LocalPosition: {x: 0.2176, y: -0.1423, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8361717768710270519}
@@ -44,6 +44,8 @@ GameObject:
   - component: {fileID: 8361717768710270512}
   - component: {fileID: 8361717768710270514}
   - component: {fileID: 8361717768710270513}
+  - component: {fileID: 1248070889103775568}
+  - component: {fileID: -2501695531446642472}
   m_Layer: 0
   m_Name: NPCnormalSidescroll
   m_TagString: npc
@@ -167,12 +169,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb2D: {fileID: 0}
-  speed: 5
+  speed: 3
   targetToMove: {fileID: 0}
   cityHall: {fileID: 0}
   toLeft: 1
   move: 1
   aiManager: {fileID: 0}
+  mortar: 0
 --- !u!114 &8361717768710270513
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,3 +200,48 @@ MonoBehaviour:
   enemysBelow: []
   enemysAbove: []
   aiManager: {fileID: 0}
+--- !u!114 &1248070889103775568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8361717768710270507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 00000000574483f7
+  m_ShapePath:
+  - {x: -0.14261627, y: -0.46887723, z: 0}
+  - {x: 0.06674099, y: -0.46128973, z: 0}
+  - {x: 0.051566124, y: -0.0925952, z: 0}
+  - {x: -0.13502884, y: -0.062245347, z: 0}
+  m_ShapePathHash: 42628737
+  m_Mesh: {fileID: 0}
+  m_InstanceId: 368018
+--- !u!95 &-2501695531446642472
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8361717768710270507}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6ce9773d63c147a4db38b02febb10d8c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

@@ -21,6 +21,7 @@ TagManager:
   - ground
   - boss
   - PauseMenu
+  - WallLatern
   layers:
   - Default
   - TransparentFX
@@ -60,7 +61,4 @@ TagManager:
     locked: 0
   - name: Text
     uniqueID: 4152575063
-    locked: 0
-  - name: Hero
-    uniqueID: 53740943
     locked: 0
