@@ -98,8 +98,8 @@ public class GameManager : MonoBehaviour
 
     void initWeapons(){
         rifle.init(10,5,0.5f,2,0,0,0);
-        shotgun.init(25,1,1,1,6,4,0);
-        grenadeLauncher.init(50,1,11,2.5f,0,0,6);
+        shotgun.init(15,1,6,1,6,4,0);
+        grenadeLauncher.init(80,1,11,2.5f,0,0,6);
     }
 
     public void saveGame(){

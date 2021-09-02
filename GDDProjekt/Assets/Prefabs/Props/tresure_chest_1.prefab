@@ -224,4 +224,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7be8037ffd2833748b1128c0f474e46f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lootWeight: 0
+  lootWeight: 100

@@ -5248,7 +5248,7 @@ MonoBehaviour:
   mortarNpcLevel: 0
   wall: 0
   turret: 0
-  difficulty: 0
+  difficulty: 1
   maxLevel: 0
   dungeonLevel: 0
   GamePaused: 0
