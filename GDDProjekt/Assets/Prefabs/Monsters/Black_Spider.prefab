@@ -56,8 +56,12 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2963240178191708171, guid: 3b7b3ca5cd90f3640833ff984470770b, type: 3}
-      propertyPath: posionChance
+      propertyPath: slowChance
       value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 2963240178191708171, guid: 3b7b3ca5cd90f3640833ff984470770b, type: 3}
+      propertyPath: posionChance
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2963240178191708171, guid: 3b7b3ca5cd90f3640833ff984470770b, type: 3}
       propertyPath: meleeAtkRange
