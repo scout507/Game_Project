@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using System.Linq;
 
 public class NpcAttackSidescroll : MonoBehaviour
@@ -28,10 +29,13 @@ public class NpcAttackSidescroll : MonoBehaviour
         timer = cooldownHit;
         npcMovementSidescroll = GetComponent<NpcMovementSidescroll>();
         life = maxLife;
+        GetComponentInChildren<Slider>().maxValue = maxLife;
+        if (npcMovementSidescroll.toLeft) GetComponentInChildren<Canvas>().transform.rotation = Quaternion.Euler(0, 0, 0);
     }
 
     void Update()
     {
+        GetComponentInChildren<Slider>().value = life;
         timer += Time.deltaTime;
 
         if (!npcMovementSidescroll.move && !aiManager.gameEndNpc && timer >= cooldownHit && !aiManager.stopNpcs)

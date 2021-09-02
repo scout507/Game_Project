@@ -88,6 +88,7 @@ public class NpcSpawnerSidescroll : MonoBehaviour
         npcMovementSidescroll.speed += Random.Range(1, 4);
         npcMovementSidescroll.cityHall = cityHall;
         npcMovementSidescroll.aiManager = aiManager;
+        npcMovementSidescroll.toLeft = false;
     }
 
     void setValuesLeft(GameObject gb, Transform position)
@@ -102,5 +103,6 @@ public class NpcSpawnerSidescroll : MonoBehaviour
         npcMovementSidescroll.speed += Random.Range(1, 4);
         npcMovementSidescroll.cityHall = cityHall;
         npcMovementSidescroll.aiManager = aiManager;
+        npcMovementSidescroll.toLeft = true;
     }
 }

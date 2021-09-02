@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class WallSidescroll : BuildingOverClassSidescroll
@@ -31,10 +32,12 @@ public class WallSidescroll : BuildingOverClassSidescroll
         textMeshProTitle = title.GetComponent<TextMeshProUGUI>();
         textMeshProTitleInteract = interact.GetComponent<TextMeshProUGUI>();
         life = maxlife;
+        GetComponentInChildren<Slider>().maxValue = maxlife;
     }
 
     void Update()
     {
+        GetComponentInChildren<Slider>().value = life;
         if (isentered)
         {
             if (life < maxlife)
