@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 
@@ -12,6 +13,7 @@ public class SleepSidescroll : BuildingOverClassSidescroll
     GameManager gameManager;
     public GameObject title;
     public GameObject interact;
+    public Image sleepImage;
 
     //private variables
     PlayerMovementSidescroll playerMovementSidescroll;
@@ -71,6 +73,8 @@ public class SleepSidescroll : BuildingOverClassSidescroll
         gameManager.saveGame();
         gameManager.hasSlept = true;
         gameManager.wasInDungeon = false;
+        sleepImage.gameObject.SetActive(true);
+        sleepImage.CrossFadeAlpha(0f, 3f, false);
 
         if (gameManager.day % 3 == 0)
         {
