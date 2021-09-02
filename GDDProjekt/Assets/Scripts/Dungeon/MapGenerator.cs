@@ -293,7 +293,7 @@ public class MapGenerator : MonoBehaviour
         for(int i = 0; i<propAmount; i++){
             int r = Random.Range(0,freePropsSpots.Count);
             Vector3 spawn = new Vector3(freePropsSpots[r].x+0.5f,freePropsSpots[r].y+0.5f,freePropsSpots[r].z);
-            if(i <= propLowAmount && !usedPlaces.Contains(r)){
+            if(i <= propLowAmount-1 && !usedPlaces.Contains(r)){
                 GameObject prop = Instantiate(propsLowDensity[Random.Range(0,propsLowDensity.Length)],spawn,Quaternion.identity);
                 manager.props.Add(prop);
             } 

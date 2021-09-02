@@ -6,7 +6,6 @@ public class LootTable : MonoBehaviour
 {
     public GameObject[] loot;
     public int total;
-    //drop-chances out of 1000
     int[] lootTable = {
         800,
         400,

@@ -168,7 +168,7 @@ public class MonsterController : MonoBehaviour
         soundManager.Play(deathSound);
         if(!dead){
             dead = true;
-            if(Random.Range(0,100)<50) dropLoot();
+            if(Random.Range(0,100)<30) dropLoot();
             Destroy(this.gameObject);
         }  
     }
