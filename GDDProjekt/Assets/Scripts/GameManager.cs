@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     public int mortarNpcLevel = 0;
     public int wall = 0;
     public int turret = 0;
+    public int esLvl = 0;
     
     // 0=easy, 1=normal, 2=hardcore; 
     public int difficulty = 1;
@@ -105,7 +106,7 @@ public class GameManager : MonoBehaviour
 
     public void saveGame(){
         //TODO add filename
-        SaveGame save = new SaveGame(resources,rifle,shotgun,grenadeLauncher,day,difficulty,maxEs);
+        SaveGame save = new SaveGame(resources,rifle,shotgun,grenadeLauncher,day,difficulty,maxEs,wasInDungeon,hasSlept);
         string json = JsonUtility.ToJson(save);
         File.WriteAllText(Application.dataPath + "/save.txt", json);
     }
@@ -126,6 +127,8 @@ public class GameManager : MonoBehaviour
             this.day = loadedSave.day;
             this.difficulty = loadedSave.difficulty;
             this.maxEs = loadedSave.maxEs;
+            this.wasInDungeon = loadedSave.wasInDungeon;
+            this.hasSlept = loadedSave.hasSlept;
         }      
     }
 
@@ -158,8 +161,10 @@ public class GameManager : MonoBehaviour
         public int day;
         public int difficulty;
         public float maxEs;
+        public bool wasInDungeon;
+        public bool hasSlept;
 
-        public SaveGame(int[] res, Weaponstats rifle, Weaponstats shotgun, Weaponstats grenadeLauncher, int day, int difficulty, float es){
+        public SaveGame(int[] res, Weaponstats rifle, Weaponstats shotgun, Weaponstats grenadeLauncher, int day, int difficulty, float es, bool wasInDungeon, bool hasSlept){
             this.resources = res;
             this.rifle = rifle;
             this.shotgun = shotgun;
@@ -167,6 +172,8 @@ public class GameManager : MonoBehaviour
             this.day = day;
             this.difficulty = difficulty;
             this.maxEs = es;
+            this.wasInDungeon = wasInDungeon;
+            this.hasSlept = hasSlept;
         } 
     }
     
