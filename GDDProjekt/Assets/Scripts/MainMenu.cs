@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
@@ -8,7 +7,7 @@ public class MainMenu : MonoBehaviour
 
     private void Start()
     {
-        gm = GetComponent<GameManager>();
+        gm = FindObjectOfType<GameManager>();
     }
 
     public void PlayGame()
