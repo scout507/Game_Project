@@ -523,8 +523,8 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     source: {fileID: 0}
-    shouldLoop: 0
-  globalVolume: 0.1
+    shouldLoop: 1
+  globalVolume: 1
   sfxVolume: 1
   musicVolume: 1
 --- !u!1 &248727181
@@ -5241,6 +5241,7 @@ MonoBehaviour:
     centering: 0
     explosionRadius: 0
   day: 1
+  maxEs: 100
   wasInDungeon: 0
   hasSlept: 1
   normalNpcLevel: 0
@@ -5248,6 +5249,7 @@ MonoBehaviour:
   mortarNpcLevel: 0
   wall: 0
   turret: 0
+  esLvl: 0
   difficulty: 1
   maxLevel: 0
   dungeonLevel: 0

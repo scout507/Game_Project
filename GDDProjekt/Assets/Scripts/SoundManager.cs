@@ -21,7 +21,7 @@ public class SoundManager : MonoBehaviour
     public float musicVolume = 1f;
 
     GameManager gameManager;
-    AudioSource themeSource;
+    public AudioSource themeSource;
 
     void Awake()
     {

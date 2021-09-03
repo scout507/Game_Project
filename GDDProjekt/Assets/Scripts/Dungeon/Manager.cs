@@ -10,6 +10,8 @@ public class Manager : MonoBehaviour
     public Transform bossPlayerSpawn;
     public Transform bossBossSpawn;
     public GameObject portal;
+    public AudioClip bossSound;
+    public AudioClip themeSong;
 
     public GameObject[] bosses;
     public GameObject cam;
@@ -41,6 +43,7 @@ public class Manager : MonoBehaviour
     PlayerStats playerStats;
     PlayerController playerController;
     UIController uIController;
+    SoundInputter soundInputter;
     
     GameObject hero;
 
@@ -52,6 +55,7 @@ public class Manager : MonoBehaviour
         playerController = hero.GetComponent<PlayerController>();
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         uIController = GetComponent<UIController>();
+        soundInputter = GameObject.FindGameObjectWithTag("SoundHandler").GetComponent<SoundInputter>();
         loadFromManager();
         newMap();
     }
@@ -75,7 +79,7 @@ public class Manager : MonoBehaviour
             Destroy(loot);
         });
         monstersInLevel.Clear();
-        props.Clear();
+        props.Clear(); 
         
 
         if(level % 10 != 0){
@@ -84,7 +88,7 @@ public class Manager : MonoBehaviour
             monsterAmount = 10 + Mathf.RoundToInt(level*(4f/5f));
             if(monsterAmount >= 40) monsterAmount = 40;
             lighting.transform.position = new Vector3(Random.Range(-300,300), Random.Range(-300,300), 0);
-            
+            if(level == 11 || level == 21 || level == 31 || level == 41) soundInputter.switchSong(themeSong);
             
             
             if(level == 40){
@@ -110,6 +114,7 @@ public class Manager : MonoBehaviour
         else{
             Instantiate(bosses[(level/10)-1], bossBossSpawn.position, Quaternion.identity);
             hero.transform.position = bossPlayerSpawn.position;
+            soundInputter.switchSong(bossSound);
         }
         cam.transform.position = new Vector3 (hero.transform.position.x, hero.transform.position.y, cam.transform.position.z);
     }
