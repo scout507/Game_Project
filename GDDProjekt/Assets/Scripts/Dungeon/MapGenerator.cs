@@ -279,15 +279,15 @@ public class MapGenerator : MonoBehaviour
     }
     
     void spawnMonsters(){ 
-        int cap = 10000;
+        int cap = 200;
         if(manager.level > 25) cap = 10000;
         else if(manager.level > 17) cap = 935;
         else if(manager.level > 10) cap = 850;
-        else if(manager.level > 3) cap = 600;
+        else if(manager.level > 3) cap = 550;
 
         for(int i = 0; i<manager.monsterAmount; i++){
             int r = Random.Range(0,freeSpots.Count);
-            GameObject monster = Instantiate(monsterTable.monsters[monsterTable.roll(manager.level*10, cap)],freeSpots[r],Quaternion.identity);
+            GameObject monster = Instantiate(monsterTable.monsters[monsterTable.roll(manager.level*5, cap)],freeSpots[r],Quaternion.identity);
             manager.monstersInLevel.Add(monster);
             freeSpots.RemoveAt(r);
         }
