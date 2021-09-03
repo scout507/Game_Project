@@ -12,6 +12,8 @@ public class BossController : MonoBehaviour
     public DmgPopUp lastPopUp;
     public Dialogue startConvo;
     public Dialogue endConvo; 
+    public GameObject slamring;
+
 
     public int bosslevel;
     public float hp;
@@ -63,6 +65,7 @@ public class BossController : MonoBehaviour
     GameObject manager;
     Animator anim;
     Slider hpBar;
+    Vector3 center;
 
     bool skill0Active;
     bool skill1Active;
@@ -96,6 +99,7 @@ public class BossController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        center = new Vector3(transform.position.x, transform.position.y-1f, transform.position.z);
         if(!dead){
             hpBar.value = hp;
 
@@ -120,7 +124,7 @@ public class BossController : MonoBehaviour
             }
 
             //Skill 1
-            if(skill1Active && Vector2.Distance(transform.position, target) <= 1f) slam();
+            if(skill1Active && Vector2.Distance(center, target) <= 1f) slam();
 
 
             if(hp <= 0) die();
@@ -169,19 +173,19 @@ public class BossController : MonoBehaviour
 
 
             //constant moving
-            if(target != new Vector2(0,0) && Vector2.Distance(target, transform.position) >= meleeAtkRange && !moveblock){
+            if(target != new Vector2(0,0) && Vector2.Distance(target, center) >= meleeAtkRange && !moveblock){
                 // move
                 Vector2 direction = new Vector2(target.x - transform.position.x, target.y-transform.position.y);
                 rb.velocity = direction.normalized*moveSpeed*Time.fixedDeltaTime;
             }
-            if(moveblock){
+            if(moveblock && !skill1Active){
                 rb.velocity = Vector2.zero;
             }
         }
     }
 
     void decider(){
-        if(Vector2.Distance(transform.position, player.transform.position) <= meleeAtkRange && atkTimer <= 0){
+        if(Vector2.Distance(center, player.transform.position) <= meleeAtkRange && atkTimer <= 0 && !skill1Active){
             autoAtk();
             coolDown = 1.5f;
         } 
@@ -222,6 +226,7 @@ public class BossController : MonoBehaviour
     }
 
     void leap(){
+        slamring.SetActive(true);
         anim.SetTrigger("jumping");
         target = new Vector2(player.transform.position.x,player.transform.position.y);
         Vector2 direction = new Vector2(target.x - transform.position.x, target.y-transform.position.y);
@@ -243,6 +248,7 @@ public class BossController : MonoBehaviour
     }
 
     void skill2(){
+        Debug.Log("skill2");
         anim.SetTrigger("summoning");
         moveblockDuration = 1.5f;
         skill2Timer = skill2Cd;
@@ -252,7 +258,7 @@ public class BossController : MonoBehaviour
             randomList.Add(i);
         }
 
-        int projectileNumber = Random.Range(4,9);
+        int projectileNumber = Random.Range(6,13);
         for(int j = 0; j < projectileNumber; j++){
             int r = randomList[Random.Range(0,randomList.Count)];
             randomList.Remove(r);
@@ -269,7 +275,7 @@ public class BossController : MonoBehaviour
         for(int i = 0; i < 20; i++){
             randomList.Add(i);
         }
-        int minionNumber = Random.Range(5,11);
+        int minionNumber = Random.Range(4,8);
         for(int j = 0; j < minionNumber; j++){
             int r = randomList[Random.Range(0,randomList.Count)];
             randomList.Remove(r);
@@ -296,22 +302,23 @@ public class BossController : MonoBehaviour
     }
 
     void slam(){
-        skill1Active = false;
         rb.velocity = Vector2.zero;
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, slamRadius);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(center, slamRadius);
 
          foreach (Collider2D obj in colliders){
                 if(obj.tag == "Player"){
+                    Debug.Log("hitplayer");
                     obj.GetComponent<PlayerController>().getStunned(stunDuration);
                     obj.GetComponent<PlayerStats>().takeDamage(slamDamage);
                     moveblockDuration = 0;
                 } 
-        }    
+        }
+        skill1Active = false;
+        slamring.SetActive(false);    
     }
 
     void spawnBalls(){
         moveblockDuration = 1f;
-        skill2Timer = skill2Cd;
         List<int> randomList = new List<int>();
 
         for(int i = 0; i < 20; i++){
