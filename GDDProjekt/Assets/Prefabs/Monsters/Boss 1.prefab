@@ -417,7 +417,7 @@ MonoBehaviour:
   atkSpeed: 1.5
   meleeAtkRange: 3
   slamRadius: 3.5
-  slamDamage: 20
+  slamDamage: 40
   lootWeight: 0
   skill0Cd: 8
   skill1Cd: 5

@@ -417,7 +417,7 @@ MonoBehaviour:
   atkSpeed: 1
   meleeAtkRange: 3
   slamRadius: 3.5
-  slamDamage: 20
+  slamDamage: 60
   lootWeight: 0
   skill0Cd: 8
   skill1Cd: 5
@@ -426,7 +426,7 @@ MonoBehaviour:
   skill4Cd: 40
   stunDuration: 1.5
   projectile: {fileID: 5198464067137370965, guid: 82438210a381d0a4dbb91d83c6675348, type: 3}
-  minion: {fileID: 4993478453513482778, guid: 170283fe0fbd20646959a66a9fe7a631, type: 3}
+  minion: {fileID: 4993478453513482778, guid: 5633504c7575a604db875e6c2a8c8695, type: 3}
   positions:
   - {x: -59.31, y: 202.89195, z: 0}
   - {x: -72.27, y: 202.89195, z: 0}
