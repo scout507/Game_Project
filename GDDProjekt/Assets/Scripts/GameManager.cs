@@ -135,6 +135,7 @@ public class GameManager : MonoBehaviour
     public void saveSettings(Settings settings){
         string json = JsonUtility.ToJson(settings);
         File.WriteAllText(Application.dataPath + "/settings.txt", json);
+        GetComponentInChildren<SoundManager>().ResetAllSounds();
     }
 
     public Settings loadSettings(){
