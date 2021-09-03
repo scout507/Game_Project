@@ -15,17 +15,17 @@ MonoBehaviour:
   _animationNamesThatDoNotLoop:
   - death
   _automaticImporting: 0
-  _spritePixelsPerUnit: 16
+  _spritePixelsPerUnit: 32
   _targetObjectType: 0
-  _spriteAlignment: 0
-  _spriteAlignmentCustomX: 0
-  _spriteAlignmentCustomY: 0
+  _spriteAlignment: 9
+  _spriteAlignmentCustomX: 0.5
+  _spriteAlignmentCustomY: 0.2
   _spritesTargetLocation:
-    _locationType: 2
-    _globalDirectory: Assets/Sprites/Sidescroll/NPC and Hero Animation Sprites
+    _locationType: 1
+    _globalDirectory: Assets
   _animationsTargetLocation:
-    _locationType: 2
-    _globalDirectory: Assets/Animation/NPC and Hero Animations
+    _locationType: 1
+    _globalDirectory: Assets
   _animationControllersTargetLocation:
     _locationType: 0
     _globalDirectory: Assets
