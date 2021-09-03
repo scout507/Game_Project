@@ -63,7 +63,7 @@ public class SoundManager : MonoBehaviour
 
         if (themeSound != null && themeSound.clip != null)
         {
-            themeSource.volume = themeSound.volume * gameManager.currentSettings.musicVolume * gameManager.currentSettings.masterVolume;
+            themeSource.volume = 0.7f* themeSound.volume * gameManager.currentSettings.musicVolume * gameManager.currentSettings.masterVolume;
         }
     }
 
@@ -75,7 +75,7 @@ public class SoundManager : MonoBehaviour
             themeSource = gameObject.AddComponent<AudioSource>();
             themeSource.clip = themeSound.clip;
             themeSource.loop = themeSound.shouldLoop;
-            themeSource.volume = themeSound.volume * gameManager.currentSettings.musicVolume * gameManager.currentSettings.masterVolume;
+            themeSource.volume = 0.7f* themeSound.volume * gameManager.currentSettings.musicVolume * gameManager.currentSettings.masterVolume;
             themeSource.pitch = themeSound.pitch;
             themeSource.Play();
         } else if (themeSource != null)
