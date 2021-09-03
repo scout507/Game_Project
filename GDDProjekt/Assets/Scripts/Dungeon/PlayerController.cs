@@ -91,7 +91,7 @@ public class PlayerController : MonoBehaviour
                 playerStats.takeDamage(poisonDPS*Time.deltaTime*poisonStacks);
             }
 
-            FindObjectOfType<SoundManager>().PlayOnToggle("walkOnRock", isMoving());
+            FindObjectOfType<SoundManager>().Toggle("walkOnRock", isMoving());
         }
     }
 

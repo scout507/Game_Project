@@ -10,7 +10,7 @@ public class SoundManager : MonoBehaviour
 {
 
     public Sound[] sounds;
-    public Sound themeSound;
+    public Sound[] themeSounds;
     public static SoundManager instance;
 
     [Range(0f, 1f)]
@@ -21,7 +21,6 @@ public class SoundManager : MonoBehaviour
     public float musicVolume = 1f;
 
     GameManager gameManager;
-    AudioSource themeSource;
 
     void Awake()
     {
@@ -51,7 +50,17 @@ public class SoundManager : MonoBehaviour
             s.source.loop = s.shouldLoop;
         }
 
-        StartThemeSound(); 
+        foreach (Sound s in themeSounds)
+        {
+            s.source = gameObject.AddComponent<AudioSource>();
+            s.source.clip = s.clip;
+            s.source.volume = s.volume * gameManager.currentSettings.sfxVolume * gameManager.currentSettings.masterVolume;
+            s.source.pitch = s.pitch;
+            s.source.loop = s.shouldLoop;
+        }
+
+        // start the first menu sound on start
+        themeSounds[0].source.Play();
     }
 
     public void ResetAllSounds()
@@ -61,43 +70,20 @@ public class SoundManager : MonoBehaviour
             s.source.volume = s.volume * gameManager.currentSettings.sfxVolume * gameManager.currentSettings.masterVolume;
         }
 
-        if (themeSound != null && themeSound.clip != null)
+        foreach (Sound s in themeSounds)
         {
-            themeSource.volume = themeSound.volume * gameManager.currentSettings.musicVolume * gameManager.currentSettings.masterVolume;
-        }
-    }
-
-    public void StartThemeSound()
-    {
-        if (themeSound != null && themeSound.clip != null && themeSource == null)
-        {
-            gameManager = GetComponentInParent<GameManager>();
-            themeSource = gameObject.AddComponent<AudioSource>();
-            themeSource.clip = themeSound.clip;
-            themeSource.loop = themeSound.shouldLoop;
-            themeSource.volume = themeSound.volume * gameManager.currentSettings.musicVolume * gameManager.currentSettings.masterVolume;
-            themeSource.pitch = themeSound.pitch;
-            themeSource.Play();
-        } else if (themeSource != null)
-        {
-            themeSource.Play();
-        }
-    }
-
-    public void StopThemeSound()
-    {
-        if (themeSource != null)
-        {
-            themeSource.Stop();
+            s.source.volume = s.volume * gameManager.currentSettings.sfxVolume * gameManager.currentSettings.masterVolume;
         }
     }
 
     /**
+     * play a sound
      * @param {string} name the name of the sound
+     * @param {bool} searchInTheme if the sound belongs to theme
      */
-    public void Play(string name)
+    public void Play(string name, bool searchInTheme = false)
     {
-        Sound s = GetSound(name);
+        Sound s = GetSound(name, searchInTheme);
 
         if (s == null)
         {
@@ -114,9 +100,39 @@ public class SoundManager : MonoBehaviour
         s.source.Play();
     }
 
-    public void Play(string name, float delay)
+    /**
+     * stop a sound
+     * @param {string} name the name of the sound
+     * @param {bool} searchInTheme if the sound belongs to theme
+     */
+    public void Stop(string name, bool searchInTheme = false)
     {
-        Sound s = GetSound(name);
+        Sound s = GetSound(name, searchInTheme);
+
+        if (s == null)
+        {
+            Debug.LogError("cannot find the sound '" + name + "'!");
+            return;
+        }
+
+        if (s.source == null)
+        {
+            Debug.LogError("'" + s.name + "' has no source");
+            return;
+        }
+
+        s.source.Stop();
+    }
+
+    /**
+     * play a sound with delay
+     * @param {string} name the name of the sound
+     * @param {float} time to delay the play
+     * @param {bool} searchInTheme if the sound belongs to theme
+     */
+    public void Play(string name, float delay, bool searchInTheme = false)
+    {
+        Sound s = GetSound(name, searchInTheme);
 
         if (s == null)
         {
@@ -127,19 +143,39 @@ public class SoundManager : MonoBehaviour
         s.source.PlayDelayed(delay);
     }
 
-    public AudioSource SourceOf(string name)
+    /*
+     * get the source of a sound
+     * @param {string} name name of the sound
+     * @param {bool} searchInTheme if the sound belongs to theme
+     */
+    public AudioSource SourceOf(string name, bool searchInTheme = false)
     {
-        return GetSound(name).source;
+        return GetSound(name, searchInTheme).source;
     }
 
-    public Sound GetSound(string name)
+    /*
+     * get/find a sound in a list
+     * @param {string} name name of the sound
+     * @param {bool} searchInTheme if the sound belongs to theme
+     */
+    public Sound GetSound(string name, bool searchInTheme = false)
     {
+
+        if (searchInTheme)
+        {
+            return Array.Find(themeSounds, sound => sound.name.ToLower() == name.ToLower());
+        }
         return Array.Find(sounds, sound => sound.name.ToLower() == name.ToLower());
     }
 
-    public void PlayOnToggle(string name, bool toggle)
+    /*
+     * toggle play/stop a sound
+     * @param {string} name name of the sound
+     * @param {bool} searchInTheme if the sound belongs to theme
+     */
+    public void Toggle(string name, bool toggle, bool searchInTheme = false)
     {
-        Sound s = GetSound(name);
+        Sound s = GetSound(name, searchInTheme);
 
         if (s == null)
         {

@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour
 
     // In-Game Menu
     public bool GamePaused = false;
+    public bool EscapeKeyShouldWork = true;
     PauseMenu pauseMenu;
 
     private void Awake()
@@ -63,7 +64,7 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && EscapeKeyShouldWork)
         {
             pauseMenu = GameObject.FindGameObjectWithTag("PauseMenu").GetComponent<PauseMenu>();
             if (GamePaused)
@@ -84,14 +85,14 @@ public class GameManager : MonoBehaviour
         saveGame();
         SceneManager.LoadScene("Sidescroll");
         SoundManager soundManager = GetComponentInChildren<SoundManager>();
-        soundManager.StopThemeSound();
+        soundManager.Stop("menu", true);
     }
 
     public void startLoadedGame()
     {
         initWeapons();
         SoundManager soundManager = GetComponentInChildren<SoundManager>();
-        soundManager.StopThemeSound();
+        soundManager.Stop("menu", true);
         loadGame();
         SceneManager.LoadScene("Sidescroll");
     }
@@ -130,6 +131,7 @@ public class GameManager : MonoBehaviour
     public void saveSettings(Settings settings){
         string json = JsonUtility.ToJson(settings);
         File.WriteAllText(Application.dataPath + "/settings.txt", json);
+        GetComponentInChildren<SoundManager>().ResetAllSounds();
     }
 
     public Settings loadSettings(){
