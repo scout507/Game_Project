@@ -23,7 +23,7 @@ public class BossBall : MonoBehaviour
     void Update()
     {
         deathTimer += Time.deltaTime;
-        if(deathTimer >= 5f) Destroy(this.gameObject);
+        if(deathTimer >= 10f) Destroy(this.gameObject);
         if(playerContact){
             target.GetComponent<PlayerStats>().takeDamage(damage*Time.deltaTime);
             target.GetComponent<PlayerController>().getSlowed(1f);
