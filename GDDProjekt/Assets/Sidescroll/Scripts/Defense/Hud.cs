@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Hud : MonoBehaviour
 {
@@ -28,5 +28,11 @@ public class Hud : MonoBehaviour
 
         if (aiManager.gameEndEnemy)
             looseText.SetActive(true);
+    }
+
+    public void backButton()
+    {
+        aiManager.gameManager.deleteGame();
+        SceneManager.LoadScene("Menu");
     }
 }

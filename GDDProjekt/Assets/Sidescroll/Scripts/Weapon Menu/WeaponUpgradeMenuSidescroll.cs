@@ -32,6 +32,10 @@ public class WeaponUpgradeMenuSidescroll : MonoBehaviour
     public LevelCostsSidescroll shotgunFireRateCostsSidescroll;
     public LevelCostsSidescroll shotgunCooldownCostsSidescroll;
 
+
+    public VillageUpgradeUiHolderSidescroll shield;
+    public LevelCostsSidescroll shieldCostsSidescroll;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -48,6 +52,7 @@ public class WeaponUpgradeMenuSidescroll : MonoBehaviour
         shotgunDamageCostsSidescroll = JsonUtility.FromJson<LevelCostsSidescroll>(File.ReadAllText(Application.dataPath + "/weaponCosts/shotgunDamageCostsSidescroll.json"));
         shotgunFireRateCostsSidescroll = JsonUtility.FromJson<LevelCostsSidescroll>(File.ReadAllText(Application.dataPath + "/weaponCosts/shotgunFireRateCostsSidescroll.json"));
         shotgunCooldownCostsSidescroll = JsonUtility.FromJson<LevelCostsSidescroll>(File.ReadAllText(Application.dataPath + "/weaponCosts/shotgunCooldownCostsSidescroll.json"));
+        shieldCostsSidescroll = JsonUtility.FromJson<LevelCostsSidescroll>(File.ReadAllText(Application.dataPath + "/weaponCosts/shield.json"));
     }
 
     // Update is called once per frame
@@ -78,6 +83,8 @@ public class WeaponUpgradeMenuSidescroll : MonoBehaviour
             shotgun.villageUpgradeUiHolderSidescrolls[1].show(gameManager.shotgun.fireRateLevel, shotgunFireRateCostsSidescroll, imageList);
             shotgun.villageUpgradeUiHolderSidescrolls[2].show(gameManager.shotgun.cooldownLevel, shotgunCooldownCostsSidescroll, imageList);
         }
+
+        shield.show(gameManager.esLvl, shieldCostsSidescroll, imageList);
     }
 
     public void toggleRifleMenu()
@@ -273,5 +280,27 @@ public class WeaponUpgradeMenuSidescroll : MonoBehaviour
 
         gameManager.grenadeLauncher.explosionRadiusLevel++;
         gameManager.grenadeLauncher.explosionRadius *= 1.1f;
+    }
+
+    public void upgradeShield()
+    {
+        LevelCostsSidescroll levelCostsSidescroll = shieldCostsSidescroll;
+        int level = gameManager.esLvl;
+        level++;
+
+        if (level >= levelCostsSidescroll.level.Length) return;
+
+        for (int i = 0; i < levelCostsSidescroll.level[level].componenten.Length; i++)
+        {
+            if (levelCostsSidescroll.level[level].componenten[i].amount > gameManager.resources[levelCostsSidescroll.level[level].componenten[i].id]) return;
+        }
+
+        for (int i = 0; i < levelCostsSidescroll.level[level].componenten.Length; i++)
+        {
+            gameManager.resources[levelCostsSidescroll.level[level].componenten[i].id] -= levelCostsSidescroll.level[level].componenten[i].amount;
+        }
+
+        gameManager.esLvl++;
+        gameManager.maxEs *= 1.1f;
     }
 }

@@ -1,0 +1,280 @@
+{
+    "level": [
+        {
+            "componenten": [
+                {
+                    "amount": 2,
+                    "id": 2
+                }
+            ]
+        },
+        {
+            "componenten": [
+                {
+                    "amount": 2,
+                    "id": 2
+                },
+                {
+                    "amount": 1,
+                    "id": 3
+                }
+            ]
+        },
+        {
+            "componenten": [
+                {
+                    "amount": 3,
+                    "id": 2
+                },
+                {
+                    "amount": 1,
+                    "id": 3
+                }
+            ]
+        },
+        {
+            "componenten": [
+                {
+                    "amount": 3,
+                    "id": 2
+                },
+                {
+                    "amount": 2,
+                    "id": 3
+                }
+            ]
+        },
+        {
+            "componenten": [
+                {
+                    "amount": 3,
+                    "id": 2
+                },
+                {
+                    "amount": 2,
+                    "id": 3
+                }
+            ]
+        },
+        {
+            "componenten": [
+                {
+                    "amount": 4,
+                    "id": 2
+                },
+                {
+                    "amount": 2,
+                    "id": 3
+                }
+            ]
+        },
+        {
+            "componenten": [
+                {
+                    "amount": 5,
+                    "id": 2
+                },
+                {
+                    "amount": 3,
+                    "id": 3
+                }
+            ]
+        },
+        {
+            "componenten": [
+                {
+                    "amount": 6,
+                    "id": 2
+                },
+                {
+                    "amount": 3,
+                    "id": 3
+                }
+            ]
+        },
+        {
+            "componenten": [
+                {
+                    "amount": 7,
+                    "id": 2
+                },
+                {
+                    "amount": 4,
+                    "id": 3
+                }
+            ]
+        },
+        {
+            "componenten": [
+                {
+                    "amount": 9,
+                    "id": 2
+                },
+                {
+                    "amount": 5,
+                    "id": 3
+                }
+            ]
+        },
+        {
+            "componenten": [
+                {
+                    "amount": 10,
+                    "id": 2
+                },
+                {
+                    "amount": 6,
+                    "id": 3
+                },
+                {
+                    "amount": 1,
+                    "id": 4
+                }
+            ]
+        },
+        {
+            "componenten": [
+                {
+                    "amount": 12,
+                    "id": 2
+                },
+                {
+                    "amount": 7,
+                    "id": 3
+                },
+                {
+                    "amount": 1,
+                    "id": 4
+                }
+            ]
+        },
+        {
+            "componenten": [
+                {
+                    "amount": 14,
+                    "id": 2
+                },
+                {
+                    "amount": 9,
+                    "id": 3
+                },
+                {
+                    "amount": 1,
+                    "id": 4
+                }
+            ]
+        },
+        {
+            "componenten": [
+                {
+                    "amount": 18,
+                    "id": 2
+                },
+                {
+                    "amount": 11,
+                    "id": 3
+                },
+                {
+                    "amount": 1,
+                    "id": 5
+                }
+            ]
+        },
+        {
+            "componenten": [
+                {
+                    "amount": 21,
+                    "id": 2
+                },
+                {
+                    "amount": 12,
+                    "id": 3
+                },
+                {
+                    "amount": 1,
+                    "id": 5
+                }
+            ]
+        },
+        {
+            "componenten": [
+                {
+                    "amount": 25,
+                    "id": 2
+                },
+                {
+                    "amount": 16,
+                    "id": 3
+                },
+                {
+                    "amount": 1,
+                    "id": 6
+                }
+            ]
+        },
+        {
+            "componenten": [
+                {
+                    "amount": 31,
+                    "id": 2
+                },
+                {
+                    "amount": 18,
+                    "id": 3
+                },
+                {
+                    "amount": 1,
+                    "id": 6
+                }
+            ]
+        },
+        {
+            "componenten": [
+                {
+                    "amount": 37,
+                    "id": 2
+                },
+                {
+                    "amount": 22,
+                    "id": 3
+                },
+                {
+                    "amount": 1,
+                    "id": 6
+                }
+            ]
+        },
+        {
+            "componenten": [
+                {
+                    "amount": 44,
+                    "id": 2
+                },
+                {
+                    "amount": 26,
+                    "id": 3
+                },
+                {
+                    "amount": 1,
+                    "id": 7
+                }
+            ]
+        },
+        {
+            "componenten": [
+                {
+                    "amount": 54,
+                    "id": 2
+                },
+                {
+                    "amount": 32,
+                    "id": 3
+                },
+                {
+                    "amount": 1,
+                    "id": 7
+                }
+            ]
+        }
+    ]
+}
