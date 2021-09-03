@@ -519,7 +519,7 @@ MonoBehaviour:
     shouldLoop: 0
   themeSound:
     name: 
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: ff0e2f6c0857f48ec8c2dbf7322d7e05, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
@@ -527,6 +527,7 @@ MonoBehaviour:
   globalVolume: 1
   sfxVolume: 1
   musicVolume: 1
+  themeSource: {fileID: 0}
 --- !u!1 &248727181
 GameObject:
   m_ObjectHideFlags: 0
@@ -5252,7 +5253,7 @@ MonoBehaviour:
   esLvl: 0
   difficulty: 1
   maxLevel: 0
-  dungeonLevel: 0
+  dungeonLevel: 2
   GamePaused: 0
 --- !u!4 &2140058484
 Transform:
