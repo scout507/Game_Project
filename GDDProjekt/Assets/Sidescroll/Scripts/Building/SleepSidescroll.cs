@@ -70,11 +70,11 @@ public class SleepSidescroll : BuildingOverClassSidescroll
     public void intoDefense()
     {
         gameManager.day++;
-        gameManager.saveGame();
         gameManager.hasSlept = true;
         gameManager.wasInDungeon = false;
         sleepImage.gameObject.SetActive(true);
         sleepImage.CrossFadeAlpha(0f, 3f, false);
+        gameManager.saveGame();
 
         if (gameManager.day % 3 == 0)
         {
