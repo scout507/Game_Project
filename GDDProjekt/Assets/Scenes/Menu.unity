@@ -4213,6 +4213,18 @@ MonoBehaviour:
     pitch: 2.5
     source: {fileID: 0}
     shouldLoop: 0
+  - name: turret_shoot
+    clip: {fileID: 8300000, guid: 1d64b63fd8a655d478e1ee6d3e0c3155, type: 3}
+    volume: 0.3
+    pitch: 2.5
+    source: {fileID: 0}
+    shouldLoop: 0
+  - name: turret_background
+    clip: {fileID: 8300000, guid: 3fe0f6aaf1c14b04397780492c6e0166, type: 3}
+    volume: 0.3
+    pitch: 2.5
+    source: {fileID: 0}
+    shouldLoop: 0
   themeSound:
     name: 
     clip: {fileID: 8300000, guid: ff0e2f6c0857f48ec8c2dbf7322d7e05, type: 3}

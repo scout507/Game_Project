@@ -53,7 +53,7 @@ public class TurretWeaponSidescroll : MonoBehaviour
     void shoot()
     {
         timer = 0;
-
+        FindObjectOfType<SoundManager>().Play("turret_shoot");
         angle = Mathf.Atan2(dirct.y, dirct.x) * Mathf.Rad2Deg - 90;
         float angle2 = Mathf.Atan2(dirct.y, dirct.x) * Mathf.Rad2Deg;
         firepoint.rotation = Quaternion.Euler(0, 0, angle);

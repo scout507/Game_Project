@@ -31,6 +31,7 @@ public class TurretSidescroll : BuildingOverClassSidescroll
         cinemachineVirtualCamera.Follow = focus;
         transform.GetComponent<TurretWeaponSidescroll>().entered = true;
         GetComponentInChildren<Light2D>().enabled = true;
+        FindObjectOfType<SoundManager>().Play("turret_background");
     }
 
     public override void deactivateMenu()
