@@ -4225,6 +4225,12 @@ MonoBehaviour:
     pitch: 2.5
     source: {fileID: 0}
     shouldLoop: 0
+  - name: sniper
+    clip: {fileID: 8300000, guid: e8d7c248c96c18a40b783dce24add956, type: 3}
+    volume: 0.3
+    pitch: 2.5
+    source: {fileID: 0}
+    shouldLoop: 0
   themeSound:
     name: 
     clip: {fileID: 8300000, guid: ff0e2f6c0857f48ec8c2dbf7322d7e05, type: 3}
