@@ -400,13 +400,16 @@ MonoBehaviour:
   dmgPopUp: {fileID: 8669903535900010463, guid: 50cab34027a89554faccd1863ef59964, type: 3}
   lastPopUp: {fileID: 0}
   startConvo:
-    NPCname: Boss
+    NPCname: Rakshara
     sentences:
-    - TEST
+    - Now we're getting accustomed to each other's presence, let me introduce myself.
+    - I am Rakshara the Nightmare, Lord of the Five Hells.
+    - At least now you're gonna know who put you down.
   endConvo:
-    NPCname: Boss
+    NPCname: Rakshara
     sentences:
-    - TEST2
+    - You're starting to get on my nerves.
+    - 'Move on, but it wont save you and your kind. '
   slamring: {fileID: 1764909786797436871}
   bosslevel: 3
   hp: 1600

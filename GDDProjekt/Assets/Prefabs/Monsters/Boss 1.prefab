@@ -400,13 +400,15 @@ MonoBehaviour:
   dmgPopUp: {fileID: 8669903535900010463, guid: 50cab34027a89554faccd1863ef59964, type: 3}
   lastPopUp: {fileID: 0}
   startConvo:
-    NPCname: Boss
+    NPCname: ???
     sentences:
-    - TEST
+    - Want another try, weakling?
+    - I am going to crush you.
   endConvo:
-    NPCname: Boss
+    NPCname: ???
     sentences:
-    - TEST2
+    - What? How?
+    - Move on Traveler, next time you won't be so lucky.
   slamring: {fileID: 797844196963029802}
   bosslevel: 2
   hp: 1200

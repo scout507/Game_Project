@@ -400,13 +400,15 @@ MonoBehaviour:
   dmgPopUp: {fileID: 8669903535900010463, guid: 50cab34027a89554faccd1863ef59964, type: 3}
   lastPopUp: {fileID: 0}
   startConvo:
-    NPCname: Boss
+    NPCname: Rakshara
     sentences:
-    - TEST
+    - You don't seem to learn, do you? Now, prepare to die.
   endConvo:
-    NPCname: Boss
+    NPCname: Rakshara
     sentences:
-    - TEST2
+    - 'Feeling strong, are you? '
+    - 'Move on, but remember: I am going to kill you and everyone you know.'
+    - I am going to burn your little camp and everyone inside of it.
   slamring: {fileID: 760731328895681755}
   bosslevel: 4
   hp: 2000

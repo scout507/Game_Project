@@ -318,13 +318,17 @@ MonoBehaviour:
   dmgPopUp: {fileID: 8669903535900010463, guid: 50cab34027a89554faccd1863ef59964, type: 3}
   lastPopUp: {fileID: 0}
   startConvo:
-    NPCname: Boss
+    NPCname: Rakshara
     sentences:
-    - TEST
+    - Now, for the last time challanger...
+    - This time, only one of us will be standing after we're done.
   endConvo:
-    NPCname: Boss
+    NPCname: Narrator
     sentences:
-    - TEST2
+    - You watch your enemy drown in it's own blod.
+    - After all this time you finally feel some kind of relief.
+    - Could it be, that you've finally made it?
+    - Have you finally saved you're village?
   slamring: {fileID: 6182567228250779428}
   bosslevel: 5
   hp: 3000

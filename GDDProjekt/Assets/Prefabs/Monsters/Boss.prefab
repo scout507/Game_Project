@@ -318,13 +318,15 @@ MonoBehaviour:
   dmgPopUp: {fileID: 8669903535900010463, guid: 50cab34027a89554faccd1863ef59964, type: 3}
   lastPopUp: {fileID: 0}
   startConvo:
-    NPCname: Boss
+    NPCname: ???
     sentences:
-    - TEST
+    - 'Oh look, another fool wandering my realms. '
+    - You'll make a fine addition to my collection.
   endConvo:
-    NPCname: Boss
+    NPCname: ???
     sentences:
-    - TEST2
+    - Very interesting..
+    - I will see you again, for now you are allowed to pass.
   slamring: {fileID: 7144574813817009265}
   bosslevel: 1
   hp: 800
