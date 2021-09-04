@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -173,7 +174,8 @@ public class PlayerController : MonoBehaviour
         }
         if(other.tag == "portal"){
             if(other.GetComponent<Portal>().isExit){
-                manager.newMap();
+                if(manager.level == 50) SceneManager.LoadScene("Credits");
+                else manager.newMap();
             }else manager.presentExit();
         }
     }
