@@ -325,10 +325,10 @@ MonoBehaviour:
   endConvo:
     NPCname: Narrator
     sentences:
-    - You watch your enemy drown in it's own blod.
+    - You watch your enemy drown in it's own blood.
     - After all this time you finally feel some kind of relief.
     - Could it be, that you've finally made it?
-    - Have you finally saved you're village?
+    - Have you finally saved your village?
   slamring: {fileID: 6182567228250779428}
   bosslevel: 5
   hp: 3000
