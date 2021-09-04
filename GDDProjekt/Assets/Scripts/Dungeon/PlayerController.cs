@@ -114,7 +114,7 @@ public class PlayerController : MonoBehaviour
 
             float tempMoveSpeed = moveSpeed;
             if((lookDir.x >= 0 && movement.x < 0) || (lookDir.y >= 0 && movement.y < 0 ) || (lookDir.x <= 0 && movement.x > 0) || (lookDir.y <= 0 && movement.y > 0)){
-                tempMoveSpeed = moveSpeed*0.7f;
+                tempMoveSpeed = moveSpeed*0.6f;
                 //this needs more refinement
             }
             if(!moveBlock){
