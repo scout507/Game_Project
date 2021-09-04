@@ -36,15 +36,6 @@ public class NpcSpawnerSidescroll : MonoBehaviour
     {
         waitTime = startDelay;
         aiManager = GetComponent<AiManager>();
-        
-        normalNpcPrefab.GetComponent<NpcAttackSidescroll>().damage = (int)(1 * Mathf.Pow(1.1f, aiManager.gameManager.normalNpcLevel));
-        normalNpcPrefab.GetComponent<NpcAttackSidescroll>().maxLife = (int)(100 * Mathf.Pow(1.1f, aiManager.gameManager.normalNpcLevel));
-
-        sniperNpcPrefab.GetComponent<NpcAttackSidescroll>().damage = (int)(1 * Mathf.Pow(1.1f, aiManager.gameManager.sniperNpcLevel));
-        sniperNpcPrefab.GetComponent<NpcAttackSidescroll>().maxLife = (int)(100 * Mathf.Pow(1.1f, aiManager.gameManager.sniperNpcLevel));
-
-        mortarNpcPrefab.GetComponent<NpcAttackSidescroll>().damage = (int)(1 * Mathf.Pow(1.1f, aiManager.gameManager.mortarNpcLevel));
-        mortarNpcPrefab.GetComponent<NpcAttackSidescroll>().maxLife = (int)(100 * Mathf.Pow(1.1f, aiManager.gameManager.mortarNpcLevel));
     }
 
     void Update()
@@ -58,25 +49,25 @@ public class NpcSpawnerSidescroll : MonoBehaviour
 
             for (int i = 0; i < amountNormalNpcPrefabPerSide; i++)
             {
-                setValuesLeft(Instantiate(normalNpcPrefab, spawnerLeft.transform.position, spawnerLeft.transform.rotation), aiManager.wallLeft.transform);
-                setValuesRight(Instantiate(normalNpcPrefab, spawnerRight.transform.position, spawnerRight.transform.rotation), aiManager.wallRight.transform);
+                setValuesLeft(Instantiate(normalNpcPrefab, spawnerLeft.transform.position, spawnerLeft.transform.rotation), aiManager.wallLeft.transform, aiManager.gameManager.normalNpcLevel);
+                setValuesRight(Instantiate(normalNpcPrefab, spawnerRight.transform.position, spawnerRight.transform.rotation), aiManager.wallRight.transform, aiManager.gameManager.normalNpcLevel);
             }
 
             for (int i = 0; i < amountMortarNpcPrefabPerSide; i++)
             {
-                setValuesLeft(Instantiate(mortarNpcPrefab, spawnerLeft.transform.position, spawnerLeft.transform.rotation), positionMortarLeft);
-                setValuesRight(Instantiate(mortarNpcPrefab, spawnerRight.transform.position, spawnerRight.transform.rotation), positionMortarRight);
+                setValuesLeft(Instantiate(mortarNpcPrefab, spawnerLeft.transform.position, spawnerLeft.transform.rotation), positionMortarLeft, aiManager.gameManager.mortarNpcLevel);
+                setValuesRight(Instantiate(mortarNpcPrefab, spawnerRight.transform.position, spawnerRight.transform.rotation), positionMortarRight, aiManager.gameManager.mortarNpcLevel);
             }
 
             for (int i = 0; i < amountSniperNpcPrefabPerSide; i++)
             {
-                setValuesLeft(Instantiate(sniperNpcPrefab, spawnerLeft.transform.position, spawnerLeft.transform.rotation), positionSniperLeft);
-                setValuesRight(Instantiate(sniperNpcPrefab, spawnerRight.transform.position, spawnerRight.transform.rotation), positionSniperRight);
+                setValuesLeft(Instantiate(sniperNpcPrefab, spawnerLeft.transform.position, spawnerLeft.transform.rotation), positionSniperLeft, aiManager.gameManager.sniperNpcLevel);
+                setValuesRight(Instantiate(sniperNpcPrefab, spawnerRight.transform.position, spawnerRight.transform.rotation), positionSniperRight, aiManager.gameManager.sniperNpcLevel);
             }
         }
     }
 
-    void setValuesRight(GameObject gb, Transform position)
+    void setValuesRight(GameObject gb, Transform position, int level)
     {
         aiManager.npcsRight.Add(gb);
         NpcMovementSidescroll npcMovementSidescroll = gb.GetComponent<NpcMovementSidescroll>();
@@ -89,9 +80,11 @@ public class NpcSpawnerSidescroll : MonoBehaviour
         npcMovementSidescroll.cityHall = cityHall;
         npcMovementSidescroll.aiManager = aiManager;
         npcMovementSidescroll.toLeft = false;
+        npcAttackSidescroll.damage = (int)(npcAttackSidescroll.damage * Mathf.Pow(1.1f, level));
+        npcAttackSidescroll.maxLife = (int)(npcAttackSidescroll.maxLife * Mathf.Pow(1.1f, level));
     }
 
-    void setValuesLeft(GameObject gb, Transform position)
+    void setValuesLeft(GameObject gb, Transform position, int level)
     {
         aiManager.npcsLeft.Add(gb);
         NpcMovementSidescroll npcMovementSidescroll = gb.GetComponent<NpcMovementSidescroll>();
@@ -104,5 +97,7 @@ public class NpcSpawnerSidescroll : MonoBehaviour
         npcMovementSidescroll.cityHall = cityHall;
         npcMovementSidescroll.aiManager = aiManager;
         npcMovementSidescroll.toLeft = true;
+        npcAttackSidescroll.damage = (int)(npcAttackSidescroll.damage * Mathf.Pow(1.1f, level));
+        npcAttackSidescroll.maxLife = (int)(npcAttackSidescroll.maxLife * Mathf.Pow(1.1f, level));
     }
 }
