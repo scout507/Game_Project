@@ -53,6 +53,8 @@ public class UIController : MonoBehaviour
     public string dialogueName;
     public string dialogue;
 
+    public GameObject tutorial;
+
     Manager manager;
     PlayerStats playerStats;
     PlayerController playerController;
