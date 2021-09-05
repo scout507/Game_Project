@@ -48,12 +48,20 @@ PrefabInstance:
       value: 320
       objectReference: {fileID: 0}
     - target: {fileID: 2963240178191708171, guid: 3b7b3ca5cd90f3640833ff984470770b, type: 3}
+      propertyPath: dmg
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 2963240178191708171, guid: 3b7b3ca5cd90f3640833ff984470770b, type: 3}
       propertyPath: bullet
       value: 
       objectReference: {fileID: 1384360571865061328, guid: d503bcbc3f43fbb4db6e6c3a88a602ad, type: 3}
     - target: {fileID: 2963240178191708171, guid: 3b7b3ca5cd90f3640833ff984470770b, type: 3}
       propertyPath: dmgSound
       value: spider_pain
+      objectReference: {fileID: 0}
+    - target: {fileID: 2963240178191708171, guid: 3b7b3ca5cd90f3640833ff984470770b, type: 3}
+      propertyPath: rangeDmg
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2963240178191708171, guid: 3b7b3ca5cd90f3640833ff984470770b, type: 3}
       propertyPath: moveSpeed

@@ -142,7 +142,7 @@ public class MonsterController : MonoBehaviour
         bulletScript.target = new Vector3(player.transform.position.x,player.transform.position.y,player.transform.position.z);
         bulletScript.poisionChance = posionChance;
         bulletScript.slowChance = slowChance;
-        shot.GetComponent<Rigidbody2D>().AddForce(lookDir*3f, ForceMode2D.Impulse);
+        shot.GetComponent<Rigidbody2D>().AddForce(lookDir*2.5f, ForceMode2D.Impulse);
         if(rangeAtkSound != "") soundManager.PlayOnToggle(rangeAtkSound, isDmging);
         isDmging = false;
     }
