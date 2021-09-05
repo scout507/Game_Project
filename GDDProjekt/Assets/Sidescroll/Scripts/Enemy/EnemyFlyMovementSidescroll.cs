@@ -8,15 +8,17 @@ public class EnemyFlyMovementSidescroll : EnemyMovementSidescroll
     public Vector3 left;
     public Vector3 right;
     bool lookingToMid = true;
+    EnemyAttackSidescroll enemyScript;
+    
 
     void Start()
     {
         target = wallTarget.position;
-
         left = new Vector3(target.x - 10, transform.position.y, target.z);
         right = new Vector3(target.x + 10, transform.position.y, target.z);
         if (comeFromLeft) target = right;
         if (!comeFromLeft) target = left;
+        enemyScript = GetComponent<EnemyAttackSidescroll>();
     }
 
     void FixedUpdate()
@@ -30,7 +32,7 @@ public class EnemyFlyMovementSidescroll : EnemyMovementSidescroll
             move = true;
         }
 
-        moveFunction();
+        if(!enemyScript.dead) moveFunction();
 
         if (Vector2.Distance(transform.position, target) <= 1)
         {

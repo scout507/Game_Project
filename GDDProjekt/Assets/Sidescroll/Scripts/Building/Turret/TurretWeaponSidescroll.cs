@@ -45,7 +45,7 @@ public class TurretWeaponSidescroll : MonoBehaviour
             if (!isRightFacing && facing >= -60) pipe.rotation = Quaternion.Euler(0, 0, facing);
             if (isRightFacing && facing <= 60 && facing >= 0) pipe.rotation = Quaternion.Euler(0, 0, facing);
 
-            if (Input.GetButtonDown("Fire1") && timer >= cooldown) shoot();
+            if (Input.GetButton("Fire1") && timer >= cooldown) shoot();
         }
         else pipe.rotation = Quaternion.Euler(0, 0, 0);
     }

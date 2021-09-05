@@ -8,11 +8,13 @@ public class EnemyNormalMovement : EnemyMovementSidescroll
     public float minDistance;
     public float maxDistance;
     public float randomHold;
+    EnemyAttackSidescroll enemyScript;
 
     void Start()
     {
         randomHold = Random.Range(minDistance, maxDistance);
         target = wallTarget.position;
+        enemyScript = GetComponent<EnemyAttackSidescroll>();
     }
 
 
@@ -26,7 +28,7 @@ public class EnemyNormalMovement : EnemyMovementSidescroll
             move = true;
         }
 
-        moveFunction();
+        if(!enemyScript.dead) moveFunction();
 
         if (Vector2.Distance(transform.position, target) <= randomHold)
         {

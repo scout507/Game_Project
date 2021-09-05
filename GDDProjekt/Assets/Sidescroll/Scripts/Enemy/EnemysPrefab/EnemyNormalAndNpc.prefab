@@ -128,6 +128,7 @@ MonoBehaviour:
   cooldownHitWall: 2
   cooldownHitNpc: 4
   bulletSpeed: 20
+  deathSprite: {fileID: 21300000, guid: b65d08e2ff36f0b4ea9621c8636719ad, type: 3}
   firepoint: {fileID: 3145354925695109631}
   bulletNpcPrefab: {fileID: 2741348265609809042, guid: 4cae83ecce53b864081db5ed377201aa, type: 3}
   bulletWallPrefab: {fileID: 2741348265609809042, guid: 1118970380faec84b83d1514abbfe992, type: 3}

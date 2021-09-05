@@ -14,6 +14,7 @@ public class EnemyAttackSidescroll : MonoBehaviour
     public int cooldownHitWall;
     public int cooldownHitNpc;
     public float bulletSpeed;
+    public Sprite deathSprite;
     public Transform firepoint;
     public GameObject bulletNpcPrefab;
     public GameObject bulletWallPrefab;
@@ -21,6 +22,7 @@ public class EnemyAttackSidescroll : MonoBehaviour
     public GameObject wall;
     public bool isFly;
     public AiManager aiManager;
+    public bool dead;
 
     //private
     float timer;
@@ -36,27 +38,29 @@ public class EnemyAttackSidescroll : MonoBehaviour
 
     void Update()
     {
-        timer += Time.deltaTime;
-        npcTimer += Time.deltaTime;
+        if(!dead){
+            timer += Time.deltaTime;
+            npcTimer += Time.deltaTime;
 
-        if ((!enemyMovementSidescroll.move || isFly) && !aiManager.gameEndEnemy)
-        {
-            switch (agro)
+            if ((!enemyMovementSidescroll.move || isFly) && !aiManager.gameEndEnemy)
             {
-                case 1:
-                    if (timer >= cooldownHitWall) hitWall();
-                    break;
-                case 2:
-                    if (npcTimer >= cooldownHitNpc) hitNpc();
-                    break;
-                case 3:
-                    if (npcTimer >= cooldownHitNpc && npcs.Count != 0) hitNpc();
-                    if (timer >= cooldownHitWall) hitWall();
-                    break;
+                switch (agro)
+                {
+                    case 1:
+                        if (timer >= cooldownHitWall) hitWall();
+                        break;
+                    case 2:
+                        if (npcTimer >= cooldownHitNpc) hitNpc();
+                        break;
+                    case 3:
+                        if (npcTimer >= cooldownHitNpc && npcs.Count != 0) hitNpc();
+                        if (timer >= cooldownHitWall) hitWall();
+                        break;
+                }
             }
-        }
 
-        die();
+            die();
+        }
     }
 
     void hitWall()
@@ -69,21 +73,22 @@ public class EnemyAttackSidescroll : MonoBehaviour
     void hitNpc()
     {
         npcTimer = 0;
-
-        if (npcs.Count > 0)
-        {
-            GameObject npc = npcs.ToArray()[Random.Range(0, npcs.Count)];
-            Vector2 direction = (npc.transform.position - firepoint.position).normalized;
-            GameObject bullet = Instantiate(bulletNpcPrefab, firepoint.position, firepoint.rotation);
-            bullet.GetComponent<BulletEnemyNPCSidescroll>().damage = damageNpc;
-            bullet.GetComponent<Rigidbody2D>().velocity = direction * bulletSpeed;
-        }
-        else
-        {
-            Vector2 direction = (wall.transform.position - firepoint.position).normalized;
-            GameObject bullet = Instantiate(bulletWallPrefab, firepoint.position, firepoint.rotation);
-            bullet.GetComponent<BulletEnemyWallSidescroll>().damage = damageWall;
-            bullet.GetComponent<Rigidbody2D>().velocity = direction * bulletSpeed;
+        if(!dead){
+            if (npcs.Count > 0)
+            {
+                GameObject npc = npcs.ToArray()[Random.Range(0, npcs.Count)];
+                Vector2 direction = (npc.transform.position - firepoint.position).normalized;
+                GameObject bullet = Instantiate(bulletNpcPrefab, firepoint.position, firepoint.rotation);
+                bullet.GetComponent<BulletEnemyNPCSidescroll>().damage = damageNpc;
+                bullet.GetComponent<Rigidbody2D>().velocity = direction * bulletSpeed;
+            }
+            else
+            {
+                Vector2 direction = (wall.transform.position - firepoint.position).normalized;
+                GameObject bullet = Instantiate(bulletWallPrefab, firepoint.position, firepoint.rotation);
+                bullet.GetComponent<BulletEnemyWallSidescroll>().damage = damageWall;
+                bullet.GetComponent<Rigidbody2D>().velocity = direction * bulletSpeed;
+            }
         }
     }
 
@@ -94,13 +99,20 @@ public class EnemyAttackSidescroll : MonoBehaviour
 
     void die()
     {
-        if (life <= 0)
+        if (life <= 0 && !dead)
         {
+            dead = true;
             aiManager.enemysAboveLeft.Remove(gameObject);
             aiManager.enemysBelowRight.Remove(gameObject);
             aiManager.enemysAboveRight.Remove(gameObject);
             aiManager.enemysBelowLeft.Remove(gameObject);
-            Destroy(gameObject);
+            GetComponent<SpriteRenderer>().sprite = deathSprite;
+            if(isFly){
+                Rigidbody2D rb = GetComponent<Rigidbody2D>();
+                rb.velocity = Vector2.zero;
+                rb.gravityScale = 2.5f;
+            } 
+            Destroy(gameObject, 2f);
         }
     }
 }
