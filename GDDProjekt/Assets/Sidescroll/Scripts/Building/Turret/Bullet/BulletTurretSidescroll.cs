@@ -25,6 +25,7 @@ public class BulletTurretSidescroll : MonoBehaviour
 
         if (hitInfo.tag == "enemy" && !isTriggered)
         {
+            FindObjectOfType<SoundManager>().Play("explosion");
             isTriggered = true;
             hitInfo.gameObject.GetComponent<EnemyAttackSidescroll>().takeDamage(damage);
             GameObject explo = Instantiate(explosion, transform.position, Quaternion.identity);
@@ -34,6 +35,7 @@ public class BulletTurretSidescroll : MonoBehaviour
 
         if (hitInfo.tag == "ground" && !isTriggered)
         {
+            FindObjectOfType<SoundManager>().Play("explosion");
             isTriggered = true;
             GameObject explo = Instantiate(explosion, transform.position, Quaternion.identity);
             Destroy(explo, 0.5f);

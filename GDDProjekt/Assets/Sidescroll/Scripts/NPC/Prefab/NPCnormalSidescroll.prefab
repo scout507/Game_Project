@@ -540,6 +540,7 @@ MonoBehaviour:
   enemysBelow: []
   enemysAbove: []
   aiManager: {fileID: 0}
+  sound: shootRifle
 --- !u!114 &1248070889103775568
 MonoBehaviour:
   m_ObjectHideFlags: 0

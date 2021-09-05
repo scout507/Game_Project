@@ -576,6 +576,7 @@ MonoBehaviour:
   enemysBelow: []
   enemysAbove: []
   aiManager: {fileID: 0}
+  sound: sniper
 --- !u!114 &8574897190107121703
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -601,7 +602,7 @@ MonoBehaviour:
   - {x: -0.13502884, y: -0.062245347, z: 0}
   m_ShapePathHash: 42628737
   m_Mesh: {fileID: 0}
-  m_InstanceId: 211680
+  m_InstanceId: 203778
 --- !u!95 &-3383338546634902596
 Animator:
   serializedVersion: 3

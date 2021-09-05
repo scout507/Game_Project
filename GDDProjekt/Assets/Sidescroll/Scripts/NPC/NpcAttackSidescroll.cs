@@ -19,6 +19,7 @@ public class NpcAttackSidescroll : MonoBehaviour
     public List<GameObject> enemysBelow;
     public List<GameObject> enemysAbove;
     public AiManager aiManager;
+    public string sound;
 
     //private
     float timer;
@@ -64,6 +65,7 @@ public class NpcAttackSidescroll : MonoBehaviour
 
         if (enemysBelow.Count > 0)
         {
+            FindObjectOfType<SoundManager>().Play(sound);
             Vector2 direction = (enemysBelow.First().transform.position - firepoint.position).normalized;
             GameObject bullet = Instantiate(bulletNpcPrefab, firepoint.position, firepoint.rotation);
             bullet.GetComponent<BulletNpcToEnemey>().damage = damage;
@@ -77,6 +79,7 @@ public class NpcAttackSidescroll : MonoBehaviour
 
         if (enemysAbove.Count > 0)
         {
+            FindObjectOfType<SoundManager>().Play(sound);
             Vector2 direction = (enemysAbove.First().transform.position - firepoint.position).normalized;
             GameObject bullet = Instantiate(bulletNpcPrefab, firepoint.position, firepoint.rotation);
             bullet.GetComponent<BulletNpcToEnemey>().damage = damage;
@@ -92,6 +95,7 @@ public class NpcAttackSidescroll : MonoBehaviour
 
         if (enemysBelow.Count > 0)
         {
+            FindObjectOfType<SoundManager>().Play(sound);
             Vector2 direction = (enemysBelow.First().transform.position - firepoint.position).normalized;
             GameObject bullet = Instantiate(bulletMortarNpcPrefab, firepoint.position, firepoint.rotation);
             bullet.GetComponent<BulletMortarNpcToEnemy>().damage = damage;
