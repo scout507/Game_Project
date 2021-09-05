@@ -7,11 +7,13 @@ public class PauseMenu : MonoBehaviour
 {
 
     public GameObject pauseMenuUI;
+    SoundManager soundManager;
     GameManager gm;
 
     private void Start()
     {
         gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        soundManager = GameObject.FindGameObjectWithTag("GameManager").GetComponentInChildren<SoundManager>();
     }
 
     public void Resume()
@@ -39,6 +41,11 @@ public class PauseMenu : MonoBehaviour
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene("Menu");
+    }
+
+    public void SaveSettings(){
+        gm.saveSettings(gm.currentSettings);
+        soundManager.ResetAllSounds();
     }
 
     public void SaveGame()

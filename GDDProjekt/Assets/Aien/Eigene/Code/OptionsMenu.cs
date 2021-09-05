@@ -13,7 +13,7 @@ public class OptionsMenu : MonoBehaviour
 
     private void Start()
     {
-        gm = GetComponent<GameManager>();
+        gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         settings = gm.loadSettings();
 
         masterSlider.value = settings.masterVolume;
@@ -21,19 +21,19 @@ public class OptionsMenu : MonoBehaviour
         musicSlider.value = settings.musicVolume;
     }
 
-    public void SetMasterVolume(float vol)
+    public void SetMasterVolume()
     {
-        gm.currentSettings.masterVolume = vol;
+        gm.currentSettings.masterVolume = masterSlider.value;
     }
 
-    public void SetSfxVolume(float vol)
+    public void SetSfxVolume()
     {
-        gm.currentSettings.sfxVolume = vol;
+        gm.currentSettings.sfxVolume = sfxSlider.value;
     }
 
-    public void SetMusicVolume(float vol)
+    public void SetMusicVolume()
     {
-        gm.currentSettings.musicVolume = vol;
+        gm.currentSettings.musicVolume = musicSlider.value;
     }
 
     public void SaveSettings()

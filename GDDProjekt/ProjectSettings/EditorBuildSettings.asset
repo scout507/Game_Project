@@ -12,13 +12,13 @@ EditorBuildSettings:
     path: Assets/Aien/Eigene/Scenes/Menu.unity
     guid: 818ed938d1a9e4fa09036021a24b1098
   - enabled: 1
-    path: Assets/Sidescroll/Sidescroll.unity
+    path: Assets/Marcel/Eigene/Scenes/Sidescroll.unity
     guid: 2b6aed8c5a231b44e94a3d2b281b7b9e
   - enabled: 1
     path: Assets/Dominik/Eigene/Scenes/MapGeneration.unity
     guid: b623fdf468561494aacea6b27ae82d5b
   - enabled: 1
-    path: Assets/Sidescroll/Defense.unity
+    path: Assets/Marcel/Eigene/Scenes/Defense.unity
     guid: c5f4b20db8de99848b88af31b109e61c
   - enabled: 1
     path: Assets/Scenes/Credits.unity
