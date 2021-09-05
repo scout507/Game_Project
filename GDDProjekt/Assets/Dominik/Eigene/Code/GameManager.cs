@@ -106,7 +106,7 @@ public class GameManager : MonoBehaviour
 
     public void saveGame(){
         //TODO add filename
-        SaveGame save = new SaveGame(resources,rifle,shotgun,grenadeLauncher,day,difficulty,maxEs,wasInDungeon,hasSlept,maxLevel);
+        SaveGame save = new SaveGame(resources,rifle,shotgun,grenadeLauncher,day,difficulty,maxEs,wasInDungeon,hasSlept,maxLevel,normalNpcLevel,sniperNpcLevel,mortarNpcLevel,wall,turret,esLvl);
         string json = JsonUtility.ToJson(save);
         File.WriteAllText(Application.dataPath + "/save.txt", json);
     }
@@ -130,6 +130,12 @@ public class GameManager : MonoBehaviour
             this.wasInDungeon = loadedSave.wasInDungeon;
             this.hasSlept = loadedSave.hasSlept;
             this.maxLevel = loadedSave.maxLevel;
+            this.normalNpcLevel = loadedSave.normalNpcLevel;
+            this.sniperNpcLevel = loadedSave.sniperNpcLevel;
+            this.mortarNpcLevel = loadedSave.mortarNpcLevel;
+            this.wall = loadedSave.wall;
+            this.turret = loadedSave.turret;
+            this.esLvl = loadedSave.esLvl;
         }      
     }
 
@@ -166,8 +172,17 @@ public class GameManager : MonoBehaviour
         public bool wasInDungeon;
         public bool hasSlept;
         public int maxLevel;
+        public int normalNpcLevel;
+        public int sniperNpcLevel;
+        public int mortarNpcLevel;
+        public int wall;
+        public int turret;
+        public int esLvl;
 
-        public SaveGame(int[] res, Weaponstats rifle, Weaponstats shotgun, Weaponstats grenadeLauncher, int day, int difficulty, float es, bool wasInDungeon, bool hasSlept, int maxLevel){
+        public SaveGame(int[] res, Weaponstats rifle, Weaponstats shotgun, Weaponstats grenadeLauncher, int day,
+             int difficulty, float es, bool wasInDungeon, bool hasSlept, int maxLevel, int normalNpcLevel, int sniperNpcLevel,
+             int mortarNpcLevel, int wall, int turret, int eslevel
+             ){
             this.resources = res;
             this.rifle = rifle;
             this.shotgun = shotgun;
@@ -178,6 +193,12 @@ public class GameManager : MonoBehaviour
             this.wasInDungeon = wasInDungeon;
             this.hasSlept = hasSlept;
             this.maxLevel = maxLevel;
+            this.normalNpcLevel = normalNpcLevel;
+            this.sniperNpcLevel = sniperNpcLevel;
+            this.mortarNpcLevel = mortarNpcLevel;
+            this.wall = wall;
+            this.turret = turret;
+            this.esLvl = eslevel;
         } 
     }
     
