@@ -173,7 +173,7 @@ public class BossController : MonoBehaviour
 
 
             //constant moving
-            if(target != new Vector2(0,0) && Vector2.Distance(target, center) >= meleeAtkRange && !moveblock){
+            if(target != new Vector2(0,0) && Vector2.Distance(target, center) >= meleeAtkRange && !moveblock && !skill1Active){
                 // move
                 Vector2 direction = new Vector2(target.x - transform.position.x, target.y-transform.position.y);
                 rb.velocity = direction.normalized*moveSpeed*Time.fixedDeltaTime;
@@ -190,7 +190,7 @@ public class BossController : MonoBehaviour
             coolDown = 1.5f;
         } 
         else if(coolDown <= 0){
-            target = new Vector2(0,0);
+            //target = new Vector2(0,0);
             if(skill4Timer <= 0 && bosslevel >= 5){
                 skill4();
             }
@@ -242,9 +242,9 @@ public class BossController : MonoBehaviour
     }
 
     void skill1(){
+        skill1Active = true;
         skill1Timer = skill1Cd;
         leap();
-        skill1Active = true;
     }
 
     void skill2(){
