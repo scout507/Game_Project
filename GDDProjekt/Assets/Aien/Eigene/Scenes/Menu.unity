@@ -327,7 +327,7 @@ MonoBehaviour:
       - m_Target: {fileID: 1044473886}
         m_TargetAssemblyTypeName: OptionsMenu, Assembly-CSharp
         m_MethodName: SetMasterVolume
-        m_Mode: 0
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -620,133 +620,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 196312833}
   m_CullTransparentMesh: 1
---- !u!1 &208436796
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 208436797}
-  - component: {fileID: 208436798}
-  m_Layer: 0
-  m_Name: SoundManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &208436797
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 208436796}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2140058484}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &208436798
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 208436796}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed7842b15006948e0977e0015e57b24d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sounds:
-  - name: walkOnRock
-    clip: {fileID: 8300000, guid: 977693cfd06e94c71a25f72d69ace5c9, type: 3}
-    volume: 1
-    pitch: 1
-    source: {fileID: 0}
-    shouldLoop: 0
-  - name: jumpOnRock
-    clip: {fileID: 8300000, guid: 13b6f481f85ba41f5beeb022f8937db9, type: 3}
-    volume: 1
-    pitch: 0.1
-    source: {fileID: 0}
-    shouldLoop: 0
-  - name: monsterRange
-    clip: {fileID: 8300000, guid: f818b86deafd14d40b3373f8d4401b31, type: 3}
-    volume: 1
-    pitch: 0
-    source: {fileID: 0}
-    shouldLoop: 0
-  - name: monsterBite
-    clip: {fileID: 8300000, guid: ea8887f0cf6ff40b0b76fd089a16d9e5, type: 3}
-    volume: 1
-    pitch: 1
-    source: {fileID: 0}
-    shouldLoop: 0
-  - name: explosion
-    clip: {fileID: 8300000, guid: 48aba2972d78eff409f1c80bbb511622, type: 3}
-    volume: 0.6
-    pitch: 1
-    source: {fileID: 0}
-    shouldLoop: 0
-  - name: shootRifle
-    clip: {fileID: 8300000, guid: 0650cc114704b4be2bfb18e9efb99c2d, type: 3}
-    volume: 0.2
-    pitch: 1.2
-    source: {fileID: 0}
-    shouldLoop: 0
-  - name: shootShotgun
-    clip: {fileID: 8300000, guid: 35019b066571fb444a90a0cc456e5ab8, type: 3}
-    volume: 0.2
-    pitch: 1
-    source: {fileID: 0}
-    shouldLoop: 0
-  - name: switchWeapon
-    clip: {fileID: 8300000, guid: c14fc83580a9e435c8b78a35742ac74a, type: 3}
-    volume: 1
-    pitch: 1
-    source: {fileID: 0}
-    shouldLoop: 0
-  - name: itemPickup
-    clip: {fileID: 8300000, guid: 9087fccfd99f94c689fab40e6bb24425, type: 3}
-    volume: 0.5
-    pitch: 1
-    source: {fileID: 0}
-    shouldLoop: 0
-  - name: grenade_launcher
-    clip: {fileID: 8300000, guid: 393b0ca8530e3e64fbf3a3468815152a, type: 3}
-    volume: 0.7
-    pitch: 1
-    source: {fileID: 0}
-    shouldLoop: 0
-  - name: spider_pain
-    clip: {fileID: 8300000, guid: 5cd921b91deac4f47b05c451951f7a53, type: 3}
-    volume: 0.3
-    pitch: 2
-    source: {fileID: 0}
-    shouldLoop: 0
-  - name: spider_atk
-    clip: {fileID: 8300000, guid: 8b9826c915109c446be0c38d54721a2d, type: 3}
-    volume: 0.3
-    pitch: 2.5
-    source: {fileID: 0}
-    shouldLoop: 0
-  themeSound:
-    name: 
-    clip: {fileID: 8300000, guid: ff0e2f6c0857f48ec8c2dbf7322d7e05, type: 3}
-    volume: 1
-    pitch: 1
-    source: {fileID: 0}
-    shouldLoop: 1
-  globalVolume: 1
-  sfxVolume: 1
-  musicVolume: 1
-  themeSource: {fileID: 0}
 --- !u!1 &212679604
 GameObject:
   m_ObjectHideFlags: 0
@@ -1003,7 +876,7 @@ MonoBehaviour:
       - m_Target: {fileID: 1044473886}
         m_TargetAssemblyTypeName: OptionsMenu, Assembly-CSharp
         m_MethodName: SetMusicVolume
-        m_Mode: 0
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2838,7 +2711,7 @@ Transform:
   m_Children:
   - {fileID: 1473502418}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1120920390
 GameObject:
@@ -3212,7 +3085,7 @@ MonoBehaviour:
       - m_Target: {fileID: 1044473886}
         m_TargetAssemblyTypeName: OptionsMenu, Assembly-CSharp
         m_MethodName: SetSfxVolume
-        m_Mode: 0
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3651,7 +3524,7 @@ RectTransform:
   - {fileID: 275662060}
   - {fileID: 1545601345}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -5517,7 +5390,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2027302037
 GameObject:
@@ -5980,128 +5853,3 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2102710600}
   m_CullTransparentMesh: 1
---- !u!1 &2140058482
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2140058484}
-  - component: {fileID: 2140058483}
-  - component: {fileID: 2140058485}
-  - component: {fileID: 2140058486}
-  m_Layer: 0
-  m_Name: GameManagerOriginal
-  m_TagString: GameManager
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &2140058483
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2140058482}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f31e52c04ddce974a93029e48a657881, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  resources: 0000000000000000000000000000000000000000000000000000000000000000
-  selectedWeapons: 0000000000000000
-  rifle:
-    damage: 0
-    fireRate: 0
-    overheatPerShot: 0
-    overheatLossRate: 0
-    fireRateLevel: 0
-    damageLevel: 0
-    cooldownLevel: 0
-    explosionRadiusLevel: 0
-    projectiles: 0
-    centering: 0
-    explosionRadius: 0
-  shotgun:
-    damage: 0
-    fireRate: 0
-    overheatPerShot: 0
-    overheatLossRate: 0
-    fireRateLevel: 0
-    damageLevel: 0
-    cooldownLevel: 0
-    explosionRadiusLevel: 0
-    projectiles: 0
-    centering: 0
-    explosionRadius: 0
-  grenadeLauncher:
-    damage: 0
-    fireRate: 0
-    overheatPerShot: 0
-    overheatLossRate: 0
-    fireRateLevel: 0
-    damageLevel: 0
-    cooldownLevel: 0
-    explosionRadiusLevel: 0
-    projectiles: 0
-    centering: 0
-    explosionRadius: 0
-  day: 1
-  maxEs: 100
-  wasInDungeon: 0
-  hasSlept: 1
-  normalNpcLevel: 0
-  sniperNpcLevel: 0
-  mortarNpcLevel: 0
-  wall: 0
-  turret: 0
-  esLvl: 0
-  difficulty: 1
-  maxLevel: 1
-  dungeonLevel: 1
-  GamePaused: 0
---- !u!4 &2140058484
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2140058482}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1242.5413, y: 507.8417, z: -1878.1769}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 208436797}
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2140058485
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2140058482}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a544f58e9da8e4565b60d1a56162fb1a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  masterSlider: {fileID: 0}
-  sfxSlider: {fileID: 0}
-  musicSlider: {fileID: 0}
---- !u!114 &2140058486
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2140058482}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9514ecc493c88406cbb5e36f0249dac7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
