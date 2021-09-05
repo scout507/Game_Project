@@ -29,11 +29,11 @@ public class VillageUpgradeMenuSidescroll : MonoBehaviour
     void Start()
     {
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
-        sniperNpclevelCostsSidescroll = JsonUtility.FromJson<LevelCostsSidescroll>(File.ReadAllText(Application.dataPath + "/sniperNpclevelCostsSidescroll.json"));
-        mortarNpclevelCostsSidescroll = JsonUtility.FromJson<LevelCostsSidescroll>(File.ReadAllText(Application.dataPath + "/mortarNpclevelCostsSidescroll.json"));
-        normalNpclevelCostsSidescroll = JsonUtility.FromJson<LevelCostsSidescroll>(File.ReadAllText(Application.dataPath + "/normalNpclevelCostsSidescroll.json"));
-        walllevelCostsSidescroll = JsonUtility.FromJson<LevelCostsSidescroll>(File.ReadAllText(Application.dataPath + "/walllevelCostsSidescroll.json"));
-        turretlevelCostsSidescroll = JsonUtility.FromJson<LevelCostsSidescroll>(File.ReadAllText(Application.dataPath + "/turretlevelCostsSidescroll.json"));
+        sniperNpclevelCostsSidescroll = JsonUtility.FromJson<LevelCostsSidescroll>(File.ReadAllText(Application.dataPath + "/JSON/sniperNpclevelCostsSidescroll.json"));
+        mortarNpclevelCostsSidescroll = JsonUtility.FromJson<LevelCostsSidescroll>(File.ReadAllText(Application.dataPath + "/JSON/mortarNpclevelCostsSidescroll.json"));
+        normalNpclevelCostsSidescroll = JsonUtility.FromJson<LevelCostsSidescroll>(File.ReadAllText(Application.dataPath + "/JSON/normalNpclevelCostsSidescroll.json"));
+        walllevelCostsSidescroll = JsonUtility.FromJson<LevelCostsSidescroll>(File.ReadAllText(Application.dataPath + "/JSON/walllevelCostsSidescroll.json"));
+        turretlevelCostsSidescroll = JsonUtility.FromJson<LevelCostsSidescroll>(File.ReadAllText(Application.dataPath + "/JSON/turretlevelCostsSidescroll.json"));
     }
 
     void Update()

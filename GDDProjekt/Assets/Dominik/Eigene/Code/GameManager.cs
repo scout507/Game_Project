@@ -106,7 +106,7 @@ public class GameManager : MonoBehaviour
 
     public void saveGame(){
         //TODO add filename
-        SaveGame save = new SaveGame(resources,rifle,shotgun,grenadeLauncher,day,difficulty,maxEs,wasInDungeon,hasSlept);
+        SaveGame save = new SaveGame(resources,rifle,shotgun,grenadeLauncher,day,difficulty,maxEs,wasInDungeon,hasSlept,maxLevel);
         string json = JsonUtility.ToJson(save);
         File.WriteAllText(Application.dataPath + "/save.txt", json);
     }
@@ -129,6 +129,7 @@ public class GameManager : MonoBehaviour
             this.maxEs = loadedSave.maxEs;
             this.wasInDungeon = loadedSave.wasInDungeon;
             this.hasSlept = loadedSave.hasSlept;
+            this.maxLevel = loadedSave.maxLevel;
         }      
     }
 
@@ -164,8 +165,9 @@ public class GameManager : MonoBehaviour
         public float maxEs;
         public bool wasInDungeon;
         public bool hasSlept;
+        public int maxLevel;
 
-        public SaveGame(int[] res, Weaponstats rifle, Weaponstats shotgun, Weaponstats grenadeLauncher, int day, int difficulty, float es, bool wasInDungeon, bool hasSlept){
+        public SaveGame(int[] res, Weaponstats rifle, Weaponstats shotgun, Weaponstats grenadeLauncher, int day, int difficulty, float es, bool wasInDungeon, bool hasSlept, int maxLevel){
             this.resources = res;
             this.rifle = rifle;
             this.shotgun = shotgun;
@@ -175,6 +177,7 @@ public class GameManager : MonoBehaviour
             this.maxEs = es;
             this.wasInDungeon = wasInDungeon;
             this.hasSlept = hasSlept;
+            this.maxLevel = maxLevel;
         } 
     }
     

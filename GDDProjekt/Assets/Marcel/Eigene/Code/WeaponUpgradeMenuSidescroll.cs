@@ -41,18 +41,18 @@ public class WeaponUpgradeMenuSidescroll : MonoBehaviour
     {
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
 
-        rifleDamageCostsSidescroll = JsonUtility.FromJson<LevelCostsSidescroll>(File.ReadAllText(Application.dataPath + "/JSONS/rifleDamageCostsSidescroll.json"));
-        rifleFireRateCostsSidescroll = JsonUtility.FromJson<LevelCostsSidescroll>(File.ReadAllText(Application.dataPath + "/JSONS/rifleFireRateCostsSidescroll.json"));
-        rifleCooldownCostsSidescroll = JsonUtility.FromJson<LevelCostsSidescroll>(File.ReadAllText(Application.dataPath + "/JSONS/rifleCooldownCostsSidescroll.json"));
+        rifleDamageCostsSidescroll = JsonUtility.FromJson<LevelCostsSidescroll>(File.ReadAllText(Application.dataPath + "/JSON/rifleDamageCostsSidescroll.json"));
+        rifleFireRateCostsSidescroll = JsonUtility.FromJson<LevelCostsSidescroll>(File.ReadAllText(Application.dataPath + "/JSON/rifleFireRateCostsSidescroll.json"));
+        rifleCooldownCostsSidescroll = JsonUtility.FromJson<LevelCostsSidescroll>(File.ReadAllText(Application.dataPath + "/JSON/rifleCooldownCostsSidescroll.json"));
 
-        grenadeLauncherDamageCostsSidescroll = JsonUtility.FromJson<LevelCostsSidescroll>(File.ReadAllText(Application.dataPath + "/JSONS/grenadeLauncherDamageCostsSidescroll.json"));
-        grenadeLauncherexplosionRadiusCostsSidescroll = JsonUtility.FromJson<LevelCostsSidescroll>(File.ReadAllText(Application.dataPath + "/JSONS/grenadeLauncherexplosionRadiusCostsSidescroll.json"));
-        grenadeLauncherCooldownCostsSidescroll = JsonUtility.FromJson<LevelCostsSidescroll>(File.ReadAllText(Application.dataPath + "/JSONS/grenadeLauncherCooldownCostsSidescroll.json"));
+        grenadeLauncherDamageCostsSidescroll = JsonUtility.FromJson<LevelCostsSidescroll>(File.ReadAllText(Application.dataPath + "/JSON/grenadeLauncherDamageCostsSidescroll.json"));
+        grenadeLauncherexplosionRadiusCostsSidescroll = JsonUtility.FromJson<LevelCostsSidescroll>(File.ReadAllText(Application.dataPath + "/JSON/grenadeLauncherexplosionRadiusCostsSidescroll.json"));
+        grenadeLauncherCooldownCostsSidescroll = JsonUtility.FromJson<LevelCostsSidescroll>(File.ReadAllText(Application.dataPath + "/JSON/grenadeLauncherCooldownCostsSidescroll.json"));
 
-        shotgunDamageCostsSidescroll = JsonUtility.FromJson<LevelCostsSidescroll>(File.ReadAllText(Application.dataPath + "/JSONS/shotgunDamageCostsSidescroll.json"));
-        shotgunFireRateCostsSidescroll = JsonUtility.FromJson<LevelCostsSidescroll>(File.ReadAllText(Application.dataPath + "/JSONS/shotgunFireRateCostsSidescroll.json"));
-        shotgunCooldownCostsSidescroll = JsonUtility.FromJson<LevelCostsSidescroll>(File.ReadAllText(Application.dataPath + "/JSONS/shotgunCooldownCostsSidescroll.json"));
-        shieldCostsSidescroll = JsonUtility.FromJson<LevelCostsSidescroll>(File.ReadAllText(Application.dataPath + "/JSONS/shield.json"));
+        shotgunDamageCostsSidescroll = JsonUtility.FromJson<LevelCostsSidescroll>(File.ReadAllText(Application.dataPath + "/JSON/shotgunDamageCostsSidescroll.json"));
+        shotgunFireRateCostsSidescroll = JsonUtility.FromJson<LevelCostsSidescroll>(File.ReadAllText(Application.dataPath + "/JSON/shotgunFireRateCostsSidescroll.json"));
+        shotgunCooldownCostsSidescroll = JsonUtility.FromJson<LevelCostsSidescroll>(File.ReadAllText(Application.dataPath + "/JSON/shotgunCooldownCostsSidescroll.json"));
+        shieldCostsSidescroll = JsonUtility.FromJson<LevelCostsSidescroll>(File.ReadAllText(Application.dataPath + "/JSON/shield.json"));
     }
 
     // Update is called once per frame
